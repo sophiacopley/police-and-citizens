@@ -596,7 +596,7 @@
             "vertices": [
               {
                 "x": 630,
-                "y": 160
+                "y": 220
               },
               {
                 "x": 610,
@@ -755,9 +755,7 @@
               "isPublicNetwork": false,
               "protocol": "",
               "threats": [],
-              "trustBoundaryIds": [
-                "d5812958-0acf-473e-937b-bb1d950326da"
-              ]
+              "trustBoundaryIds": []
             },
             "labels": [
               "is_verified"
@@ -813,7 +811,9 @@
               "isPublicNetwork": false,
               "protocol": "",
               "threats": [],
-              "trustBoundaryIds": []
+              "trustBoundaryIds": [
+                "d5812958-0acf-473e-937b-bb1d950326da"
+              ]
             },
             "labels": [
               "email"
@@ -865,7 +865,9 @@
               "isPublicNetwork": false,
               "protocol": "",
               "threats": [],
-              "trustBoundaryIds": []
+              "trustBoundaryIds": [
+                "d5812958-0acf-473e-937b-bb1d950326da"
+              ]
             },
             "labels": [
               "email"
@@ -979,7 +981,9 @@
               "isPublicNetwork": false,
               "protocol": "",
               "threats": [],
-              "trustBoundaryIds": []
+              "trustBoundaryIds": [
+                "d5812958-0acf-473e-937b-bb1d950326da"
+              ]
             },
             "labels": [
               "password"
@@ -1031,7 +1035,9 @@
               "isPublicNetwork": false,
               "protocol": "",
               "threats": [],
-              "trustBoundaryIds": []
+              "trustBoundaryIds": [
+                "d5812958-0acf-473e-937b-bb1d950326da"
+              ]
             },
             "labels": [
               "created_at"
@@ -1077,7 +1083,9 @@
               "isPublicNetwork": false,
               "protocol": "",
               "threats": [],
-              "trustBoundaryIds": []
+              "trustBoundaryIds": [
+                "d5812958-0acf-473e-937b-bb1d950326da"
+              ]
             },
             "labels": [
               "verification_code"
@@ -1141,7 +1149,9 @@
               "isPublicNetwork": false,
               "protocol": "",
               "threats": [],
-              "trustBoundaryIds": []
+              "trustBoundaryIds": [
+                "d5812958-0acf-473e-937b-bb1d950326da"
+              ]
             },
             "labels": [
               "verification_code"
@@ -1245,7 +1255,9 @@
               "isPublicNetwork": false,
               "protocol": "",
               "threats": [],
-              "trustBoundaryIds": []
+              "trustBoundaryIds": [
+                "d5812958-0acf-473e-937b-bb1d950326da"
+              ]
             },
             "labels": [
               "email"
@@ -1351,7 +1363,9 @@
               "isPublicNetwork": false,
               "protocol": "",
               "threats": [],
-              "trustBoundaryIds": []
+              "trustBoundaryIds": [
+                "d5812958-0acf-473e-937b-bb1d950326da"
+              ]
             },
             "labels": [
               "hashed password\n"
@@ -1374,8 +1388,8 @@
           },
           {
             "position": {
-              "x": 500,
-              "y": 220
+              "x": 460,
+              "y": 210
             },
             "size": {
               "width": 60,
@@ -1633,6 +1647,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 15,
             "ports": {
               "groups": {
                 "top": {
@@ -1716,7 +1731,6 @@
               ]
             },
             "id": "cff769ff-1225-458c-aaba-245323061bc2",
-            "zIndex": 15,
             "data": {
               "type": "tm.Process",
               "name": "verify_email",
@@ -1746,12 +1760,22 @@
               "hasOpenThreats": false,
               "crossingFlows": [
                 "132893a6-e38a-4eae-a57f-c35701eb987c",
-                "6a4dfb2d-7e03-48f8-8a14-400e4b3a0c51",
+                "5ce47bf6-c18f-4f94-9f6e-b6875ee99ed0",
+                "51edbf2d-ecd2-4118-ba82-36c59db6f90b",
                 "e7e0e957-7c9c-4cce-917c-bacffec912b7",
-                "5af667ab-e23b-4a15-ae4b-c47b88378b33"
+                "efa497e5-b5e2-440a-8382-84fa9307e0d1",
+                "67ec3820-0212-41aa-a48a-24edb66b54c7",
+                "8438c32e-d251-4697-8025-4657bdf3221e",
+                "eb25c982-35af-468a-aadd-52d0846cb5a0",
+                "7e63bdef-1a8c-4468-914d-f2f6876b0b26",
+                "5af667ab-e23b-4a15-ae4b-c47b88378b33",
+                "91c940ad-6b68-44de-84e3-6ed37ed66104"
               ],
               "containedElements": [
-                "8e453973-119a-49f7-964d-516401ff5e85"
+                "15d61bf3-d764-492d-a4aa-82bae18b2ee0",
+                "8e453973-119a-49f7-964d-516401ff5e85",
+                "d681dbc5-6e31-4cfa-a1e2-801808b2de99",
+                "cff769ff-1225-458c-aaba-245323061bc2"
               ]
             },
             "labels": [
@@ -1763,13 +1787,25 @@
               "y": -170
             },
             "target": {
-              "x": 730,
-              "y": 500
+              "x": 1090,
+              "y": 250
             },
             "vertices": [
               {
                 "x": 550,
                 "y": 20
+              },
+              {
+                "x": 630,
+                "y": 480
+              },
+              {
+                "x": 780,
+                "y": 460
+              },
+              {
+                "x": 840,
+                "y": 410
               }
             ]
           }
