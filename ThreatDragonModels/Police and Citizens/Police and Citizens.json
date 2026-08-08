@@ -122,6 +122,16 @@
                 "button-remove",
                 "vertices",
                 "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
                 "target-arrowhead"
               ],
               "name": null
@@ -1130,14 +1140,23 @@
               "cell": "70c833cd-0cdf-462f-956c-286fb8dd74d9",
               "port": "b0843f35-a6fd-4b10-aa9d-10d163f68c2f"
             },
-            "vertices": [
-              {
-                "x": 660,
-                "y": 160
-              }
-            ],
             "tools": {
               "items": [
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
                 "boundary",
                 "button-remove",
                 "vertices",
@@ -1215,6 +1234,58 @@
                 "target-arrowhead"
               ],
               "name": null
+            },
+            "vertices": [
+              {
+                "x": 660,
+                "y": 160
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Data Flow",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "Data Flow"
+            ],
+            "id": "4b96d127-c9bf-441f-aa5b-68eaa17736c8",
+            "source": {
+              "x": 710,
+              "y": 271
+            },
+            "target": {
+              "x": 810,
+              "y": 371
             }
           },
           {
@@ -1459,8 +1530,8 @@
           },
           {
             "position": {
-              "x": 490,
-              "y": 230
+              "x": 480,
+              "y": 210
             },
             "size": {
               "width": 80,
@@ -2238,21 +2309,25 @@
             ],
             "id": "79ab2f75-f444-4805-86cb-17eb999472c2",
             "source": {
-              "x": 880,
-              "y": 410
+              "cell": "15d61bf3-d764-492d-a4aa-82bae18b2ee0",
+              "port": "e513fc55-aa21-4446-b40c-5e7b9f435a5f"
             },
             "target": {
-              "x": 900,
-              "y": 470
+              "cell": "bc76f0d2-8f73-48f9-84fa-5d940a11ce31",
+              "port": "5de3b62b-d820-43af-895d-ee6c3ea9d4f8"
             },
             "vertices": [
               {
-                "x": 960,
-                "y": 350
+                "x": 1030,
+                "y": 250
               },
               {
-                "x": 900,
-                "y": 450
+                "x": 1010,
+                "y": 270
+              },
+              {
+                "x": 960,
+                "y": 350
               }
             ]
           }
