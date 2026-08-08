@@ -1260,58 +1260,6 @@
             }
           },
           {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "set_cookie_response",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": []
-            },
-            "labels": [
-              "set_cookie_response"
-            ],
-            "id": "0bbe648a-9b60-42f0-8492-4f96663ed381",
-            "source": {
-              "cell": "f94c11f5-8d6c-4c80-a25e-4f052e677c97",
-              "port": "a23e3508-919c-4895-bf3a-49be9d979d58"
-            },
-            "target": {
-              "cell": "89b68fc0-29e6-4cd6-a517-13fb6657ca2c",
-              "port": "05d52c36-3122-46d8-a0ce-1a83ac098ca0"
-            },
-            "vertices": [
-              {
-                "x": 160,
-                "y": 500
-              }
-            ]
-          },
-          {
             "position": {
               "x": 335,
               "y": 130
@@ -2579,6 +2527,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 31,
             "ports": {
               "groups": {
                 "top": {
@@ -2662,7 +2611,6 @@
               ]
             },
             "id": "d4ec004b-8aa9-4c83-bd83-b9a972ab52b0",
-            "zIndex": 31,
             "data": {
               "type": "tm.Process",
               "name": "Citizen Email\nInbox",
@@ -2675,130 +2623,6 @@
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
-            }
-          },
-          {
-            "position": {
-              "x": -43.75,
-              "y": 555
-            },
-            "size": {
-              "width": 120,
-              "height": 60
-            },
-            "attrs": {
-              "text": {
-                "text": "Browser Storage"
-              },
-              "topLine": {
-                "strokeWidth": 1.5,
-                "strokeDasharray": null
-              },
-              "bottomLine": {
-                "strokeWidth": 1.5,
-                "strokeDasharray": null
-              }
-            },
-            "visible": true,
-            "shape": "store",
-            "ports": {
-              "groups": {
-                "top": {
-                  "position": "top",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "right": {
-                  "position": "right",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "bottom": {
-                  "position": "bottom",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "left": {
-                  "position": "left",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                }
-              },
-              "items": [
-                {
-                  "group": "top",
-                  "id": "d43f7119-4906-4c3c-b9a6-94a17bb01b44"
-                },
-                {
-                  "group": "right",
-                  "id": "5d26fcaf-8af6-47d0-a5f1-d1ad1636485a"
-                },
-                {
-                  "group": "bottom",
-                  "id": "10f14fec-0f6a-475b-8f9c-971ea7f0eb59"
-                },
-                {
-                  "group": "left",
-                  "id": "19e29b3d-4f39-41e1-a15c-d55802c52c6b"
-                }
-              ]
-            },
-            "id": "27a07f30-e7d0-4576-91fb-4d52c857dcfc",
-            "zIndex": 32,
-            "data": {
-              "type": "tm.Store",
-              "name": "Browser Storage",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isALog": false,
-              "isEncrypted": false,
-              "isSigned": false,
-              "storesCredentials": false,
-              "storesInventory": false,
               "threats": []
             }
           },
@@ -2826,6 +2650,7 @@
             },
             "visible": true,
             "shape": "store",
+            "zIndex": 33,
             "ports": {
               "groups": {
                 "top": {
@@ -2909,7 +2734,6 @@
               ]
             },
             "id": "a7b274c9-e1a1-4057-9aef-f56bb492442c",
-            "zIndex": 33,
             "data": {
               "type": "tm.Store",
               "name": "Session Store",
@@ -2923,123 +2747,6 @@
               "isSigned": false,
               "storesCredentials": false,
               "storesInventory": false,
-              "threats": []
-            }
-          },
-          {
-            "position": {
-              "x": -106.25,
-              "y": 400
-            },
-            "size": {
-              "width": 112.5,
-              "height": 60
-            },
-            "attrs": {
-              "text": {
-                "text": "Browser"
-              },
-              "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
-                "strokeDasharray": null
-              }
-            },
-            "visible": true,
-            "shape": "actor",
-            "ports": {
-              "groups": {
-                "top": {
-                  "position": "top",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "right": {
-                  "position": "right",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "bottom": {
-                  "position": "bottom",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "left": {
-                  "position": "left",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                }
-              },
-              "items": [
-                {
-                  "group": "top",
-                  "id": "d2483cb4-7128-4db0-b3f3-84fc9deeb059"
-                },
-                {
-                  "group": "right",
-                  "id": "05d52c36-3122-46d8-a0ce-1a83ac098ca0"
-                },
-                {
-                  "group": "bottom",
-                  "id": "f5acdef0-4dcf-4088-95c4-5688147ad124"
-                },
-                {
-                  "group": "left",
-                  "id": "91f290b4-ff65-4fa2-8f64-a67bfbd1ac4b"
-                }
-              ]
-            },
-            "id": "89b68fc0-29e6-4cd6-a517-13fb6657ca2c",
-            "zIndex": 34,
-            "data": {
-              "type": "tm.Actor",
-              "name": "Browser",
-              "description": "",
-              "isTrustBoundary": false,
-              "outOfScope": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "providesAuthentication": false,
               "threats": []
             }
           }
