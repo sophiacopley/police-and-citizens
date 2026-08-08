@@ -66,91 +66,6 @@
                 "button-remove",
                 "vertices",
                 "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
                 "target-arrowhead"
               ],
               "name": null
@@ -271,13 +186,6 @@
               "hasOpenThreats": false,
               "providesAuthentication": false,
               "threats": []
-            },
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove"
-              ],
-              "name": null
             }
           },
           {
@@ -1154,12 +1062,8 @@
             },
             "vertices": [
               {
-                "x": 330,
-                "y": 320
-              },
-              {
-                "x": 290,
-                "y": 310
+                "x": 240,
+                "y": 360
               }
             ]
           },
@@ -1210,12 +1114,12 @@
             },
             "vertices": [
               {
-                "x": 260,
-                "y": 250
+                "x": 200,
+                "y": 280
               },
               {
-                "x": 440,
-                "y": 250
+                "x": 410,
+                "y": 350
               }
             ]
           },
@@ -1701,8 +1605,8 @@
           },
           {
             "position": {
-              "x": 590,
-              "y": 370
+              "x": 500,
+              "y": 400
             },
             "size": {
               "width": 90,
@@ -1821,8 +1725,8 @@
           },
           {
             "position": {
-              "x": 870,
-              "y": 370
+              "x": 790,
+              "y": 360
             },
             "size": {
               "width": 90,
@@ -1986,12 +1890,12 @@
             },
             "vertices": [
               {
-                "x": 170,
-                "y": 350
+                "x": 130,
+                "y": 360
               },
               {
-                "x": 240,
-                "y": 380
+                "x": 230,
+                "y": 400
               }
             ]
           },
@@ -2149,6 +2053,52 @@
                 "y": 0
               }
             ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 24,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Data Flow",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "Data Flow"
+            ],
+            "id": "030e5fc8-7522-4551-9dd8-d43fa2667082",
+            "source": {
+              "x": 990,
+              "y": 270
+            },
+            "target": {
+              "cell": "bc76f0d2-8f73-48f9-84fa-5d940a11ce31",
+              "port": "5de3b62b-d820-43af-895d-ee6c3ea9d4f8"
+            }
           }
         ]
       },
