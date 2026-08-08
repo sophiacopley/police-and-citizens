@@ -46,6 +46,16 @@
               "x": 290,
               "y": 810
             },
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead"
+              ],
+              "name": null
+            },
             "vertices": [
               {
                 "x": 300,
@@ -59,17 +69,7 @@
                 "x": 296,
                 "y": 640
               }
-            ],
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead"
-              ],
-              "name": null
-            }
+            ]
           },
           {
             "position": {
@@ -2092,13 +2092,23 @@
             ],
             "id": "030e5fc8-7522-4551-9dd8-d43fa2667082",
             "source": {
-              "x": 990,
-              "y": 270
+              "cell": "15d61bf3-d764-492d-a4aa-82bae18b2ee0",
+              "port": "e513fc55-aa21-4446-b40c-5e7b9f435a5f"
             },
             "target": {
               "cell": "bc76f0d2-8f73-48f9-84fa-5d940a11ce31",
               "port": "5de3b62b-d820-43af-895d-ee6c3ea9d4f8"
-            }
+            },
+            "vertices": [
+              {
+                "x": 1040,
+                "y": 300
+              },
+              {
+                "x": 1020,
+                "y": 330
+              }
+            ]
           }
         ]
       },
