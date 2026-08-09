@@ -1027,7 +1027,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "session_token",
+              "name": "auth_token",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -1041,7 +1041,7 @@
               "trustBoundaryIds": []
             },
             "labels": [
-              "session_token"
+              "auth_token"
             ],
             "id": "6b2b8ee5-b8e3-4e2d-b091-36abf249042f",
             "source": {
@@ -2921,6 +2921,164 @@
               "storesInventory": false,
               "threats": []
             }
+          },
+          {
+            "position": {
+              "x": -60,
+              "y": 460
+            },
+            "size": {
+              "width": 120,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Client Session Storage"
+              },
+              "topLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "4f0ca7ed-d9ac-40c3-9f80-9ce5a5f19c64"
+                },
+                {
+                  "group": "right",
+                  "id": "6e950e0d-447a-4056-80cb-a4c78136a724"
+                },
+                {
+                  "group": "bottom",
+                  "id": "d03b83ca-bb6a-4e49-a9ac-af4cb3f26002"
+                },
+                {
+                  "group": "left",
+                  "id": "52e02ec4-56b6-4449-9557-d6d1c4f5038e"
+                }
+              ]
+            },
+            "id": "3d5c2831-2265-4065-8870-b6f8fb0211bb",
+            "zIndex": 38,
+            "data": {
+              "type": "tm.Store",
+              "name": "Client Session Storage",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isALog": false,
+              "isEncrypted": false,
+              "isSigned": false,
+              "storesCredentials": false,
+              "storesInventory": false,
+              "threats": []
+            }
+          },
+          {
+            "shape": "trust-boundary-curve",
+            "width": 200,
+            "height": 100,
+            "zIndex": 39,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Boundary",
+              "name": "Trust Boundary",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false,
+              "crossingFlows": [],
+              "containedElements": []
+            },
+            "labels": [
+              "Trust Boundary"
+            ],
+            "id": "9ae6e5ac-e04d-471c-ae1b-463b7476c2c7",
+            "source": {
+              "x": 40,
+              "y": -461
+            },
+            "target": {
+              "x": 240,
+              "y": -120
+            },
+            "vertices": [
+              {
+                "x": 70,
+                "y": -290
+              }
+            ]
           }
         ]
       },
