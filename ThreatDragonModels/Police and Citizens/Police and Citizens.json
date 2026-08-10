@@ -3577,7 +3577,7 @@
                   "severity": "High",
                   "type": "Spoofing",
                   "description": "A stolen session identifier lets an attacker act as the report owner (T5) without the password.",
-                  "mitigation": "Issue session cookies with HttpOnly, Secure and SameSite; rotate the session ID on login; apply an idle timeout and offer logout (E4).",
+                  "mitigation": "Rotate the session ID on login, apply an idle timeout and offer logout (E4).",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 31,
@@ -3734,19 +3734,6 @@
                   "mitigation": "Derive ownership from the authenticated session and enforce it in the database query.",
                   "modelType": "STRIDE",
                   "id": "282d8da8-db02-4169-89e1-58690cb02b5a"
-                },
-                {
-                  "id": "d2d2e8af-d6a6-5bf4-b08a-e69db1e79e81",
-                  "title": "Expensive unbounded report listing",
-                  "status": "Open",
-                  "severity": "Medium",
-                  "type": "Denial of service",
-                  "description": "A request for an unbounded list forces the database to return every row the citizen owns.",
-                  "mitigation": "Paginate the listing, cap page size and apply query timeouts.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 38,
-                  "score": ""
                 }
               ],
               "threatFrequency": {
@@ -3906,19 +3893,6 @@
                   "mitigation": "Enforce upload size, dimension and processing limits.",
                   "modelType": "STRIDE",
                   "id": "e4315c1d-6f60-4659-a827-fb527aec6977"
-                },
-                {
-                  "id": "42045686-2ef2-58ad-ad20-9654306ac1a4",
-                  "title": "Cross-site request forgery on report creation",
-                  "status": "Open",
-                  "severity": "High",
-                  "type": "Tampering",
-                  "description": "A third-party page causes a logged-in citizen's browser to submit a report without their intent.",
-                  "mitigation": "Require an anti-CSRF token on every state-changing request and set SameSite on the session cookie.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 39,
-                  "score": ""
                 }
               ],
               "threatFrequency": {
@@ -4086,7 +4060,7 @@
                   "severity": "High",
                   "type": "Tampering",
                   "description": "Script stored in a report description executes when the report is rendered, including for an officer viewing it at E12.",
-                  "mitigation": "Contextual output encoding on render plus a strict Content Security Policy.",
+                  "mitigation": "Contextual output encoding on render.",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 40,
@@ -5180,19 +5154,6 @@
               "protocol": "SQL/TCP (internal)",
               "threats": [
                 {
-                  "id": "4dea37d7-b7c1-5fe5-b710-044c746325d2",
-                  "title": "Protected fields written on update",
-                  "status": "Open",
-                  "severity": "High",
-                  "type": "Elevation of privilege",
-                  "description": "A crafted update that includes closed status or owner would let a citizen change fields reserved to officers.",
-                  "mitigation": "Allow-list the editable fields and drop everything else before building the update.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 118,
-                  "score": ""
-                },
-                {
                   "id": "86004034-39ff-58b5-a104-4b10bc70f7af",
                   "title": "Update statement injected",
                   "status": "Open",
@@ -5271,19 +5232,6 @@
               "isPublicNetwork": true,
               "protocol": "HTTPS",
               "threats": [
-                {
-                  "id": "565db51e-ab69-5670-ac3d-c8a9204187b3",
-                  "title": "Report details cached after logout",
-                  "status": "Open",
-                  "severity": "High",
-                  "type": "Information disclosure",
-                  "description": "Incident detail recovered from the browser cache on a shared machine after the citizen has logged out.",
-                  "mitigation": "Cache-Control: no-store on authenticated report responses, reinforced at the assumed reverse proxy (D3).",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 120,
-                  "score": ""
-                }
               ],
               "trustBoundaryIds": [],
               "threatFrequency": {
@@ -5361,7 +5309,7 @@
                   "severity": "High",
                   "type": "Information disclosure",
                   "description": "The session identifier authenticates every subsequent request; observed on the network it allows full impersonation of the report owner (T5).",
-                  "mitigation": "HTTPS only across the whole site with HSTS, terminated at the assumed reverse proxy (D3, see model assumptions). Set the Secure flag so the cookie is never sent over HTTP.",
+                  "mitigation": "HTTPS only with HSTS and a short idle timeout ",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 84,
