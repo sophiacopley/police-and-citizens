@@ -175,7 +175,7 @@
                   "severity": "TBD",
                   "type": "Spoofing",
                   "description": "Passwords can be guessed if they are too weak",
-                  "mitigation": "- Enforce strong password rules such as 10 characters and at least one of capital letter, number, special character, or pass-phrases\n- Implement 2 factor authentication. \n- Limit the number of times a user can attempt to login (so that bad actors have less chances at guessing correctly)",
+                  "mitigation": "- Enforce strong password rules such as 10 characters and at least one of capital letter, number, special character, or pass-phrases\n- Limit the number of times a user can attempt to login (so that bad actors have less chances at guessing correctly)",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 1,
@@ -209,8 +209,8 @@
                 }
               ],
               "threatFrequency": {
-                "spoofing": 5,
-                "repudiation": 2
+                "spoofing": 7,
+                "repudiation": 3
               }
             }
           },
@@ -355,8 +355,8 @@
                 "text": "Register"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -453,121 +453,126 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "06adcb2a-b5cb-4e66-90ab-fa66a94a6aa7",
+                  "title": "Flooding the register process with get requests",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "A bad actor could send many requests to the server because it is a process that does not require authentication. ",
+                  "mitigation": "- Rate limiting for requests from the same IP.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 22,
+                  "score": ""
+                },
+                {
+                  "id": "7c54d222-d526-4b5f-b05b-e05842eadd2b",
+                  "title": "Registration process replaced by scammer",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": "The official registration page has been replaced by another malicious page users are redirected to from scam emails, or text messages, or links posted online.",
+                  "mitigation": "- Buy similar domain names with typos.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 23,
+                  "score": ""
+                },
+                {
+                  "id": "744c4ce4-1f49-4c65-a044-635e5810114c",
+                  "title": "Process leaks data via unsafe memory",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "Process logs sensitive data, or stores data in unsafe (e.g., shared) memory",
+                  "mitigation": "- Use type-safe and memory-safe programming language e.g. Java, Rust\n- Ensure log entries don't contain sensitive data.\n- Monitor process usages and in/out for suspicious activity.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 24,
+                  "score": ""
+                },
+                {
+                  "id": "26ae1e17-67d7-47db-965e-00a94b6ce4c5",
+                  "title": "Process has been tampered with - COME BACK",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "The process has been altered by an external malicious actor.",
+                  "mitigation": "- Monitor and keep a record of process ID to identify process restart.\n- Add fingerprinting to process, e.g., change time, binary / script hash.\n- Monitor process in/out for suspicious activities.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 25,
+                  "score": ""
+                },
+                {
+                  "id": "e2fe48d6-71b3-4590-b4cf-8a172502c2c3",
+                  "title": "Process gets access to restricted resources",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Elevation of privilege",
+                  "description": "Process runs at a higher priority level (e.g., permissions, resources), or accesses to assets outside its permission level.",
+                  "mitigation": "- Apply principle of least privilege for process and used resources.\n- Run process on the OS with as few permissions as required, using a dedicated technical account rather than a normal user account with interactive and logon permissions.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 26,
+                  "score": ""
+                },
+                {
+                  "id": "da2724e1-6ed9-40b0-a754-c3cacf08ac87",
+                  "title": "Injection attack - tampering",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "Malicious data is passed to the process to cause harm to the underlying data, e.g., override data or inject malicious data.",
+                  "mitigation": "- Decode, normalise, and canonicalise email and password before validation and storage\n- Sanitise input for script-like requests, e.g., javascript, SQL, etc.\n- Enforce strict Content Security Policy to prevent harmful scripts to be transmitted (e.g., js, py, sh files).",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 27,
+                  "score": ""
+                },
+                {
+                  "id": "2525acfd-7a0f-4c66-b5a2-a8bd7bc1bca6",
+                  "title": "Injection attack - disclosure",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "Malicious data is passed to the process to gain access to or exfiltrate data stored in database.",
+                  "mitigation": "- Decode, normalise, and canonicalise email and password before validation and storage\n- Sanitise input from script-like statements, e.g., javascript, SQL, etc.\n- Enforce strict CSP policy to prevent harmful scripts to be transmitted (e.g., js, py, sh files).",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 28,
+                  "score": ""
+                },
+                {
+                  "id": "093a30ce-6312-4ee1-9a16-138ecf2d3f2e",
+                  "title": "Expose sensitive data in logs",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "Logs may leak sensitive data such as email, password, IP, and session IDs, when tracing user actions.",
+                  "mitigation": "- Ensure that all sensitive PII data other than user ID are not logged.\n- Conduct regular log audits.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 29,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 1,
+                "tampering": 3,
+                "repudiation": 0,
+                "informationDisclosure": 5,
+                "denialOfService": 1,
+                "elevationOfPrivilege": 1
+              }
             }
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "submit_register_response",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": [
-                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ]
-            },
-            "labels": [
-              "submit_register_response"
-            ],
-            "id": "7f8c8596-6076-48ce-8be0-926151fbb53d",
-            "source": {
-              "cell": "8e453973-119a-49f7-964d-516401ff5e85",
-              "port": "9d9a8ddb-f523-4198-809b-802291cadfe7"
-            },
-            "target": {
-              "cell": "5f3e80d7-077b-45d3-a94a-69967e34573a",
-              "port": "3cf15723-49a1-4efc-bb2a-240214ee345a"
-            },
-            "vertices": [
-              {
-                "x": 450,
-                "y": 70
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "submit_register_request\n",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": [
-                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ]
-            },
-            "labels": [
-              "submit_register_request\n"
-            ],
-            "id": "fa758357-7f42-42a8-9e52-51061a898cec",
-            "source": {
-              "cell": "5f3e80d7-077b-45d3-a94a-69967e34573a",
-              "port": "4eef07ba-c073-4f8f-a998-c51ab2fa460b"
-            },
-            "target": {
-              "cell": "8e453973-119a-49f7-964d-516401ff5e85",
-              "port": "9d9a8ddb-f523-4198-809b-802291cadfe7"
-            },
-            "vertices": [
-              {
-                "x": 190,
-                "y": 110
-              }
-            ]
           },
           {
             "shape": "flow",
@@ -1278,12 +1283,12 @@
               "threats": [
                 {
                   "id": "c6468419-909c-4c37-a0e9-005f49ef3e79",
-                  "title": "Flooding the register process with get requests",
+                  "title": "Flooding the network with traffic",
                   "status": "Open",
                   "severity": "TBD",
                   "type": "Denial of service",
-                  "description": "A bad actor could send many requests to the server because it is a process that does not require authentication. ",
-                  "mitigation": "- Rate limiting for register get requests.",
+                  "description": "A Bad Actor floods the request channel with high-volume traffic, exhausting network/connection capacity and blocking legitimate requests from reaching the server.",
+                  "mitigation": "- Rate limiting for requests from the same IP.",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 15,
@@ -1296,7 +1301,7 @@
               "threatFrequency": {
                 "tampering": 0,
                 "informationDisclosure": 0,
-                "denialOfService": 1
+                "denialOfService": 3
               }
             },
             "labels": [
@@ -1315,6 +1320,197 @@
               {
                 "x": 100,
                 "y": -60
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "submit_register_response",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "46ed0897-2e70-4d4c-a32b-ae10278b02a5",
+                  "title": "Error messages reveal information about system state",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "An error message could contain information such as \n- server software & version\n- file system paths\n- stack traces\n- sensitive information such as email and password",
+                  "mitigation": "- Don't have revealing error messages\n- Use HTTPS (or another encrypted protocol) to send data over the network.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 20,
+                  "score": ""
+                },
+                {
+                  "id": "ceb357ca-b6f5-4047-a17a-54873c616be9",
+                  "title": "Register process response is ",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "See #16",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 21,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [
+                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
+              ],
+              "threatFrequency": {
+                "tampering": 3,
+                "informationDisclosure": 2,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              "submit_register_response"
+            ],
+            "id": "7f8c8596-6076-48ce-8be0-926151fbb53d",
+            "source": {
+              "cell": "8e453973-119a-49f7-964d-516401ff5e85",
+              "port": "9d9a8ddb-f523-4198-809b-802291cadfe7"
+            },
+            "target": {
+              "cell": "5f3e80d7-077b-45d3-a94a-69967e34573a",
+              "port": "3cf15723-49a1-4efc-bb2a-240214ee345a"
+            },
+            "vertices": [
+              {
+                "x": 450,
+                "y": 70
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "submit_register_request\n",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "5f316f44-6d14-4efd-820c-2c25ab7858d0",
+                  "title": "Citizen personal data is tampered with in transit",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "Bad actor changes the citizen's email and/or password so they either do not receive the verification email, or can't successfully log in. ",
+                  "mitigation": "- Use HTTPS (or another encrypted protocol) to send data over the network",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 17,
+                  "score": ""
+                },
+                {
+                  "id": "97c8462d-7a0c-4452-9ee3-608e58d7d072",
+                  "title": "Citizen information exposed to a bad actor",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "Email address and password is accessed by a bad actor on the network, allowing them to steal the user's credentials. ",
+                  "mitigation": "- Use HTTPS (or another encrypted protocol) to send data over the network\n- Use verification code to ensure stolen credentials cannot be used to log in.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 18,
+                  "score": ""
+                },
+                {
+                  "id": "8b46c674-958f-498c-a65c-f5f3cad139f0",
+                  "title": "Flooding the network with traffic",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "See #15",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 19,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [
+                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
+              ],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 2,
+                "denialOfService": 4
+              }
+            },
+            "labels": [
+              "submit_register_request\n"
+            ],
+            "id": "fa758357-7f42-42a8-9e52-51061a898cec",
+            "source": {
+              "cell": "5f3e80d7-077b-45d3-a94a-69967e34573a",
+              "port": "4eef07ba-c073-4f8f-a998-c51ab2fa460b"
+            },
+            "target": {
+              "cell": "8e453973-119a-49f7-964d-516401ff5e85",
+              "port": "9d9a8ddb-f523-4198-809b-802291cadfe7"
+            },
+            "vertices": [
+              {
+                "x": 190,
+                "y": 110
+              },
+              {
+                "x": 400,
+                "y": 60
               }
             ]
           },
@@ -3082,14 +3278,14 @@
               "isTrustBoundary": true,
               "hasOpenThreats": false,
               "crossingFlows": [
-                "7f8c8596-6076-48ce-8be0-926151fbb53d",
-                "fa758357-7f42-42a8-9e52-51061a898cec",
                 "9e51c3ac-d04f-4699-a6e3-c052f3e47ffa",
                 "ad55b7a8-0a75-4511-9688-e9b0e7fcf623",
                 "d5ee7bf6-202c-4c3c-aea8-7cc1e229ecf5",
                 "04d603e7-1ce9-4587-94d1-6a6ad3359f22",
                 "79c078cf-1161-41f1-b3ec-bf387a04e1ce",
                 "e6768564-29b5-46eb-a658-1874816cd8fb",
+                "7f8c8596-6076-48ce-8be0-926151fbb53d",
+                "fa758357-7f42-42a8-9e52-51061a898cec",
                 "dca0fd92-aac7-493e-b4b1-b13e3d758595",
                 "7198a459-41d5-474e-9a9c-1b244fc4e5eb",
                 "d4f1dc29-d52c-4752-aac0-bd033838adff",
@@ -5827,6 +6023,6 @@
     ],
     "diagramTop": 2,
     "reviewer": "",
-    "threatTop": 16
+    "threatTop": 30
   }
 }
