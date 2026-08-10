@@ -3381,9 +3381,1281 @@
       },
       {
         "id": 1,
-        "title": "Reports",
+        "title": "Reports - Owner Access (E5-E7)",
         "diagramType": "STRIDE",
-        "placeholder": "Report creation, ownership, editing and share-link access",
+        "placeholder": "Owner-only report access: list, create, view and edit reports",
+        "thumbnail": "./public/content/images/thumbnail.stride.jpg",
+        "version": "2.6.2",
+        "cells": [
+          {
+            "position": {
+              "x": 40,
+              "y": 340
+            },
+            "size": {
+              "width": 180,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "Citizen / Report Owner\n(A1, T4/T5)"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "zIndex": 1,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "7672f8ce-9e43-476a-9e43-600432e4ed79"
+                },
+                {
+                  "group": "right",
+                  "id": "0be623f7-c266-408d-8ff0-3b5f41f719ce"
+                },
+                {
+                  "group": "bottom",
+                  "id": "225da9c7-31f0-48da-9e73-eb9cde08be38"
+                },
+                {
+                  "group": "left",
+                  "id": "4a46f8c8-d20b-4eef-aa89-f6a11d5fed3e"
+                }
+              ]
+            },
+            "id": "1305ddc4-cdb2-4914-be46-85486e53cbec",
+            "data": {
+              "type": "tm.Actor",
+              "name": "Citizen / Report Owner\n(A1, T4/T5)",
+              "description": "A1 Citizen. T4 logged-in citizen and T5 report owner. Can create reports and view/edit reports they created.",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "providesAuthentication": false,
+              "threats": [],
+              "threatFrequency": {
+                "spoofing": 1,
+                "repudiation": 1
+              }
+            }
+          },
+          {
+            "position": {
+              "x": 495,
+              "y": 0
+            },
+            "size": {
+              "width": 100,
+              "height": 100
+            },
+            "attrs": {
+              "text": {
+                "text": "List Own Reports\n(E5)"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 1,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "33dbbd82-401e-47da-8cfa-5400fb637a5e"
+                },
+                {
+                  "group": "right",
+                  "id": "ed826638-f1fb-4806-bd24-942ac561c5a0"
+                },
+                {
+                  "group": "bottom",
+                  "id": "bc9f4cce-232f-4aa0-a878-426ff70532e8"
+                },
+                {
+                  "group": "left",
+                  "id": "a44000d9-1214-423a-96b1-7bec2a6c032b"
+                }
+              ]
+            },
+            "id": "d32f8f78-30c5-4254-bd24-e3d2af6e323f",
+            "data": {
+              "type": "tm.Process",
+              "name": "List Own Reports\n(E5)",
+              "description": "E5 Report list page. Lists reports owned by the citizen and their status.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "status": "Open",
+                  "severity": "High",
+                  "title": "Report list not scoped to owner",
+                  "type": "Information disclosure",
+                  "description": "A citizen could receive another citizen’s reports if the query is not constrained by the authenticated owner.",
+                  "mitigation": "Derive ownership from the authenticated session and enforce it in the database query.",
+                  "modelType": "STRIDE",
+                  "id": "282d8da8-db02-4169-89e1-58690cb02b5a"
+                }
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 530,
+              "y": 130
+            },
+            "size": {
+              "width": 170,
+              "height": 100
+            },
+            "attrs": {
+              "text": {
+                "text": "Create Report\n(E6)"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 1,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "486e3e1e-6e13-4eba-b3db-cdaf128b31bf"
+                },
+                {
+                  "group": "right",
+                  "id": "08baeb9d-725f-44d9-8f5b-04b9925fd3c0"
+                },
+                {
+                  "group": "bottom",
+                  "id": "a12c00b6-3f3c-4208-8e78-0741b3afde01"
+                },
+                {
+                  "group": "left",
+                  "id": "e2712680-ec1e-422d-8e6f-7a46b547b614"
+                }
+              ]
+            },
+            "id": "37f3f67c-3e28-4554-bde6-4d3e98a31a32",
+            "data": {
+              "type": "tm.Process",
+              "name": "Create Report\n(E6)",
+              "description": "E6 Create report page. Citizen enters date, time, location, description and images.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "status": "Open",
+                  "severity": "High",
+                  "title": "Malicious image upload",
+                  "type": "Elevation of privilege",
+                  "description": "Uploaded images may contain malicious content if file type and content are not validated.",
+                  "mitigation": "Validate file contents, restrict formats and safely process images.",
+                  "modelType": "STRIDE",
+                  "id": "22230fed-643a-4ced-9409-095718d30ccf"
+                },
+                {
+                  "status": "Open",
+                  "severity": "High",
+                  "title": "Image metadata disclosure",
+                  "type": "Information disclosure",
+                  "description": "Images may contain EXIF metadata such as GPS coordinates.",
+                  "mitigation": "Strip metadata during image processing.",
+                  "modelType": "STRIDE",
+                  "id": "87f200c8-beb4-48f5-be66-f52acf39078b"
+                },
+                {
+                  "status": "Open",
+                  "severity": "High",
+                  "title": "Oversized image denial of service",
+                  "type": "Denial of service",
+                  "description": "Large or resource-intensive images can consume storage and processing resources.",
+                  "mitigation": "Enforce upload size, dimension and processing limits.",
+                  "modelType": "STRIDE",
+                  "id": "e4315c1d-6f60-4659-a827-fb527aec6977"
+                }
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 430,
+              "y": 370
+            },
+            "size": {
+              "width": 100,
+              "height": 100
+            },
+            "attrs": {
+              "text": {
+                "text": "View / Edit Report\n(E7)"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 1,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "51143dd1-e9dc-42f4-8d2a-2a676d04d963"
+                },
+                {
+                  "group": "right",
+                  "id": "eb3964ed-e68c-4944-9194-7688201e3255"
+                },
+                {
+                  "group": "bottom",
+                  "id": "e7316ad2-4a51-41d5-8c43-034d78774565"
+                },
+                {
+                  "group": "left",
+                  "id": "5eafba8c-e1d1-4f36-8bb0-bb218f73b685"
+                }
+              ]
+            },
+            "id": "808d5d80-cc3b-4740-9ae4-7fcf5b15c98d",
+            "data": {
+              "type": "tm.Process",
+              "name": "View / Edit Report\n(E7)",
+              "description": "E7 View and edit report page. Report owner views and edits their report.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "status": "Open",
+                  "severity": "High",
+                  "title": "Insecure direct object reference",
+                  "type": "Elevation of privilege",
+                  "description": "Changing a report identifier could expose another citizen’s report without object-level authorisation.",
+                  "mitigation": "Perform server-side ownership checks on every report request.",
+                  "modelType": "STRIDE",
+                  "id": "ae5acc75-b030-44bb-a98b-889325d55075"
+                },
+                {
+                  "status": "Open",
+                  "severity": "High",
+                  "title": "Editing closed reports",
+                  "type": "Tampering",
+                  "description": "A crafted request could bypass a hidden edit button if the server does not enforce report state.",
+                  "mitigation": "Reject updates when the report is closed.",
+                  "modelType": "STRIDE",
+                  "id": "46a526d7-218e-4a30-872f-ab7cc2fa734a"
+                },
+                {
+                  "status": "Open",
+                  "severity": "High",
+                  "title": "Mass assignment of closed status",
+                  "type": "Elevation of privilege",
+                  "description": "A citizen may attempt to manipulate protected fields such as closed status.",
+                  "mitigation": "Allow-list editable fields and never accept closed status from the citizen.",
+                  "modelType": "STRIDE",
+                  "id": "e5ff59a3-854c-4c8f-87eb-6b22b2ca0333"
+                }
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 920,
+              "y": 300
+            },
+            "size": {
+              "width": 190,
+              "height": 90
+            },
+            "attrs": {
+              "text": {
+                "text": "Report Store"
+              },
+              "topLine": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "zIndex": 1,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "410b0e22-265b-4867-81dc-eba08f9ff1b8"
+                },
+                {
+                  "group": "right",
+                  "id": "096e1238-6b69-4047-b75d-b4040249576f"
+                },
+                {
+                  "group": "bottom",
+                  "id": "726ead39-dcc4-4a8c-9c55-3babac09be5f"
+                },
+                {
+                  "group": "left",
+                  "id": "0b4579e7-c2c5-4afb-9c8c-879bdb08c2f3"
+                }
+              ]
+            },
+            "id": "7babd726-5818-4ad9-9d54-abdbd351a95e",
+            "data": {
+              "type": "tm.Store",
+              "name": "Report Store",
+              "description": "Contains:\nDate\nTime\nLocation\nDescription\nCreated time\nClosed status\nOwner / created_by",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isALog": false,
+              "isEncrypted": false,
+              "isSigned": false,
+              "storesCredentials": false,
+              "storesInventory": false,
+              "threats": [
+                {
+                  "status": "Open",
+                  "severity": "High",
+                  "title": "Unauthorised report disclosure",
+                  "type": "Information disclosure",
+                  "description": "Direct database access could expose sensitive report information.",
+                  "mitigation": "Restrict database access, use least privilege and protect data at rest.",
+                  "modelType": "STRIDE",
+                  "id": "6085fcf1-d2fc-43fc-8b9a-7cdb0af636ad"
+                },
+                {
+                  "status": "Open",
+                  "severity": "High",
+                  "title": "Direct report tampering",
+                  "type": "Tampering",
+                  "description": "Database access could bypass application authorisation and modify reports.",
+                  "mitigation": "Restrict direct database access and audit administrative changes.",
+                  "modelType": "STRIDE",
+                  "id": "d08e24bd-7130-4aba-9ab2-e59935bb641e",
+                  "new": false
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 1,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
+            },
+            "children": [
+              "83f3e0a7-a917-4619-96db-cb9f89297dff"
+            ]
+          },
+          {
+            "position": {
+              "x": 920,
+              "y": 710
+            },
+            "size": {
+              "width": 190,
+              "height": 90
+            },
+            "attrs": {
+              "text": {
+                "text": "Report Image Store"
+              },
+              "topLine": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "zIndex": 3,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "1cd4ef64-fa19-41a5-b331-553556bb9af0"
+                },
+                {
+                  "group": "right",
+                  "id": "340db974-f08b-4657-875b-6b10a416649c"
+                },
+                {
+                  "group": "bottom",
+                  "id": "a86e0a72-6b52-49ad-9d63-75f969e46f3d"
+                },
+                {
+                  "group": "left",
+                  "id": "20017b92-f546-4cbb-b283-896537af1f67"
+                }
+              ]
+            },
+            "id": "b6d09586-97ac-40f6-afc4-e9e1ae1f76f1",
+            "data": {
+              "type": "tm.Store",
+              "name": "Report Image Store",
+              "description": "This is where uploaded report photographs live.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isALog": false,
+              "isEncrypted": false,
+              "isSigned": false,
+              "storesCredentials": false,
+              "storesInventory": false,
+              "threats": [
+                {
+                  "id": "a3a1d2b0-6996-46ea-ab62-30115d908b42",
+                  "title": "Unauthorised image retrieval",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "Provide a description for this threat",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 9,
+                  "score": ""
+                },
+                {
+                  "id": "c4f341eb-d4dd-415c-81d6-c228aae40eba",
+                  "title": "Path traversal",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "Provide a description for this threat",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 10,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 2,
+                "denialOfService": 0
+              }
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "session + report ID",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "session + report ID"
+            ],
+            "id": "968a23d7-926e-46ca-8d79-3ceecca0cf38",
+            "source": {
+              "cell": "1305ddc4-cdb2-4914-be46-85486e53cbec",
+              "port": "0be623f7-c266-408d-8ff0-3b5f41f719ce"
+            },
+            "target": {
+              "cell": "808d5d80-cc3b-4740-9ae4-7fcf5b15c98d",
+              "port": "5eafba8c-e1d1-4f36-8bb0-bb218f73b685"
+            },
+            "vertices": [
+              {
+                "x": 280,
+                "y": 390
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "updated report",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "updated report"
+            ],
+            "id": "90d2ec11-f46a-4401-8b16-29f475c2f05f",
+            "source": {
+              "x": 505,
+              "y": 390
+            },
+            "target": {
+              "cell": "7babd726-5818-4ad9-9d54-abdbd351a95e",
+              "port": "410b0e22-265b-4867-81dc-eba08f9ff1b8"
+            },
+            "vertices": [
+              {
+                "x": 750,
+                "y": 210
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "authenticated session",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "authenticated session"
+            ],
+            "id": "3e47e6e6-64bb-4c89-a403-0a0fd3ccb1ad",
+            "source": {
+              "cell": "1305ddc4-cdb2-4914-be46-85486e53cbec",
+              "port": "7672f8ce-9e43-476a-9e43-600432e4ed79"
+            },
+            "target": {
+              "cell": "d32f8f78-30c5-4254-bd24-e3d2af6e323f",
+              "port": "a44000d9-1214-423a-96b1-7bec2a6c032b"
+            },
+            "vertices": [
+              {
+                "x": 210,
+                "y": 180
+              },
+              {
+                "x": 350,
+                "y": 180
+              },
+              {
+                "x": 460,
+                "y": 130
+              },
+              {
+                "x": 480,
+                "y": 110
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "owned report list (X1)",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "owned report list (X1)"
+            ],
+            "id": "c918a7fe-6446-4b11-9a1b-54f32e5d9590",
+            "source": {
+              "cell": "d32f8f78-30c5-4254-bd24-e3d2af6e323f",
+              "port": "a44000d9-1214-423a-96b1-7bec2a6c032b"
+            },
+            "target": {
+              "cell": "1305ddc4-cdb2-4914-be46-85486e53cbec",
+              "port": "7672f8ce-9e43-476a-9e43-600432e4ed79"
+            },
+            "vertices": [
+              {
+                "x": 180,
+                "y": 150
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "date, time, location, description, images",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "date, time, location, description, images"
+            ],
+            "id": "aaf320c0-0a86-4fcc-8e2f-39f16dd7ece9",
+            "source": {
+              "x": 220,
+              "y": 390
+            },
+            "target": {
+              "cell": "37f3f67c-3e28-4554-bde6-4d3e98a31a32",
+              "port": "e2712680-ec1e-422d-8e6f-7a46b547b614"
+            },
+            "vertices": [
+              {
+                "x": 240,
+                "y": 340
+              },
+              {
+                "x": 280,
+                "y": 270
+              },
+              {
+                "x": 330,
+                "y": 250
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "uploaded images",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "uploaded images"
+            ],
+            "id": "f028513f-3a9d-4c15-bdf2-177aa9f2f5a6",
+            "source": {
+              "cell": "37f3f67c-3e28-4554-bde6-4d3e98a31a32",
+              "port": "a12c00b6-3f3c-4208-8e78-0741b3afde01"
+            },
+            "target": {
+              "cell": "b6d09586-97ac-40f6-afc4-e9e1ae1f76f1",
+              "port": "20017b92-f546-4cbb-b283-896537af1f67"
+            },
+            "vertices": [
+              {
+                "x": 690,
+                "y": 430
+              },
+              {
+                "x": 740,
+                "y": 510
+              },
+              {
+                "x": 870,
+                "y": 580
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "report metadata + owner",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "report metadata + owner"
+            ],
+            "id": "fa5d28a3-d9dd-4b03-a17f-8eddab1c0560",
+            "source": {
+              "cell": "37f3f67c-3e28-4554-bde6-4d3e98a31a32",
+              "port": "e2712680-ec1e-422d-8e6f-7a46b547b614"
+            },
+            "target": {
+              "cell": "1305ddc4-cdb2-4914-be46-85486e53cbec",
+              "port": "0be623f7-c266-408d-8ff0-3b5f41f719ce"
+            },
+            "vertices": [
+              {
+                "x": 390,
+                "y": 340
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Reports - Share Links (E8-E9)",
+        "diagramType": "STRIDE",
+        "placeholder": "Share-link lifecycle: creating share links and validating tokens",
         "thumbnail": "./public/content/images/thumbnail.stride.jpg",
         "version": "2.6.2",
         "cells": [
@@ -3627,439 +4899,6 @@
                 "spoofing": 2,
                 "repudiation": 1
               }
-            }
-          },
-          {
-            "position": {
-              "x": 395,
-              "y": 59.99999999999994
-            },
-            "size": {
-              "width": 100,
-              "height": 100
-            },
-            "attrs": {
-              "text": {
-                "text": "List Own Reports\n(E5)"
-              },
-              "body": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "strokeDasharray": null
-              }
-            },
-            "visible": true,
-            "shape": "process",
-            "zIndex": 1,
-            "ports": {
-              "groups": {
-                "top": {
-                  "position": "top",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "right": {
-                  "position": "right",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "bottom": {
-                  "position": "bottom",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "left": {
-                  "position": "left",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                }
-              },
-              "items": [
-                {
-                  "group": "top",
-                  "id": "33dbbd82-401e-47da-8cfa-5400fb637a5e"
-                },
-                {
-                  "group": "right",
-                  "id": "ed826638-f1fb-4806-bd24-942ac561c5a0"
-                },
-                {
-                  "group": "bottom",
-                  "id": "bc9f4cce-232f-4aa0-a878-426ff70532e8"
-                },
-                {
-                  "group": "left",
-                  "id": "a44000d9-1214-423a-96b1-7bec2a6c032b"
-                }
-              ]
-            },
-            "id": "d32f8f78-30c5-4254-bd24-e3d2af6e323f",
-            "data": {
-              "type": "tm.Process",
-              "name": "List Own Reports\n(E5)",
-              "description": "E5 Report list page. Lists reports owned by the citizen and their status.",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "handlesCardPayment": false,
-              "handlesGoodsOrServices": false,
-              "isWebApplication": false,
-              "privilegeLevel": "",
-              "threats": [
-                {
-                  "status": "Open",
-                  "severity": "High",
-                  "title": "Report list not scoped to owner",
-                  "type": "Information disclosure",
-                  "description": "A citizen could receive another citizen’s reports if the query is not constrained by the authenticated owner.",
-                  "mitigation": "Derive ownership from the authenticated session and enforce it in the database query.",
-                  "modelType": "STRIDE",
-                  "id": "282d8da8-db02-4169-89e1-58690cb02b5a"
-                }
-              ]
-            }
-          },
-          {
-            "position": {
-              "x": 360,
-              "y": 200
-            },
-            "size": {
-              "width": 170,
-              "height": 100
-            },
-            "attrs": {
-              "text": {
-                "text": "Create Report\n(E6)"
-              },
-              "body": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "strokeDasharray": null
-              }
-            },
-            "visible": true,
-            "shape": "process",
-            "zIndex": 1,
-            "ports": {
-              "groups": {
-                "top": {
-                  "position": "top",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "right": {
-                  "position": "right",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "bottom": {
-                  "position": "bottom",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "left": {
-                  "position": "left",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                }
-              },
-              "items": [
-                {
-                  "group": "top",
-                  "id": "486e3e1e-6e13-4eba-b3db-cdaf128b31bf"
-                },
-                {
-                  "group": "right",
-                  "id": "08baeb9d-725f-44d9-8f5b-04b9925fd3c0"
-                },
-                {
-                  "group": "bottom",
-                  "id": "a12c00b6-3f3c-4208-8e78-0741b3afde01"
-                },
-                {
-                  "group": "left",
-                  "id": "e2712680-ec1e-422d-8e6f-7a46b547b614"
-                }
-              ]
-            },
-            "id": "37f3f67c-3e28-4554-bde6-4d3e98a31a32",
-            "data": {
-              "type": "tm.Process",
-              "name": "Create Report\n(E6)",
-              "description": "E6 Create report page. Citizen enters date, time, location, description and images.",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "handlesCardPayment": false,
-              "handlesGoodsOrServices": false,
-              "isWebApplication": false,
-              "privilegeLevel": "",
-              "threats": [
-                {
-                  "status": "Open",
-                  "severity": "High",
-                  "title": "Malicious image upload",
-                  "type": "Elevation of privilege",
-                  "description": "Uploaded images may contain malicious content if file type and content are not validated.",
-                  "mitigation": "Validate file contents, restrict formats and safely process images.",
-                  "modelType": "STRIDE",
-                  "id": "22230fed-643a-4ced-9409-095718d30ccf"
-                },
-                {
-                  "status": "Open",
-                  "severity": "High",
-                  "title": "Image metadata disclosure",
-                  "type": "Information disclosure",
-                  "description": "Images may contain EXIF metadata such as GPS coordinates.",
-                  "mitigation": "Strip metadata during image processing.",
-                  "modelType": "STRIDE",
-                  "id": "87f200c8-beb4-48f5-be66-f52acf39078b"
-                },
-                {
-                  "status": "Open",
-                  "severity": "High",
-                  "title": "Oversized image denial of service",
-                  "type": "Denial of service",
-                  "description": "Large or resource-intensive images can consume storage and processing resources.",
-                  "mitigation": "Enforce upload size, dimension and processing limits.",
-                  "modelType": "STRIDE",
-                  "id": "e4315c1d-6f60-4659-a827-fb527aec6977"
-                }
-              ]
-            }
-          },
-          {
-            "position": {
-              "x": 395,
-              "y": 350
-            },
-            "size": {
-              "width": 100,
-              "height": 100
-            },
-            "attrs": {
-              "text": {
-                "text": "View / Edit Report\n(E7)"
-              },
-              "body": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "strokeDasharray": null
-              }
-            },
-            "visible": true,
-            "shape": "process",
-            "zIndex": 1,
-            "ports": {
-              "groups": {
-                "top": {
-                  "position": "top",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "right": {
-                  "position": "right",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "bottom": {
-                  "position": "bottom",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "left": {
-                  "position": "left",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                }
-              },
-              "items": [
-                {
-                  "group": "top",
-                  "id": "51143dd1-e9dc-42f4-8d2a-2a676d04d963"
-                },
-                {
-                  "group": "right",
-                  "id": "eb3964ed-e68c-4944-9194-7688201e3255"
-                },
-                {
-                  "group": "bottom",
-                  "id": "e7316ad2-4a51-41d5-8c43-034d78774565"
-                },
-                {
-                  "group": "left",
-                  "id": "5eafba8c-e1d1-4f36-8bb0-bb218f73b685"
-                }
-              ]
-            },
-            "id": "808d5d80-cc3b-4740-9ae4-7fcf5b15c98d",
-            "data": {
-              "type": "tm.Process",
-              "name": "View / Edit Report\n(E7)",
-              "description": "E7 View and edit report page. Report owner views and edits their report.",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "handlesCardPayment": false,
-              "handlesGoodsOrServices": false,
-              "isWebApplication": false,
-              "privilegeLevel": "",
-              "threats": [
-                {
-                  "status": "Open",
-                  "severity": "High",
-                  "title": "Insecure direct object reference",
-                  "type": "Elevation of privilege",
-                  "description": "Changing a report identifier could expose another citizen’s report without object-level authorisation.",
-                  "mitigation": "Perform server-side ownership checks on every report request.",
-                  "modelType": "STRIDE",
-                  "id": "ae5acc75-b030-44bb-a98b-889325d55075"
-                },
-                {
-                  "status": "Open",
-                  "severity": "High",
-                  "title": "Editing closed reports",
-                  "type": "Tampering",
-                  "description": "A crafted request could bypass a hidden edit button if the server does not enforce report state.",
-                  "mitigation": "Reject updates when the report is closed.",
-                  "modelType": "STRIDE",
-                  "id": "46a526d7-218e-4a30-872f-ab7cc2fa734a"
-                },
-                {
-                  "status": "Open",
-                  "severity": "High",
-                  "title": "Mass assignment of closed status",
-                  "type": "Elevation of privilege",
-                  "description": "A citizen may attempt to manipulate protected fields such as closed status.",
-                  "mitigation": "Allow-list editable fields and never accept closed status from the citizen.",
-                  "modelType": "STRIDE",
-                  "id": "e5ff59a3-854c-4c8f-87eb-6b22b2ca0333"
-                }
-              ]
             }
           },
           {
@@ -4530,655 +5369,6 @@
             },
             "children": [
               "83f3e0a7-a917-4619-96db-cb9f89297dff"
-            ]
-          },
-          {
-            "position": {
-              "x": 385,
-              "y": 820
-            },
-            "size": {
-              "width": 120,
-              "height": 100
-            },
-            "attrs": {
-              "text": {
-                "text": "Report Image Retrieval (E10)"
-              },
-              "body": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "strokeDasharray": null
-              }
-            },
-            "visible": true,
-            "shape": "process",
-            "zIndex": 2,
-            "ports": {
-              "groups": {
-                "top": {
-                  "position": "top",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "right": {
-                  "position": "right",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "bottom": {
-                  "position": "bottom",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "left": {
-                  "position": "left",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                }
-              },
-              "items": [
-                {
-                  "group": "top",
-                  "id": "73a2772a-176e-4fbe-836b-072a5292661f"
-                },
-                {
-                  "group": "right",
-                  "id": "dda1db12-2f63-419b-86f2-37aaa9b2bf37"
-                },
-                {
-                  "group": "bottom",
-                  "id": "395d513f-4ef3-4f9e-b938-026b874d5b19"
-                },
-                {
-                  "group": "left",
-                  "id": "776d4bb4-5041-497f-ab05-3ea8c18d167d"
-                }
-              ]
-            },
-            "id": "5350bfbc-fd37-451b-931a-623abc979126",
-            "data": {
-              "type": "tm.Process",
-              "name": "Report Image Retrieval (E10)",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "handlesCardPayment": false,
-              "handlesGoodsOrServices": false,
-              "isWebApplication": false,
-              "privilegeLevel": "",
-              "threats": [
-                {
-                  "id": "83890164-ad6b-47fa-99bc-d98b498e1903",
-                  "title": "Unauthorised access to images",
-                  "status": "Open",
-                  "severity": "High",
-                  "type": "Information disclosure",
-                  "description": "",
-                  "mitigation": "Apply the same authorisation check when retrieving the image.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 6,
-                  "score": ""
-                },
-                {
-                  "id": "51bb66ec-ca7a-4ed7-8cba-0d5ea9867f6e",
-                  "title": "Path traversal",
-                  "status": "Open",
-                  "severity": "High",
-                  "type": "Information disclosure",
-                  "description": "If filenames are directly accepted, ../../database.conf or similar could potentially escape the image directory.",
-                  "mitigation": "Use opaque image IDs and never construct filesystem paths directly from user input.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 7,
-                  "score": ""
-                },
-                {
-                  "id": "2921b9fa-9b7d-4867-a5c4-2ca40f539e90",
-                  "title": "Predictable image IDs",
-                  "status": "Open",
-                  "severity": "High",
-                  "type": "Information disclosure",
-                  "description": "",
-                  "mitigation": "Use unpredictable identifiers and authorise access through the owning report.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 8,
-                  "score": ""
-                }
-              ],
-              "threatFrequency": {
-                "spoofing": 0,
-                "tampering": 0,
-                "repudiation": 0,
-                "informationDisclosure": 3,
-                "denialOfService": 0,
-                "elevationOfPrivilege": 0
-              }
-            }
-          },
-          {
-            "position": {
-              "x": 920,
-              "y": 710
-            },
-            "size": {
-              "width": 190,
-              "height": 90
-            },
-            "attrs": {
-              "text": {
-                "text": "Report Image Store"
-              },
-              "topLine": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "strokeDasharray": null
-              },
-              "bottomLine": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "strokeDasharray": null
-              }
-            },
-            "visible": true,
-            "shape": "store",
-            "zIndex": 3,
-            "ports": {
-              "groups": {
-                "top": {
-                  "position": "top",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "right": {
-                  "position": "right",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "bottom": {
-                  "position": "bottom",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "left": {
-                  "position": "left",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                }
-              },
-              "items": [
-                {
-                  "group": "top",
-                  "id": "1cd4ef64-fa19-41a5-b331-553556bb9af0"
-                },
-                {
-                  "group": "right",
-                  "id": "340db974-f08b-4657-875b-6b10a416649c"
-                },
-                {
-                  "group": "bottom",
-                  "id": "a86e0a72-6b52-49ad-9d63-75f969e46f3d"
-                },
-                {
-                  "group": "left",
-                  "id": "20017b92-f546-4cbb-b283-896537af1f67"
-                }
-              ]
-            },
-            "id": "b6d09586-97ac-40f6-afc4-e9e1ae1f76f1",
-            "data": {
-              "type": "tm.Store",
-              "name": "Report Image Store",
-              "description": "This is where uploaded report photographs live.",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "isALog": false,
-              "isEncrypted": false,
-              "isSigned": false,
-              "storesCredentials": false,
-              "storesInventory": false,
-              "threats": [
-                {
-                  "id": "a3a1d2b0-6996-46ea-ab62-30115d908b42",
-                  "title": "Unauthorised image retrieval",
-                  "status": "Open",
-                  "severity": "High",
-                  "type": "Information disclosure",
-                  "description": "Provide a description for this threat",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 9,
-                  "score": ""
-                },
-                {
-                  "id": "c4f341eb-d4dd-415c-81d6-c228aae40eba",
-                  "title": "Path traversal",
-                  "status": "Open",
-                  "severity": "High",
-                  "type": "Information disclosure",
-                  "description": "Provide a description for this threat",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 10,
-                  "score": ""
-                }
-              ],
-              "threatFrequency": {
-                "tampering": 0,
-                "repudiation": 0,
-                "informationDisclosure": 2,
-                "denialOfService": 0
-              }
-            }
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "authenticated session",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": []
-            },
-            "labels": [
-              "authenticated session"
-            ],
-            "id": "3e47e6e6-64bb-4c89-a403-0a0fd3ccb1ad",
-            "source": {
-              "x": 220,
-              "y": 390
-            },
-            "target": {
-              "cell": "d32f8f78-30c5-4254-bd24-e3d2af6e323f",
-              "port": "a44000d9-1214-423a-96b1-7bec2a6c032b"
-            },
-            "vertices": [
-              {
-                "x": 190,
-                "y": 290
-              },
-              {
-                "x": 220,
-                "y": 210
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "owned report list (X1)",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": []
-            },
-            "labels": [
-              "owned report list (X1)"
-            ],
-            "id": "c918a7fe-6446-4b11-9a1b-54f32e5d9590",
-            "source": {
-              "x": 395,
-              "y": 116
-            },
-            "target": {
-              "cell": "1305ddc4-cdb2-4914-be46-85486e53cbec",
-              "port": "7672f8ce-9e43-476a-9e43-600432e4ed79"
-            },
-            "vertices": [
-              {
-                "x": 180,
-                "y": 150
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "date, time, location, description, images",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": []
-            },
-            "labels": [
-              "date, time, location, description, images"
-            ],
-            "id": "aaf320c0-0a86-4fcc-8e2f-39f16dd7ece9",
-            "source": {
-              "x": 220,
-              "y": 390
-            },
-            "target": {
-              "cell": "37f3f67c-3e28-4554-bde6-4d3e98a31a32",
-              "port": "a12c00b6-3f3c-4208-8e78-0741b3afde01"
-            },
-            "vertices": [
-              {
-                "x": 240,
-                "y": 340
-              },
-              {
-                "x": 280,
-                "y": 270
-              },
-              {
-                "x": 330,
-                "y": 250
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "report metadata + owner",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": []
-            },
-            "labels": [
-              "report metadata + owner"
-            ],
-            "id": "fa5d28a3-d9dd-4b03-a17f-8eddab1c0560",
-            "source": {
-              "x": 435,
-              "y": 300
-            },
-            "target": {
-              "cell": "1305ddc4-cdb2-4914-be46-85486e53cbec",
-              "port": "0be623f7-c266-408d-8ff0-3b5f41f719ce"
-            }
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "uploaded images",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": []
-            },
-            "labels": [
-              "uploaded images"
-            ],
-            "id": "f028513f-3a9d-4c15-bdf2-177aa9f2f5a6",
-            "source": {
-              "x": 495,
-              "y": 258
-            },
-            "target": {
-              "cell": "b6d09586-97ac-40f6-afc4-e9e1ae1f76f1",
-              "port": "20017b92-f546-4cbb-b283-896537af1f67"
-            },
-            "vertices": [
-              {
-                "x": 600,
-                "y": 580
-              },
-              {
-                "x": 700,
-                "y": 620
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "session + report ID",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": []
-            },
-            "labels": [
-              "session + report ID"
-            ],
-            "id": "968a23d7-926e-46ca-8d79-3ceecca0cf38",
-            "source": {
-              "cell": "1305ddc4-cdb2-4914-be46-85486e53cbec",
-              "port": "0be623f7-c266-408d-8ff0-3b5f41f719ce"
-            },
-            "target": {
-              "cell": "808d5d80-cc3b-4740-9ae4-7fcf5b15c98d",
-              "port": "5eafba8c-e1d1-4f36-8bb0-bb218f73b685"
-            },
-            "vertices": [
-              {
-                "x": 280,
-                "y": 390
-              }
             ]
           },
           {
@@ -5706,58 +5896,6 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "updated report",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": []
-            },
-            "labels": [
-              "updated report"
-            ],
-            "id": "90d2ec11-f46a-4401-8b16-29f475c2f05f",
-            "source": {
-              "x": 505,
-              "y": 390
-            },
-            "target": {
-              "cell": "7babd726-5818-4ad9-9d54-abdbd351a95e",
-              "port": "410b0e22-265b-4867-81dc-eba08f9ff1b8"
-            },
-            "vertices": [
-              {
-                "x": 750,
-                "y": 210
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
               "name": "token + report association",
               "description": "",
               "outOfScope": false,
@@ -6019,9 +6157,346 @@
             }
           }
         ]
+      },
+      {
+        "id": 3,
+        "title": "Reports - Image Retrieval (E10)",
+        "diagramType": "STRIDE",
+        "placeholder": "Retrieval of report images",
+        "thumbnail": "./public/content/images/thumbnail.stride.jpg",
+        "version": "2.6.2",
+        "cells": [
+          {
+            "position": {
+              "x": 385,
+              "y": 820
+            },
+            "size": {
+              "width": 120,
+              "height": 100
+            },
+            "attrs": {
+              "text": {
+                "text": "Report Image Retrieval (E10)"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 2,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "73a2772a-176e-4fbe-836b-072a5292661f"
+                },
+                {
+                  "group": "right",
+                  "id": "dda1db12-2f63-419b-86f2-37aaa9b2bf37"
+                },
+                {
+                  "group": "bottom",
+                  "id": "395d513f-4ef3-4f9e-b938-026b874d5b19"
+                },
+                {
+                  "group": "left",
+                  "id": "776d4bb4-5041-497f-ab05-3ea8c18d167d"
+                }
+              ]
+            },
+            "id": "5350bfbc-fd37-451b-931a-623abc979126",
+            "data": {
+              "type": "tm.Process",
+              "name": "Report Image Retrieval (E10)",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "83890164-ad6b-47fa-99bc-d98b498e1903",
+                  "title": "Unauthorised access to images",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "",
+                  "mitigation": "Apply the same authorisation check when retrieving the image.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 6,
+                  "score": ""
+                },
+                {
+                  "id": "51bb66ec-ca7a-4ed7-8cba-0d5ea9867f6e",
+                  "title": "Path traversal",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "If filenames are directly accepted, ../../database.conf or similar could potentially escape the image directory.",
+                  "mitigation": "Use opaque image IDs and never construct filesystem paths directly from user input.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 7,
+                  "score": ""
+                },
+                {
+                  "id": "2921b9fa-9b7d-4867-a5c4-2ca40f539e90",
+                  "title": "Predictable image IDs",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "",
+                  "mitigation": "Use unpredictable identifiers and authorise access through the owning report.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 8,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 3,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
+            }
+          },
+          {
+            "position": {
+              "x": 920,
+              "y": 710
+            },
+            "size": {
+              "width": 190,
+              "height": 90
+            },
+            "attrs": {
+              "text": {
+                "text": "Report Image Store"
+              },
+              "topLine": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "zIndex": 3,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "1cd4ef64-fa19-41a5-b331-553556bb9af0"
+                },
+                {
+                  "group": "right",
+                  "id": "340db974-f08b-4657-875b-6b10a416649c"
+                },
+                {
+                  "group": "bottom",
+                  "id": "a86e0a72-6b52-49ad-9d63-75f969e46f3d"
+                },
+                {
+                  "group": "left",
+                  "id": "20017b92-f546-4cbb-b283-896537af1f67"
+                }
+              ]
+            },
+            "id": "b6d09586-97ac-40f6-afc4-e9e1ae1f76f1",
+            "data": {
+              "type": "tm.Store",
+              "name": "Report Image Store",
+              "description": "This is where uploaded report photographs live.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isALog": false,
+              "isEncrypted": false,
+              "isSigned": false,
+              "storesCredentials": false,
+              "storesInventory": false,
+              "threats": [
+                {
+                  "id": "a3a1d2b0-6996-46ea-ab62-30115d908b42",
+                  "title": "Unauthorised image retrieval",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "Provide a description for this threat",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 9,
+                  "score": ""
+                },
+                {
+                  "id": "c4f341eb-d4dd-415c-81d6-c228aae40eba",
+                  "title": "Path traversal",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "Provide a description for this threat",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 10,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 2,
+                "denialOfService": 0
+              }
+            }
+          }
+        ]
       }
     ],
-    "diagramTop": 2,
+    "diagramTop": 4,
     "reviewer": "",
     "threatTop": 30
   }
