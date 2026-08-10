@@ -9043,7 +9043,7 @@
                   "severity": "High",
                   "type": "Spoofing",
                   "description": "An attacker who can reach the dispatcher sends convincing mail that appears to come from the service, enabling phishing against citizens.",
-                  "mitigation": "Authenticate to the mail service, restrict permitted sender addresses, and publish SPF, DKIM and DMARC records for the domain.",
+                  "mitigation": "Authenticate to the mail service, restrict permitted sender addresses",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 82,
@@ -9338,7 +9338,7 @@
               "threats": [
                 {
                   "id": "8e5560e7-7568-55e3-9ec3-c76fbbb9a394",
-                  "title": "Result set exceeds the officer's remit",
+                  "title": "Result set exceeds the officer's area of control",
                   "status": "Open",
                   "severity": "Medium",
                   "type": "Information disclosure",
@@ -9415,7 +9415,7 @@
                   "id": "23039705-7bd3-5463-971f-cee1a46046d0",
                   "title": "Bulk export of search results",
                   "status": "Open",
-                  "severity": "High",
+                  "severity": "Medium",
                   "type": "Information disclosure",
                   "description": "Repeated wide searches let one officer account harvest the whole report database, including incident locations.",
                   "mitigation": "Paginate with a hard page cap, rate limit searches per officer, and audit search volume with alerting on anomalies.",
@@ -9555,19 +9555,6 @@
               "isPublicNetwork": true,
               "protocol": "HTTPS",
               "threats": [
-                {
-                  "id": "3dfb3fcb-912d-5412-8ede-2db8fce6b757",
-                  "title": "Officer page cached on a shared workstation",
-                  "status": "Open",
-                  "severity": "High",
-                  "type": "Information disclosure",
-                  "description": "Report detail recovered from the browser cache of a shared police workstation after the officer logs out.",
-                  "mitigation": "Cache-Control: no-store on officer responses, reinforced at the assumed reverse proxy (D3).",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 142,
-                  "score": ""
-                }
               ],
               "trustBoundaryIds": [],
               "threatFrequency": {
@@ -9699,19 +9686,6 @@
               "isPublicNetwork": false,
               "protocol": "",
               "threats": [
-                {
-                  "id": "1cf1c965-3798-58e9-801e-4b481a0987b7",
-                  "title": "Recipient address taken from the request",
-                  "status": "Open",
-                  "severity": "High",
-                  "type": "Information disclosure",
-                  "description": "If the destination address is client-supplied, an officer session flaw sends report detail to an attacker's mailbox.",
-                  "mitigation": "Resolve the recipient from the report's stored owner in D6 and never accept an address from the request.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 144,
-                  "score": ""
-                }
               ],
               "trustBoundaryIds": [],
               "threatFrequency": {
@@ -9779,19 +9753,6 @@
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 145,
-                  "score": ""
-                },
-                {
-                  "id": "0c711d27-a842-54ad-8f66-ca2fd17cdd5a",
-                  "title": "Mail spoofed to appear to come from the service",
-                  "status": "Open",
-                  "severity": "High",
-                  "type": "Spoofing",
-                  "description": "Citizens are trained to expect mail from this service, so a spoofed information request is an effective phishing lure.",
-                  "mitigation": "Publish SPF, DKIM and DMARC records for the sending domain and authenticate to the mail service.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 146,
                   "score": ""
                 }
               ],
@@ -9925,19 +9886,6 @@
               "isPublicNetwork": false,
               "protocol": "",
               "threats": [
-                {
-                  "id": "be0b59d3-4d83-5a7a-98ba-3d4ccb215ccd",
-                  "title": "Closure notice sent to the wrong owner",
-                  "status": "Open",
-                  "severity": "High",
-                  "type": "Information disclosure",
-                  "description": "Resolving the recipient incorrectly tells an unrelated person that a report exists and has been closed.",
-                  "mitigation": "Resolve the recipient from the stored report owner and verify it matches the report being closed.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 148,
-                  "score": ""
-                }
               ],
               "trustBoundaryIds": [],
               "threatFrequency": {
@@ -10070,7 +10018,7 @@
                   "severity": "High",
                   "type": "Spoofing",
                   "description": "An officer session (T6) grants read access to every report in the system, so its interception is materially worse than a citizen session.",
-                  "mitigation": "HTTPS only with HSTS, Secure and HttpOnly cookies, multi-factor authentication for officer accounts and a short idle timeout.",
+                  "mitigation": "HTTPS only with HSTS, multi-factor authentication for officer accounts and a short idle timeout.",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 101,
@@ -10314,19 +10262,6 @@
               "isPublicNetwork": true,
               "protocol": "HTTPS",
               "threats": [
-                {
-                  "id": "1c2dee42-0e9f-542a-8265-8098c8a3b3ea",
-                  "title": "Carriage returns injected into the request text",
-                  "status": "Open",
-                  "severity": "High",
-                  "type": "Tampering",
-                  "description": "Officer-supplied text is placed into an outbound email, so CR/LF in this flow becomes email header injection at D10.",
-                  "mitigation": "Reject CR and LF in the supplied text at the point of entry and construct all mail headers through the mail library.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 104,
-                  "score": ""
-                },
                 {
                   "id": "7f6cae6b-76fa-51e7-a658-bfe744f67bd7",
                   "title": "Information request text observed in transit",
