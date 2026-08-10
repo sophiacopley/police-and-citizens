@@ -175,7 +175,7 @@
                   "severity": "TBD",
                   "type": "Spoofing",
                   "description": "Passwords can be guessed if they are too weak",
-                  "mitigation": "",
+                  "mitigation": "- Enforce strong password rules such as 10 characters and at least one of capital letter, number, special character, or pass-phrases\n- Implement 2 factor authentication. \n- Limit the number of times a user can attempt to login (so that bad actors have less chances at guessing correctly)",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 1,
@@ -188,7 +188,7 @@
                   "severity": "TBD",
                   "type": "Repudiation",
                   "description": "The user registers with an email they don't own.",
-                  "mitigation": "",
+                  "mitigation": "- Use email verification code after registration.",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 2,
@@ -201,7 +201,7 @@
                   "severity": "TBD",
                   "type": "Spoofing",
                   "description": "Bad actors finds a user's email and password (through measures like phishing emails etc) and attempts to use it to log in.",
-                  "mitigation": "",
+                  "mitigation": "- Implement 2 factor authentication \n- Forcing password rotation every 60 days",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 3,
@@ -209,8 +209,8 @@
                 }
               ],
               "threatFrequency": {
-                "spoofing": 2,
-                "repudiation": 1
+                "spoofing": 5,
+                "repudiation": 2
               }
             }
           },
@@ -589,64 +589,6 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "get_register_request",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": [
-                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ]
-            },
-            "labels": [
-              "get_register_request"
-            ],
-            "id": "e6768564-29b5-46eb-a658-1874816cd8fb",
-            "source": {
-              "x": 18,
-              "y": 90
-            },
-            "target": {
-              "cell": "8e453973-119a-49f7-964d-516401ff5e85",
-              "port": "09c21e52-0ab0-475a-b034-a0e78945a93e"
-            },
-            "vertices": [
-              {
-                "x": 18,
-                "y": -20
-              },
-              {
-                "x": 190,
-                "y": -80
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
               "name": "register_citizen_info",
               "description": "",
               "outOfScope": false,
@@ -775,17 +717,7 @@
                 "x": 710,
                 "y": 130
               }
-            ],
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead"
-              ],
-              "name": null
-            }
+            ]
           },
           {
             "shape": "flow",
@@ -1255,8 +1187,8 @@
             },
             "vertices": [
               {
-                "x": 640,
-                "y": 330
+                "x": 600,
+                "y": 320
               }
             ]
           },
@@ -1309,6 +1241,80 @@
               {
                 "x": 570,
                 "y": 150
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "get_register_request",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "c6468419-909c-4c37-a0e9-005f49ef3e79",
+                  "title": "Flooding the register process with get requests",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "A bad actor could send many requests to the server because it is a process that does not require authentication. ",
+                  "mitigation": "- Rate limiting for register get requests.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 15,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [
+                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 1
+              }
+            },
+            "labels": [
+              "get_register_request"
+            ],
+            "id": "e6768564-29b5-46eb-a658-1874816cd8fb",
+            "source": {
+              "cell": "5f3e80d7-077b-45d3-a94a-69967e34573a",
+              "port": "4eef07ba-c073-4f8f-a998-c51ab2fa460b"
+            },
+            "target": {
+              "cell": "8e453973-119a-49f7-964d-516401ff5e85",
+              "port": "09c21e52-0ab0-475a-b034-a0e78945a93e"
+            },
+            "vertices": [
+              {
+                "x": 100,
+                "y": -60
               }
             ]
           },
@@ -2198,7 +2204,8 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
@@ -2219,15 +2226,34 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": [],
+              "threats": [
+                {
+                  "id": "d8d9bc04-0c60-4fdf-9b15-1e9fca835f5b",
+                  "title": "Register process response is changed in transit",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "Response html/javascript is tampered with by a bad actor e.g., injecting a malicious script, altering the form's action URL to point to an attacker-controlled endpoint, or adding a hidden field.",
+                  "mitigation": "- Use HTTPS (or another encrypted protocol) so data is encrypted in transit",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 16,
+                  "score": ""
+                }
+              ],
               "trustBoundaryIds": [
                 "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ]
+              ],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
             },
             "labels": [
               "get_register_response"
@@ -3058,12 +3084,12 @@
               "crossingFlows": [
                 "7f8c8596-6076-48ce-8be0-926151fbb53d",
                 "fa758357-7f42-42a8-9e52-51061a898cec",
-                "e6768564-29b5-46eb-a658-1874816cd8fb",
                 "9e51c3ac-d04f-4699-a6e3-c052f3e47ffa",
                 "ad55b7a8-0a75-4511-9688-e9b0e7fcf623",
                 "d5ee7bf6-202c-4c3c-aea8-7cc1e229ecf5",
                 "04d603e7-1ce9-4587-94d1-6a6ad3359f22",
                 "79c078cf-1161-41f1-b3ec-bf387a04e1ce",
+                "e6768564-29b5-46eb-a658-1874816cd8fb",
                 "dca0fd92-aac7-493e-b4b1-b13e3d758595",
                 "7198a459-41d5-474e-9a9c-1b244fc4e5eb",
                 "d4f1dc29-d52c-4752-aac0-bd033838adff",
@@ -3154,52 +3180,6 @@
                 "y": 570
               }
             ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 42,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Data Flow",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": []
-            },
-            "labels": [
-              "Data Flow"
-            ],
-            "id": "907b0297-e84f-4d5c-a0bb-47acef8ea55b",
-            "source": {
-              "x": 640,
-              "y": 80
-            },
-            "target": {
-              "x": 660,
-              "y": 170
-            }
           }
         ]
       },
@@ -5847,6 +5827,6 @@
     ],
     "diagramTop": 2,
     "reviewer": "",
-    "threatTop": 13
+    "threatTop": 16
   }
 }
