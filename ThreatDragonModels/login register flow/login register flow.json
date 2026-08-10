@@ -3,7 +3,7 @@
   "release_version": "",
   "released_at": "",
   "summary": {
-    "title": "Police and Citizens",
+    "title": "login register flow",
     "owner": "Sophia Copley",
     "description": "ASSUMPTIONS\n1. A reverse proxy (D3) terminating TLS with the D2 certificate, and a firewall (D4), sit in front of the application and are managed by an external party. They are deliberately NOT drawn as elements in these diagrams. The controls they provide are referenced in the countermeasures of the data flows that cross the internet boundary: HTTPS-only with HSTS, certificate renewal and monitoring, request body size limits, volumetric and per-IP rate limiting, no-store cache directives on authenticated responses, and default-deny inbound rules that expose only the public HTTPS port (E15) while keeping the database listener (E19) and administrative host access (E18) off the public internet.\n2. The database (D6) is reachable only from the application host (T7 -> T8). The report image store sits outside the web root and is never served directly by the web server.\n3. Police officers (A3, T6) cannot create or edit reports; they may search, view, request more information and close.\n4. Trust boundaries drawn as 'internet boundary' are crossed by traffic that has already passed the assumed firewall and reverse proxy.",
     "id": 0
