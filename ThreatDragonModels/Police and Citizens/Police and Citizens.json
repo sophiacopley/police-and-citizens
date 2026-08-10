@@ -3893,6 +3893,19 @@
                   "mitigation": "Enforce upload size, dimension and processing limits.",
                   "modelType": "STRIDE",
                   "id": "e4315c1d-6f60-4659-a827-fb527aec6977"
+                },
+                {
+                  "id": "2d7aec1b-e88b-5e32-aed8-d081cdc1f1c3",
+                  "title": "Owner field taken from the request",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Elevation of privilege",
+                  "description": "If created_by is accepted from the payload, a citizen can file a report attributed to someone else.",
+                  "mitigation": "Set the owner from the authenticated session only and reject the field if it appears in the request.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 115,
+                  "score": ""
                 }
               ],
               "threatFrequency": {
@@ -4232,6 +4245,19 @@
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 43,
+                  "score": ""
+                },
+                       {
+                  "id": "591d94be-a70d-5fe2-8166-54023f4d9832",
+                  "title": "Unvalidated file reaches the image decoder",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Elevation of privilege",
+                  "description": "Anything the citizen uploads is handed to D9; a crafted file exploits the decoder before any content check.",
+                  "mitigation": "Verify the magic bytes against an allow-list of permitted formats before decoding, and reject on mismatch with the declared type.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 112,
                   "score": ""
                 }
               ],
@@ -4752,19 +4778,6 @@
               "isPublicNetwork": false,
               "protocol": "",
               "threats": [
-                {
-                  "id": "591d94be-a70d-5fe2-8166-54023f4d9832",
-                  "title": "Unvalidated file reaches the image decoder",
-                  "status": "Open",
-                  "severity": "High",
-                  "type": "Elevation of privilege",
-                  "description": "Anything the citizen uploads is handed to D9; a crafted file exploits the decoder before any content check.",
-                  "mitigation": "Verify the magic bytes against an allow-list of permitted formats before decoding, and reject on mismatch with the declared type.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 112,
-                  "score": ""
-                }
               ],
               "trustBoundaryIds": [],
               "threatFrequency": {
@@ -4920,19 +4933,6 @@
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 45,
-                  "score": ""
-                },
-                {
-                  "id": "2d7aec1b-e88b-5e32-aed8-d081cdc1f1c3",
-                  "title": "Owner field taken from the request",
-                  "status": "Open",
-                  "severity": "High",
-                  "type": "Elevation of privilege",
-                  "description": "If created_by is accepted from the payload, a citizen can file a report attributed to someone else.",
-                  "mitigation": "Set the owner from the authenticated session only and reject the field if it appears in the request.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 115,
                   "score": ""
                 }
               ],
@@ -6106,32 +6106,7 @@
               "hasOpenThreats": true,
               "providesAuthentication": false,
               "threats": [
-                {
-                  "id": "8a2c0942-1746-5654-bb01-4d977f0e8a2f",
-                  "title": "Share URL leaks through browser history or referrer",
-                  "status": "Open",
-                  "severity": "High",
-                  "type": "Information disclosure",
-                  "description": "The secret token sits in the URL, so it is stored in history, may be sent in the Referer header and can appear in proxy or server logs (X9).",
-                  "mitigation": "Set Referrer-Policy: no-referrer on the share page, keep tokens out of application logs, and keep token lifetime short.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 47,
-                  "score": ""
-                },
-                {
-                  "id": "1850b60e-e037-574f-b817-57570de4b873",
-                  "title": "Recipient forwards the share link",
-                  "status": "Open",
-                  "severity": "Medium",
-                  "type": "Information disclosure",
-                  "description": "A share token is a bearer credential, so anyone the recipient passes it to gains the same read access.",
-                  "mitigation": "Enforce expiry and allow the owner to revoke a link; show owners their active share links.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 48,
-                  "score": ""
-                }
+                
               ],
               "threatFrequency": {
                 "spoofing": 0,
@@ -6971,19 +6946,6 @@
               "isPublicNetwork": false,
               "protocol": "",
               "threats": [
-                {
-                  "id": "cb21ad2c-9e77-56de-bc41-c9c107f7fd9c",
-                  "title": "Token generated with insufficient entropy",
-                  "status": "Open",
-                  "severity": "High",
-                  "type": "Spoofing",
-                  "description": "A token drawn from a weak or time-seeded generator can be reproduced offline, forging a working share link.",
-                  "mitigation": "Draw from the platform CSPRNG with at least 128 bits of entropy per token; never a seeded PRNG.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 123,
-                  "score": ""
-                }
               ],
               "trustBoundaryIds": [],
               "threatFrequency": {
@@ -7157,6 +7119,32 @@
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 126,
+                  "score": ""
+                },
+                {
+                  "id": "8a2c0942-1746-5654-bb01-4d977f0e8a2f",
+                  "title": "Share URL leaks through browser history or referrer",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "The secret token sits in the URL, so it is stored in history, may be sent in the Referer header and can appear in proxy or server logs (X9).",
+                  "mitigation": "Set Referrer-Policy: no-referrer on the share page, keep tokens out of application logs, and keep token lifetime short.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 47,
+                  "score": ""
+                },
+                {
+                  "id": "1850b60e-e037-574f-b817-57570de4b873",
+                  "title": "Recipient forwards the share link",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Information disclosure",
+                  "description": "A share token is a bearer credential, so anyone the recipient passes it to gains the same read access.",
+                  "mitigation": "Enforce expiry and allow the owner to revoke a link; show owners their active share links.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 48,
                   "score": ""
                 }
               ],
@@ -8893,6 +8881,19 @@
                   "new": false,
                   "number": 80,
                   "score": ""
+                },
+                                {
+                  "id": "238c098e-9f76-5aa9-b2c4-9b6abc99b65f",
+                  "title": "Cross-site request forgery closes a report",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "A closure is irreversible for the owner, who can no longer edit the report afterwards.",
+                  "mitigation": "Require an anti-CSRF token on the close action and set SameSite on the officer session cookie.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 106,
+                  "score": ""
                 }
               ],
               "threatFrequency": {
@@ -10122,19 +10123,6 @@
               "isPublicNetwork": true,
               "protocol": "HTTPS",
               "threats": [
-                {
-                  "id": "238c098e-9f76-5aa9-b2c4-9b6abc99b65f",
-                  "title": "Cross-site request forgery closes a report",
-                  "status": "Open",
-                  "severity": "High",
-                  "type": "Spoofing",
-                  "description": "A closure is irreversible for the owner, who can no longer edit the report afterwards.",
-                  "mitigation": "Require an anti-CSRF token on the close action and set SameSite on the officer session cookie.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 106,
-                  "score": ""
-                },
                 {
                   "id": "f4e1e733-ae3e-5ce8-ab0a-746f6b11a3c3",
                   "title": "Report identifier substituted to close an unrelated report",
