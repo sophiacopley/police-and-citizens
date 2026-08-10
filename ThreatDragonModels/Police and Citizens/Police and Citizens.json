@@ -8070,6 +8070,45 @@
                   "new": false,
                   "number": 65,
                   "score": ""
+                },
+                {
+                  "id": "55f342c1-93e3-501d-be29-8664123813c6",
+                  "title": "Information request not recorded",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Repudiation",
+                  "description": "Without a stored record, there is no evidence of which officer asked the citizen for what.",
+                  "mitigation": "Persist the requesting officer, the report, the text sent and a timestamp before dispatching the email.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 143,
+                  "score": ""
+                },
+                                {
+                  "id": "7234754e-0a17-5b7d-957a-9d476ce43013",
+                  "title": "Closure written without officer attribution",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Repudiation",
+                  "description": "A closed flag with no record of who set it leaves disputes about the closure unresolvable.",
+                  "mitigation": "Write the closing officer's identifier and a timestamp in the same statement as the closed status, to an append-only audit table.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 147,
+                  "score": ""
+                },
+                {
+                  "id": "5ebaef16-0eba-5092-91c1-f185d684a7f2",
+                  "title": "Officer session intercepted",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "An officer session (T6) grants read access to every report in the system, so its interception is materially worse than a citizen session.",
+                  "mitigation": "HTTPS only with HSTS, multi-factor authentication for officer accounts and a short idle timeout.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 101,
+                  "score": ""
                 }
               ],
               "threatFrequency": {
@@ -8386,7 +8425,7 @@
             },
             "attrs": {
               "text": {
-                "text": "\nFull Report Details\n(E12)"
+                "text": "Full Report Details\n(E12)"
               },
               "body": {
                 "stroke": "red",
@@ -8517,6 +8556,19 @@
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 75,
+                  "score": ""
+                },
+                                {
+                  "id": "db9aa875-c1ca-5039-a077-ea76e3924694",
+                  "title": "Role not verified on the detail request",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Elevation of privilege",
+                  "description": "A citizen session replaying this request would read any report if the role check is applied only when rendering navigation.",
+                  "mitigation": "Verify the T6 role server-side on every request to the officer detail route.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 103,
                   "score": ""
                 }
               ],
@@ -9565,19 +9617,6 @@
               "isPublicNetwork": false,
               "protocol": "SQL/TCP (internal)",
               "threats": [
-                {
-                  "id": "55f342c1-93e3-501d-be29-8664123813c6",
-                  "title": "Information request not recorded",
-                  "status": "Open",
-                  "severity": "Medium",
-                  "type": "Repudiation",
-                  "description": "Without a stored record, there is no evidence of which officer asked the citizen for what.",
-                  "mitigation": "Persist the requesting officer, the report, the text sent and a timestamp before dispatching the email.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 143,
-                  "score": ""
-                }
               ],
               "trustBoundaryIds": [],
               "threatFrequency": {
@@ -9759,19 +9798,6 @@
               "isPublicNetwork": false,
               "protocol": "SQL/TCP (internal)",
               "threats": [
-                {
-                  "id": "7234754e-0a17-5b7d-957a-9d476ce43013",
-                  "title": "Closure written without officer attribution",
-                  "status": "Open",
-                  "severity": "Medium",
-                  "type": "Repudiation",
-                  "description": "A closed flag with no record of who set it leaves disputes about the closure unresolvable.",
-                  "mitigation": "Write the closing officer's identifier and a timestamp in the same statement as the closed status, to an append-only audit table.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 147,
-                  "score": ""
-                }
               ],
               "trustBoundaryIds": [],
               "threatFrequency": {
@@ -9960,19 +9986,6 @@
               "protocol": "HTTPS",
               "threats": [
                 {
-                  "id": "5ebaef16-0eba-5092-91c1-f185d684a7f2",
-                  "title": "Officer session intercepted",
-                  "status": "Open",
-                  "severity": "High",
-                  "type": "Spoofing",
-                  "description": "An officer session (T6) grants read access to every report in the system, so its interception is materially worse than a citizen session.",
-                  "mitigation": "HTTPS only with HSTS, multi-factor authentication for officer accounts and a short idle timeout.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 101,
-                  "score": ""
-                },
-                {
                   "id": "f1fdebdc-4bb3-5998-9b92-a69637a3b28a",
                   "title": "Malicious search term reaches the query",
                   "status": "Open",
@@ -10047,19 +10060,6 @@
               "isPublicNetwork": true,
               "protocol": "HTTPS",
               "threats": [
-                {
-                  "id": "db9aa875-c1ca-5039-a077-ea76e3924694",
-                  "title": "Role not verified on the detail request",
-                  "status": "Open",
-                  "severity": "High",
-                  "type": "Elevation of privilege",
-                  "description": "A citizen session replaying this request would read any report if the role check is applied only when rendering navigation.",
-                  "mitigation": "Verify the T6 role server-side on every request to the officer detail route.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 103,
-                  "score": ""
-                }
               ],
               "trustBoundaryIds": [],
               "threatFrequency": {
