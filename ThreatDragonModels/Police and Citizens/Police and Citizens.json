@@ -3962,178 +3962,6 @@
           {
             "position": {
               "x": 360,
-              "y": 510
-            },
-            "size": {
-              "width": 170,
-              "height": 100
-            },
-            "attrs": {
-              "text": {
-                "text": "Create Share Link\n(E8)"
-              },
-              "body": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "strokeDasharray": null
-              }
-            },
-            "visible": true,
-            "shape": "process",
-            "zIndex": 1,
-            "ports": {
-              "groups": {
-                "top": {
-                  "position": "top",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "right": {
-                  "position": "right",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "bottom": {
-                  "position": "bottom",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "left": {
-                  "position": "left",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                }
-              },
-              "items": [
-                {
-                  "group": "top",
-                  "id": "40ba3afd-7f4e-4ec2-a4e6-b0799dafcaaa"
-                },
-                {
-                  "group": "right",
-                  "id": "1015b60f-a66f-4c23-9af2-5a729542f50f"
-                },
-                {
-                  "group": "bottom",
-                  "id": "c756443e-66e1-44dc-9357-499cadb6aad9"
-                },
-                {
-                  "group": "left",
-                  "id": "e41672ec-87a8-4ff5-b470-922ba6d420fc"
-                }
-              ]
-            },
-            "id": "142acc33-5859-4608-b319-4921b353442e",
-            "data": {
-              "type": "tm.Process",
-              "name": "Create Share Link\n(E8)",
-              "description": "E8 Share link creation. Creates the secret link for a report.",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "handlesCardPayment": false,
-              "handlesGoodsOrServices": false,
-              "isWebApplication": false,
-              "privilegeLevel": "",
-              "threats": [
-                {
-                  "status": "Open",
-                  "severity": "High",
-                  "title": "Predictable share token",
-                  "type": "Spoofing",
-                  "description": "Predictable tokens could be guessed by attackers.",
-                  "mitigation": "Generate tokens using a cryptographically secure random number generator with sufficient entropy.",
-                  "modelType": "STRIDE",
-                  "id": "9e49c992-9ad3-4beb-83e1-293a82a387c7"
-                },
-                {
-                  "status": "Open",
-                  "severity": "High",
-                  "title": "Create link for another user’s report",
-                  "type": "Elevation of privilege",
-                  "description": "A citizen could create a share link for a report they do not own if ownership is not checked.",
-                  "mitigation": "Require T5 report-owner authorisation before creating the link.",
-                  "modelType": "STRIDE",
-                  "id": "58e797c2-ca92-4d50-9f83-f6efc1ca1f93"
-                },
-                {
-                  "status": "Open",
-                  "severity": "High",
-                  "title": "Permanent share token",
-                  "type": "Information disclosure",
-                  "description": "A leaked share token may remain valid indefinitely.",
-                  "mitigation": "Add expiry and revocation.",
-                  "modelType": "STRIDE",
-                  "id": "5621eba2-268a-4646-97df-1be4b701d3dc"
-                },
-                {
-                  "id": "d2fef71d-b113-41d4-a439-c94846822dce",
-                  "title": "Token stored in plaintext",
-                  "status": "Open",
-                  "severity": "High",
-                  "type": "Information disclosure",
-                  "description": "If someone obtains database access, they immediately obtain working share links.",
-                  "mitigation": "Store a cryptographic hash of the token rather than the plaintext.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 4,
-                  "score": ""
-                }
-              ],
-              "threatFrequency": {
-                "spoofing": 0,
-                "tampering": 0,
-                "repudiation": 0,
-                "informationDisclosure": 2,
-                "denialOfService": 0,
-                "elevationOfPrivilege": 0
-              }
-            }
-          },
-          {
-            "position": {
-              "x": 360,
               "y": 660
             },
             "size": {
@@ -5286,12 +5114,12 @@
             },
             "vertices": [
               {
-                "x": 610,
-                "y": 310
+                "x": 630,
+                "y": 330
               },
               {
                 "x": 590,
-                "y": 310
+                "y": 330
               }
             ]
           },
@@ -5346,12 +5174,187 @@
                 "y": 420
               }
             ]
+          },
+          {
+            "position": {
+              "x": 385,
+              "y": 515
+            },
+            "size": {
+              "width": 120,
+              "height": 100
+            },
+            "attrs": {
+              "text": {
+                "text": "Create Share Link (E8)"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "73a2772a-176e-4fbe-836b-072a5292661f"
+                },
+                {
+                  "group": "right",
+                  "id": "dda1db12-2f63-419b-86f2-37aaa9b2bf37"
+                },
+                {
+                  "group": "bottom",
+                  "id": "395d513f-4ef3-4f9e-b938-026b874d5b19"
+                },
+                {
+                  "group": "left",
+                  "id": "776d4bb4-5041-497f-ab05-3ea8c18d167d"
+                }
+              ]
+            },
+            "id": "8d8e3965-0893-4e50-a8c1-f5ad52353be7",
+            "zIndex": 11,
+            "data": {
+              "type": "tm.Process",
+              "name": "Create Share Link (E8)",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "cb0c352c-14d8-4f52-bff1-f75e9756e255",
+                  "title": "Predictable token",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": "",
+                  "mitigation": "Cryptographically secure random token with sufficient entropy.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 11,
+                  "score": ""
+                },
+                {
+                  "id": "16e9513c-d7cd-4068-ad04-dfcbae2adcfc",
+                  "title": "Creating a link for someone else's report",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Elevation of privilege",
+                  "description": "",
+                  "mitigation": "Server-side ownership check before creating the token.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 12,
+                  "score": ""
+                },
+                {
+                  "id": "f93b00be-7c82-4eb3-9d86-8726536fd45f",
+                  "title": "Token stored in plaintext",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "If someone obtains database access, they immediately obtain working share links.",
+                  "mitigation": "Store a cryptographic hash of the token rather than the plaintext.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 13,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 1,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 2
+              }
+            },
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove"
+              ],
+              "name": null
+            }
           }
         ]
       }
     ],
     "diagramTop": 2,
     "reviewer": "",
-    "threatTop": 10
+    "threatTop": 13
   }
 }
