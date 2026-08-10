@@ -6416,6 +6416,32 @@
                   "new": false,
                   "number": 13,
                   "score": ""
+                },
+                {
+                  "id": "e7460e0d-1a9d-55a0-b972-a85d4974f2e1",
+                  "title": "Expiry omitted at write time",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Elevation of privilege",
+                  "description": "A token stored without an expiry remains valid indefinitely once leaked.",
+                  "mitigation": "Make expiry a mandatory non-null column set at creation, with a revocation flag alongside it.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 125,
+                  "score": ""
+                },
+                {
+                  "id": "141ddd13-851c-5f61-9bd9-7f655e5eeca6",
+                  "title": "Cross-site request forgery creates a share link",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "A third-party page causes a logged-in owner's browser to mint a share link, which the attacker then reads from a subsequent page or email.",
+                  "mitigation": "Require an anti-CSRF token on the share-link action and set SameSite on the session cookie.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 91,
+                  "score": ""
                 }
               ],
               "threatFrequency": {
@@ -6439,7 +6465,7 @@
             },
             "attrs": {
               "text": {
-                "text": "Validate Token & Show Report\n(E9)"
+                "text": "Validate Token and Show Report\n(E9)"
               },
               "body": {
                 "stroke": "red",
@@ -6590,6 +6616,19 @@
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 55,
+                  "score": ""
+                },
+                {
+                  "id": "41af9b89-714e-5cad-970b-91b095a8615b",
+                  "title": "Expiry and revocation state ignored",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Elevation of privilege",
+                  "description": "Reading the association without an expiry or revocation makes a withdrawn link keep working.",
+                  "mitigation": "Include expiry as part of the validity decision, evaluated before any report is loaded.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 128,
                   "score": ""
                 }
               ],
@@ -7024,19 +7063,6 @@
                   "new": false,
                   "number": 124,
                   "score": ""
-                },
-                {
-                  "id": "e7460e0d-1a9d-55a0-b972-a85d4974f2e1",
-                  "title": "Expiry omitted at write time",
-                  "status": "Open",
-                  "severity": "Medium",
-                  "type": "Elevation of privilege",
-                  "description": "A token stored without an expiry remains valid indefinitely once leaked.",
-                  "mitigation": "Make expiry a mandatory non-null column set at creation, with a revocation flag alongside it.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 125,
-                  "score": ""
                 }
               ],
               "trustBoundaryIds": [],
@@ -7145,6 +7171,19 @@
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 48,
+                  "score": ""
+                },
+                {
+                  "id": "e11f9af7-fbdb-565c-b07a-b29e7d6f32c8",
+                  "title": "Automated token guessing against the share endpoint",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "An attacker submits large numbers of candidate tokens hoping to hit a valid one.",
+                  "mitigation": "High-entropy tokens from D8, generic responses for invalid tokens, and per-IP rate limiting with exponential backoff.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 96,
                   "score": ""
                 }
               ],
@@ -7284,19 +7323,6 @@
               "isPublicNetwork": false,
               "protocol": "SQL/TCP (internal)",
               "threats": [
-                {
-                  "id": "41af9b89-714e-5cad-970b-91b095a8615b",
-                  "title": "Expiry and revocation state ignored",
-                  "status": "Open",
-                  "severity": "High",
-                  "type": "Elevation of privilege",
-                  "description": "Reading the association without an expiry or revocation makes a withdrawn link keep working.",
-                  "mitigation": "Include expiry as part of the validity decision, evaluated before any report is loaded.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 128,
-                  "score": ""
-                }
               ],
               "trustBoundaryIds": [],
               "threatFrequency": {
@@ -7380,7 +7406,7 @@
                   "title": "Report identifier substituted after token validation",
                   "status": "Open",
                   "severity": "High",
-                  "type": "Elevation of privilege",
+                  "type": "Information disclosure",
                   "description": "If the report ID comes from the request rather than the token record, a valid token can be pointed at any report.",
                   "mitigation": "Resolve the report identifier exclusively from the stored token association; ignore any report ID in the request.",
                   "modelType": "STRIDE",
@@ -7601,19 +7627,6 @@
               "protocol": "HTTPS",
               "threats": [
                 {
-                  "id": "141ddd13-851c-5f61-9bd9-7f655e5eeca6",
-                  "title": "Cross-site request forgery creates a share link",
-                  "status": "Open",
-                  "severity": "High",
-                  "type": "Spoofing",
-                  "description": "A third-party page causes a logged-in owner's browser to mint a share link, which the attacker then reads from a subsequent page or email.",
-                  "mitigation": "Require an anti-CSRF token on the share-link action and set SameSite on the session cookie.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 91,
-                  "score": ""
-                },
-                {
                   "id": "8bf45f65-1df2-54da-b523-b96ec5b059a6",
                   "title": "Share-link request observed in transit",
                   "status": "Open",
@@ -7791,19 +7804,6 @@
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 95,
-                  "score": ""
-                },
-                {
-                  "id": "e11f9af7-fbdb-565c-b07a-b29e7d6f32c8",
-                  "title": "Automated token guessing against the share endpoint",
-                  "status": "Open",
-                  "severity": "High",
-                  "type": "Spoofing",
-                  "description": "An attacker submits large numbers of candidate tokens hoping to hit a valid one.",
-                  "mitigation": "High-entropy tokens from D8, generic responses for invalid tokens, and per-IP rate limiting with exponential backoff.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 96,
                   "score": ""
                 }
               ],
