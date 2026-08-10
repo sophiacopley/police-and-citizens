@@ -3278,65 +3278,9 @@
         "version": "2.6.2",
         "cells": [
           {
-            "shape": "trust-boundary-curve",
-            "width": 200,
-            "height": 100,
-            "zIndex": -1,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Boundary",
-              "name": "Application Trust Boundary",
-              "description": "",
-              "isTrustBoundary": true,
-              "hasOpenThreats": false,
-              "crossingFlows": [],
-              "containedElements": [
-                "d32f8f78-30c5-4254-bd24-e3d2af6e323f",
-                "37f3f67c-3e28-4554-bde6-4d3e98a31a32",
-                "808d5d80-cc3b-4740-9ae4-7fcf5b15c98d",
-                "142acc33-5859-4608-b319-4921b353442e",
-                "2e04187f-02f4-4b78-9a22-74ec9279e8d3",
-                "7babd726-5818-4ad9-9d54-abdbd351a95e",
-                "71e81510-7c90-4773-8942-5d972a2e37f9"
-              ],
-              "threats": []
-            },
-            "labels": [
-              "Trust Boundary"
-            ],
-            "id": "d0d7a9fa-1439-433f-a0b5-b4d3058d0d38",
-            "source": {
-              "x": 900,
-              "y": 20
-            },
-            "target": {
-              "x": 900,
-              "y": 900
-            },
-            "vertices": [
-              {
-                "x": 300,
-                "y": 450
-              }
-            ],
-            "position": {
-              "x": 280,
-              "y": 20
-            },
-            "size": {
-              "width": 650,
-              "height": 880
-            },
-            "attrs": {
-              "text": {
-                "text": "Application Trust Boundary"
-              }
-            }
-          },
-          {
             "position": {
               "x": 40,
-              "y": 180
+              "y": 340
             },
             "size": {
               "width": 180,
@@ -3347,8 +3291,8 @@
                 "text": "Citizen / Report Owner\n(A1, T4/T5)"
               },
               "body": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
                 "strokeDasharray": null
               }
             },
@@ -3445,22 +3389,11 @@
               "isTrustBoundary": false,
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": true,
+              "hasOpenThreats": false,
               "providesAuthentication": false,
-              "threats": [
-                {
-                  "status": "Open",
-                  "severity": "Medium",
-                  "title": "Session theft grants report-owner privileges",
-                  "type": "Spoofing",
-                  "description": "A stolen authenticated session could allow an attacker to act as the citizen.",
-                  "mitigation": "Use Secure, HttpOnly and SameSite cookies, appropriate session expiration and re-authentication for sensitive actions.",
-                  "modelType": "STRIDE",
-                  "id": "824b2468-1579-4e79-bb80-72388085d104"
-                }
-              ],
+              "threats": [],
               "threatFrequency": {
-                "spoofing": 2,
+                "spoofing": 1,
                 "repudiation": 1
               }
             }
@@ -3479,8 +3412,8 @@
                 "text": "Share-link Recipient\n(A2, T3)"
               },
               "body": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
                 "strokeDasharray": null
               }
             },
@@ -3577,20 +3510,9 @@
               "isTrustBoundary": false,
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": true,
+              "hasOpenThreats": false,
               "providesAuthentication": false,
-              "threats": [
-                {
-                  "status": "Open",
-                  "severity": "High",
-                  "title": "Share link can be forwarded",
-                  "type": "Information disclosure",
-                  "description": "Anyone who obtains the secret share link can use it to access the report.",
-                  "mitigation": "Use expiring and revocable share tokens.",
-                  "modelType": "STRIDE",
-                  "id": "d9e20b96-2729-41ce-87fd-2e6252a66440"
-                }
-              ],
+              "threats": [],
               "threatFrequency": {
                 "spoofing": 2,
                 "repudiation": 1
@@ -3611,8 +3533,8 @@
                 "text": "List Own Reports\n(E5)"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -3720,7 +3642,7 @@
                   "severity": "High",
                   "title": "Report list not scoped to owner",
                   "type": "Information disclosure",
-                  "description": "A citizen could receive another citizen\u2019s reports if the query is not constrained by the authenticated owner.",
+                  "description": "A citizen could receive another citizen’s reports if the query is not constrained by the authenticated owner.",
                   "mitigation": "Derive ownership from the authenticated session and enforce it in the database query.",
                   "modelType": "STRIDE",
                   "id": "282d8da8-db02-4169-89e1-58690cb02b5a"
@@ -3742,8 +3664,8 @@
                 "text": "Create Report\n(E6)"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -3893,8 +3815,8 @@
                 "text": "View / Edit Report\n(E7)"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -4002,7 +3924,7 @@
                   "severity": "High",
                   "title": "Insecure direct object reference",
                   "type": "Elevation of privilege",
-                  "description": "Changing a report identifier could expose another citizen\u2019s report without object-level authorisation.",
+                  "description": "Changing a report identifier could expose another citizen’s report without object-level authorisation.",
                   "mitigation": "Perform server-side ownership checks on every report request.",
                   "modelType": "STRIDE",
                   "id": "ae5acc75-b030-44bb-a98b-889325d55075"
@@ -4044,8 +3966,8 @@
                 "text": "Create Share Link\n(E8)"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -4161,7 +4083,7 @@
                 {
                   "status": "Open",
                   "severity": "High",
-                  "title": "Create link for another user\u2019s report",
+                  "title": "Create link for another user’s report",
                   "type": "Elevation of privilege",
                   "description": "A citizen could create a share link for a report they do not own if ownership is not checked.",
                   "mitigation": "Require T5 report-owner authorisation before creating the link.",
@@ -4195,8 +4117,8 @@
                 "text": "Validate Token & Show Report\n(E9)"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -4336,11 +4258,13 @@
                 "text": "Report Store"
               },
               "topLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               },
               "bottomLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -4484,11 +4408,13 @@
                 "text": "Share Token Store"
               },
               "topLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               },
               "bottomLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -4652,14 +4578,20 @@
               "isPublicNetwork": false,
               "protocol": "",
               "threats": [],
-              "trustBoundaryIds": [
-                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ]
+              "trustBoundaryIds": []
             },
             "labels": [
               "authenticated session / list request"
             ],
             "id": "e54b5c1f-587d-49a2-b1fe-6e1201892f53",
+            "position": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 200,
+              "height": 100
+            },
             "source": {
               "cell": "1305ddc4-cdb2-4914-be46-85486e53cbec",
               "port": "7672f8ce-9e43-476a-9e43-600432e4ed79"
@@ -4668,15 +4600,7 @@
               "cell": "d32f8f78-30c5-4254-bd24-e3d2af6e323f",
               "port": "33dbbd82-401e-47da-8cfa-5400fb637a5e"
             },
-            "vertices": [],
-            "position": {
-              "x": 0,
-              "y": 0
-            },
-            "size": {
-              "width": 200,
-              "height": 100
-            }
+            "vertices": []
           },
           {
             "shape": "flow",
@@ -4712,14 +4636,20 @@
               "isPublicNetwork": false,
               "protocol": "",
               "threats": [],
-              "trustBoundaryIds": [
-                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ]
+              "trustBoundaryIds": []
             },
             "labels": [
               "owned report list (X1)"
             ],
             "id": "58ebd3cb-83e2-4af0-8275-9a153b6c0c8e",
+            "position": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 200,
+              "height": 100
+            },
             "source": {
               "cell": "d32f8f78-30c5-4254-bd24-e3d2af6e323f",
               "port": "33dbbd82-401e-47da-8cfa-5400fb637a5e"
@@ -4728,15 +4658,7 @@
               "cell": "1305ddc4-cdb2-4914-be46-85486e53cbec",
               "port": "7672f8ce-9e43-476a-9e43-600432e4ed79"
             },
-            "vertices": [],
-            "position": {
-              "x": 0,
-              "y": 0
-            },
-            "size": {
-              "width": 200,
-              "height": 100
-            }
+            "vertices": []
           },
           {
             "shape": "flow",
@@ -4772,14 +4694,20 @@
               "isPublicNetwork": false,
               "protocol": "",
               "threats": [],
-              "trustBoundaryIds": [
-                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ]
+              "trustBoundaryIds": []
             },
             "labels": [
               "date, time, location, description, images"
             ],
             "id": "7904f2a9-94c7-4055-ba93-78139b3e2de4",
+            "position": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 200,
+              "height": 100
+            },
             "source": {
               "cell": "1305ddc4-cdb2-4914-be46-85486e53cbec",
               "port": "7672f8ce-9e43-476a-9e43-600432e4ed79"
@@ -4788,15 +4716,7 @@
               "cell": "37f3f67c-3e28-4554-bde6-4d3e98a31a32",
               "port": "486e3e1e-6e13-4eba-b3db-cdaf128b31bf"
             },
-            "vertices": [],
-            "position": {
-              "x": 0,
-              "y": 0
-            },
-            "size": {
-              "width": 200,
-              "height": 100
-            }
+            "vertices": []
           },
           {
             "shape": "flow",
@@ -4832,14 +4752,20 @@
               "isPublicNetwork": false,
               "protocol": "",
               "threats": [],
-              "trustBoundaryIds": [
-                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ]
+              "trustBoundaryIds": []
             },
             "labels": [
               "new report + owner"
             ],
             "id": "48163582-cf8e-4e0e-adfa-f772e7c2f2e7",
+            "position": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 200,
+              "height": 100
+            },
             "source": {
               "cell": "37f3f67c-3e28-4554-bde6-4d3e98a31a32",
               "port": "486e3e1e-6e13-4eba-b3db-cdaf128b31bf"
@@ -4848,15 +4774,7 @@
               "cell": "7babd726-5818-4ad9-9d54-abdbd351a95e",
               "port": "410b0e22-265b-4867-81dc-eba08f9ff1b8"
             },
-            "vertices": [],
-            "position": {
-              "x": 0,
-              "y": 0
-            },
-            "size": {
-              "width": 200,
-              "height": 100
-            }
+            "vertices": []
           },
           {
             "shape": "flow",
@@ -4892,14 +4810,20 @@
               "isPublicNetwork": false,
               "protocol": "",
               "threats": [],
-              "trustBoundaryIds": [
-                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ]
+              "trustBoundaryIds": []
             },
             "labels": [
               "session + report ID"
             ],
             "id": "695ce840-4fd2-4e65-9c14-35eb76aa9b46",
+            "position": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 200,
+              "height": 100
+            },
             "source": {
               "cell": "1305ddc4-cdb2-4914-be46-85486e53cbec",
               "port": "7672f8ce-9e43-476a-9e43-600432e4ed79"
@@ -4908,15 +4832,7 @@
               "cell": "808d5d80-cc3b-4740-9ae4-7fcf5b15c98d",
               "port": "51143dd1-e9dc-42f4-8d2a-2a676d04d963"
             },
-            "vertices": [],
-            "position": {
-              "x": 0,
-              "y": 0
-            },
-            "size": {
-              "width": 200,
-              "height": 100
-            }
+            "vertices": []
           },
           {
             "shape": "flow",
@@ -4952,14 +4868,20 @@
               "isPublicNetwork": false,
               "protocol": "",
               "threats": [],
-              "trustBoundaryIds": [
-                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ]
+              "trustBoundaryIds": []
             },
             "labels": [
               "report content / ownership / status"
             ],
             "id": "83bae9da-be47-4515-8725-882e18d8e82f",
+            "position": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 200,
+              "height": 100
+            },
             "source": {
               "cell": "7babd726-5818-4ad9-9d54-abdbd351a95e",
               "port": "410b0e22-265b-4867-81dc-eba08f9ff1b8"
@@ -4968,15 +4890,7 @@
               "cell": "808d5d80-cc3b-4740-9ae4-7fcf5b15c98d",
               "port": "51143dd1-e9dc-42f4-8d2a-2a676d04d963"
             },
-            "vertices": [],
-            "position": {
-              "x": 0,
-              "y": 0
-            },
-            "size": {
-              "width": 200,
-              "height": 100
-            }
+            "vertices": []
           },
           {
             "shape": "flow",
@@ -5012,14 +4926,20 @@
               "isPublicNetwork": false,
               "protocol": "",
               "threats": [],
-              "trustBoundaryIds": [
-                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ]
+              "trustBoundaryIds": []
             },
             "labels": [
               "updated report"
             ],
             "id": "4333020a-8375-4a4e-a78b-28e2e6099a99",
+            "position": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 200,
+              "height": 100
+            },
             "source": {
               "cell": "808d5d80-cc3b-4740-9ae4-7fcf5b15c98d",
               "port": "51143dd1-e9dc-42f4-8d2a-2a676d04d963"
@@ -5028,15 +4948,7 @@
               "cell": "7babd726-5818-4ad9-9d54-abdbd351a95e",
               "port": "410b0e22-265b-4867-81dc-eba08f9ff1b8"
             },
-            "vertices": [],
-            "position": {
-              "x": 0,
-              "y": 0
-            },
-            "size": {
-              "width": 200,
-              "height": 100
-            }
+            "vertices": []
           },
           {
             "shape": "flow",
@@ -5072,14 +4984,20 @@
               "isPublicNetwork": false,
               "protocol": "",
               "threats": [],
-              "trustBoundaryIds": [
-                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ]
+              "trustBoundaryIds": []
             },
             "labels": [
               "session + report ID"
             ],
             "id": "ddc31b50-f3f1-4454-84a5-2a44b117407a",
+            "position": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 200,
+              "height": 100
+            },
             "source": {
               "cell": "1305ddc4-cdb2-4914-be46-85486e53cbec",
               "port": "7672f8ce-9e43-476a-9e43-600432e4ed79"
@@ -5088,15 +5006,7 @@
               "cell": "142acc33-5859-4608-b319-4921b353442e",
               "port": "40ba3afd-7f4e-4ec2-a4e6-b0799dafcaaa"
             },
-            "vertices": [],
-            "position": {
-              "x": 0,
-              "y": 0
-            },
-            "size": {
-              "width": 200,
-              "height": 100
-            }
+            "vertices": []
           },
           {
             "shape": "flow",
@@ -5132,14 +5042,20 @@
               "isPublicNetwork": false,
               "protocol": "",
               "threats": [],
-              "trustBoundaryIds": [
-                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ]
+              "trustBoundaryIds": []
             },
             "labels": [
               "ownership check"
             ],
             "id": "79320d03-3207-41cc-ad61-d0d11494a92b",
+            "position": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 200,
+              "height": 100
+            },
             "source": {
               "cell": "142acc33-5859-4608-b319-4921b353442e",
               "port": "40ba3afd-7f4e-4ec2-a4e6-b0799dafcaaa"
@@ -5148,15 +5064,7 @@
               "cell": "7babd726-5818-4ad9-9d54-abdbd351a95e",
               "port": "410b0e22-265b-4867-81dc-eba08f9ff1b8"
             },
-            "vertices": [],
-            "position": {
-              "x": 0,
-              "y": 0
-            },
-            "size": {
-              "width": 200,
-              "height": 100
-            }
+            "vertices": []
           },
           {
             "shape": "flow",
@@ -5192,14 +5100,20 @@
               "isPublicNetwork": false,
               "protocol": "",
               "threats": [],
-              "trustBoundaryIds": [
-                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ]
+              "trustBoundaryIds": []
             },
             "labels": [
               "share token + report ID"
             ],
             "id": "ca6bf7b1-4ebb-4eec-a4ef-72d67fdba547",
+            "position": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 200,
+              "height": 100
+            },
             "source": {
               "cell": "142acc33-5859-4608-b319-4921b353442e",
               "port": "40ba3afd-7f4e-4ec2-a4e6-b0799dafcaaa"
@@ -5208,15 +5122,7 @@
               "cell": "71e81510-7c90-4773-8942-5d972a2e37f9",
               "port": "2619cc73-249c-43f8-bfed-ed9e0c0c5d32"
             },
-            "vertices": [],
-            "position": {
-              "x": 0,
-              "y": 0
-            },
-            "size": {
-              "width": 200,
-              "height": 100
-            }
+            "vertices": []
           },
           {
             "shape": "flow",
@@ -5252,14 +5158,20 @@
               "isPublicNetwork": false,
               "protocol": "",
               "threats": [],
-              "trustBoundaryIds": [
-                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ]
+              "trustBoundaryIds": []
             },
             "labels": [
               "share URL"
             ],
             "id": "ce14cb73-ed9c-44d0-ba65-cd9377fa8f33",
+            "position": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 200,
+              "height": 100
+            },
             "source": {
               "cell": "142acc33-5859-4608-b319-4921b353442e",
               "port": "40ba3afd-7f4e-4ec2-a4e6-b0799dafcaaa"
@@ -5268,15 +5180,7 @@
               "cell": "1305ddc4-cdb2-4914-be46-85486e53cbec",
               "port": "7672f8ce-9e43-476a-9e43-600432e4ed79"
             },
-            "vertices": [],
-            "position": {
-              "x": 0,
-              "y": 0
-            },
-            "size": {
-              "width": 200,
-              "height": 100
-            }
+            "vertices": []
           },
           {
             "shape": "flow",
@@ -5312,14 +5216,20 @@
               "isPublicNetwork": false,
               "protocol": "",
               "threats": [],
-              "trustBoundaryIds": [
-                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ]
+              "trustBoundaryIds": []
             },
             "labels": [
               "share token"
             ],
             "id": "e3de3ef7-d766-49cc-be77-b2f6ba042497",
+            "position": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 200,
+              "height": 100
+            },
             "source": {
               "cell": "d3528243-a3da-471c-beb5-d87604367817",
               "port": "a5491661-7dea-4bf1-9c9b-430f4aa49611"
@@ -5328,15 +5238,7 @@
               "cell": "2e04187f-02f4-4b78-9a22-74ec9279e8d3",
               "port": "23ffc572-dadd-4af8-ba6d-d4629f2ebd4c"
             },
-            "vertices": [],
-            "position": {
-              "x": 0,
-              "y": 0
-            },
-            "size": {
-              "width": 200,
-              "height": 100
-            }
+            "vertices": []
           },
           {
             "shape": "flow",
@@ -5372,14 +5274,20 @@
               "isPublicNetwork": false,
               "protocol": "",
               "threats": [],
-              "trustBoundaryIds": [
-                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ]
+              "trustBoundaryIds": []
             },
             "labels": [
               "token lookup"
             ],
             "id": "39411488-a5ba-4e9e-91c6-041211b79494",
+            "position": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 200,
+              "height": 100
+            },
             "source": {
               "cell": "2e04187f-02f4-4b78-9a22-74ec9279e8d3",
               "port": "23ffc572-dadd-4af8-ba6d-d4629f2ebd4c"
@@ -5388,15 +5296,7 @@
               "cell": "71e81510-7c90-4773-8942-5d972a2e37f9",
               "port": "2619cc73-249c-43f8-bfed-ed9e0c0c5d32"
             },
-            "vertices": [],
-            "position": {
-              "x": 0,
-              "y": 0
-            },
-            "size": {
-              "width": 200,
-              "height": 100
-            }
+            "vertices": []
           },
           {
             "shape": "flow",
@@ -5432,14 +5332,20 @@
               "isPublicNetwork": false,
               "protocol": "",
               "threats": [],
-              "trustBoundaryIds": [
-                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ]
+              "trustBoundaryIds": []
             },
             "labels": [
               "token + report association"
             ],
             "id": "0251c6f4-77a3-42c4-8423-257df46ae38c",
+            "position": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 200,
+              "height": 100
+            },
             "source": {
               "cell": "71e81510-7c90-4773-8942-5d972a2e37f9",
               "port": "2619cc73-249c-43f8-bfed-ed9e0c0c5d32"
@@ -5448,15 +5354,7 @@
               "cell": "2e04187f-02f4-4b78-9a22-74ec9279e8d3",
               "port": "23ffc572-dadd-4af8-ba6d-d4629f2ebd4c"
             },
-            "vertices": [],
-            "position": {
-              "x": 0,
-              "y": 0
-            },
-            "size": {
-              "width": 200,
-              "height": 100
-            }
+            "vertices": []
           },
           {
             "shape": "flow",
@@ -5492,14 +5390,20 @@
               "isPublicNetwork": false,
               "protocol": "",
               "threats": [],
-              "trustBoundaryIds": [
-                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ]
+              "trustBoundaryIds": []
             },
             "labels": [
               "matching report"
             ],
             "id": "6cd4ec4e-355c-4cbd-9bab-8478d25171d5",
+            "position": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 200,
+              "height": 100
+            },
             "source": {
               "cell": "2e04187f-02f4-4b78-9a22-74ec9279e8d3",
               "port": "23ffc572-dadd-4af8-ba6d-d4629f2ebd4c"
@@ -5508,15 +5412,7 @@
               "cell": "7babd726-5818-4ad9-9d54-abdbd351a95e",
               "port": "410b0e22-265b-4867-81dc-eba08f9ff1b8"
             },
-            "vertices": [],
-            "position": {
-              "x": 0,
-              "y": 0
-            },
-            "size": {
-              "width": 200,
-              "height": 100
-            }
+            "vertices": []
           },
           {
             "shape": "flow",
@@ -5552,14 +5448,20 @@
               "isPublicNetwork": false,
               "protocol": "",
               "threats": [],
-              "trustBoundaryIds": [
-                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ]
+              "trustBoundaryIds": []
             },
             "labels": [
               "report details (X2)"
             ],
             "id": "364e662a-68dd-4534-bb69-0b56c4bcd5a7",
+            "position": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 200,
+              "height": 100
+            },
             "source": {
               "cell": "2e04187f-02f4-4b78-9a22-74ec9279e8d3",
               "port": "23ffc572-dadd-4af8-ba6d-d4629f2ebd4c"
@@ -5568,15 +5470,7 @@
               "cell": "d3528243-a3da-471c-beb5-d87604367817",
               "port": "a5491661-7dea-4bf1-9c9b-430f4aa49611"
             },
-            "vertices": [],
-            "position": {
-              "x": 0,
-              "y": 0
-            },
-            "size": {
-              "width": 200,
-              "height": 100
-            }
+            "vertices": []
           }
         ]
       }
