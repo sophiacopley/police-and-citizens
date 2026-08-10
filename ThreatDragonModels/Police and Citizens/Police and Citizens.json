@@ -4777,7 +4777,21 @@
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": [],
+              "threats": [
+                {
+                  "id": "a0d78cbc-2dc6-58c6-976f-53596a0696ec",
+                  "title": "Malicious image upload",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "This flow is the unvalidated file as it reaches D9. See the identically titled threat on Create Report (E6) for the full description.",
+                  "mitigation": "See the identically titled threat on Create Report (E6).",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 150,
+                  "score": ""
+                }
+              ],
               "trustBoundaryIds": [],
               "threatFrequency": {
                 "spoofing": 0,
@@ -5230,7 +5244,21 @@
               "isEncrypted": true,
               "isPublicNetwork": true,
               "protocol": "HTTPS",
-              "threats": [],
+              "threats": [
+                {
+                  "id": "4d97cfd7-721e-5663-8b1d-e9f3efc20ae1",
+                  "title": "Report data cached by the browser or an intermediary",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "The report detail response is authenticated content crossing the internet boundary, so it is cacheable by the browser or a shared intermediary in the same way the listing is. See the identically titled threat on owned report list (X1) for the full description.",
+                  "mitigation": "See the identically titled threat on owned report list (X1).",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 151,
+                  "score": ""
+                }
+              ],
               "trustBoundaryIds": [],
               "threatFrequency": {
                 "spoofing": 0,
@@ -5587,11 +5615,11 @@
               "threats": [
                 {
                   "id": "04a9b919-65e0-598a-9e3e-aa918004de1d",
-                  "title": "Report list cached by the browser or an intermediary",
+                  "title": "Report data cached by the browser or an intermediary",
                   "status": "Open",
                   "severity": "High",
                   "type": "Information disclosure",
-                  "description": "A cached listing can be recovered from a shared machine after logout, or served to another user by a shared cache.",
+                  "description": "A cached listing or report page can be recovered from a shared machine after logout, or served to another user by a shared cache.",
                   "mitigation": "Send Cache-Control: no-store on all authenticated responses; disable caching for report routes at the assumed reverse proxy (D3).",
                   "modelType": "STRIDE",
                   "new": false,
@@ -5980,7 +6008,21 @@
               "reasonOutOfScope": "",
               "hasOpenThreats": true,
               "providesAuthentication": false,
-              "threats": [],
+              "threats": [
+                {
+                  "id": "e3a20a96-9c4d-540b-b689-d564ec7e422b",
+                  "title": "Share-link recipient is not authenticated",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "T3 has no identity in the system. The token is the only thing separating the intended recipient from anyone else who obtains the link, so an attacker holding the URL is indistinguishable from the person the owner meant to share the report with.",
+                  "mitigation": "Treat the token as a bearer credential: keep its lifetime short, let the owner revoke it and show owners their active share links. Expose nothing through the share view that assumes the viewer is the intended recipient.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 152,
+                  "score": ""
+                }
+              ],
               "threatFrequency": {
                 "spoofing": 0,
                 "tampering": 0,
@@ -6831,7 +6873,21 @@
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": [],
+              "threats": [
+                {
+                  "id": "d40a7cc7-adab-52a9-aea0-d3ec40d6ce71",
+                  "title": "Predictable token",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "This flow carries the generated token, so its value is only as unguessable as the source that produced it. See the identically titled threat on Random Number Generator (D8) for the full description.",
+                  "mitigation": "See the identically titled threat on Random Number Generator (D8).",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 153,
+                  "score": ""
+                }
+              ],
               "trustBoundaryIds": [],
               "threatFrequency": {
                 "spoofing": 1,
@@ -7155,7 +7211,21 @@
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "SQL/TCP (internal)",
-              "threats": [],
+              "threats": [
+                {
+                  "id": "c56387a8-8e6f-57e2-b964-16b2058f7e58",
+                  "title": "Expiry and revocation state not enforced",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "Reading the association without its expiry and revocation state is what lets a withdrawn link keep working. See the identically titled threat on Validate Token & Show Report (E9) for the full description.",
+                  "mitigation": "See the identically titled threat on Validate Token & Show Report (E9).",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 154,
+                  "score": ""
+                }
+              ],
               "trustBoundaryIds": [],
               "threatFrequency": {
                 "spoofing": 0,
@@ -8016,7 +8086,21 @@
               "reasonOutOfScope": "",
               "hasOpenThreats": false,
               "providesAuthentication": true,
-              "threats": [],
+              "threats": [
+                {
+                  "id": "a0d444cb-5c97-5226-9a39-4c2b4a7649a4",
+                  "title": "Report owner's mailbox controlled by an attacker",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Spoofing",
+                  "description": "In this diagram the owner is identified only by the email address held against the report, so anyone who controls that mailbox receives the information request (X6) and the closure notification (X7), along with any report detail those messages carry.",
+                  "mitigation": "Resolve the recipient from the stored owner record rather than the request, re-verify the address whenever it is changed, and keep incident detail out of outbound mail by linking back to the authenticated page.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 155,
+                  "score": ""
+                }
+              ],
               "threatFrequency": {
                 "spoofing": 0,
                 "tampering": 0,
@@ -9335,7 +9419,21 @@
               "isEncrypted": true,
               "isPublicNetwork": true,
               "protocol": "HTTPS",
-              "threats": [],
+              "threats": [
+                {
+                  "id": "131138fd-1090-5071-9676-6cf9d228c1ce",
+                  "title": "Bulk harvesting of citizen reports",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "Every detail view leaves the system on this flow, so repeated views are how the harvesting actually happens. See the identically titled threat on Full Report Details (E12) for the full description.",
+                  "mitigation": "See the identically titled threat on Full Report Details (E12).",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 156,
+                  "score": ""
+                }
+              ],
               "trustBoundaryIds": [],
               "threatFrequency": {
                 "spoofing": 0,
@@ -9396,7 +9494,21 @@
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "SQL/TCP (internal)",
-              "threats": [],
+              "threats": [
+                {
+                  "id": "61a17522-0148-56b5-8993-a1e5b64f92c8",
+                  "title": "Privileged officer action not recorded",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "description": "This flow is the audit write for an information request; if it is skipped or its contents can be altered there is no reliable record of what was asked. See the identically titled threat on Police Officer (A3, T6) for the full description.",
+                  "mitigation": "See the identically titled threat on Police Officer (A3, T6).",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 157,
+                  "score": ""
+                }
+              ],
               "trustBoundaryIds": [],
               "threatFrequency": {
                 "spoofing": 0,
@@ -9451,7 +9563,21 @@
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": [],
+              "threats": [
+                {
+                  "id": "8f311a24-cc51-5bac-bf83-14940e3a81fa",
+                  "title": "Email header injection",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "This flow hands the officer-supplied text and recipient address to D10, which is where injected header lines would take effect. See the identically titled threat on Request More Info (E13) for the full description.",
+                  "mitigation": "See the identically titled threat on Request More Info (E13).",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 158,
+                  "score": ""
+                }
+              ],
               "trustBoundaryIds": [],
               "threatFrequency": {
                 "spoofing": 0,
@@ -9575,7 +9701,21 @@
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "SQL/TCP (internal)",
-              "threats": [],
+              "threats": [
+                {
+                  "id": "e98ca3f3-02fa-5b3b-9f2d-a9798aec273e",
+                  "title": "Privileged officer action not recorded",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "description": "This flow is the closure write that must carry the closing officer and timestamp in the same statement. See the identically titled threat on Police Officer (A3, T6) for the full description.",
+                  "mitigation": "See the identically titled threat on Police Officer (A3, T6).",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 159,
+                  "score": ""
+                }
+              ],
               "trustBoundaryIds": [],
               "threatFrequency": {
                 "spoofing": 0,
@@ -9636,7 +9776,21 @@
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": [],
+              "threats": [
+                {
+                  "id": "88812eae-5ffd-5ef5-89d8-848ae7da88ad",
+                  "title": "Report content disclosed in cleartext email",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Information disclosure",
+                  "description": "This flow hands the closure notification and the owner's address to D10 for delivery outside the system. See the identically titled threat on Request More Info (E13) for the full description.",
+                  "mitigation": "See the identically titled threat on Request More Info (E13).",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 160,
+                  "score": ""
+                }
+              ],
               "trustBoundaryIds": [],
               "threatFrequency": {
                 "spoofing": 0,
@@ -9835,7 +9989,21 @@
               "isEncrypted": true,
               "isPublicNetwork": true,
               "protocol": "HTTPS",
-              "threats": [],
+              "threats": [
+                {
+                  "id": "600dab10-c180-50d5-9534-9559daa48b2b",
+                  "title": "Role check missing on the detail page",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "This flow carries the session and the client-supplied report ID that E12 must authorise on every request. See the identically titled threat on Full Report Details (E12) for the full description.",
+                  "mitigation": "See the identically titled threat on Full Report Details (E12).",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 161,
+                  "score": ""
+                }
+              ],
               "trustBoundaryIds": [],
               "threatFrequency": {
                 "spoofing": 0,
@@ -10050,7 +10218,21 @@
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": [],
+              "threats": [
+                {
+                  "id": "85927213-9415-5431-aa61-e9ff0fb990d8",
+                  "title": "Search injection",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "The identifier E12 looks up is client-supplied and reaches D6 on this flow. See the identically titled threat on Report Search (E11) for the full description.",
+                  "mitigation": "See the identically titled threat on Report Search (E11).",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 162,
+                  "score": ""
+                }
+              ],
               "trustBoundaryIds": [],
               "threatFrequency": {
                 "tampering": 0,
