@@ -1108,104 +1108,6 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "verification_email",
-              "description": "The verification email is routed to the citizens email mailbox by the MTA",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": []
-            },
-            "labels": [
-              "verification_email"
-            ],
-            "id": "444e5b80-3c67-43fd-8337-e671a5d1eaca",
-            "source": {
-              "cell": "ff819878-cffc-442a-8488-e7f7669d69f6",
-              "port": "81ab149b-29b8-4016-81eb-979a6b4747a4"
-            },
-            "target": {
-              "cell": "ee78cb0c-ffdc-448b-a982-629595993609",
-              "port": "4f0ca7ed-d9ac-40c3-9f80-9ce5a5f19c64"
-            },
-            "vertices": [
-              {
-                "x": -80,
-                "y": -160
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "verification_email",
-              "description": "Verification email containing the verification code as read from the citizens mailbox",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": []
-            },
-            "labels": [
-              "verification_email"
-            ],
-            "id": "7584465f-c9c7-4cee-b107-37116ac9c894",
-            "source": {
-              "cell": "ee78cb0c-ffdc-448b-a982-629595993609",
-              "port": "d03b83ca-bb6a-4e49-a9ac-af4cb3f26002"
-            },
-            "target": {
-              "cell": "5f3e80d7-077b-45d3-a94a-69967e34573a",
-              "port": "4eef07ba-c073-4f8f-a998-c51ab2fa460b"
-            }
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
                 "stroke": "red",
                 "strokeWidth": 2.5,
                 "targetMarker": {
@@ -1481,6 +1383,130 @@
             ]
           },
           {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "verification_email",
+              "description": "Verification email containing the verification code as read from the citizens mailbox",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "verification_email"
+            ],
+            "id": "7584465f-c9c7-4cee-b107-37116ac9c894",
+            "source": {
+              "cell": "ee78cb0c-ffdc-448b-a982-629595993609",
+              "port": "d03b83ca-bb6a-4e49-a9ac-af4cb3f26002"
+            },
+            "target": {
+              "cell": "5f3e80d7-077b-45d3-a94a-69967e34573a",
+              "port": "4eef07ba-c073-4f8f-a998-c51ab2fa460b"
+            },
+            "vertices": [
+              {
+                "x": -80,
+                "y": 50
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "verification_email",
+              "description": "The verification email is routed to the citizens email mailbox by the MTA",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "4e51eb96-90a2-44b3-a1d5-267bbb6a3dec",
+                  "title": "Verification link intercepted in transit via SMTP",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "If the email is not encrypted end to end, a Bad Actor could observe an unencrypted verification email.",
+                  "mitigation": "- Use end-to-end encryption\n- Invalidate the link once used by the citizen",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 230,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 2,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              "verification_email"
+            ],
+            "id": "444e5b80-3c67-43fd-8337-e671a5d1eaca",
+            "source": {
+              "cell": "ff819878-cffc-442a-8488-e7f7669d69f6",
+              "port": "81ab149b-29b8-4016-81eb-979a6b4747a4"
+            },
+            "target": {
+              "cell": "ee78cb0c-ffdc-448b-a982-629595993609",
+              "port": "4f0ca7ed-d9ac-40c3-9f80-9ce5a5f19c64"
+            },
+            "vertices": [
+              {
+                "x": -80,
+                "y": -160
+              }
+            ]
+          },
+          {
             "position": {
               "x": 160,
               "y": -350
@@ -1600,12 +1626,12 @@
               "threats": [
                 {
                   "id": "04cd6bc7-e93a-47e0-8930-b2a4e5c0ad38",
-                  "title": "Spoofed verification email - FINISH THIS",
+                  "title": "Verification email spoofed as coming from SecureReports",
                   "status": "Open",
                   "severity": "TBD",
                   "type": "Spoofing",
                   "description": "The absence of SPF/DKIM/DMARC configuration allows Bad Actors to forge a verification email as coming from SecureReports.",
-                  "mitigation": "- Configure SPF, DKIM, DMARC\n- Use the provider's own sending domain",
+                  "mitigation": "- Configure SPF, DKIM, DMARC on the domain used to send verification emails\n- Monitor DMARC reports for unauthorised sending attempts",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 228,
@@ -1623,13 +1649,39 @@
                   "new": false,
                   "number": 229,
                   "score": ""
+                },
+                {
+                  "id": "f37db079-05d2-4d06-a2a1-6b3a0a3acab3",
+                  "title": "Phishing SecureReports verify email clone",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": "A Bad Actor impersonates the legitimate SecureReports verification email with a link that directs citizens to a illegitimate site that harvests their email, password, and/or other personal data.",
+                  "mitigation": "- Purchase all look-alike domains.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 233,
+                  "score": ""
+                },
+                {
+                  "id": "0ea4f18e-1e89-4f69-a0ff-d9fddeb77799",
+                  "title": "Verification token is retained in provider logs",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "If the email provider logs message content/metadata, it can become exposed later if the email provider is compromised.",
+                  "mitigation": "- Configure the provider's log retention period to a minimum\n- Conduct regular security audits of the third-party email provider\n- Invalidate the link once used by the citizen",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 236,
+                  "score": ""
                 }
               ],
               "threatFrequency": {
-                "spoofing": 2,
+                "spoofing": 4,
                 "tampering": 1,
                 "repudiation": 0,
-                "informationDisclosure": 0,
+                "informationDisclosure": 3,
                 "denialOfService": 0,
                 "elevationOfPrivilege": 0
               }
@@ -3187,8 +3239,8 @@
                 "text": "Receiving \nMTA"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -3285,12 +3337,34 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "a41be5d1-38eb-4e87-8386-e89f89e2c167",
+                  "title": "MTA becomes comprimised through tampering",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": "The MTA is assumed third-party infrastructure. If the vendor is compromised (e.g. its API keys are stolen), an attacker can send mail as SecureReports.",
+                  "mitigation": "- Apply the principle of least privilege when storing API keys\n- Rotate keys regularly\n- Audit the third-party software's security",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 235,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 4,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
             }
           },
           {
@@ -3307,11 +3381,13 @@
                 "text": "Citizen Mailbox"
               },
               "topLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               },
               "bottomLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -3408,13 +3484,33 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isALog": false,
               "isEncrypted": false,
               "isSigned": false,
               "storesCredentials": false,
               "storesInventory": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "11c8e0c7-4e1b-4fe5-a04a-a8b35d574b08",
+                  "title": "Verification link read from a shared mailbox",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "The verification email may be read by anyone with access to the citizen's mailbox. A Bad Actor may click on the link to also verify the citizen's account and gain information though the verification flow.",
+                  "mitigation": "- Invalidate verification links once used by the citizen",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 237,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0
+              }
             }
           },
           {
@@ -4087,6 +4183,6 @@
     ],
     "diagramTop": 5,
     "reviewer": "",
-    "threatTop": 229
+    "threatTop": 237
   }
 }
