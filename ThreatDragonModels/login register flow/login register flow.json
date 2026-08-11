@@ -28,7 +28,7 @@
             "data": {
               "type": "tm.Boundary",
               "name": "Trust Boundary",
-              "description": "",
+              "description": "Trust boundary around the citizen information data store, separating the database from the application processes.",
               "isTrustBoundary": true,
               "hasOpenThreats": false,
               "crossingFlows": [],
@@ -340,7 +340,7 @@
             "data": {
               "type": "tm.Store",
               "name": "Citizen Information Data\nStore",
-              "description": "",
+              "description": "Database storing citizen registration details: email address, hashed password, verification code and email verification status.",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -510,7 +510,7 @@
             "data": {
               "type": "tm.Process",
               "name": "Register",
-              "description": "",
+              "description": "The register process which takes the citizen's email and password, hashes the password, generates a verification code and creates the account.",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -656,7 +656,7 @@
             "data": {
               "type": "tm.Flow",
               "name": "hashed_password\n",
-              "description": "",
+              "description": "The hashed password returned to the register process to be stored with the citizen's account.",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -708,7 +708,7 @@
             "data": {
               "type": "tm.Flow",
               "name": "password",
-              "description": "",
+              "description": "The citizen's chosen password sent to the hashing process.",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -760,7 +760,7 @@
             "data": {
               "type": "tm.Flow",
               "name": "validation_confirmation",
-              "description": "",
+              "description": "Confirmation from the credentials validation process that the submitted credentials are valid.",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -814,7 +814,7 @@
             "data": {
               "type": "tm.Flow",
               "name": "verification_link\n",
-              "description": "",
+              "description": "The verification link sent by the register process to the email service provider, to be emailed to the citizen.",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -869,7 +869,7 @@
             "data": {
               "type": "tm.Flow",
               "name": "unique_session_id",
-              "description": "",
+              "description": "A unique session ID generated for the citizen's session after a successful login.",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -921,7 +921,7 @@
             "data": {
               "type": "tm.Flow",
               "name": "verification_code",
-              "description": "",
+              "description": "The verification code generated to verify the citizen's email address.",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -974,7 +974,7 @@
             "data": {
               "type": "tm.Flow",
               "name": "register_citizen_info",
-              "description": "",
+              "description": "The citizen's email and hashed password sent to be persisted in the citizen information data store.",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -1071,7 +1071,7 @@
             "data": {
               "type": "tm.Flow",
               "name": "hashed_given_password",
-              "description": "",
+              "description": "The hashed password provided to the validation process for comparison against the stored credentials.",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -1588,7 +1588,7 @@
             "data": {
               "type": "tm.Process",
               "name": "Email\nService\nProvider",
-              "description": "",
+              "description": "The email service provider that sends the verification email on behalf of the application.",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -2584,7 +2584,7 @@
             "data": {
               "type": "tm.Process",
               "name": "Validate\nCredentials ",
-              "description": "",
+              "description": "The process that checks the submitted email and password against the stored credentials to confirm they are valid.",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -2778,7 +2778,7 @@
             "data": {
               "type": "tm.Flow",
               "name": "email_address/password",
-              "description": "",
+              "description": "The citizen's email address and password submitted at login, sent for validation.",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -2906,7 +2906,7 @@
             "data": {
               "type": "tm.Flow",
               "name": "given_password",
-              "description": "",
+              "description": "The password given at registration sent to the hashing process to be hashed for comparison.",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -3068,7 +3068,7 @@
             "data": {
               "type": "tm.Flow",
               "name": "email_address",
-              "description": "",
+              "description": "The citizen's email address sent to the email service provider so the verification email can be sent.",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -3391,7 +3391,7 @@
             "data": {
               "type": "tm.Store",
               "name": "Citizen Mailbox",
-              "description": "",
+              "description": "The citizen's email mailbox where the verification email is delivered and read.",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -3413,7 +3413,7 @@
             "data": {
               "type": "tm.Boundary",
               "name": "Trust Boundary",
-              "description": "",
+              "description": "Trust boundary around the email service provider, separating the email infrastructure from the rest of the system.",
               "isTrustBoundary": true,
               "hasOpenThreats": false,
               "crossingFlows": [
@@ -3461,7 +3461,7 @@
             "data": {
               "type": "tm.Boundary",
               "name": "Trust Boundary",
-              "description": "",
+              "description": "Trust boundary around the application processes (register, login, hashing, verification), separating them from the citizen's browser and email infrastructure.",
               "isTrustBoundary": true,
               "hasOpenThreats": false,
               "crossingFlows": [
