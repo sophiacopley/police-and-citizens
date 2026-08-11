@@ -1466,154 +1466,6 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "get_login_request",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [
-                {
-                  "id": "b8387d39-e203-40e7-a581-15e650c02384",
-                  "title": "Flooding the network with traffic",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Tampering",
-                  "description": "See #15",
-                  "mitigation": "",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 209,
-                  "score": ""
-                }
-              ],
-              "trustBoundaryIds": [
-                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ],
-              "threatFrequency": {
-                "tampering": 1,
-                "informationDisclosure": 0,
-                "denialOfService": 0
-              }
-            },
-            "labels": [
-              "get_login_request"
-            ],
-            "id": "d5ee7bf6-202c-4c3c-aea8-7cc1e229ecf5",
-            "source": {
-              "cell": "5f3e80d7-077b-45d3-a94a-69967e34573a",
-              "port": "3cf15723-49a1-4efc-bb2a-240214ee345a"
-            },
-            "target": {
-              "cell": "f94c11f5-8d6c-4c80-a25e-4f052e677c97",
-              "port": "d54f0a46-8146-47c4-a229-f3ef0054abd9"
-            },
-            "vertices": [
-              {
-                "x": 230,
-                "y": 360
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "get_register_request",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [
-                {
-                  "id": "c6468419-909c-4c37-a0e9-005f49ef3e79",
-                  "title": "Flooding the network with traffic",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Denial of service",
-                  "description": "A bad actor floods the request channel with high-volume traffic, exhausting network/connection capacity and blocking legitimate requests from reaching the server.",
-                  "mitigation": "- Rate limiting for requests from the same IP.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 15,
-                  "score": ""
-                }
-              ],
-              "trustBoundaryIds": [
-                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ],
-              "threatFrequency": {
-                "tampering": 0,
-                "informationDisclosure": 0,
-                "denialOfService": 4
-              }
-            },
-            "labels": [
-              "get_register_request"
-            ],
-            "id": "e6768564-29b5-46eb-a658-1874816cd8fb",
-            "source": {
-              "cell": "5f3e80d7-077b-45d3-a94a-69967e34573a",
-              "port": "4eef07ba-c073-4f8f-a998-c51ab2fa460b"
-            },
-            "target": {
-              "cell": "8e453973-119a-49f7-964d-516401ff5e85",
-              "port": "09c21e52-0ab0-475a-b034-a0e78945a93e"
-            },
-            "vertices": [
-              {
-                "x": 100,
-                "y": -60
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
               "name": "get_login_response",
               "description": "",
               "outOfScope": false,
@@ -1664,6 +1516,93 @@
               {
                 "x": 270,
                 "y": 400
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "get_login_request",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "b8387d39-e203-40e7-a581-15e650c02384",
+                  "title": "Flooding the network with traffic",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "See #15",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 209,
+                  "score": ""
+                },
+                {
+                  "id": "5b453e96-c31b-47ad-8fe3-afeb7ace9a65",
+                  "title": "Citizen login request is changed in transit",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "See #186",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 215,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [
+                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
+              ],
+              "threatFrequency": {
+                "tampering": 2,
+                "informationDisclosure": 0,
+                "denialOfService": 1
+              }
+            },
+            "labels": [
+              "get_login_request"
+            ],
+            "id": "d5ee7bf6-202c-4c3c-aea8-7cc1e229ecf5",
+            "source": {
+              "cell": "5f3e80d7-077b-45d3-a94a-69967e34573a",
+              "port": "3cf15723-49a1-4efc-bb2a-240214ee345a"
+            },
+            "target": {
+              "cell": "f94c11f5-8d6c-4c80-a25e-4f052e677c97",
+              "port": "d54f0a46-8146-47c4-a229-f3ef0054abd9"
+            },
+            "vertices": [
+              {
+                "x": 230,
+                "y": 360
               }
             ]
           },
@@ -3051,7 +2990,7 @@
               "threats": [
                 {
                   "id": "d8d9bc04-0c60-4fdf-9b15-1e9fca835f5b",
-                  "title": "Process response is changed in transit",
+                  "title": "Register process response is changed in transit",
                   "status": "Open",
                   "severity": "TBD",
                   "type": "Tampering",
@@ -3067,7 +3006,7 @@
                 "c13b7a48-b539-45e9-b058-5d6a0ed613da"
               ],
               "threatFrequency": {
-                "tampering": 2,
+                "tampering": 3,
                 "informationDisclosure": 0,
                 "denialOfService": 0
               }
@@ -3672,9 +3611,8 @@
                 "04d603e7-1ce9-4587-94d1-6a6ad3359f22",
                 "7f8c8596-6076-48ce-8be0-926151fbb53d",
                 "fa758357-7f42-42a8-9e52-51061a898cec",
-                "d5ee7bf6-202c-4c3c-aea8-7cc1e229ecf5",
-                "e6768564-29b5-46eb-a658-1874816cd8fb",
                 "79c078cf-1161-41f1-b3ec-bf387a04e1ce",
+                "d5ee7bf6-202c-4c3c-aea8-7cc1e229ecf5",
                 "dca0fd92-aac7-493e-b4b1-b13e3d758595",
                 "7198a459-41d5-474e-9a9c-1b244fc4e5eb",
                 "d4f1dc29-d52c-4752-aac0-bd033838adff",
@@ -3682,7 +3620,8 @@
                 "4b96d127-c9bf-441f-aa5b-68eaa17736c8",
                 "1e8a4bd7-1b7f-45b5-8123-3262bb21d368",
                 "2bf0dfc7-8c2d-4769-bef5-b8531500d08f",
-                "8591dd9d-f80e-4765-8736-e3a059408451"
+                "8591dd9d-f80e-4765-8736-e3a059408451",
+                "e6768564-29b5-46eb-a658-1874816cd8fb"
               ],
               "containedElements": [
                 "8e453973-119a-49f7-964d-516401ff5e85",
@@ -3862,12 +3801,99 @@
                 "y": 310
               }
             ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 43,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "get_register_request",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "c6468419-909c-4c37-a0e9-005f49ef3e79",
+                  "title": "Flooding the network with traffic",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "A bad actor floods the request channel with high-volume traffic, exhausting network/connection capacity and blocking legitimate requests from reaching the server.",
+                  "mitigation": "- Rate limiting for requests from the same IP.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 15,
+                  "score": ""
+                },
+                {
+                  "id": "defb789a-f4f3-48ca-8579-c8b66867f416",
+                  "title": "Citizen register request is changed in transit",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "Request URL query parameters or body is tampered with by a bad actor e.g., injecting a malicious redirect or return parameter.",
+                  "mitigation": "- Use HTTPS (or another encrypted protocol) so data is encrypted in transit",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 213,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [
+                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
+              ],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 0,
+                "denialOfService": 4
+              }
+            },
+            "labels": [
+              "get_register_request"
+            ],
+            "id": "e6768564-29b5-46eb-a658-1874816cd8fb",
+            "source": {
+              "cell": "5f3e80d7-077b-45d3-a94a-69967e34573a",
+              "port": "4eef07ba-c073-4f8f-a998-c51ab2fa460b"
+            },
+            "target": {
+              "cell": "8e453973-119a-49f7-964d-516401ff5e85",
+              "port": "09c21e52-0ab0-475a-b034-a0e78945a93e"
+            },
+            "vertices": [
+              {
+                "x": 100,
+                "y": -60
+              }
+            ]
           }
         ]
       }
     ],
     "diagramTop": 5,
     "reviewer": "",
-    "threatTop": 212
+    "threatTop": 215
   }
 }
