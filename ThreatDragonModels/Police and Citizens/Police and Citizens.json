@@ -1,5 +1,5 @@
 {
-  "version": "2.6.2",
+  "version": "2.5.0",
   "release_version": "",
   "released_at": "",
   "summary": {
@@ -17,7 +17,7 @@
         "diagramType": "STRIDE",
         "placeholder": "New STRIDE diagram description",
         "thumbnail": "./public/content/images/thumbnail.stride.jpg",
-        "version": "2.6.2",
+        "version": "2.5.0",
         "cells": [
           {
             "shape": "trust-boundary-curve",
@@ -215,7 +215,7 @@
                 {
                   "id": "452cdbe1-bd8e-4a1a-8ca8-749f30ac3bd7",
                   "title": "Weak password",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Spoofing",
                   "description": "Passwords can be guessed if they are too weak, or have been reused on another application where a data breach occurred.",
@@ -228,7 +228,7 @@
                 {
                   "id": "856de633-bf6d-4438-a3f4-e5b04ab04dd6",
                   "title": "Citizen doesn't own email address",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Spoofing",
                   "description": "The user registers with an email they don't own.",
@@ -245,7 +245,7 @@
                   "severity": "TBD",
                   "type": "Spoofing",
                   "description": "Bad actors finds a user's email and password (through measures like phishing emails etc) and attempts to use it to log in.",
-                  "mitigation": "- Implement 2 factor authentication \n- Forcing password rotation every 60 days",
+                  "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 3,
@@ -254,7 +254,7 @@
                 {
                   "id": "aa0b60b1-a937-467f-9017-233ed2c414e5",
                   "title": "User's session cookie is stolen",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Spoofing",
                   "description": "A bad actor obtains a session cookie belonging to a legitimate authenticated user, allowing them to impersonate a citizen by without knowing their password. ",
@@ -266,7 +266,7 @@
                 }
               ],
               "threatFrequency": {
-                "spoofing": 11,
+                "spoofing": 17,
                 "repudiation": 3
               }
             }
@@ -285,13 +285,11 @@
                 "text": "Citizen Information Data\nStore"
               },
               "topLine": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
+                "strokeWidth": 1.5,
                 "strokeDasharray": null
               },
               "bottomLine": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
+                "strokeWidth": 1.5,
                 "strokeDasharray": null
               }
             },
@@ -388,7 +386,7 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": true,
+              "hasOpenThreats": false,
               "isALog": false,
               "isEncrypted": false,
               "isSigned": false,
@@ -398,7 +396,7 @@
                 {
                   "id": "ec90acbf-8249-4b8f-9d09-c93ebcd32527",
                   "title": "Exfiltrate data",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Information disclosure",
                   "description": "An unregistered or unprivileged process or user tries to get access to the datastore.",
@@ -411,11 +409,11 @@
                 {
                   "id": "0c4d7903-6b0b-45c3-9ffd-e95034036f53",
                   "title": "DB is accessed and tampered with",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Tampering",
                   "description": "A bad actor or process tamper the datastore directly.",
-                  "mitigation": "- Allow full access to datastore to restricted set of personnel.\n- Store strong credentials in password vaults.\n- Monitor for and log all direct command line accesses to the datastore.\n- Keep regular backups in a separate location.\nNOTE: copied from example",
+                  "mitigation": "- Allow full access to datastore to only a restricted set of personnel.\n- Store strong credentials in password vaults.\n- Monitor for and log all direct command line accesses to the datastore.\n- Keep regular backups in a separate location.",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 186,
@@ -424,11 +422,11 @@
                 {
                   "id": "2c03822f-b5d3-41df-9a14-db61c28953ac",
                   "title": "DB is unreachable",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Denial of service",
-                  "description": "A bad actor prevents the data store to respond.",
-                  "mitigation": "* Monitor suspicious requests and disallow requests from abusing local IPs or ban abusing user.\n* Allow for replication and deployment with limited downtime when the load increases slightly.\n* Use a pool of connection with query timeouts to release resources fast even for unsuccessful queries.\n* Set a maximum number of connections allowed, with a queue.\n* Set a limit to the memory used by each query.",
+                  "description": "A bad actor floods the datastore with requests and overloads the database connection pool, preventing access to the database.",
+                  "mitigation": "- Monitor suspicious requests and disallow requests from abusing local IPs or ban abusing user.\n- Allow for replication and deployment with limited downtime when the load increases slightly.\n- Use a pool of connection with query timeouts to release resources fast even for unsuccessful queries.\n- Set a maximum number of connections allowed, with a queue.\n- Set a limit to the memory used by each query.\n- Monitor disk and CPU usage. ",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 187,
@@ -437,7 +435,7 @@
                 {
                   "id": "20934935-6bb2-41d2-83b7-34af4a71bf20",
                   "title": "Citizen PII stored unencrypted",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Information disclosure",
                   "description": "If the database disk is unencrypted and obtained by a Bad Actor, the data can be read directly.",
@@ -450,7 +448,7 @@
                 {
                   "id": "30451ce3-32bd-4d74-b2bd-0c3063d20fe5",
                   "title": "No audit trail of account data changes",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Repudiation",
                   "description": "Without an audit log, a citizen could deny changes they have made to their account credentials. There is also no way of tracking when and whether a Bad Actor has submitted changes to a citizens account.",
@@ -462,10 +460,10 @@
                 }
               ],
               "threatFrequency": {
-                "tampering": 1,
-                "repudiation": 2,
-                "informationDisclosure": 3,
-                "denialOfService": 1
+                "tampering": 2,
+                "repudiation": 3,
+                "informationDisclosure": 5,
+                "denialOfService": 2
               }
             },
             "children": [
@@ -486,8 +484,8 @@
                 "text": "Register"
               },
               "body": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
                 "strokeDasharray": null
               }
             },
@@ -584,7 +582,7 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": true,
+              "hasOpenThreats": false,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
@@ -593,11 +591,11 @@
                 {
                   "id": "06adcb2a-b5cb-4e66-90ab-fa66a94a6aa7",
                   "title": "Flooding the register process with get requests",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Denial of service",
                   "description": "A bad actor could send many requests to the server because it is a process that does not require authentication. ",
-                  "mitigation": "- Rate limiting for requests from the same IP.",
+                  "mitigation": "- Rate limiting for requests from the same IP on the reverse proxy.\n- Add load balancing to reverse proxy to spread request traffic across servers.",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 22,
@@ -606,7 +604,7 @@
                 {
                   "id": "7c54d222-d526-4b5f-b05b-e05842eadd2b",
                   "title": "Registration process replaced by scammer",
-                  "status": "Open",
+                  "status": "Accepted",
                   "severity": "TBD",
                   "type": "Spoofing",
                   "description": "The official registration page has been replaced by another malicious page users are redirected to from scam emails, or text messages, or links posted online.",
@@ -619,7 +617,7 @@
                 {
                   "id": "744c4ce4-1f49-4c65-a044-635e5810114c",
                   "title": "Process leaks data via unsafe memory",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Information disclosure",
                   "description": "Process logs sensitive data, or stores data in unsafe (e.g., shared) memory",
@@ -632,7 +630,7 @@
                 {
                   "id": "26ae1e17-67d7-47db-965e-00a94b6ce4c5",
                   "title": "Process has been tampered with",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Tampering",
                   "description": "The process has been altered by an external malicious actor. This can be done by modifying source code and binaries (static tampering), injecting a different process (DLL injection), or memory corruption that can disrupt execution flow (e.g. corrupting heap metadata like function pointers).",
@@ -645,11 +643,11 @@
                 {
                   "id": "e2fe48d6-71b3-4590-b4cf-8a172502c2c3",
                   "title": "Process gets access to restricted resources",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Elevation of privilege",
                   "description": "Process runs at a higher priority level (e.g., permissions, resources), or accesses to assets outside its permission level.",
-                  "mitigation": "- Apply principle of least privilege for process and used resources.\n- Run process on the OS with as few permissions as required, using a dedicated technical account rather than a normal user account with interactive and logon permissions.",
+                  "mitigation": "- Apply principle of least privilege for process and used resources.\n- Run process on the OS with as few permissions as required, using a dedicated technical account rather than a normal user account with interactive and logon permissions.\n- Run in container with dropped capabilities.",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 26,
@@ -658,11 +656,11 @@
                 {
                   "id": "da2724e1-6ed9-40b0-a754-c3cacf08ac87",
                   "title": "Injection attack - tampering",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Tampering",
                   "description": "Malicious data is passed to the process to cause harm to the underlying data, e.g., override data or inject malicious data.",
-                  "mitigation": "- Decode, normalise, and canonicalise email and password before validation and storage\n- Sanitise input for script-like requests, e.g., javascript, SQL, etc.\n- Enforce strict Content Security Policy to prevent harmful scripts to be transmitted (e.g., js, py, sh files).",
+                  "mitigation": "- Decode, normalise, and canonicalise email and password before validation and storage\n- Sanitise input for script-like requests, e.g., javascript, SQL, etc.\n- Enforce strict Content Security Policy to prevent harmful scripts to be transmitted (e.g., js, py, sh files).\n- Add parameterised queries/prepared statements for all DB access.",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 27,
@@ -671,7 +669,7 @@
                 {
                   "id": "2525acfd-7a0f-4c66-b5a2-a8bd7bc1bca6",
                   "title": "Injection attack - disclosure",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Information disclosure",
                   "description": "Malicious data is passed to the process to gain access to or exfiltrate data stored in database.",
@@ -684,7 +682,7 @@
                 {
                   "id": "093a30ce-6312-4ee1-9a16-138ecf2d3f2e",
                   "title": "Expose sensitive data in logs",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Information disclosure",
                   "description": "Logs may leak sensitive data such as email, password, IP, and session IDs, when tracing user actions.",
@@ -696,12 +694,12 @@
                 }
               ],
               "threatFrequency": {
-                "spoofing": 1,
-                "tampering": 5,
+                "spoofing": 2,
+                "tampering": 8,
                 "repudiation": 0,
-                "informationDisclosure": 5,
-                "denialOfService": 1,
-                "elevationOfPrivilege": 1
+                "informationDisclosure": 8,
+                "denialOfService": 4,
+                "elevationOfPrivilege": 2
               }
             }
           },
@@ -754,60 +752,6 @@
               {
                 "x": 800,
                 "y": 140
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "validation_confirmation",
-              "description": "Confirmation from the credentials validation process that the submitted credentials are valid.",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": [
-                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ]
-            },
-            "labels": [
-              "validation_confirmation"
-            ],
-            "id": "9e51c3ac-d04f-4699-a6e3-c052f3e47ffa",
-            "source": {
-              "cell": "bc76f0d2-8f73-48f9-84fa-5d940a11ce31",
-              "port": "fbd336e9-39bf-4e41-94ab-6dd92128d979"
-            },
-            "target": {
-              "cell": "f94c11f5-8d6c-4c80-a25e-4f052e677c97",
-              "port": "5de3b62b-d820-43af-895d-ee6c3ea9d4f8"
-            },
-            "vertices": [
-              {
-                "x": 650,
-                "y": 440
               }
             ]
           },
@@ -965,60 +909,6 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "hashed_given_password",
-              "description": "The hashed password provided to the validation process for comparison against the stored credentials.",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": [
-                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ]
-            },
-            "labels": [
-              "hashed_given_password"
-            ],
-            "id": "1a496a56-454f-425a-9608-2a0457e7acac",
-            "source": {
-              "cell": "70c833cd-0cdf-462f-956c-286fb8dd74d9",
-              "port": "0bdbb9d0-945b-41fa-baba-b18180b79cfe"
-            },
-            "target": {
-              "cell": "bc76f0d2-8f73-48f9-84fa-5d940a11ce31",
-              "port": "b04f0c4e-79d9-4aba-b88e-c1832df80598"
-            },
-            "vertices": [
-              {
-                "x": 890,
-                "y": 290
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
                 "stroke": "red",
                 "strokeWidth": 2.5,
                 "targetMarker": {
@@ -1116,93 +1006,6 @@
               {
                 "x": 400,
                 "y": 60
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "get_login_response",
-              "description": "Response from the login process containing the html, css, js etc of the login page.",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [
-                {
-                  "id": "b037ec10-6ecc-4406-a538-dfe768f87f84",
-                  "title": "Login process response changed in transit",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Tampering",
-                  "description": "See #16",
-                  "mitigation": "",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 210,
-                  "score": ""
-                },
-                {
-                  "id": "f7697c3d-f1c1-4733-bafd-1492d83516d6",
-                  "title": "Flooding the network with traffic",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Denial of service",
-                  "description": "See #15",
-                  "mitigation": "",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 216,
-                  "score": ""
-                }
-              ],
-              "trustBoundaryIds": [
-                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ],
-              "threatFrequency": {
-                "tampering": 2,
-                "informationDisclosure": 0,
-                "denialOfService": 1
-              }
-            },
-            "labels": [
-              "get_login_response"
-            ],
-            "id": "79c078cf-1161-41f1-b3ec-bf387a04e1ce",
-            "source": {
-              "cell": "f94c11f5-8d6c-4c80-a25e-4f052e677c97",
-              "port": "d54f0a46-8146-47c4-a229-f3ef0054abd9"
-            },
-            "target": {
-              "cell": "5f3e80d7-077b-45d3-a94a-69967e34573a",
-              "port": "3cf15723-49a1-4efc-bb2a-240214ee345a"
-            },
-            "vertices": [
-              {
-                "x": 270,
-                "y": 400
               }
             ]
           },
@@ -1461,6 +1264,62 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
+              "name": "hashed_given_password",
+              "description": "The hashed password provided to the validation process for comparison against the stored credentials.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "hashed_given_password"
+            ],
+            "id": "1a496a56-454f-425a-9608-2a0457e7acac",
+            "source": {
+              "cell": "70c833cd-0cdf-462f-956c-286fb8dd74d9",
+              "port": "0bdbb9d0-945b-41fa-baba-b18180b79cfe"
+            },
+            "target": {
+              "cell": "f94c11f5-8d6c-4c80-a25e-4f052e677c97",
+              "port": "5de3b62b-d820-43af-895d-ee6c3ea9d4f8"
+            },
+            "vertices": [
+              {
+                "x": 890,
+                "y": 280
+              },
+              {
+                "x": 825,
+                "y": 350
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
               "name": "unique_session_id",
               "description": "A unique session ID generated for the citizen's session after a successful login.",
               "outOfScope": false,
@@ -1494,6 +1353,93 @@
             ]
           },
           {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "get_login_response",
+              "description": "Response from the login process containing the html, css, js etc of the login page.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "b037ec10-6ecc-4406-a538-dfe768f87f84",
+                  "title": "Login process response changed in transit",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "See #16",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 210,
+                  "score": ""
+                },
+                {
+                  "id": "f7697c3d-f1c1-4733-bafd-1492d83516d6",
+                  "title": "Flooding the network with traffic",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "See #15",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 216,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [
+                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
+              ],
+              "threatFrequency": {
+                "tampering": 2,
+                "informationDisclosure": 0,
+                "denialOfService": 1
+              }
+            },
+            "labels": [
+              "get_login_response"
+            ],
+            "id": "79c078cf-1161-41f1-b3ec-bf387a04e1ce",
+            "source": {
+              "cell": "f94c11f5-8d6c-4c80-a25e-4f052e677c97",
+              "port": "d54f0a46-8146-47c4-a229-f3ef0054abd9"
+            },
+            "target": {
+              "cell": "5f3e80d7-077b-45d3-a94a-69967e34573a",
+              "port": "3cf15723-49a1-4efc-bb2a-240214ee345a"
+            },
+            "vertices": [
+              {
+                "x": 270,
+                "y": 400
+              }
+            ]
+          },
+          {
             "position": {
               "x": 160,
               "y": -350
@@ -1507,8 +1453,8 @@
                 "text": "Email\nService\nProvider"
               },
               "body": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
                 "strokeDasharray": null
               }
             },
@@ -1605,7 +1551,7 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": true,
+              "hasOpenThreats": false,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
@@ -1614,7 +1560,7 @@
                 {
                   "id": "04cd6bc7-e93a-47e0-8930-b2a4e5c0ad38",
                   "title": "Verification email spoofed as coming from SecureReports",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Spoofing",
                   "description": "The absence of SPF/DKIM/DMARC configuration allows Bad Actors to forge a verification email as coming from SecureReports.",
@@ -1627,11 +1573,11 @@
                 {
                   "id": "d63cc3d7-4d9d-4dd8-b17e-6fd9f2443af2",
                   "title": "Email vendor becomes comprimised through tampering",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Tampering",
                   "description": "The email service and is assumed third-party infrastructure. If the vendor is compromised (e.g. its API keys are stolen), an attacker can send mail as SecureReports, or read mail in transit.",
-                  "mitigation": "- Apply the principle of least privilege when storing API keys\n- Rotate keys regularly\n- Audit the third-party software's security",
+                  "mitigation": "- Apply the principle of least privilege when storing API keys\n- Rotate keys regularly\n- Audit the third-party software's security\n- Store keys in a secret vault",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 229,
@@ -1640,7 +1586,7 @@
                 {
                   "id": "f37db079-05d2-4d06-a2a1-6b3a0a3acab3",
                   "title": "Phishing SecureReports verify email clone",
-                  "status": "Open",
+                  "status": "Accepted",
                   "severity": "TBD",
                   "type": "Spoofing",
                   "description": "A Bad Actor impersonates the legitimate SecureReports verification email with a link that directs citizens to a illegitimate site that harvests their email, password, and/or other personal data.",
@@ -1653,7 +1599,7 @@
                 {
                   "id": "0ea4f18e-1e89-4f69-a0ff-d9fddeb77799",
                   "title": "Verification token is retained in provider logs",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Information disclosure",
                   "description": "If the email provider logs message content/metadata, it can become exposed later if the email provider is compromised.",
@@ -1665,10 +1611,10 @@
                 }
               ],
               "threatFrequency": {
-                "spoofing": 4,
-                "tampering": 1,
+                "spoofing": 6,
+                "tampering": 2,
                 "repudiation": 0,
-                "informationDisclosure": 3,
+                "informationDisclosure": 4,
                 "denialOfService": 0,
                 "elevationOfPrivilege": 0
               }
@@ -1688,8 +1634,8 @@
                 "text": "Hashing"
               },
               "body": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
                 "strokeDasharray": null
               }
             },
@@ -1786,7 +1732,7 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": true,
+              "hasOpenThreats": false,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
@@ -1795,7 +1741,7 @@
                 {
                   "id": "d1a2b3c4-0001-4a5b-8c6d-e7f8a9b0c1d1",
                   "title": "Library replaced with a fake/malicious library",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Spoofing",
                   "description": "See #161",
@@ -1808,7 +1754,7 @@
                 {
                   "id": "d1a2b3c4-0002-4a5b-8c6d-e7f8a9b0c1d2",
                   "title": "Process has been tampered with",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Tampering",
                   "description": "See #25",
@@ -1821,7 +1767,7 @@
                 {
                   "id": "d1a2b3c4-0003-4a5b-8c6d-e7f8a9b0c1d3",
                   "title": "Injection attack - tampering",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Tampering",
                   "description": "See #27",
@@ -1834,7 +1780,7 @@
                 {
                   "id": "d1a2b3c4-0004-4a5b-8c6d-e7f8a9b0c1d4",
                   "title": "Process gets access to restricted resources",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Elevation of privilege",
                   "description": "See #26",
@@ -1847,11 +1793,11 @@
                 {
                   "id": "d1a2b3c4-0005-4a5b-8c6d-e7f8a9b0c1d5",
                   "title": "Weak hashing algorithm allows reversal or collision",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Information disclosure",
                   "description": "The hashing algorithm used to store passwords may not be a modern password-hashing function, or may have known weaknesses (e.g., collisions, fast computation enabling brute force, no built-in salting), allowing a bad actor with access to a hashed value to recover the original password or forge a matching hash.",
-                  "mitigation": "- Use a purpose-built password hashing algorithm (e.g., bcrypt, scrypt, Argon2) rather than a general-purpose hash function (e.g., MD5, SHA-1, unsalted SHA-256).\n- Apply a unique salt per password to prevent rainbow table attacks.\n- Use an appropriate work factor/cost parameter and increase it over time as hardware improves.\n- Avoid algorithms with known collision vulnerabilities.",
+                  "mitigation": "- Use a purpose-built password hashing algorithm (e.g., bcrypt, scrypt, Argon2) rather than a general-purpose hash function (e.g., MD5, SHA-1, unsalted SHA-256).\n- Apply a unique salt per password to prevent rainbow table attacks.\n- Use an appropriate work factor/cost parameter and increase it over time as hardware improves.\n- Avoid algorithms with known collision vulnerabilities.\n- Add constant time hash comparison to avoid revealing information about the hashed content via timing differences",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 172,
@@ -1859,12 +1805,12 @@
                 }
               ],
               "threatFrequency": {
-                "spoofing": 1,
-                "tampering": 2,
+                "spoofing": 2,
+                "tampering": 4,
                 "repudiation": 0,
-                "informationDisclosure": 1,
+                "informationDisclosure": 2,
                 "denialOfService": 0,
-                "elevationOfPrivilege": 1
+                "elevationOfPrivilege": 2
               }
             }
           },
@@ -1882,8 +1828,8 @@
                 "text": "Verify Email"
               },
               "body": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
                 "strokeDasharray": null
               }
             },
@@ -1980,7 +1926,7 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": true,
+              "hasOpenThreats": false,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
@@ -1989,7 +1935,7 @@
                 {
                   "id": "d1a2b3c4-0010-4a5b-8c6d-e7f8a9b0c1e0",
                   "title": "Flooding the verify email process with requests",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Denial of service",
                   "description": "See #22",
@@ -2002,7 +1948,7 @@
                 {
                   "id": "d1a2b3c4-0011-4a5b-8c6d-e7f8a9b0c1e1",
                   "title": "Verification process replaced by scammer",
-                  "status": "Open",
+                  "status": "Accepted",
                   "severity": "TBD",
                   "type": "Spoofing",
                   "description": "See #23",
@@ -2015,7 +1961,7 @@
                 {
                   "id": "d1a2b3c4-0012-4a5b-8c6d-e7f8a9b0c1e2",
                   "title": "Process has been tampered with",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Tampering",
                   "description": "See #25",
@@ -2028,7 +1974,7 @@
                 {
                   "id": "d1a2b3c4-0013-4a5b-8c6d-e7f8a9b0c1e3",
                   "title": "Injection attack - tampering",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Tampering",
                   "description": "See #27",
@@ -2041,7 +1987,7 @@
                 {
                   "id": "d1a2b3c4-0014-4a5b-8c6d-e7f8a9b0c1e4",
                   "title": "Process leaks data via unsafe memory",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Information disclosure",
                   "description": "See #24",
@@ -2054,7 +2000,7 @@
                 {
                   "id": "d1a2b3c4-0015-4a5b-8c6d-e7f8a9b0c1e5",
                   "title": "Injection attack - disclosure",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Information disclosure",
                   "description": "See #28",
@@ -2067,7 +2013,7 @@
                 {
                   "id": "d1a2b3c4-0016-4a5b-8c6d-e7f8a9b0c1e6",
                   "title": "Expose sensitive data in logs",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Information disclosure",
                   "description": "See #29",
@@ -2080,7 +2026,7 @@
                 {
                   "id": "d1a2b3c4-0017-4a5b-8c6d-e7f8a9b0c1e7",
                   "title": "Process gets access to restricted resources",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Elevation of privilege",
                   "description": "See #26",
@@ -2092,12 +2038,12 @@
                 }
               ],
               "threatFrequency": {
-                "spoofing": 1,
-                "tampering": 2,
+                "spoofing": 2,
+                "tampering": 4,
                 "repudiation": 0,
-                "informationDisclosure": 3,
-                "denialOfService": 1,
-                "elevationOfPrivilege": 1
+                "informationDisclosure": 6,
+                "denialOfService": 2,
+                "elevationOfPrivilege": 2
               }
             }
           },
@@ -2115,8 +2061,8 @@
                 "text": "Random\nNumber\nGenerator"
               },
               "body": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
                 "strokeDasharray": null
               }
             },
@@ -2213,7 +2159,7 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": true,
+              "hasOpenThreats": false,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
@@ -2222,7 +2168,7 @@
                 {
                   "id": "f9c5c788-6ce6-41b1-80ff-870cd22d0b71",
                   "title": "Library replaced with a fake/malicious library ",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Spoofing",
                   "description": "Legitimate library replaced with a fake library by an actor, so consuming applications unknowingly pull numbers from an attacker controlled source. ",
@@ -2235,11 +2181,11 @@
                 {
                   "id": "03c7bf09-40e2-4c2a-aa20-3105ff1ffecf",
                   "title": "Entropy/seed leakage",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Information disclosure",
                   "description": "Internal state or seed value of the random number generator is exposed, allowing a bad actor to reconstruct past or predict future random numbers. ",
-                  "mitigation": "- Choose a well audited library (and library version) with no reported vulnerabilities. ",
+                  "mitigation": "- Choose a well audited library (and library version) with no reported vulnerabilities. \n- Monitor the 'health' of the entropy source",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 162,
@@ -2248,7 +2194,7 @@
                 {
                   "id": "3afc88af-76e0-41b7-8fc7-979cadfe5ae6",
                   "title": "Generation algorithm makes random number guessable",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Information disclosure",
                   "description": "Random number generator uses an algorithm that is not cryptographically secure, meaning even without the internal state being known, a past and future output can be guessed using brute force. ",
@@ -2261,7 +2207,7 @@
                 {
                   "id": "75b09d58-de91-485e-9eda-b9d702f962db",
                   "title": "Process has been tampered with",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Tampering",
                   "description": "See #25",
@@ -2274,7 +2220,7 @@
                 {
                   "id": "47970e1a-51fd-4793-83b7-05b1b937954d",
                   "title": "Injection attack - tampering",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Tampering",
                   "description": "See #27",
@@ -2286,10 +2232,10 @@
                 }
               ],
               "threatFrequency": {
-                "spoofing": 2,
-                "tampering": 3,
+                "spoofing": 3,
+                "tampering": 5,
                 "repudiation": 0,
-                "informationDisclosure": 5,
+                "informationDisclosure": 8,
                 "denialOfService": 0,
                 "elevationOfPrivilege": 0
               }
@@ -2309,8 +2255,8 @@
                 "text": "Login"
               },
               "body": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
                 "strokeDasharray": null
               }
             },
@@ -2407,7 +2353,7 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": true,
+              "hasOpenThreats": false,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
@@ -2416,7 +2362,7 @@
                 {
                   "id": "b2e383f2-b3d6-424e-b009-26af491b0a95",
                   "title": "Flooding the process with requests",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Denial of service",
                   "description": "See #22",
@@ -2429,7 +2375,7 @@
                 {
                   "id": "2434dbed-7010-42dc-950c-82800ac1bb9e",
                   "title": "Process replaced by scammer",
-                  "status": "Open",
+                  "status": "Accepted",
                   "severity": "TBD",
                   "type": "Spoofing",
                   "description": "See #23",
@@ -2442,7 +2388,7 @@
                 {
                   "id": "ffd0a648-e183-4e92-b064-966a21b27654",
                   "title": "Process leaks data via unsafe memory",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Information disclosure",
                   "description": "See #24",
@@ -2455,7 +2401,7 @@
                 {
                   "id": "a79c7351-523b-44b4-a3bf-fa8b281c1507",
                   "title": "Process has been tampered with",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Tampering",
                   "description": "See #25",
@@ -2468,7 +2414,7 @@
                 {
                   "id": "0447176c-224a-4e66-959b-97b6e8a67396",
                   "title": "Process gets access to restricted resources",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Elevation of privilege",
                   "description": "See #26",
@@ -2481,11 +2427,11 @@
                 {
                   "id": "ecc21417-3503-4e02-a14d-b17100bf00c5",
                   "title": "Injection attack - tampering of underlying data",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Tampering",
                   "description": "See #27",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 158,
@@ -2494,7 +2440,7 @@
                 {
                   "id": "ac029d61-cbc3-4bce-ab3b-9a65881e8ded",
                   "title": "Injection attack - disclosure",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Information disclosure",
                   "description": "See #28",
@@ -2507,7 +2453,7 @@
                 {
                   "id": "b8c4c853-9a1f-4dd5-a74d-c3fea3bf12a7",
                   "title": "Expose sensitive data in logs",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Information disclosure",
                   "description": "See #29",
@@ -2520,7 +2466,7 @@
                 {
                   "id": "3890072f-26e5-40c8-80f5-91cd60803ab3",
                   "title": "Spoofed login session",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Spoofing",
                   "description": "Stolen cookies remain valid indefinitely, letting an attacker impersonate the citizen long after the cookie was stolen",
@@ -2533,307 +2479,39 @@
                 {
                   "id": "272475a5-1021-4c1d-8b70-cfc9dbaa9bbc",
                   "title": "Non secure session cookie sent back to the Citizen",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Spoofing",
                   "description": "If the response from the login process fails to set the HttpOnly flag on the session cookie, a malicious script running on the front end could read/write to the cookie and allow a Bad Actor to impersonate the citizen.",
-                  "mitigation": "- Use the HttpOnly flag on cookies to prevent client side javascript code from reading to the cookie. This also prevents writing in most browsers.",
+                  "mitigation": "- Use the HttpOnly + Secure flag on cookies to prevent client side javascript code from reading to the cookie. This also prevents writing in most browsers.",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 246,
                   "score": ""
-                }
-              ],
-              "threatFrequency": {
-                "spoofing": 3,
-                "tampering": 2,
-                "repudiation": 1,
-                "informationDisclosure": 3,
-                "denialOfService": 1,
-                "elevationOfPrivilege": 1
-              }
-            }
-          },
-          {
-            "position": {
-              "x": 780,
-              "y": 400
-            },
-            "size": {
-              "width": 90,
-              "height": 100
-            },
-            "attrs": {
-              "text": {
-                "text": "Validate\nCredentials "
-              },
-              "body": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "strokeDasharray": null
-              }
-            },
-            "visible": true,
-            "shape": "process",
-            "zIndex": 19,
-            "ports": {
-              "groups": {
-                "top": {
-                  "position": "top",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "right": {
-                  "position": "right",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "bottom": {
-                  "position": "bottom",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "left": {
-                  "position": "left",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                }
-              },
-              "items": [
-                {
-                  "group": "top",
-                  "id": "b04f0c4e-79d9-4aba-b88e-c1832df80598"
                 },
                 {
-                  "group": "right",
-                  "id": "64eb3e7d-00db-49d5-844c-ea933cf06423"
-                },
-                {
-                  "group": "bottom",
-                  "id": "4b615b46-2303-4946-95bd-15354a4da6ae"
-                },
-                {
-                  "group": "left",
-                  "id": "fbd336e9-39bf-4e41-94ab-6dd92128d979"
-                }
-              ]
-            },
-            "id": "bc76f0d2-8f73-48f9-84fa-5d940a11ce31",
-            "data": {
-              "type": "tm.Process",
-              "name": "Validate\nCredentials ",
-              "description": "The process that checks the submitted email and password against the stored credentials to confirm they are valid.",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "handlesCardPayment": false,
-              "handlesGoodsOrServices": false,
-              "isWebApplication": false,
-              "privilegeLevel": "",
-              "threats": [
-                {
-                  "id": "d1a2b3c4-0006-4a5b-8c6d-e7f8a9b0c1d6",
-                  "title": "Process has been tampered with",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Tampering",
-                  "description": "See #25",
-                  "mitigation": "",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 173,
-                  "score": ""
-                },
-                {
-                  "id": "d1a2b3c4-0007-4a5b-8c6d-e7f8a9b0c1d7",
-                  "title": "Injection attack - tampering",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Tampering",
-                  "description": "See #27",
-                  "mitigation": "",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 174,
-                  "score": ""
-                },
-                {
-                  "id": "d1a2b3c4-0008-4a5b-8c6d-e7f8a9b0c1d8",
-                  "title": "Injection attack - disclosure",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Information disclosure",
-                  "description": "See #28",
-                  "mitigation": "",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 175,
-                  "score": ""
-                },
-                {
-                  "id": "d1a2b3c4-0009-4a5b-8c6d-e7f8a9b0c1d9",
-                  "title": "Process gets access to restricted resources",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Elevation of privilege",
-                  "description": "See #26",
-                  "mitigation": "",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 176,
-                  "score": ""
-                },
-                {
-                  "id": "51723f62-fea2-4eeb-9664-d22ccedbe80f",
+                  "id": "9e2e966d-865b-4620-b0f6-36bfc9a1d2ca",
                   "title": "Account enumeration via error messages",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Information disclosure",
-                  "description": "The application returns different responses or takes a different amount of time to respond depending on whether an email address is registered, has the wrong password, or hasn't been verified yet. This information can be used to determine which email addresses have accounts on the system.",
-                  "mitigation": "- Return the same comprehensive error message for all failure cases.\n- Add timing delays so that timing differences are not observable.",
+                  "description": "The application returns different responses or takes a different amount of time to respond depending on whether an email address is registered, has the wrong password, or hasn't been verified yet. This information can be used to determine which email addresses have accounts on the system.\n",
+                  "mitigation": "- Return the same comprehensive error message for all failure cases.\n- Add timing delays so that timing differences are not observable. ",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 238,
-                  "score": ""
-                },
-                {
-                  "id": "4d8e1b02-c554-4ff0-b678-14eda2896f15",
-                  "title": "Automated brute force login attempts",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Spoofing",
-                  "description": "Bad Actors could use leaked email/password pairs from other system data breaches to perform a brute force attack at entering accounts.",
-                  "mitigation": "- Enforce per-IP rate limiting\n",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 239,
+                  "number": 153,
                   "score": ""
                 }
               ],
               "threatFrequency": {
-                "spoofing": 1,
-                "tampering": 2,
-                "repudiation": 0,
-                "informationDisclosure": 2,
-                "denialOfService": 0,
-                "elevationOfPrivilege": 1
+                "spoofing": 6,
+                "tampering": 4,
+                "repudiation": 1,
+                "informationDisclosure": 7,
+                "denialOfService": 2,
+                "elevationOfPrivilege": 2
               }
             }
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 22,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "email_address/password",
-              "description": "The citizen's email address and password submitted at login, sent for validation.",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [
-                {
-                  "id": "200815fd-20e6-446a-b36c-10dcdbf6ab5c",
-                  "title": "Plaintext password handled in application memory",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Information disclosure",
-                  "description": "The password is passed in plaintext between application processes/components. A component that logs its inputs or dumps memory on error could leak the password before it is hashed.",
-                  "mitigation": "- Minimise the number of components that touch a plaintext password by hashing as close to the entry point as possible,\n- Don't log request bodies or wipe passwords before logging.\n- Apply the principle of least privilege to each component.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 243,
-                  "score": ""
-                }
-              ],
-              "trustBoundaryIds": [
-                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ],
-              "threatFrequency": {
-                "tampering": 0,
-                "informationDisclosure": 1,
-                "denialOfService": 0
-              }
-            },
-            "labels": [
-              "email_address/password"
-            ],
-            "id": "d4f1dc29-d52c-4752-aac0-bd033838adff",
-            "source": {
-              "cell": "f94c11f5-8d6c-4c80-a25e-4f052e677c97",
-              "port": "5de3b62b-d820-43af-895d-ee6c3ea9d4f8"
-            },
-            "target": {
-              "cell": "bc76f0d2-8f73-48f9-84fa-5d940a11ce31",
-              "port": "fbd336e9-39bf-4e41-94ab-6dd92128d979"
-            },
-            "vertices": [
-              {
-                "x": 660,
-                "y": 520
-              }
-            ]
           },
           {
             "shape": "flow",
@@ -2955,9 +2633,7 @@
                   "score": ""
                 }
               ],
-              "trustBoundaryIds": [
-                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ],
+              "trustBoundaryIds": [],
               "threatFrequency": {
                 "tampering": 0,
                 "informationDisclosure": 1,
@@ -2969,8 +2645,8 @@
             ],
             "id": "4b96d127-c9bf-441f-aa5b-68eaa17736c8",
             "source": {
-              "cell": "bc76f0d2-8f73-48f9-84fa-5d940a11ce31",
-              "port": "b04f0c4e-79d9-4aba-b88e-c1832df80598"
+              "cell": "f94c11f5-8d6c-4c80-a25e-4f052e677c97",
+              "port": "5de3b62b-d820-43af-895d-ee6c3ea9d4f8"
             },
             "target": {
               "cell": "70c833cd-0cdf-462f-956c-286fb8dd74d9",
@@ -2978,12 +2654,8 @@
             },
             "vertices": [
               {
-                "x": 800,
-                "y": 370
-              },
-              {
-                "x": 770,
-                "y": 320
+                "x": 790,
+                "y": 270
               }
             ]
           },
@@ -3082,12 +2754,8 @@
             },
             "vertices": [
               {
-                "x": 1060,
-                "y": 420
-              },
-              {
                 "x": 1130,
-                "y": 380
+                "y": 510
               },
               {
                 "x": 1280,
@@ -3168,8 +2836,8 @@
                 "text": "Receiving \nMTA"
               },
               "body": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
                 "strokeDasharray": null
               }
             },
@@ -3266,7 +2934,7 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": true,
+              "hasOpenThreats": false,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
@@ -3274,8 +2942,8 @@
               "threats": [
                 {
                   "id": "a41be5d1-38eb-4e87-8386-e89f89e2c167",
-                  "title": "MTA becomes comprimised through tampering",
-                  "status": "Open",
+                  "title": "MTA becomes comprimised",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Spoofing",
                   "description": "The MTA is assumed third-party infrastructure. If the vendor is compromised (e.g. its API keys are stolen), an attacker can send mail as SecureReports.",
@@ -3287,7 +2955,7 @@
                 }
               ],
               "threatFrequency": {
-                "spoofing": 4,
+                "spoofing": 5,
                 "tampering": 0,
                 "repudiation": 0,
                 "informationDisclosure": 0,
@@ -3310,12 +2978,10 @@
                 "text": "Citizen Mailbox"
               },
               "topLine": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
+                "strokeWidth": 1.5,
                 "strokeDasharray": null
               },
               "bottomLine": {
-                "stroke": "red",
                 "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
@@ -3413,7 +3079,7 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": true,
+              "hasOpenThreats": false,
               "isALog": false,
               "isEncrypted": false,
               "isSigned": false,
@@ -3423,7 +3089,7 @@
                 {
                   "id": "11c8e0c7-4e1b-4fe5-a04a-a8b35d574b08",
                   "title": "Verification link read from a shared mailbox",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Information disclosure",
                   "description": "The verification email may be read by anyone with access to the citizen's mailbox. A Bad Actor may click on the link to also verify the citizen's account and gain information though the verification flow.",
@@ -3437,7 +3103,7 @@
               "threatFrequency": {
                 "tampering": 0,
                 "repudiation": 0,
-                "informationDisclosure": 1,
+                "informationDisclosure": 2,
                 "denialOfService": 0
               }
             }
@@ -3503,15 +3169,12 @@
               "isTrustBoundary": true,
               "hasOpenThreats": false,
               "crossingFlows": [
-                "9e51c3ac-d04f-4699-a6e3-c052f3e47ffa",
-                "1a496a56-454f-425a-9608-2a0457e7acac",
                 "fa758357-7f42-42a8-9e52-51061a898cec",
                 "79c078cf-1161-41f1-b3ec-bf387a04e1ce",
                 "7f8c8596-6076-48ce-8be0-926151fbb53d",
-                "d4f1dc29-d52c-4752-aac0-bd033838adff",
                 "66708a20-72a0-4248-aa0a-75e8f7c332df",
-                "4b96d127-c9bf-441f-aa5b-68eaa17736c8",
                 "1e8a4bd7-1b7f-45b5-8123-3262bb21d368",
+                "79ab2f75-f444-4805-86cb-17eb999472c2",
                 "e6768564-29b5-46eb-a658-1874816cd8fb",
                 "d5ee7bf6-202c-4c3c-aea8-7cc1e229ecf5",
                 "dca0fd92-aac7-493e-b4b1-b13e3d758595",
@@ -3558,7 +3221,7 @@
                   "name": "block"
                 },
                 "sourceMarker": {
-                  "name": ""
+                  "name": "block"
                 },
                 "strokeDasharray": null
               }
@@ -3569,13 +3232,13 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "validate_credentials_info",
-              "description": "Contains the users hashed password and if they are verified (is_verified), given a user's email.",
+              "name": "user_info",
+              "description": "Given a user's email, the login process requests the hashed password and if they are verified (is_verified) from the datastore",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
               "hasOpenThreats": true,
-              "isBidirectional": false,
+              "isBidirectional": true,
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
@@ -3620,7 +3283,9 @@
                   "score": ""
                 }
               ],
-              "trustBoundaryIds": [],
+              "trustBoundaryIds": [
+                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
+              ],
               "threatFrequency": {
                 "tampering": 1,
                 "informationDisclosure": 1,
@@ -3628,7 +3293,7 @@
               }
             },
             "labels": [
-              "validate_credentials_info"
+              "user_info"
             ],
             "id": "79ab2f75-f444-4805-86cb-17eb999472c2",
             "source": {
@@ -3636,13 +3301,13 @@
               "port": "e513fc55-aa21-4446-b40c-5e7b9f435a5f"
             },
             "target": {
-              "cell": "bc76f0d2-8f73-48f9-84fa-5d940a11ce31",
-              "port": "64eb3e7d-00db-49d5-844c-ea933cf06423"
+              "cell": "f94c11f5-8d6c-4c80-a25e-4f052e677c97",
+              "port": "5de3b62b-d820-43af-895d-ee6c3ea9d4f8"
             },
             "vertices": [
               {
-                "x": 1060,
-                "y": 310
+                "x": 940,
+                "y": 410
               }
             ]
           },
@@ -3824,8 +3489,7 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
+                "stroke": "#333333",
                 "targetMarker": {
                   "name": "block"
                 },
@@ -3846,7 +3510,7 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": true,
+              "hasOpenThreats": false,
               "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
@@ -3855,7 +3519,7 @@
                 {
                   "id": "f4f97584-82d5-4a80-a1e4-8bc93cbd80cb",
                   "title": "Flooding the network with traffic",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Denial of service",
                   "description": "See #15",
@@ -3868,7 +3532,7 @@
                 {
                   "id": "19e69eb2-19c8-4d86-b528-e209600d5445",
                   "title": "Citizen information disclosed to a Bad Actor",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Information disclosure",
                   "description": "See #18",
@@ -3881,7 +3545,7 @@
                 {
                   "id": "5dc9ca85-bd5f-49d1-a4f0-92e50f67e157",
                   "title": "Citizen login data tampered with in transit",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Tampering",
                   "description": "A Bad Actor could tamper with the login credentials that the citizen supplied and log them into an account that is not theirs. Subsequent actions such as report making will then be performed on the attackers account.",
@@ -3896,9 +3560,9 @@
                 "c13b7a48-b539-45e9-b058-5d6a0ed613da"
               ],
               "threatFrequency": {
-                "tampering": 2,
-                "informationDisclosure": 2,
-                "denialOfService": 1
+                "tampering": 3,
+                "informationDisclosure": 3,
+                "denialOfService": 2
               }
             },
             "labels": [
@@ -4098,8 +3762,7 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
+                "stroke": "#333333",
                 "targetMarker": {
                   "name": "block"
                 },
@@ -4120,7 +3783,7 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": true,
+              "hasOpenThreats": false,
               "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
@@ -4129,7 +3792,7 @@
                 {
                   "id": "4a630c2a-1a85-4ce8-b027-27bf5acd9e32",
                   "title": "Flooding the network with traffic",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Denial of service",
                   "description": "See #15",
@@ -4142,7 +3805,7 @@
                 {
                   "id": "7f591adf-a1a6-4cd7-a3d7-d1d279f6044d",
                   "title": "Citizen session cookie exposed in transit",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Information disclosure",
                   "description": "A Bad Actor could observe the session cookie assigned to the Citizen on log-in and use the session-cookie to perform actions on behalf of the Citizen.",
@@ -4155,7 +3818,7 @@
                 {
                   "id": "745f1525-71d0-439d-8996-1f0988d7d026",
                   "title": "Login process response altered in transit",
-                  "status": "Open",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Tampering",
                   "description": "If a Bad Actor observed and altered the response from the login process to a different session cookie. The Citizen may be logged into an account owned by the Bad Actor. The Bad Actor could also alter the response to redirect the Citizen to a malicious website or to a spoofed version of SecureReports.",
@@ -4170,9 +3833,9 @@
                 "c13b7a48-b539-45e9-b058-5d6a0ed613da"
               ],
               "threatFrequency": {
-                "tampering": 2,
-                "informationDisclosure": 3,
-                "denialOfService": 1
+                "tampering": 3,
+                "informationDisclosure": 5,
+                "denialOfService": 2
               }
             },
             "labels": [
@@ -11304,6 +10967,6 @@
     ],
     "diagramTop": 5,
     "reviewer": "",
-    "threatTop": 152
+    "threatTop": 153
   }
 }
