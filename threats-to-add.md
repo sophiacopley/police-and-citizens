@@ -13,6 +13,15 @@ Every entry has a **title**, **STRIDE type**, **description** and **mitigations*
 Note: there are **three** flows named `verification_email` — disambiguate them by the
 source/target given in each entry.
 
+Note: in STRIDE, **spoofing applies only to actors and processes** (things with an identity),
+not to data flows or data stores. T3, T7 and T27 have been placed on valid elements for that reason.
+
+Note: per the assignment, countermeasures in the initial analysis must be **technical** and must
+**not** add features or change business logic — no MFA, CAPTCHA, password reset, session-expiry
+features, re-verification flows, etc. (the spec explicitly says verification links have **no timeout**).
+Where a mitigation *would* change behaviour, it is marked **proposed change** below and belongs in
+the discussion section (assignment section 7), where each proposed change must get its own threat analysis.
+
 ---
 
 ## 1. Email chain — currently ZERO threats (highest priority)
@@ -32,19 +41,20 @@ source/target given in each entry.
 
 **Description:** Email is only encrypted hop-by-hop (TLS between mail servers), not end-to-end. The verification link — effectively an account-activation credential — can be read by anyone able to observe an unencrypted hop or the mail operator's infrastructure.
 
-**Mitigations:**
-- Use short-lived, single-use verification tokens so an intercepted link cannot be replayed later.
-- Never include passwords or password-reset secrets in email.
-- Treat email as an untrusted channel: a token in email must never be the sole proof of identity for sensitive actions.
+**Mitigations (technical):**
+- Enforce TLS on all SMTP hops (STARTTLS/MTA-STS) so mail cannot be downgraded to plaintext.
+- Make each link single-use server-side so an intercepted link cannot be replayed after first use (token state check — no workflow change).
+- Never include passwords in email; treat email as an untrusted channel, so a token sent by email is never the sole proof of identity.
+- Adding an *expiry* to the links would contradict the spec's "no timeout" — **proposed change** (see T7/T17).
 
 ### T3 — Spoofing: Phishing "verify your account" email clone
-**Element:** `verification_email` flow (**Citizen Mailbox → Citizen**)
+**Element:** `Email Service Provider` (process) — spoofing must be on an actor or process, not a data flow
 
-**Description:** An attacker sends a fake "verify your account" email that looks like the real one and links to a cloned SecureReports page, harvesting the citizen's email, password or other personal data. This is the social-engineering angle of the registration process.
+**Description:** An attacker impersonates the legitimate verification service using a look-alike (typosquatted) domain or a cloned "verify your account" page that harvests the citizen's email, password or other personal data. This is the social-engineering angle of the registration process, and complements the existing "Registration process replaced by scammer" threat (#23) on the `Register` process.
 
 **Mitigations:**
-- Publish and enforce DMARC on the sending domain so clones are marked as spam.
-- Monitor for look-alike/typosquatted domains and take them down or block them.
+- Monitor for look-alike/typosquatted domains and have them taken down or blocked.
+- Publish and enforce DMARC on the sending domain so clones are marked as spam (see T1).
 - Educate citizens that SecureReports never asks for passwords by email.
 
 ### T4 — Information Disclosure: Verification link read from a shared/forwarded mailbox
@@ -52,10 +62,10 @@ source/target given in each entry.
 
 **Description:** The verification email can be read by anyone with access to the citizen's mailbox — a shared family account, forwarded mail, or a device left unlocked. Because the link has no expiry and works from any browser, that person can activate the account before the real owner does.
 
-**Mitigations:**
-- Make verification links single-use and expiring.
-- Where possible, bind verification to the registering browser/device.
-- Require re-verification before sensitive actions if activation looks unexpected.
+**Mitigations (technical):**
+- Make verification links single-use server-side, so a forwarded link stops working after the first activation (token state check — no workflow change).
+- Where possible, bind the link to the registering browser/device as an additional technical check.
+- Adding an expiry contradicts the spec's "no timeout" — **proposed change** (see T7/T17). Requiring re-verification before sensitive actions would also be a new workflow — **proposed change**.
 
 ### T5 — Tampering: Email vendor/MTA compromise (supply chain)
 **Element:** `Email Service Provider` (process) **and** `Receiving MTA` (process)
@@ -72,19 +82,19 @@ source/target given in each entry.
 
 **Description:** Email providers commonly log message content or metadata, and support tickets can expose message details. A verification token that appears in the email body or URL can end up in logs or support records, where it may be exposed later.
 
-**Mitigations:**
-- Sign a data-processing agreement covering data retention and deletion.
-- Minimise and redact logging of message content; never log full tokens.
-- Use short-lived tokens so any logged value becomes useless quickly.
+**Mitigations (technical):**
+- Minimise and redact logging of message content; never log full tokens; configure the provider's retention period to a minimum.
+- Sign a data-processing agreement covering data retention and deletion (contractual control on a dependency).
+- Rely on single-use token state and attempt limits so a logged value becomes useless; adding an expiry would be a **proposed change** (see T7/T17).
 
 ### T7 — Spoofing: Mailbox compromise → account takeover via never-expiring link
-**Element:** `Citizen Mailbox` (data store)
+**Element:** `Citizen` (actor) — spoofing must be on an actor or process, not a data store. The compromised mailbox is the *means*; the impersonation of the citizen is the *threat*.
 
-**Description:** The assignment specification states there is **no timeout for verification links**. If an attacker gains access to a mailbox — even months later — they can use the still-valid link to activate the account and take it over, or register accounts on behalf of victims.
+**Description:** The assignment specification states there is **no timeout for verification links**. If an attacker gains access to a mailbox — even months later — they can use the still-valid link to activate the account and impersonate the citizen, or register accounts on behalf of victims.
 
 **Mitigations:**
 - Add an expiry to verification links (**proposed change** — analyse it in the discussion section with the updated Threat Dragon model).
-- Invalidate the link once used and on any password/email change.
+- Invalidate the link once used (single-use token state — a technical check, no workflow change).
 - Flag this as an "insecure by design" finding in section 8 of the report.
 
 ---
@@ -107,9 +117,9 @@ source/target given in each entry.
 **Description:** Attackers replay username/password pairs leaked from other breaches (credential stuffing) or make many guesses against accounts (brute force). Because passwords are often reused, this can succeed without exploiting any vulnerability.
 
 **Mitigations:**
-- Enforce per-IP and per-account rate limiting with exponential backoff.
-- Offer MFA as an additional factor (separation of privilege).
-- Screen submitted passwords against breached-password lists at registration/reset.
+- Enforce per-IP and per-account rate limiting with exponential backoff (no change to the login workflow).
+- Screen submitted passwords against breached-password lists at registration (technical check, transparent to the user).
+- MFA would add a new authentication factor to the system — **proposed change** (separation of privilege, Lecture 1) for the discussion section.
 
 ### T10 — Denial of Service: Account lockout abuse
 **Element:** `Validate Credentials` (process)
@@ -119,7 +129,7 @@ source/target given in each entry.
 **Mitigations:**
 - Throttle based on IP address and device fingerprint rather than locking the account outright.
 - Use temporary, exponentially increasing delays instead of permanent lockout.
-- Provide a lockout-free fallback such as MFA or email verification to restore access.
+- Any account-recovery fallback (e.g., MFA or a re-verification flow) would be a new workflow — **proposed change** for the discussion section.
 
 ### T11 — Information Disclosure: Timing side-channel on password hash comparison
 **Element:** `Validate Credentials` (process)
@@ -151,9 +161,9 @@ source/target given in each entry.
 **Description:** If session cookies have no server-side expiry, a stolen cookie remains valid indefinitely, letting an attacker impersonate the citizen long after the theft.
 
 **Mitigations:**
-- Store sessions server-side with idle-timeout and absolute-timeout values.
-- Invalidate the session on logout, password change and privilege change.
-- Use short cookie lifetimes combined with re-authentication for sensitive actions.
+- Store sessions server-side with idle-timeout and absolute-timeout values (session lifetime is a technical control, not a new feature).
+- Invalidate the session on logout and after the configured idle timeout.
+- Re-authentication prompts before sensitive actions would be a new workflow — **proposed change** for the discussion section.
 
 ---
 
@@ -175,8 +185,8 @@ source/target given in each entry.
 **Description:** A verification link that remains valid after the account is verified can be replayed: an attacker who obtains a copy — from logs, a forwarded email or browser history — can re-verify or interfere with a later verification flow.
 
 **Mitigations:**
-- Make tokens single-use; invalidate immediately after the first successful verification.
-- Invalidate all outstanding verification tokens when the account is created or the email changes.
+- Make tokens single-use; invalidate immediately after the first successful verification (token state check — no workflow change).
+- Invalidate any previously issued token for the same account whenever a new token is issued.
 - Store the token's hash and its used/expired state server-side.
 
 ### T16 — Information Disclosure: Verification token leaks via logs, referrer or history
@@ -194,9 +204,9 @@ source/target given in each entry.
 
 **Description:** The specification explicitly states that verification links have **no timeout**. Any token ever issued stays valid forever, so a link harvested from logs, a compromised mailbox or a data breach can be used to activate an account at any time — this is insecure by design.
 
-**Mitigations (proposed change):**
-- Add an expiry (e.g., 24–72 hours) and a re-send/re-verification flow — this is a **proposed change**, so it must be threat-analysed in the discussion section with an updated Threat Dragon model.
-- Invalidate tokens on use and on credential changes.
+**Mitigations (proposed change — analyse each in the discussion section with an updated Threat Dragon model):**
+- Add an expiry (e.g., 24–72 hours) to verification links, plus a re-send/re-verification flow.
+- Invalidate tokens on use (single-use) and when a new token is issued.
 - Use this as your strongest "insecure by design" finding in section 8 of the report.
 
 ---
@@ -211,7 +221,7 @@ source/target given in each entry.
 **Mitigations:**
 - Return the same success message whether the email is new or already registered.
 - Do not distinguish existing vs new accounts in responses or timing.
-- Optionally send the verification email in both cases to avoid leaking account existence.
+- Sending the verification email even for unregistered addresses would be a behaviour change — **proposed change** if you want to adopt it.
 
 ### T19 — Tampering: Email header injection via crafted email address
 **Element:** `Register` (process)
@@ -229,9 +239,9 @@ source/target given in each entry.
 **Description:** Automated scripts can register many fake accounts, polluting the citizen database and eroding the police's ability to trust reports — and each fake account may be used for abuse.
 
 **Mitigations:**
-- Rate limit registrations per IP and per network.
-- Add CAPTCHA or proof-of-work on the registration form.
+- Rate limit registrations per IP and per network (technical, no change to the registration workflow).
 - Enforce email verification (already in the design) and monitor for mass registrations.
+- CAPTCHA/proof-of-work would add a new step to the registration workflow — **proposed change** for the discussion section.
 
 ---
 
@@ -243,9 +253,9 @@ source/target given in each entry.
 **Description:** When the organisation upgrades the password-hashing algorithm or work factor, existing hashes are only re-computed if the application provides a re-hash path. Without one, old hashes stay weak forever (e.g., unsalted MD5/SHA-1) even though policy has changed.
 
 **Mitigations:**
-- Re-hash with the current parameters on every successful login when the stored hash is outdated (algorithm agility).
+- Re-hash with the current parameters on every successful login when the stored hash is outdated (algorithm agility — transparent to the user, no workflow change).
 - Store the algorithm/parameters alongside each hash so upgrades are detectable.
-- Periodically force re-login/re-verification for accounts with outdated hashes.
+- Forcing re-login/re-verification for accounts with outdated hashes would be a new workflow — **proposed change** for the discussion section.
 
 ### T22 — Denial of Service: Expensive hash computation as a CPU DoS vector
 **Element:** `Hashing` (process)
@@ -278,7 +288,7 @@ source/target given in each entry.
 
 **Mitigations:**
 - Use ≥128 bits of entropy for verification tokens (or high-entropy alphanumeric codes).
-- Pair the code space with expiry and attempt limits (see T14).
+- Pair the code space with attempt limits (see T14); expiry would be a **proposed change** (see T17).
 - Reject weak/legacy code formats on upgrade.
 
 ---
@@ -306,9 +316,9 @@ source/target given in each entry.
 - Require the Origin/Referer to match the SecureReports origin for state-changing requests.
 
 ### T27 — Spoofing: Session cookie missing Secure/HttpOnly/SameSite attributes
-**Element:** `submit_login_response/session_cookie` flow (Login → Citizen)
+**Element:** `Login` (process) — spoofing must be on an actor or process, not a data flow. The cookie is *issued* on the `submit_login_response/session_cookie` flow, but the threat (session theft → impersonation) belongs on the process that issues it.
 
-**Description:** If the session cookie lacks `Secure`, it can be sent over plain HTTP; without `HttpOnly`, JavaScript can read it (enabling XSS-based theft); without `SameSite`, it is sent on cross-site requests (enabling CSRF). This complements the existing threats #222/#223 on the same flow.
+**Description:** If the session cookie lacks `Secure`, it can be sent over plain HTTP; without `HttpOnly`, JavaScript can read it (enabling XSS-based theft); without `SameSite`, it is sent on cross-site requests (enabling CSRF). A stolen session lets an attacker impersonate the citizen. This complements the existing flow threats #222 (cookie exposed in transit) and #223 (response altered) on `submit_login_response/session_cookie`.
 
 **Mitigations:**
 - Set `Secure`, `HttpOnly` and `SameSite=Lax/Strict` on the session cookie.
@@ -369,9 +379,9 @@ source/target given in each entry.
 **Description:** Citizens routinely reuse passwords across services. When another site is breached, the leaked credentials are tried against SecureReports (credential stuffing). This extends the existing weak-password (#1) and stolen-credentials (#3) threats.
 
 **Mitigations:**
-- Screen registration passwords against breached-password lists (e.g., the HIBP k-anonymity API).
-- Encourage MFA and password managers; detect and notify on credential-stuffing patterns.
-- Enforce strong passwords/passphrases per existing threat #1.
+- Screen registration passwords against breached-password lists (e.g., the HIBP k-anonymity API) at registration.
+- Enforce strong passwords/passphrases per existing threat #1; encourage password managers; monitor for credential-stuffing patterns.
+- MFA would add a new authentication factor to the system — **proposed change** for the discussion section.
 
 ### T33 — Spoofing: Session left active on a shared/borrowed device
 **Element:** `Citizen` (actor)
@@ -379,9 +389,8 @@ source/target given in each entry.
 **Description:** A citizen may log in on a shared or borrowed device and leave the session active; the next user of that device can act as the citizen. Complements the stolen-session-cookie threat #211.
 
 **Mitigations:**
-- Enforce idle timeout and absolute session expiry (see T13).
-- Provide a visible logout and a "log out of all sessions" control.
-- Prompt for re-authentication before sensitive actions after periods of inactivity.
+- Enforce idle timeout and absolute session expiry (see T13 — technical controls, no new feature).
+- A "log out of all sessions" control and re-authentication prompts would be new features/workflows — **proposed changes** for the discussion section.
 
 ---
 
