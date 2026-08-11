@@ -6929,7 +6929,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "token hash + report ID\n",
+              "name": "share token + report ID\n",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -6965,7 +6965,7 @@
               }
             },
             "labels": [
-              "token hash + report ID\n"
+              "share token + report ID\n"
             ],
             "id": "8327d9ec-6564-5a6a-aa49-0d7cf8914dda",
             "source": {
@@ -7113,7 +7113,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "hashed token lookup",
+              "name": "token lookup",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -7125,13 +7125,13 @@
               "protocol": "SQL/TCP (internal)",
               "threats": [
                 {
-                  "id": "26b9009a-30c9-56ee-9fff-a2fed3c9a2e3",
-                  "title": "Timing side channel in token comparison",
+                  "id": "9c4e21f0-7b6d-4a83-91cf-0d5e8a3b62f4",
+                  "title": "Candidate token injected into the lookup query",
                   "status": "Open",
-                  "severity": "Medium",
-                  "type": "Information disclosure",
-                  "description": "Byte-by-byte comparison of tokens leaks information about how much of a candidate token is correct.",
-                  "mitigation": "Look up by indexed hash and use a constant-time comparison for any residual equality check.",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "The candidate token is supplied by an unauthenticated caller and may contain SQL injection code.",
+                  "mitigation": "Use paramaterisation to prevent SQL injection.",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 127,
@@ -7149,7 +7149,7 @@
               }
             },
             "labels": [
-              "hashed token lookup"
+              "token lookup"
             ],
             "id": "ab2cd54b-9b2b-5095-a0f9-4de2822643e3",
             "source": {
@@ -7201,11 +7201,11 @@
               "threats": [
                 {
                   "id": "c56387a8-8e6f-57e2-b964-16b2058f7e58",
-                  "title": "Expiry and revocation state not enforced",
+                  "title": "Closed report remains accessible",
                   "status": "Open",
                   "severity": "High",
                   "type": "Information disclosure",
-                  "description": "Reading the association without its expiry and revocation state is what lets a withdrawn link keep working. See the identically titled threat on Validate Token and Show Report (E9) for the full description.",
+                  "description": "This flow must carry the report's current closed state so E9 can check it at read time. See the identically titled threat on Validate Token and Show Report (E9).",
                   "mitigation": "See the identically titled threat on Validate Token and Show Report (E9).",
                   "modelType": "STRIDE",
                   "new": false,
@@ -7297,7 +7297,7 @@
                   "severity": "High",
                   "type": "Information disclosure",
                   "description": "If the report ID comes from the request rather than the token record, a valid token can be pointed at any report.",
-                  "mitigation": "Resolve the report identifier exclusively from the stored token association; ignore any report ID in the request.",
+                  "mitigation": "Resolve the report identifier exclusively from the stored token association, ignore any report ID in the request.",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 129,
@@ -7447,7 +7447,7 @@
                   "severity": "High",
                   "type": "Information disclosure",
                   "description": "The share page is unauthenticated, so a shared cache is more likely to store and re-serve it.",
-                  "mitigation": "Cache-Control: no-store on the share response, reinforced at the assumed reverse proxy (D3).",
+                  "mitigation": "Don't cache on the share response, reinforced at the assumed reverse proxy (D3).",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 131,
@@ -7522,7 +7522,7 @@
                   "severity": "Medium",
                   "type": "Information disclosure",
                   "description": "The request reveals which report is about to be shared, and the response carries the resulting secret URL.",
-                  "mitigation": "HTTPS only with HSTS (see model assumptions).",
+                  "mitigation": "HTTPS only with HSTS.",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 92,
@@ -7676,7 +7676,7 @@
                   "severity": "High",
                   "type": "Information disclosure",
                   "description": "The token is a bearer credential carried in the URL, so anyone who observes the request gains the same read access as the recipient.",
-                  "mitigation": "HTTPS only with HSTS, terminated at the assumed reverse proxy (D2/D3, see model assumptions).",
+                  "mitigation": "HTTPS only with HSTS",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 94,
