@@ -54,6 +54,50 @@
             ]
           },
           {
+            "shape": "trust-boundary-curve",
+            "width": 200,
+            "height": 100,
+            "zIndex": -1,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Boundary",
+              "name": "Citizen's email provider trust boundary",
+              "description": "The boundary around the citizen's mailbox and its receiving MTA",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false,
+              "crossingFlows": [
+                "96744225-ce62-4f85-8251-bf914e31207a",
+                "7584465f-c9c7-4cee-b107-37116ac9c894"
+              ],
+              "containedElements": [
+                "ff819878-cffc-442a-8488-e7f7669d69f6",
+                "ee78cb0c-ffdc-448b-a982-629595993609"
+              ]
+            },
+            "labels": [
+              "Citizen's email provider trust boundary"
+            ],
+            "id": "00bacd0a-5153-47e8-aa9a-b10548c8ec4f",
+            "source": {
+              "x": -100,
+              "y": -410
+            },
+            "target": {
+              "x": -290,
+              "y": 110
+            },
+            "vertices": [
+              {
+                "x": -50,
+                "y": -280
+              },
+              {
+                "x": -80,
+                "y": 110
+              }
+            ]
+          },
+          {
             "position": {
               "x": -40,
               "y": 290
@@ -1305,8 +1349,8 @@
             },
             "vertices": [
               {
-                "x": -80,
-                "y": -160
+                "x": -170,
+                "y": -90
               }
             ]
           },
@@ -3083,6 +3127,7 @@
               "protocol": "",
               "threats": [],
               "trustBoundaryIds": [
+                "00bacd0a-5153-47e8-aa9a-b10548c8ec4f",
                 "9ae6e5ac-e04d-471c-ae1b-463b7476c2c7"
               ]
             },
@@ -3100,19 +3145,19 @@
             },
             "vertices": [
               {
-                "x": 60,
-                "y": -300
+                "x": -30,
+                "y": -230
               },
               {
-                "x": 40,
-                "y": -300
+                "x": -50,
+                "y": -230
               }
             ]
           },
           {
             "position": {
-              "x": -90.00000000000006,
-              "y": -350
+              "x": -180,
+              "y": -280
             },
             "size": {
               "width": 90,
@@ -3253,8 +3298,8 @@
           },
           {
             "position": {
-              "x": -160,
-              "y": -120
+              "x": -250,
+              "y": 10
             },
             "size": {
               "width": 120,
@@ -4371,7 +4416,9 @@
                   "score": ""
                 }
               ],
-              "trustBoundaryIds": [],
+              "trustBoundaryIds": [
+                "00bacd0a-5153-47e8-aa9a-b10548c8ec4f"
+              ],
               "threatFrequency": {
                 "tampering": 0,
                 "informationDisclosure": 1,
@@ -4392,8 +4439,8 @@
             },
             "vertices": [
               {
-                "x": -80,
-                "y": 50
+                "x": -170,
+                "y": 180
               }
             ]
           }
