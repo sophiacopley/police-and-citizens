@@ -1333,8 +1333,8 @@
             },
             "vertices": [
               {
-                "x": 450,
-                "y": 70
+                "x": 300,
+                "y": 140
               }
             ]
           },
@@ -3076,66 +3076,13 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
                 "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 28,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "verification_code",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": [
-                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ]
-            },
-            "labels": [
-              "verification_code"
-            ],
-            "id": "2cf4cd81-b0d8-4657-9284-2f098f58f7e5",
-            "source": {
-              "cell": "15d61bf3-d764-492d-a4aa-82bae18b2ee0",
-              "port": "e513fc55-aa21-4446-b40c-5e7b9f435a5f"
-            },
-            "target": {
-              "cell": "cff769ff-1225-458c-aaba-245323061bc2",
-              "port": "2557a0b1-d3d9-482a-a90e-f153baa16ff8"
-            },
-            "vertices": [
-              {
-                "x": 1050,
-                "y": 500
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
                   "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
                 },
                 "strokeDasharray": null
               }
@@ -3146,23 +3093,68 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "is_verified",
-              "description": "",
+              "name": "verification_info",
+              "description": "Verify email process receives the verification code from the Citizen information store, and sends the is_verified status of the email once verified. ",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
+              "hasOpenThreats": true,
+              "isBidirectional": true,
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": [],
+              "threats": [
+                {
+                  "id": "40b6b47c-447b-43fa-bbd1-fa60973fd92f",
+                  "title": "Data or query altered in transit ",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "See # 188",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 205,
+                  "score": ""
+                },
+                {
+                  "id": "ce019737-002d-4fc3-a923-38f55fe42f7f",
+                  "title": "Data is read in transit ",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "See #189",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 206,
+                  "score": ""
+                },
+                {
+                  "id": "c31ca0bf-97a3-46d9-a6bc-114e7392f89e",
+                  "title": "Wire is overloaded by request ",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "See #190",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 207,
+                  "score": ""
+                }
+              ],
               "trustBoundaryIds": [
                 "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ]
+              ],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 1,
+                "denialOfService": 1
+              }
             },
             "labels": [
-              "is_verified"
+              "verification_info"
             ],
             "id": "1e8a4bd7-1b7f-45b5-8123-3262bb21d368",
             "source": {
@@ -3177,58 +3169,14 @@
               {
                 "x": 1060,
                 "y": 420
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 30,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "is_verified",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": []
-            },
-            "labels": [
-              "is_verified"
-            ],
-            "id": "ea788e8c-9f6f-4368-a88f-3a283a390db6",
-            "source": {
-              "cell": "15d61bf3-d764-492d-a4aa-82bae18b2ee0",
-              "port": "e513fc55-aa21-4446-b40c-5e7b9f435a5f"
-            },
-            "target": {
-              "cell": "bc76f0d2-8f73-48f9-84fa-5d940a11ce31",
-              "port": "5de3b62b-d820-43af-895d-ee6c3ea9d4f8"
-            },
-            "vertices": [
+              },
               {
-                "x": 1040,
-                "y": 370
+                "x": 1130,
+                "y": 380
+              },
+              {
+                "x": 1280,
+                "y": 290
               }
             ]
           },
@@ -3659,7 +3607,6 @@
                 "d4f1dc29-d52c-4752-aac0-bd033838adff",
                 "66708a20-72a0-4248-aa0a-75e8f7c332df",
                 "4b96d127-c9bf-441f-aa5b-68eaa17736c8",
-                "2cf4cd81-b0d8-4657-9284-2f098f58f7e5",
                 "1e8a4bd7-1b7f-45b5-8123-3262bb21d368",
                 "2bf0dfc7-8c2d-4769-bef5-b8531500d08f",
                 "8591dd9d-f80e-4765-8736-e3a059408451"
@@ -3766,8 +3713,8 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "hashed_password",
-              "description": "",
+              "name": "validate_credentials_info",
+              "description": "Contains the users hashed password and if they are verified (is_verified), given a user's email.",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -3825,7 +3772,7 @@
               }
             },
             "labels": [
-              "hashed_password"
+              "validate_credentials_info"
             ],
             "id": "79ab2f75-f444-4805-86cb-17eb999472c2",
             "source": {
@@ -3840,10 +3787,6 @@
               {
                 "x": 1060,
                 "y": 310
-              },
-              {
-                "x": 960,
-                "y": 350
               }
             ]
           }
@@ -3852,6 +3795,6 @@
     ],
     "diagramTop": 5,
     "reviewer": "",
-    "threatTop": 193
+    "threatTop": 208
   }
 }
