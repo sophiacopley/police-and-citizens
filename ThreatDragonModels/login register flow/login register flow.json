@@ -174,7 +174,7 @@
                   "status": "Open",
                   "severity": "TBD",
                   "type": "Spoofing",
-                  "description": "Passwords can be guessed if they are too weak",
+                  "description": "Passwords can be guessed if they are too weak, or have been reused on another application where a data breach occurred.",
                   "mitigation": "- Enforce strong password rules such as 10 characters and at least one of capital letter, number, special character, or pass-phrases\n- Limit the number of times a user can attempt to login (so that bad actors have less chances at guessing correctly)",
                   "modelType": "STRIDE",
                   "new": false,
@@ -222,7 +222,7 @@
                 }
               ],
               "threatFrequency": {
-                "spoofing": 10,
+                "spoofing": 11,
                 "repudiation": 3
               }
             }
@@ -389,12 +389,38 @@
                   "new": false,
                   "number": 187,
                   "score": ""
+                },
+                {
+                  "id": "20934935-6bb2-41d2-83b7-34af4a71bf20",
+                  "title": "Citizen PII stored unencrypted",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "If the database disk is unencrypted and obtained by a Bad Actor, the data can be read directly.",
+                  "mitigation": "- Encrypt the database at rest.\n- Keep the database isolated to the app host - don't serve access to the database over the network",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 247,
+                  "score": ""
+                },
+                {
+                  "id": "30451ce3-32bd-4d74-b2bd-0c3063d20fe5",
+                  "title": "No audit trail of account data changes",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Repudiation",
+                  "description": "Without an audit log, a citizen could deny changes they have made to their account credentials. There is also no way of tracking when and whether a Bad Actor has submitted changes to a citizens account.",
+                  "mitigation": "- Maintain an audit log of account change events such as registration and verification.\n- Include timestamps in logs\n- Monitor logs for abnormalities",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 248,
+                  "score": ""
                 }
               ],
               "threatFrequency": {
                 "tampering": 1,
-                "repudiation": 0,
-                "informationDisclosure": 1,
+                "repudiation": 2,
+                "informationDisclosure": 3,
                 "denialOfService": 1
               }
             },
@@ -1247,93 +1273,6 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "submit_register_response",
-              "description": "Successful/unsuccessful registration response from the server.",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [
-                {
-                  "id": "46ed0897-2e70-4d4c-a32b-ae10278b02a5",
-                  "title": "Error messages reveal information about system state",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Information disclosure",
-                  "description": "An error message could contain information such as \n- server software & version\n- file system paths\n- stack traces\n- sensitive information such as email and password",
-                  "mitigation": "- Don't have revealing error messages\n- Use HTTPS (or another encrypted protocol) to send data over the network.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 20,
-                  "score": ""
-                },
-                {
-                  "id": "ceb357ca-b6f5-4047-a17a-54873c616be9",
-                  "title": "Register process response is changed in transit",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Tampering",
-                  "description": "See #16",
-                  "mitigation": "",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 21,
-                  "score": ""
-                }
-              ],
-              "trustBoundaryIds": [
-                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ],
-              "threatFrequency": {
-                "tampering": 5,
-                "informationDisclosure": 2,
-                "denialOfService": 0
-              }
-            },
-            "labels": [
-              "submit_register_response"
-            ],
-            "id": "7f8c8596-6076-48ce-8be0-926151fbb53d",
-            "source": {
-              "cell": "8e453973-119a-49f7-964d-516401ff5e85",
-              "port": "9d9a8ddb-f523-4198-809b-802291cadfe7"
-            },
-            "target": {
-              "cell": "5f3e80d7-077b-45d3-a94a-69967e34573a",
-              "port": "3cf15723-49a1-4efc-bb2a-240214ee345a"
-            },
-            "vertices": [
-              {
-                "x": 300,
-                "y": 140
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
                 "stroke": "#333333",
                 "targetMarker": {
                   "name": "block"
@@ -1529,6 +1468,103 @@
                 "y": 130
               }
             ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "submit_register_response",
+              "description": "Successful/unsuccessful registration response from the server.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "46ed0897-2e70-4d4c-a32b-ae10278b02a5",
+                  "title": "Error messages reveal information about system state",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "An error message could contain information such as \n- server software & version\n- file system paths\n- stack traces\n- sensitive information such as email and password",
+                  "mitigation": "- Don't have revealing error messages\n- Use HTTPS (or another encrypted protocol) to send data over the network.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 20,
+                  "score": ""
+                },
+                {
+                  "id": "ceb357ca-b6f5-4047-a17a-54873c616be9",
+                  "title": "Register process response is changed in transit",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "See #16",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 21,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [
+                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
+              ],
+              "threatFrequency": {
+                "tampering": 5,
+                "informationDisclosure": 2,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              "submit_register_response"
+            ],
+            "id": "7f8c8596-6076-48ce-8be0-926151fbb53d",
+            "source": {
+              "cell": "8e453973-119a-49f7-964d-516401ff5e85",
+              "port": "9d9a8ddb-f523-4198-809b-802291cadfe7"
+            },
+            "target": {
+              "cell": "5f3e80d7-077b-45d3-a94a-69967e34573a",
+              "port": "3cf15723-49a1-4efc-bb2a-240214ee345a"
+            },
+            "vertices": [
+              {
+                "x": 300,
+                "y": 140
+              }
+            ],
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead"
+              ],
+              "name": null
+            }
           },
           {
             "position": {
@@ -2566,10 +2602,23 @@
                   "new": false,
                   "number": 241,
                   "score": ""
+                },
+                {
+                  "id": "272475a5-1021-4c1d-8b70-cfc9dbaa9bbc",
+                  "title": "Non secure session cookie sent back to the Citizen",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": "If the response from the login process fails to set the HttpOnly flag on the session cookie, a malicious script running on the front end could read/write to the cookie and allow a Bad Actor to impersonate the citizen.",
+                  "mitigation": "- Use the HttpOnly flag on cookies to prevent client side javascript code from reading to the cookie. This also prevents writing in most browsers.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 246,
+                  "score": ""
                 }
               ],
               "threatFrequency": {
-                "spoofing": 2,
+                "spoofing": 3,
                 "tampering": 2,
                 "repudiation": 1,
                 "informationDisclosure": 3,
@@ -3962,7 +4011,7 @@
                   "status": "Open",
                   "severity": "TBD",
                   "type": "Tampering",
-                  "description": "A Bad Actor could tamper with the login credentials that the citizen supplied and log them into an account that is not theirs.",
+                  "description": "A Bad Actor could tamper with the login credentials that the citizen supplied and log them into an account that is not theirs. Subsequent actions such as report making will then be performed on the attackers account.",
                   "mitigation": "- Use HTTPS (or another encrypted protocol) to send data over the network",
                   "modelType": "STRIDE",
                   "new": false,
@@ -3974,7 +4023,7 @@
                 "c13b7a48-b539-45e9-b058-5d6a0ed613da"
               ],
               "threatFrequency": {
-                "tampering": 1,
+                "tampering": 2,
                 "informationDisclosure": 2,
                 "denialOfService": 1
               }
@@ -4224,7 +4273,7 @@
                   "severity": "TBD",
                   "type": "Information disclosure",
                   "description": "A Bad Actor could observe the session cookie assigned to the Citizen on log-in and use the session-cookie to perform actions on behalf of the Citizen.",
-                  "mitigation": "- Use HTTPS (or another encrypted protocol) to send data over the network \n- Rotate session Cookies often",
+                  "mitigation": "- Use HTTPS (or another encrypted protocol) to send data over the network. Use the Secure flag on cookie to prevent it from being sent over unencrypted HTTP\n- Rotate session Cookies often",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 222,
@@ -4249,7 +4298,7 @@
               ],
               "threatFrequency": {
                 "tampering": 2,
-                "informationDisclosure": 1,
+                "informationDisclosure": 3,
                 "denialOfService": 1
               }
             },
@@ -4270,153 +4319,13 @@
                 "x": 160,
                 "y": 500
               }
-            ],
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead"
-              ],
-              "name": null
-            }
+            ]
           }
         ]
       }
     ],
     "diagramTop": 5,
     "reviewer": "",
-    "threatTop": 244
+    "threatTop": 248
   }
 }
