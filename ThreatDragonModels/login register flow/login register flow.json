@@ -707,58 +707,6 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "password",
-              "description": "The citizen's chosen password sent to the hashing process.",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": []
-            },
-            "labels": [
-              "password"
-            ],
-            "id": "f5e6dfad-2159-4e7f-b9e7-0bc95ac8e917",
-            "source": {
-              "cell": "8e453973-119a-49f7-964d-516401ff5e85",
-              "port": "7127eae0-0c26-487c-b76f-4236ae9c4d09"
-            },
-            "target": {
-              "cell": "70c833cd-0cdf-462f-956c-286fb8dd74d9",
-              "port": "b0843f35-a6fd-4b10-aa9d-10d163f68c2f"
-            },
-            "vertices": [
-              {
-                "x": 710,
-                "y": 130
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
               "name": "validation_confirmation",
               "description": "Confirmation from the credentials validation process that the submitted credentials are valid.",
               "outOfScope": false,
@@ -1503,6 +1451,82 @@
               {
                 "x": -80,
                 "y": -160
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "password",
+              "description": "The citizen's chosen password sent to the hashing process.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "71483b23-4a47-41c7-b827-2591fca0a5d3",
+                  "title": "Plaintext password handled in application memory",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "The password is passed in plaintext between application processes/components. A component that logs its inputs or dumps memory on error could leak the password before it is hashed.",
+                  "mitigation": "- Minimise the number of components that touch a plaintext password by hashing as close to the entry point as possible,\n- Don't log request bodies or wipe passwords before logging.\n- Apply the principle of least privilege to each component.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 244,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              "password"
+            ],
+            "id": "f5e6dfad-2159-4e7f-b9e7-0bc95ac8e917",
+            "source": {
+              "cell": "8e453973-119a-49f7-964d-516401ff5e85",
+              "port": "7127eae0-0c26-487c-b76f-4236ae9c4d09"
+            },
+            "target": {
+              "cell": "70c833cd-0cdf-462f-956c-286fb8dd74d9",
+              "port": "b0843f35-a6fd-4b10-aa9d-10d163f68c2f"
+            },
+            "vertices": [
+              {
+                "x": 680,
+                "y": 100
+              },
+              {
+                "x": 710,
+                "y": 130
               }
             ]
           },
@@ -2529,10 +2553,23 @@
                   "new": false,
                   "number": 160,
                   "score": ""
+                },
+                {
+                  "id": "3890072f-26e5-40c8-80f5-91cd60803ab3",
+                  "title": "Spoofed login session",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": "Stolen cookies remain valid indefinitely, letting an attacker impersonate the citizen long after the cookie was stolen",
+                  "mitigation": "- Have an idle-timeout and absolute-timeout for all session IDs.\n- Invalidate a session ID once logout occurs.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 241,
+                  "score": ""
                 }
               ],
               "threatFrequency": {
-                "spoofing": 1,
+                "spoofing": 2,
                 "tampering": 2,
                 "repudiation": 1,
                 "informationDisclosure": 3,
@@ -2710,13 +2747,39 @@
                   "new": false,
                   "number": 176,
                   "score": ""
+                },
+                {
+                  "id": "51723f62-fea2-4eeb-9664-d22ccedbe80f",
+                  "title": "Account enumeration via error messages",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "The application returns different responses or takes a different amount of time to respond depending on whether an email address is registered, has the wrong password, or hasn't been verified yet. This information can be used to determine which email addresses have accounts on the system.",
+                  "mitigation": "- Return the same comprehensive error message for all failure cases.\n- Add timing delays so that timing differences are not observable.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 238,
+                  "score": ""
+                },
+                {
+                  "id": "4d8e1b02-c554-4ff0-b678-14eda2896f15",
+                  "title": "Automated brute force login attempts",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": "Bad Actors could use leaked email/password pairs from other system data breaches to perform a brute force attack at entering accounts.",
+                  "mitigation": "- Enforce per-IP rate limiting\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 239,
+                  "score": ""
                 }
               ],
               "threatFrequency": {
-                "spoofing": 0,
+                "spoofing": 1,
                 "tampering": 2,
                 "repudiation": 0,
-                "informationDisclosure": 1,
+                "informationDisclosure": 2,
                 "denialOfService": 0,
                 "elevationOfPrivilege": 1
               }
@@ -2739,12 +2802,12 @@
             },
             "width": 200,
             "height": 100,
-            "zIndex": 21,
+            "zIndex": 22,
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "submit_login_response/session_cookie",
-              "description": "Successful/unsuccessful login response from the register process and necessary redirect.",
+              "name": "email_address/password",
+              "description": "The citizen's email address and password submitted at login, sent for validation.",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -2755,42 +2818,16 @@
               "protocol": "",
               "threats": [
                 {
-                  "id": "4a630c2a-1a85-4ce8-b027-27bf5acd9e32",
-                  "title": "Flooding the network with traffic",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Denial of service",
-                  "description": "See #15",
-                  "mitigation": "",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 218,
-                  "score": ""
-                },
-                {
-                  "id": "7f591adf-a1a6-4cd7-a3d7-d1d279f6044d",
-                  "title": "Citizen session cookie exposed in transit",
+                  "id": "200815fd-20e6-446a-b36c-10dcdbf6ab5c",
+                  "title": "Plaintext password handled in application memory",
                   "status": "Open",
                   "severity": "TBD",
                   "type": "Information disclosure",
-                  "description": "A Bad Actor could observe the session cookie assigned to the Citizen on log-in and use the session-cookie to perform actions on behalf of the Citizen.",
-                  "mitigation": "- Use HTTPS (or another encrypted protocol) to send data over the network \n- Rotate session Cookies often",
+                  "description": "The password is passed in plaintext between application processes/components. A component that logs its inputs or dumps memory on error could leak the password before it is hashed.",
+                  "mitigation": "- Minimise the number of components that touch a plaintext password by hashing as close to the entry point as possible,\n- Don't log request bodies or wipe passwords before logging.\n- Apply the principle of least privilege to each component.",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 222,
-                  "score": ""
-                },
-                {
-                  "id": "745f1525-71d0-439d-8996-1f0988d7d026",
-                  "title": "Login process response altered in transit",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Tampering",
-                  "description": "If a Bad Actor observed and altered the response from the login process to a different session cookie. The Citizen may be logged into an account owned by the Bad Actor. The Bad Actor could also alter the response to redirect the Citizen to a malicious website or to a spoofed version of SecureReports.",
-                  "mitigation": "- Use HTTPS (or another encrypted protocol) to send data over the network",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 223,
+                  "number": 243,
                   "score": ""
                 }
               ],
@@ -2798,64 +2835,10 @@
                 "c13b7a48-b539-45e9-b058-5d6a0ed613da"
               ],
               "threatFrequency": {
-                "tampering": 2,
+                "tampering": 0,
                 "informationDisclosure": 1,
-                "denialOfService": 1
+                "denialOfService": 0
               }
-            },
-            "labels": [
-              "submit_login_response/session_cookie"
-            ],
-            "id": "7198a459-41d5-474e-9a9c-1b244fc4e5eb",
-            "source": {
-              "cell": "f94c11f5-8d6c-4c80-a25e-4f052e677c97",
-              "port": "a23e3508-919c-4895-bf3a-49be9d979d58"
-            },
-            "target": {
-              "cell": "5f3e80d7-077b-45d3-a94a-69967e34573a",
-              "port": "5a0ded40-5f67-4af7-837e-79d217fb95e3"
-            },
-            "vertices": [
-              {
-                "x": 160,
-                "y": 500
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 22,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "email_address/password",
-              "description": "The citizen's email address and password submitted at login, sent for validation.",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": [
-                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ]
             },
             "labels": [
               "email_address/password"
@@ -2954,7 +2937,8 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
@@ -2975,15 +2959,34 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": [],
+              "threats": [
+                {
+                  "id": "2e90661f-9529-4a24-aaf0-05e741661ff3",
+                  "title": "Plaintext password handled in application memory",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "The password is passed in plaintext between application processes/components. A component that logs its inputs or dumps memory on error could leak the password before it is hashed.",
+                  "mitigation": "- Minimise the number of components that touch a plaintext password by hashing as close to the entry point as possible,\n- Don't log request bodies or wipe passwords before logging.\n- Apply the principle of least privilege to each component.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 242,
+                  "score": ""
+                }
+              ],
               "trustBoundaryIds": [
                 "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ]
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0
+              }
             },
             "labels": [
               "given_password"
@@ -2998,6 +3001,10 @@
               "port": "6000dac2-7eee-461b-976f-14924d7bd475"
             },
             "vertices": [
+              {
+                "x": 800,
+                "y": 370
+              },
               {
                 "x": 770,
                 "y": 320
@@ -3580,7 +3587,6 @@
                 "fa758357-7f42-42a8-9e52-51061a898cec",
                 "79c078cf-1161-41f1-b3ec-bf387a04e1ce",
                 "7f8c8596-6076-48ce-8be0-926151fbb53d",
-                "7198a459-41d5-474e-9a9c-1b244fc4e5eb",
                 "d4f1dc29-d52c-4752-aac0-bd033838adff",
                 "66708a20-72a0-4248-aa0a-75e8f7c332df",
                 "4b96d127-c9bf-441f-aa5b-68eaa17736c8",
@@ -3590,7 +3596,8 @@
                 "d5ee7bf6-202c-4c3c-aea8-7cc1e229ecf5",
                 "dca0fd92-aac7-493e-b4b1-b13e3d758595",
                 "04d603e7-1ce9-4587-94d1-6a6ad3359f22",
-                "8591dd9d-f80e-4765-8736-e3a059408451"
+                "8591dd9d-f80e-4765-8736-e3a059408451",
+                "7198a459-41d5-474e-9a9c-1b244fc4e5eb"
               ],
               "containedElements": [
                 "8e453973-119a-49f7-964d-516401ff5e85",
@@ -3924,19 +3931,6 @@
               "protocol": "",
               "threats": [
                 {
-                  "id": "33a953a6-5556-4259-a33e-749e3dc93691",
-                  "title": "New STRIDE threat",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Tampering",
-                  "description": "Provide a description for this threat",
-                  "mitigation": "- Use the HttpOnly flag on cookies to prevent client side javascript code from reading/writing to the cookie. \n- Use the Secure flag on cookie to prevent it from being sent over unencrypted HTTP\nCOULD DO MORE HERE",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 212,
-                  "score": ""
-                },
-                {
                   "id": "f4f97584-82d5-4a80-a1e4-8bc93cbd80cb",
                   "title": "Flooding the network with traffic",
                   "status": "Open",
@@ -3980,7 +3974,7 @@
                 "c13b7a48-b539-45e9-b058-5d6a0ed613da"
               ],
               "threatFrequency": {
-                "tampering": 2,
+                "tampering": 1,
                 "informationDisclosure": 2,
                 "denialOfService": 1
               }
@@ -4177,12 +4171,252 @@
                 "y": 570
               }
             ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 50,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "submit_login_response/session_cookie",
+              "description": "Successful/unsuccessful login response from the register process and necessary redirect.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "4a630c2a-1a85-4ce8-b027-27bf5acd9e32",
+                  "title": "Flooding the network with traffic",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "See #15",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 218,
+                  "score": ""
+                },
+                {
+                  "id": "7f591adf-a1a6-4cd7-a3d7-d1d279f6044d",
+                  "title": "Citizen session cookie exposed in transit",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "A Bad Actor could observe the session cookie assigned to the Citizen on log-in and use the session-cookie to perform actions on behalf of the Citizen.",
+                  "mitigation": "- Use HTTPS (or another encrypted protocol) to send data over the network \n- Rotate session Cookies often",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 222,
+                  "score": ""
+                },
+                {
+                  "id": "745f1525-71d0-439d-8996-1f0988d7d026",
+                  "title": "Login process response altered in transit",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "If a Bad Actor observed and altered the response from the login process to a different session cookie. The Citizen may be logged into an account owned by the Bad Actor. The Bad Actor could also alter the response to redirect the Citizen to a malicious website or to a spoofed version of SecureReports.",
+                  "mitigation": "- Use HTTPS (or another encrypted protocol) to send data over the network",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 223,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [
+                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
+              ],
+              "threatFrequency": {
+                "tampering": 2,
+                "informationDisclosure": 1,
+                "denialOfService": 1
+              }
+            },
+            "labels": [
+              "submit_login_response/session_cookie"
+            ],
+            "id": "7198a459-41d5-474e-9a9c-1b244fc4e5eb",
+            "source": {
+              "cell": "f94c11f5-8d6c-4c80-a25e-4f052e677c97",
+              "port": "a23e3508-919c-4895-bf3a-49be9d979d58"
+            },
+            "target": {
+              "cell": "5f3e80d7-077b-45d3-a94a-69967e34573a",
+              "port": "5a0ded40-5f67-4af7-837e-79d217fb95e3"
+            },
+            "vertices": [
+              {
+                "x": 160,
+                "y": 500
+              }
+            ],
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead"
+              ],
+              "name": null
+            }
           }
         ]
       }
     ],
     "diagramTop": 5,
     "reviewer": "",
-    "threatTop": 237
+    "threatTop": 244
   }
 }
