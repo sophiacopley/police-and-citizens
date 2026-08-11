@@ -1003,60 +1003,6 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "get_login_request",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": [
-                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ]
-            },
-            "labels": [
-              "get_login_request"
-            ],
-            "id": "d5ee7bf6-202c-4c3c-aea8-7cc1e229ecf5",
-            "source": {
-              "cell": "5f3e80d7-077b-45d3-a94a-69967e34573a",
-              "port": "3cf15723-49a1-4efc-bb2a-240214ee345a"
-            },
-            "target": {
-              "cell": "f94c11f5-8d6c-4c80-a25e-4f052e677c97",
-              "port": "d54f0a46-8146-47c4-a229-f3ef0054abd9"
-            },
-            "vertices": [
-              {
-                "x": 230,
-                "y": 360
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
               "name": "verify_email_request",
               "description": "",
               "outOfScope": false,
@@ -1088,60 +1034,6 @@
               {
                 "x": 250,
                 "y": 540
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "get_login_response",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": [
-                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ]
-            },
-            "labels": [
-              "get_login_response"
-            ],
-            "id": "79c078cf-1161-41f1-b3ec-bf387a04e1ce",
-            "source": {
-              "cell": "f94c11f5-8d6c-4c80-a25e-4f052e677c97",
-              "port": "d54f0a46-8146-47c4-a229-f3ef0054abd9"
-            },
-            "target": {
-              "cell": "5f3e80d7-077b-45d3-a94a-69967e34573a",
-              "port": "3cf15723-49a1-4efc-bb2a-240214ee345a"
-            },
-            "vertices": [
-              {
-                "x": 270,
-                "y": 400
               }
             ]
           },
@@ -1270,6 +1162,93 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
+              "name": "submit_register_response",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "46ed0897-2e70-4d4c-a32b-ae10278b02a5",
+                  "title": "Error messages reveal information about system state",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "An error message could contain information such as \n- server software & version\n- file system paths\n- stack traces\n- sensitive information such as email and password",
+                  "mitigation": "- Don't have revealing error messages\n- Use HTTPS (or another encrypted protocol) to send data over the network.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 20,
+                  "score": ""
+                },
+                {
+                  "id": "ceb357ca-b6f5-4047-a17a-54873c616be9",
+                  "title": "Register process response is ",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "See #16",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 21,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [
+                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
+              ],
+              "threatFrequency": {
+                "tampering": 3,
+                "informationDisclosure": 2,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              "submit_register_response"
+            ],
+            "id": "7f8c8596-6076-48ce-8be0-926151fbb53d",
+            "source": {
+              "cell": "8e453973-119a-49f7-964d-516401ff5e85",
+              "port": "9d9a8ddb-f523-4198-809b-802291cadfe7"
+            },
+            "target": {
+              "cell": "5f3e80d7-077b-45d3-a94a-69967e34573a",
+              "port": "3cf15723-49a1-4efc-bb2a-240214ee345a"
+            },
+            "vertices": [
+              {
+                "x": 450,
+                "y": 70
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
               "name": "submit_register_request\n",
               "description": "",
               "outOfScope": false,
@@ -1374,7 +1353,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "submit_register_response",
+              "name": "get_login_request",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -1386,29 +1365,29 @@
               "protocol": "",
               "threats": [
                 {
-                  "id": "46ed0897-2e70-4d4c-a32b-ae10278b02a5",
-                  "title": "Error messages reveal information about system state",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Information disclosure",
-                  "description": "An error message could contain information such as \n- server software & version\n- file system paths\n- stack traces\n- sensitive information such as email and password",
-                  "mitigation": "- Don't have revealing error messages\n- Use HTTPS (or another encrypted protocol) to send data over the network.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 20,
-                  "score": ""
-                },
-                {
-                  "id": "ceb357ca-b6f5-4047-a17a-54873c616be9",
-                  "title": "Register process response is ",
+                  "id": "29127cb3-15b4-49bb-bf2c-ea7665ee0990",
+                  "title": "Citizen login request is changed in transit",
                   "status": "Open",
                   "severity": "TBD",
                   "type": "Tampering",
-                  "description": "See #16",
+                  "description": "See #186",
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 21,
+                  "number": 187,
+                  "score": ""
+                },
+                {
+                  "id": "886c98e5-47d5-4f57-8435-eebfc0e57b0c",
+                  "title": "Flooding the network with traffic",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "See #15",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 188,
                   "score": ""
                 }
               ],
@@ -1416,27 +1395,27 @@
                 "c13b7a48-b539-45e9-b058-5d6a0ed613da"
               ],
               "threatFrequency": {
-                "tampering": 3,
-                "informationDisclosure": 2,
-                "denialOfService": 0
+                "tampering": 2,
+                "informationDisclosure": 1,
+                "denialOfService": 1
               }
             },
             "labels": [
-              "submit_register_response"
+              "get_login_request"
             ],
-            "id": "7f8c8596-6076-48ce-8be0-926151fbb53d",
+            "id": "d5ee7bf6-202c-4c3c-aea8-7cc1e229ecf5",
             "source": {
-              "cell": "8e453973-119a-49f7-964d-516401ff5e85",
-              "port": "9d9a8ddb-f523-4198-809b-802291cadfe7"
-            },
-            "target": {
               "cell": "5f3e80d7-077b-45d3-a94a-69967e34573a",
               "port": "3cf15723-49a1-4efc-bb2a-240214ee345a"
             },
+            "target": {
+              "cell": "f94c11f5-8d6c-4c80-a25e-4f052e677c97",
+              "port": "d54f0a46-8146-47c4-a229-f3ef0054abd9"
+            },
             "vertices": [
               {
-                "x": 450,
-                "y": 70
+                "x": 230,
+                "y": 360
               }
             ]
           },
@@ -1461,7 +1440,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "get_register_request",
+              "name": "get_login_response",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -1473,29 +1452,16 @@
               "protocol": "",
               "threats": [
                 {
-                  "id": "c6468419-909c-4c37-a0e9-005f49ef3e79",
-                  "title": "Flooding the network with traffic",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Denial of service",
-                  "description": "A Bad Actor floods the request channel with high-volume traffic, exhausting network/connection capacity and blocking legitimate requests from reaching the server.",
-                  "mitigation": "- Rate limiting for requests from the same IP.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 15,
-                  "score": ""
-                },
-                {
-                  "id": "ab71cfa8-3dd4-4ca0-9f2a-de0efb2c9414",
-                  "title": "Client register request is changed in transit",
+                  "id": "73ef0d3c-7d1e-4ea6-91c6-fc4af8458c23",
+                  "title": "Login process response is changed in transit",
                   "status": "Open",
                   "severity": "TBD",
                   "type": "Tampering",
-                  "description": "Request URL query parameters or body is tampered with by a bad actor e.g., injecting a malicious redirect or return parameter.",
-                  "mitigation": "- Use HTTPS (or another encrypted protocol) so data is encrypted in transit",
+                  "description": "See #",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 186,
+                  "number": 189,
                   "score": ""
                 }
               ],
@@ -1503,404 +1469,29 @@
                 "c13b7a48-b539-45e9-b058-5d6a0ed613da"
               ],
               "threatFrequency": {
-                "tampering": 3,
+                "tampering": 1,
                 "informationDisclosure": 0,
-                "denialOfService": 3
+                "denialOfService": 0
               }
             },
             "labels": [
-              "get_register_request"
+              "get_login_response"
             ],
-            "id": "e6768564-29b5-46eb-a658-1874816cd8fb",
+            "id": "79c078cf-1161-41f1-b3ec-bf387a04e1ce",
             "source": {
-              "cell": "5f3e80d7-077b-45d3-a94a-69967e34573a",
-              "port": "4eef07ba-c073-4f8f-a998-c51ab2fa460b"
+              "cell": "f94c11f5-8d6c-4c80-a25e-4f052e677c97",
+              "port": "d54f0a46-8146-47c4-a229-f3ef0054abd9"
             },
             "target": {
-              "cell": "8e453973-119a-49f7-964d-516401ff5e85",
-              "port": "09c21e52-0ab0-475a-b034-a0e78945a93e"
+              "cell": "5f3e80d7-077b-45d3-a94a-69967e34573a",
+              "port": "3cf15723-49a1-4efc-bb2a-240214ee345a"
             },
             "vertices": [
               {
-                "x": 100,
-                "y": -60
+                "x": 270,
+                "y": 400
               }
-            ],
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead"
-              ],
-              "name": null
-            }
+            ]
           },
           {
             "position": {
@@ -3236,80 +2827,6 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 23,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "get_register_response",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [
-                {
-                  "id": "d8d9bc04-0c60-4fdf-9b15-1e9fca835f5b",
-                  "title": "Register process response is changed in transit",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Tampering",
-                  "description": "Response html/javascript is tampered with by a bad actor e.g., injecting a malicious script, altering the form's action URL to point to an attacker-controlled endpoint, or adding a hidden field.",
-                  "mitigation": "- Use HTTPS (or another encrypted protocol) so data is encrypted in transit",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 16,
-                  "score": ""
-                }
-              ],
-              "trustBoundaryIds": [
-                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ],
-              "threatFrequency": {
-                "tampering": 2,
-                "informationDisclosure": 0,
-                "denialOfService": 0
-              }
-            },
-            "labels": [
-              "get_register_response"
-            ],
-            "id": "66708a20-72a0-4248-aa0a-75e8f7c332df",
-            "source": {
-              "cell": "8e453973-119a-49f7-964d-516401ff5e85",
-              "port": "09c21e52-0ab0-475a-b034-a0e78945a93e"
-            },
-            "target": {
-              "cell": "5f3e80d7-077b-45d3-a94a-69967e34573a",
-              "port": "4eef07ba-c073-4f8f-a998-c51ab2fa460b"
-            },
-            "vertices": [
-              {
-                "x": 140,
-                "y": 10
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
                 "stroke": "#333333",
                 "targetMarker": {
                   "name": "block"
@@ -3573,61 +3090,6 @@
               {
                 "x": 1040,
                 "y": 370
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 34,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "email_address",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": [
-                "9ae6e5ac-e04d-471c-ae1b-463b7476c2c7",
-                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ]
-            },
-            "labels": [
-              "email_address"
-            ],
-            "id": "2bf0dfc7-8c2d-4769-bef5-b8531500d08f",
-            "source": {
-              "cell": "8e453973-119a-49f7-964d-516401ff5e85",
-              "port": "09c21e52-0ab0-475a-b034-a0e78945a93e"
-            },
-            "target": {
-              "cell": "19f6ff27-2266-4771-b652-4b2eface5c81",
-              "port": "fff21c3a-4d05-4898-94fa-cdcbaba83eca"
-            },
-            "vertices": [
-              {
-                "x": 460,
-                "y": -130
               }
             ]
           },
@@ -3943,8 +3405,8 @@
               "hasOpenThreats": false,
               "crossingFlows": [
                 "ad55b7a8-0a75-4511-9688-e9b0e7fcf623",
-                "2bf0dfc7-8c2d-4769-bef5-b8531500d08f",
-                "96744225-ce62-4f85-8251-bf914e31207a"
+                "96744225-ce62-4f85-8251-bf914e31207a",
+                "2bf0dfc7-8c2d-4769-bef5-b8531500d08f"
               ],
               "containedElements": [
                 "19f6ff27-2266-4771-b652-4b2eface5c81"
@@ -3992,21 +3454,21 @@
               "crossingFlows": [
                 "9e51c3ac-d04f-4699-a6e3-c052f3e47ffa",
                 "ad55b7a8-0a75-4511-9688-e9b0e7fcf623",
-                "d5ee7bf6-202c-4c3c-aea8-7cc1e229ecf5",
                 "04d603e7-1ce9-4587-94d1-6a6ad3359f22",
-                "79c078cf-1161-41f1-b3ec-bf387a04e1ce",
-                "fa758357-7f42-42a8-9e52-51061a898cec",
                 "7f8c8596-6076-48ce-8be0-926151fbb53d",
-                "e6768564-29b5-46eb-a658-1874816cd8fb",
+                "fa758357-7f42-42a8-9e52-51061a898cec",
+                "d5ee7bf6-202c-4c3c-aea8-7cc1e229ecf5",
+                "79c078cf-1161-41f1-b3ec-bf387a04e1ce",
                 "dca0fd92-aac7-493e-b4b1-b13e3d758595",
                 "7198a459-41d5-474e-9a9c-1b244fc4e5eb",
                 "d4f1dc29-d52c-4752-aac0-bd033838adff",
-                "66708a20-72a0-4248-aa0a-75e8f7c332df",
                 "4b96d127-c9bf-441f-aa5b-68eaa17736c8",
                 "2cf4cd81-b0d8-4657-9284-2f098f58f7e5",
                 "1e8a4bd7-1b7f-45b5-8123-3262bb21d368",
+                "8591dd9d-f80e-4765-8736-e3a059408451",
                 "2bf0dfc7-8c2d-4769-bef5-b8531500d08f",
-                "8591dd9d-f80e-4765-8736-e3a059408451"
+                "66708a20-72a0-4248-aa0a-75e8f7c332df",
+                "e6768564-29b5-46eb-a658-1874816cd8fb"
               ],
               "containedElements": [
                 "8e453973-119a-49f7-964d-516401ff5e85",
@@ -4088,12 +3550,228 @@
                 "y": 570
               }
             ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 42,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "email_address",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": [
+                "9ae6e5ac-e04d-471c-ae1b-463b7476c2c7",
+                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
+              ]
+            },
+            "labels": [
+              "email_address"
+            ],
+            "id": "2bf0dfc7-8c2d-4769-bef5-b8531500d08f",
+            "source": {
+              "cell": "8e453973-119a-49f7-964d-516401ff5e85",
+              "port": "09c21e52-0ab0-475a-b034-a0e78945a93e"
+            },
+            "target": {
+              "cell": "19f6ff27-2266-4771-b652-4b2eface5c81",
+              "port": "fff21c3a-4d05-4898-94fa-cdcbaba83eca"
+            },
+            "vertices": [
+              {
+                "x": 460,
+                "y": -130
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 43,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "get_register_response",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "d8d9bc04-0c60-4fdf-9b15-1e9fca835f5b",
+                  "title": "Register process response is changed in transit",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "Response html/javascript is tampered with by a bad actor e.g., injecting a malicious script, altering the form's action URL to point to an attacker-controlled endpoint, or adding a hidden field.",
+                  "mitigation": "- Use HTTPS (or another encrypted protocol) so data is encrypted in transit",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 16,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [
+                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
+              ],
+              "threatFrequency": {
+                "tampering": 2,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              "get_register_response"
+            ],
+            "id": "66708a20-72a0-4248-aa0a-75e8f7c332df",
+            "source": {
+              "cell": "8e453973-119a-49f7-964d-516401ff5e85",
+              "port": "09c21e52-0ab0-475a-b034-a0e78945a93e"
+            },
+            "target": {
+              "cell": "5f3e80d7-077b-45d3-a94a-69967e34573a",
+              "port": "4eef07ba-c073-4f8f-a998-c51ab2fa460b"
+            },
+            "vertices": [
+              {
+                "x": 140,
+                "y": 10
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 44,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "get_register_request",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "c6468419-909c-4c37-a0e9-005f49ef3e79",
+                  "title": "Flooding the network with traffic",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "A Bad Actor floods the request channel with high-volume traffic, exhausting network/connection capacity and blocking legitimate requests from reaching the server.",
+                  "mitigation": "- Rate limiting for requests from the same IP.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 15,
+                  "score": ""
+                },
+                {
+                  "id": "ab71cfa8-3dd4-4ca0-9f2a-de0efb2c9414",
+                  "title": "Citizen register request is changed in transit",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "Request URL query parameters or body is tampered with by a bad actor e.g., injecting a malicious redirect or return parameter.",
+                  "mitigation": "- Use HTTPS (or another encrypted protocol) so data is encrypted in transit",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 186,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [
+                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
+              ],
+              "threatFrequency": {
+                "tampering": 4,
+                "informationDisclosure": 0,
+                "denialOfService": 3
+              }
+            },
+            "labels": [
+              "get_register_request"
+            ],
+            "id": "e6768564-29b5-46eb-a658-1874816cd8fb",
+            "source": {
+              "cell": "5f3e80d7-077b-45d3-a94a-69967e34573a",
+              "port": "4eef07ba-c073-4f8f-a998-c51ab2fa460b"
+            },
+            "target": {
+              "cell": "8e453973-119a-49f7-964d-516401ff5e85",
+              "port": "09c21e52-0ab0-475a-b034-a0e78945a93e"
+            },
+            "vertices": [
+              {
+                "x": 100,
+                "y": -60
+              }
+            ]
           }
         ]
       }
     ],
     "diagramTop": 5,
     "reviewer": "",
-    "threatTop": 186
+    "threatTop": 189
   }
 }
