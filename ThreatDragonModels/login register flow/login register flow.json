@@ -3463,6 +3463,7 @@
               "hasOpenThreats": false,
               "crossingFlows": [
                 "96744225-ce62-4f85-8251-bf914e31207a",
+                "ad55b7a8-0a75-4511-9688-e9b0e7fcf623",
                 "2bf0dfc7-8c2d-4769-bef5-b8531500d08f"
               ],
               "containedElements": [
@@ -4260,6 +4261,7 @@
                 }
               ],
               "trustBoundaryIds": [
+                "9ae6e5ac-e04d-471c-ae1b-463b7476c2c7",
                 "c13b7a48-b539-45e9-b058-5d6a0ed613da"
               ],
               "threatFrequency": {
@@ -4277,13 +4279,13 @@
               "port": "09c21e52-0ab0-475a-b034-a0e78945a93e"
             },
             "target": {
-              "x": 330,
-              "y": -320
+              "cell": "19f6ff27-2266-4771-b652-4b2eface5c81",
+              "port": "fff21c3a-4d05-4898-94fa-cdcbaba83eca"
             },
             "vertices": [
               {
-                "x": 500,
-                "y": -230
+                "x": 560,
+                "y": -250
               }
             ]
           },
@@ -4331,6 +4333,19 @@
                   "new": false,
                   "number": 250,
                   "score": ""
+                },
+                {
+                  "id": "5796b154-e58c-41fa-b86a-75a60f830665",
+                  "title": "Registration flood exhausts the Email API",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "See #251",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 252,
+                  "score": ""
                 }
               ],
               "trustBoundaryIds": [
@@ -4340,7 +4355,7 @@
               "threatFrequency": {
                 "tampering": 2,
                 "informationDisclosure": 0,
-                "denialOfService": 0
+                "denialOfService": 1
               }
             },
             "labels": [
@@ -4367,6 +4382,6 @@
     ],
     "diagramTop": 5,
     "reviewer": "",
-    "threatTop": 251
+    "threatTop": 252
   }
 }
