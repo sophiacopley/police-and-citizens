@@ -2670,7 +2670,7 @@
                   "title": "Flooding the network with traffic",
                   "status": "Open",
                   "severity": "TBD",
-                  "type": "Tampering",
+                  "type": "Denial of service",
                   "description": "See #15",
                   "mitigation": "Provide remediation for this threat or a reason if status is N/A",
                   "modelType": "STRIDE",
@@ -2693,12 +2693,12 @@
                 },
                 {
                   "id": "cd5c256c-f8a7-4ddc-a98c-fe31161e3d93",
-                  "title": "New STRIDE threat",
+                  "title": "Login process response altered in transit",
                   "status": "Open",
                   "severity": "TBD",
-                  "type": "Denial of service",
-                  "description": "Provide a description for this threat",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "type": "Tampering",
+                  "description": "If a Bad Actor observed and altered the response from the login process to a different session cookie. The Citizen may be logged into an account owned by the Bad Actor. The Bad Actor could also alter the response to redirect the Citizen to a malicious website or to a spoofed version of SecureReports.",
+                  "mitigation": "- Use HTTPS (or another encrypted protocol) to send data over the network",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 201,
@@ -2709,9 +2709,9 @@
                 "c13b7a48-b539-45e9-b058-5d6a0ed613da"
               ],
               "threatFrequency": {
-                "tampering": 1,
+                "tampering": 3,
                 "informationDisclosure": 1,
-                "denialOfService": 1
+                "denialOfService": 2
               }
             },
             "labels": [
@@ -3825,13 +3825,26 @@
                   "new": false,
                   "number": 194,
                   "score": ""
+                },
+                {
+                  "id": "580a02d5-d04d-4bb6-b4b1-0d8f2144f413",
+                  "title": "Citizen verify request is changed in transit",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "A Bad Actor could tamper with the verification code in the request to be invalid and prevent the Citizen from verifying their account.",
+                  "mitigation": "- Use HTTPS (or another encrypted protocol) to send data over the network",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 202,
+                  "score": ""
                 }
               ],
               "trustBoundaryIds": [
                 "c13b7a48-b539-45e9-b058-5d6a0ed613da"
               ],
               "threatFrequency": {
-                "tampering": 0,
+                "tampering": 3,
                 "informationDisclosure": 0,
                 "denialOfService": 1
               }
@@ -3947,6 +3960,6 @@
     ],
     "diagramTop": 5,
     "reviewer": "",
-    "threatTop": 201
+    "threatTop": 202
   }
 }
