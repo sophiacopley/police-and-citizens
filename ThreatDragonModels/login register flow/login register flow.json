@@ -787,58 +787,6 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "unique_session_id",
-              "description": "A unique session ID generated for the citizen's session after a successful login.",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": []
-            },
-            "labels": [
-              "unique_session_id"
-            ],
-            "id": "52db1dc3-49c4-4f26-8325-826c123a46e3",
-            "source": {
-              "cell": "e8fcc90f-f9d4-4d0b-9be4-b9449442fbbe",
-              "port": "5cbec44f-5b44-42e8-bd26-0cb82d855a9d"
-            },
-            "target": {
-              "cell": "f94c11f5-8d6c-4c80-a25e-4f052e677c97",
-              "port": "d54f0a46-8146-47c4-a229-f3ef0054abd9"
-            },
-            "vertices": [
-              {
-                "x": 580,
-                "y": 360
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
               "name": "verification_code",
               "description": "The verification code generated to verify the citizen's email address.",
               "outOfScope": false,
@@ -1218,58 +1166,6 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "verification_email",
-              "description": "Verification email containing the verification code as read from the citizens mailbox",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": []
-            },
-            "labels": [
-              "verification_email"
-            ],
-            "id": "7584465f-c9c7-4cee-b107-37116ac9c894",
-            "source": {
-              "cell": "ee78cb0c-ffdc-448b-a982-629595993609",
-              "port": "d03b83ca-bb6a-4e49-a9ac-af4cb3f26002"
-            },
-            "target": {
-              "cell": "5f3e80d7-077b-45d3-a94a-69967e34573a",
-              "port": "4eef07ba-c073-4f8f-a998-c51ab2fa460b"
-            },
-            "vertices": [
-              {
-                "x": -80,
-                "y": 50
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
                 "stroke": "red",
                 "strokeWidth": 2.5,
                 "targetMarker": {
@@ -1498,6 +1394,58 @@
               {
                 "x": 300,
                 "y": 140
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "unique_session_id",
+              "description": "A unique session ID generated for the citizen's session after a successful login.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "unique_session_id"
+            ],
+            "id": "52db1dc3-49c4-4f26-8325-826c123a46e3",
+            "source": {
+              "cell": "e8fcc90f-f9d4-4d0b-9be4-b9449442fbbe",
+              "port": "5cbec44f-5b44-42e8-bd26-0cb82d855a9d"
+            },
+            "target": {
+              "cell": "f94c11f5-8d6c-4c80-a25e-4f052e677c97",
+              "port": "d54f0a46-8146-47c4-a229-f3ef0054abd9"
+            },
+            "vertices": [
+              {
+                "x": 580,
+                "y": 360
               }
             ]
           },
@@ -4376,12 +4324,84 @@
                 "y": -130
               }
             ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 53,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "verification_email",
+              "description": "Verification email containing the verification code as read from the citizens mailbox",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "7a196d12-65b6-4e89-83ce-cf6731f064ad",
+                  "title": "Verification link visible on screen",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "If the email displays the verification link on screen, it could be seen by a Bad Actor who then uses it to verify and exploit more information about the citizen's account through the verification flow.",
+                  "mitigation": "- Obscure the verification link in the email as a hyperlinked button or styled link text rather than displaying the raw URL.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 253,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              "verification_email"
+            ],
+            "id": "7584465f-c9c7-4cee-b107-37116ac9c894",
+            "source": {
+              "cell": "ee78cb0c-ffdc-448b-a982-629595993609",
+              "port": "d03b83ca-bb6a-4e49-a9ac-af4cb3f26002"
+            },
+            "target": {
+              "cell": "5f3e80d7-077b-45d3-a94a-69967e34573a",
+              "port": "4eef07ba-c073-4f8f-a998-c51ab2fa460b"
+            },
+            "vertices": [
+              {
+                "x": -80,
+                "y": 50
+              }
+            ]
           }
         ]
       }
     ],
     "diagramTop": 5,
     "reviewer": "",
-    "threatTop": 252
+    "threatTop": 254
   }
 }
