@@ -161,7 +161,7 @@
             "data": {
               "type": "tm.Actor",
               "name": "Citizen",
-              "description": "",
+              "description": "A Citizen is a user of the system who submits reports to be read and responded to by police officers",
               "isTrustBoundary": false,
               "outOfScope": false,
               "reasonOutOfScope": "",
@@ -186,7 +186,7 @@
                   "title": "Citizen doesn't own email address",
                   "status": "Open",
                   "severity": "TBD",
-                  "type": "Repudiation",
+                  "type": "Spoofing",
                   "description": "The user registers with an email they don't own.",
                   "mitigation": "- Use email verification code after registration.",
                   "modelType": "STRIDE",
@@ -222,7 +222,7 @@
                 }
               ],
               "threatFrequency": {
-                "spoofing": 9,
+                "spoofing": 10,
                 "repudiation": 3
               }
             }
@@ -868,104 +868,6 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "verification_email",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": []
-            },
-            "labels": [
-              "verification_email"
-            ],
-            "id": "444e5b80-3c67-43fd-8337-e671a5d1eaca",
-            "source": {
-              "cell": "ff819878-cffc-442a-8488-e7f7669d69f6",
-              "port": "81ab149b-29b8-4016-81eb-979a6b4747a4"
-            },
-            "target": {
-              "cell": "ee78cb0c-ffdc-448b-a982-629595993609",
-              "port": "4f0ca7ed-d9ac-40c3-9f80-9ce5a5f19c64"
-            },
-            "vertices": [
-              {
-                "x": -80,
-                "y": -160
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "verification_email",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": []
-            },
-            "labels": [
-              "verification_email"
-            ],
-            "id": "7584465f-c9c7-4cee-b107-37116ac9c894",
-            "source": {
-              "cell": "ee78cb0c-ffdc-448b-a982-629595993609",
-              "port": "d03b83ca-bb6a-4e49-a9ac-af4cb3f26002"
-            },
-            "target": {
-              "cell": "5f3e80d7-077b-45d3-a94a-69967e34573a",
-              "port": "4eef07ba-c073-4f8f-a998-c51ab2fa460b"
-            }
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
               "name": "unique_session_id",
               "description": "",
               "outOfScope": false,
@@ -1071,8 +973,258 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "submit_register_request\n",
+              "name": "register_citizen_info",
               "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "921cc597-9d06-4287-b376-55b77f250472",
+                  "title": "Data or query altered in transit ",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "Bad actor alters query in transit (e.g. adding DROP tables to the query) or alters the data in the query to be incorrect (e.g. updating the query to set is_verified = true) ",
+                  "mitigation": "- Use local private network.\n- Use certificates to authenticate originating machine.\n-  Use prepared statements on the caller side to minimise chances of effects of tampered data.\n- Use TLS/SSL encryption for all database connections.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 188,
+                  "score": ""
+                },
+                {
+                  "id": "db3086eb-1798-47a6-8eb4-5a7e80e39247",
+                  "title": "Data is read in transit",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "A bad actor captures the data in transit",
+                  "mitigation": "- Use a secure private network\n- Use TLS/SSL encryption for all database connections.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 189,
+                  "score": ""
+                },
+                {
+                  "id": "70760f0f-a0a6-4334-8f95-1d20a5de06b6",
+                  "title": "Wire is overloaded by request ",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "The wire is overloaded by requests in the private network.",
+                  "mitigation": "- Monitor network activity for suspicious patterns, e.g., corrupted processes\n- Drop suspicious packets and ban originating IPs (local firewalling)",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 190,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 2,
+                "denialOfService": 2
+              }
+            },
+            "labels": [
+              "register_citizen_info"
+            ],
+            "id": "50581fa5-01c5-4b7a-bc5e-bddc544a64f6",
+            "source": {
+              "x": 665,
+              "y": 43
+            },
+            "target": {
+              "cell": "15d61bf3-d764-492d-a4aa-82bae18b2ee0",
+              "port": "036be378-e73b-4a88-a7c6-c34699ec3e6c"
+            },
+            "vertices": [
+              {
+                "x": 1060,
+                "y": 100
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "hashed_given_password",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": [
+                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
+              ]
+            },
+            "labels": [
+              "hashed_given_password"
+            ],
+            "id": "1a496a56-454f-425a-9608-2a0457e7acac",
+            "source": {
+              "cell": "70c833cd-0cdf-462f-956c-286fb8dd74d9",
+              "port": "6000dac2-7eee-461b-976f-14924d7bd475"
+            },
+            "target": {
+              "cell": "bc76f0d2-8f73-48f9-84fa-5d940a11ce31",
+              "port": "d54f0a46-8146-47c4-a229-f3ef0054abd9"
+            },
+            "vertices": [
+              {
+                "x": 890,
+                "y": 290
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "verification_email",
+              "description": "The verification email is routed to the citizens email mailbox by the MTA",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "verification_email"
+            ],
+            "id": "444e5b80-3c67-43fd-8337-e671a5d1eaca",
+            "source": {
+              "cell": "ff819878-cffc-442a-8488-e7f7669d69f6",
+              "port": "81ab149b-29b8-4016-81eb-979a6b4747a4"
+            },
+            "target": {
+              "cell": "ee78cb0c-ffdc-448b-a982-629595993609",
+              "port": "4f0ca7ed-d9ac-40c3-9f80-9ce5a5f19c64"
+            },
+            "vertices": [
+              {
+                "x": -80,
+                "y": -160
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "verification_email",
+              "description": "Verification email containing the verification code as read from the citizens mailbox",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "verification_email"
+            ],
+            "id": "7584465f-c9c7-4cee-b107-37116ac9c894",
+            "source": {
+              "cell": "ee78cb0c-ffdc-448b-a982-629595993609",
+              "port": "d03b83ca-bb6a-4e49-a9ac-af4cb3f26002"
+            },
+            "target": {
+              "cell": "5f3e80d7-077b-45d3-a94a-69967e34573a",
+              "port": "4eef07ba-c073-4f8f-a998-c51ab2fa460b"
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "submit_register_request\n",
+              "description": "The citizens email and password they want to use to register an account.",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -1175,106 +1327,8 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "register_citizen_info",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [
-                {
-                  "id": "921cc597-9d06-4287-b376-55b77f250472",
-                  "title": "Data or query altered in transit ",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Tampering",
-                  "description": "Bad actor alters query in transit (e.g. adding DROP tables to the query) or alters the data in the query to be incorrect (e.g. updating the query to set is_verified = true) ",
-                  "mitigation": "- Use local private network.\n- Use certificates to authenticate originating machine.\n-  Use prepared statements on the caller side to minimise chances of effects of tampered data.\n- Use TLS/SSL encryption for all database connections.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 188,
-                  "score": ""
-                },
-                {
-                  "id": "db3086eb-1798-47a6-8eb4-5a7e80e39247",
-                  "title": "Data is read in transit",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Information disclosure",
-                  "description": "A bad actor captures the data in transit",
-                  "mitigation": "- Use a secure private network\n- Use TLS/SSL encryption for all database connections.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 189,
-                  "score": ""
-                },
-                {
-                  "id": "70760f0f-a0a6-4334-8f95-1d20a5de06b6",
-                  "title": "Wire is overloaded by request ",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Denial of service",
-                  "description": "The wire is overloaded by requests in the private network.",
-                  "mitigation": "- Monitor network activity for suspicious patterns, e.g., corrupted processes\n- Drop suspicious packets and ban originating IPs (local firewalling)",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 190,
-                  "score": ""
-                }
-              ],
-              "trustBoundaryIds": [],
-              "threatFrequency": {
-                "tampering": 1,
-                "informationDisclosure": 2,
-                "denialOfService": 2
-              }
-            },
-            "labels": [
-              "register_citizen_info"
-            ],
-            "id": "50581fa5-01c5-4b7a-bc5e-bddc544a64f6",
-            "source": {
-              "x": 665,
-              "y": 43
-            },
-            "target": {
-              "cell": "15d61bf3-d764-492d-a4aa-82bae18b2ee0",
-              "port": "036be378-e73b-4a88-a7c6-c34699ec3e6c"
-            },
-            "vertices": [
-              {
-                "x": 1060,
-                "y": 100
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
               "name": "get_login_response",
-              "description": "",
+              "description": "Response from the login process containing the html, css, js etc of the login page.",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -1343,58 +1397,6 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "hashed_given_password",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": []
-            },
-            "labels": [
-              "hashed_given_password"
-            ],
-            "id": "1a496a56-454f-425a-9608-2a0457e7acac",
-            "source": {
-              "x": 780,
-              "y": 230
-            },
-            "target": {
-              "cell": "bc76f0d2-8f73-48f9-84fa-5d940a11ce31",
-              "port": "d54f0a46-8146-47c4-a229-f3ef0054abd9"
-            },
-            "vertices": [
-              {
-                "x": 890,
-                "y": 290
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
                 "stroke": "red",
                 "strokeWidth": 2.5,
                 "targetMarker": {
@@ -1413,7 +1415,7 @@
             "data": {
               "type": "tm.Flow",
               "name": "submit_register_response",
-              "description": "",
+              "description": "Successful/unsuccessful registration response from the server.",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -1492,8 +1494,8 @@
                 "text": "Email\nService\nProvider"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -1590,12 +1592,34 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "04cd6bc7-e93a-47e0-8930-b2a4e5c0ad38",
+                  "title": "Spoofed verification email - FINISH THIS",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": "A lack of SPF/DKIM/DMARC configured allows Bad Actors to forge a verification email as coming from SecureReports.",
+                  "mitigation": "- Configure SPF, DKIM, DMARK\n- Use the provider's own sending domain",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 228,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 1,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
             }
           },
           {
@@ -1706,7 +1730,7 @@
             "data": {
               "type": "tm.Process",
               "name": "Hashing",
-              "description": "",
+              "description": "The process/algorithm that hashes a user's password ",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -1900,7 +1924,7 @@
             "data": {
               "type": "tm.Process",
               "name": "Verify Email",
-              "description": "",
+              "description": "The action to verify a user account using the code sent by email",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -2133,7 +2157,7 @@
             "data": {
               "type": "tm.Process",
               "name": "Random\nNumber\nGenerator",
-              "description": "",
+              "description": "The dependency process that generates randoms to be used for generating session ids, verification code, and seeds.",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -2327,7 +2351,7 @@
             "data": {
               "type": "tm.Process",
               "name": "Login",
-              "description": "",
+              "description": "The action to log a citizen into the SecureReports app",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -2433,7 +2457,7 @@
                   "title": "Expose sensitive data in logs",
                   "status": "Open",
                   "severity": "TBD",
-                  "type": "Repudiation",
+                  "type": "Information disclosure",
                   "description": "See #29",
                   "mitigation": "",
                   "modelType": "STRIDE",
@@ -2446,7 +2470,7 @@
                 "spoofing": 1,
                 "tampering": 2,
                 "repudiation": 1,
-                "informationDisclosure": 2,
+                "informationDisclosure": 3,
                 "denialOfService": 1,
                 "elevationOfPrivilege": 1
               }
@@ -2655,7 +2679,7 @@
             "data": {
               "type": "tm.Flow",
               "name": "submit_login_response/session_cookie",
-              "description": "",
+              "description": "Successful/unsuccessful login response from the register process and necessary redirect.",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -2809,7 +2833,7 @@
             "data": {
               "type": "tm.Flow",
               "name": "get_register_response",
-              "description": "",
+              "description": "The register page html, css, js etc.",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -3099,7 +3123,7 @@
             "data": {
               "type": "tm.Flow",
               "name": "verification_email",
-              "description": "",
+              "description": "The verification email is passed to the receiving message transfer agent to route to the recipient.",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -3128,6 +3152,10 @@
             "vertices": [
               {
                 "x": 60,
+                "y": -300
+              },
+              {
+                "x": 40,
                 "y": -300
               }
             ]
@@ -3240,7 +3268,7 @@
             "data": {
               "type": "tm.Process",
               "name": "Receiving \nMTA",
-              "description": "",
+              "description": "This process represents the mail transfer agent who routes the email from the server email service provider to the recipients email service provider using SMTP ",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -3439,6 +3467,7 @@
               "crossingFlows": [
                 "9e51c3ac-d04f-4699-a6e3-c052f3e47ffa",
                 "ad55b7a8-0a75-4511-9688-e9b0e7fcf623",
+                "1a496a56-454f-425a-9608-2a0457e7acac",
                 "fa758357-7f42-42a8-9e52-51061a898cec",
                 "79c078cf-1161-41f1-b3ec-bf387a04e1ce",
                 "7f8c8596-6076-48ce-8be0-926151fbb53d",
@@ -3451,8 +3480,8 @@
                 "e6768564-29b5-46eb-a658-1874816cd8fb",
                 "d5ee7bf6-202c-4c3c-aea8-7cc1e229ecf5",
                 "dca0fd92-aac7-493e-b4b1-b13e3d758595",
-                "8591dd9d-f80e-4765-8736-e3a059408451",
-                "04d603e7-1ce9-4587-94d1-6a6ad3359f22"
+                "04d603e7-1ce9-4587-94d1-6a6ad3359f22",
+                "8591dd9d-f80e-4765-8736-e3a059408451"
               ],
               "containedElements": [
                 "8e453973-119a-49f7-964d-516401ff5e85",
@@ -3601,7 +3630,7 @@
             "data": {
               "type": "tm.Flow",
               "name": "get_register_request",
-              "description": "",
+              "description": "A request for the register process to show the citizen the register page",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -3688,7 +3717,7 @@
             "data": {
               "type": "tm.Flow",
               "name": "get_login_request",
-              "description": "",
+              "description": "Request to the login process to show the login page",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -3775,7 +3804,7 @@
             "data": {
               "type": "tm.Flow",
               "name": "submit_login_request",
-              "description": "",
+              "description": "Citizen's email and password for their account",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -3883,99 +3912,12 @@
             },
             "width": 200,
             "height": 100,
-            "zIndex": 47,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "redirect_to_login_response",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [
-                {
-                  "id": "40da00db-33e5-489a-a7c4-360dbd1c9a3e",
-                  "title": "Flooding the network with traffic",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Denial of service",
-                  "description": "See #15 ",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 224,
-                  "score": ""
-                },
-                {
-                  "id": "336a8cb3-bd31-4106-8cc8-27c561cd4d8c",
-                  "title": "Verify Email process response is changed during transit",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Tampering",
-                  "description": "See #16",
-                  "mitigation": "",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 226,
-                  "score": ""
-                }
-              ],
-              "trustBoundaryIds": [
-                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ],
-              "threatFrequency": {
-                "tampering": 2,
-                "informationDisclosure": 0,
-                "denialOfService": 1
-              }
-            },
-            "labels": [
-              "redirect_to_login_response"
-            ],
-            "id": "8591dd9d-f80e-4765-8736-e3a059408451",
-            "source": {
-              "cell": "cff769ff-1225-458c-aaba-245323061bc2",
-              "port": "1c5fecf9-fc5c-44a1-a51b-be241047aa8d"
-            },
-            "target": {
-              "cell": "5f3e80d7-077b-45d3-a94a-69967e34573a",
-              "port": "f361146b-08dc-470f-90af-bf0d553f0cdc"
-            },
-            "vertices": [
-              {
-                "x": -20,
-                "y": 570
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
             "zIndex": 48,
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
               "name": "verify_email_request",
-              "description": "",
+              "description": "Verification code",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -4039,12 +3981,99 @@
                 "y": 540
               }
             ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 49,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "redirect_to_login_response",
+              "description": "Successful/unsuccessful verification response from the server plus redirect to login on success.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "40da00db-33e5-489a-a7c4-360dbd1c9a3e",
+                  "title": "Flooding the network with traffic",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "See #15 ",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 224,
+                  "score": ""
+                },
+                {
+                  "id": "336a8cb3-bd31-4106-8cc8-27c561cd4d8c",
+                  "title": "Verify Email process response is changed during transit",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "See #16",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 226,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [
+                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
+              ],
+              "threatFrequency": {
+                "tampering": 2,
+                "informationDisclosure": 0,
+                "denialOfService": 1
+              }
+            },
+            "labels": [
+              "redirect_to_login_response"
+            ],
+            "id": "8591dd9d-f80e-4765-8736-e3a059408451",
+            "source": {
+              "cell": "cff769ff-1225-458c-aaba-245323061bc2",
+              "port": "1c5fecf9-fc5c-44a1-a51b-be241047aa8d"
+            },
+            "target": {
+              "cell": "5f3e80d7-077b-45d3-a94a-69967e34573a",
+              "port": "f361146b-08dc-470f-90af-bf0d553f0cdc"
+            },
+            "vertices": [
+              {
+                "x": -20,
+                "y": 570
+              }
+            ]
           }
         ]
       }
     ],
     "diagramTop": 5,
     "reviewer": "",
-    "threatTop": 227
+    "threatTop": 228
   }
 }
