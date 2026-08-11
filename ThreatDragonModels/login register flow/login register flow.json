@@ -3119,61 +3119,6 @@
             },
             "width": 200,
             "height": 100,
-            "zIndex": 34,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "email_address",
-              "description": "The citizen's email address sent to the email service provider so the verification email can be sent.",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": [
-                "9ae6e5ac-e04d-471c-ae1b-463b7476c2c7",
-                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ]
-            },
-            "labels": [
-              "email_address"
-            ],
-            "id": "2bf0dfc7-8c2d-4769-bef5-b8531500d08f",
-            "source": {
-              "cell": "8e453973-119a-49f7-964d-516401ff5e85",
-              "port": "09c21e52-0ab0-475a-b034-a0e78945a93e"
-            },
-            "target": {
-              "cell": "19f6ff27-2266-4771-b652-4b2eface5c81",
-              "port": "fff21c3a-4d05-4898-94fa-cdcbaba83eca"
-            },
-            "vertices": [
-              {
-                "x": 460,
-                "y": -130
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
             "zIndex": 35,
             "connector": "smooth",
             "data": {
@@ -3517,9 +3462,8 @@
               "isTrustBoundary": true,
               "hasOpenThreats": false,
               "crossingFlows": [
-                "2bf0dfc7-8c2d-4769-bef5-b8531500d08f",
                 "96744225-ce62-4f85-8251-bf914e31207a",
-                "ad55b7a8-0a75-4511-9688-e9b0e7fcf623"
+                "2bf0dfc7-8c2d-4769-bef5-b8531500d08f"
               ],
               "containedElements": [
                 "19f6ff27-2266-4771-b652-4b2eface5c81"
@@ -3574,14 +3518,14 @@
                 "66708a20-72a0-4248-aa0a-75e8f7c332df",
                 "4b96d127-c9bf-441f-aa5b-68eaa17736c8",
                 "1e8a4bd7-1b7f-45b5-8123-3262bb21d368",
-                "2bf0dfc7-8c2d-4769-bef5-b8531500d08f",
                 "e6768564-29b5-46eb-a658-1874816cd8fb",
                 "d5ee7bf6-202c-4c3c-aea8-7cc1e229ecf5",
                 "dca0fd92-aac7-493e-b4b1-b13e3d758595",
                 "04d603e7-1ce9-4587-94d1-6a6ad3359f22",
                 "8591dd9d-f80e-4765-8736-e3a059408451",
                 "7198a459-41d5-474e-9a9c-1b244fc4e5eb",
-                "ad55b7a8-0a75-4511-9688-e9b0e7fcf623"
+                "ad55b7a8-0a75-4511-9688-e9b0e7fcf623",
+                "2bf0dfc7-8c2d-4769-bef5-b8531500d08f"
               ],
               "containedElements": [
                 "8e453973-119a-49f7-964d-516401ff5e85",
@@ -4295,21 +4239,33 @@
                   "severity": "TBD",
                   "type": "Tampering",
                   "description": "A Bad Actor may observe and modify the verification link in transit, swapping the token to prevent a user from verifying their account, or altering the url so the citizen will be brought to a phishing page.",
-                  "mitigation": "- Use",
+                  "mitigation": "- Use HTTPS (or another encrypted protocol) so data is encrypted in transit",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 249,
                   "score": ""
+                },
+                {
+                  "id": "94a3d7c7-565d-4b83-83e2-5f2d9f91608a",
+                  "title": "Registration flood exhausts the email API",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "Mass automated registrations can cause the Server's API limit to be reached or overload the email service provider ",
+                  "mitigation": "- Rate limit the registration request before the call to the ESP is performed.\n- Monitor API usage limits\n- Log traffic and audit logs regularly to detect anomalies.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 251,
+                  "score": ""
                 }
               ],
               "trustBoundaryIds": [
-                "9ae6e5ac-e04d-471c-ae1b-463b7476c2c7",
                 "c13b7a48-b539-45e9-b058-5d6a0ed613da"
               ],
               "threatFrequency": {
-                "tampering": 1,
+                "tampering": 2,
                 "informationDisclosure": 0,
-                "denialOfService": 0
+                "denialOfService": 2
               }
             },
             "labels": [
@@ -4321,13 +4277,88 @@
               "port": "09c21e52-0ab0-475a-b034-a0e78945a93e"
             },
             "target": {
-              "cell": "19f6ff27-2266-4771-b652-4b2eface5c81",
-              "port": "fff21c3a-4d05-4898-94fa-cdcbaba83eca"
+              "x": 330,
+              "y": -320
             },
             "vertices": [
               {
                 "x": 500,
                 "y": -230
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 52,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "email_address",
+              "description": "The citizen's email address sent to the email service provider so the verification email can be sent.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "27a03396-f697-4bf5-bc1b-7938c42cd468",
+                  "title": "Citizens verification email is altered in transit",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "Verification email is altered in transit by a Bad Actor and replaced by an email they own, so the citizen's verification link is sent to them instead.",
+                  "mitigation": "- Use HTTPS (or another encrypted protocol) so data is encrypted in transit",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 250,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [
+                "9ae6e5ac-e04d-471c-ae1b-463b7476c2c7",
+                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
+              ],
+              "threatFrequency": {
+                "tampering": 2,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              "email_address"
+            ],
+            "id": "2bf0dfc7-8c2d-4769-bef5-b8531500d08f",
+            "source": {
+              "cell": "8e453973-119a-49f7-964d-516401ff5e85",
+              "port": "09c21e52-0ab0-475a-b034-a0e78945a93e"
+            },
+            "target": {
+              "cell": "19f6ff27-2266-4771-b652-4b2eface5c81",
+              "port": "fff21c3a-4d05-4898-94fa-cdcbaba83eca"
+            },
+            "vertices": [
+              {
+                "x": 460,
+                "y": -130
               }
             ]
           }
@@ -4336,6 +4367,6 @@
     ],
     "diagramTop": 5,
     "reviewer": "",
-    "threatTop": 249
+    "threatTop": 251
   }
 }
