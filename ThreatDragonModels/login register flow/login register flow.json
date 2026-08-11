@@ -3464,8 +3464,8 @@
                 "e6768564-29b5-46eb-a658-1874816cd8fb",
                 "d5ee7bf6-202c-4c3c-aea8-7cc1e229ecf5",
                 "dca0fd92-aac7-493e-b4b1-b13e3d758595",
-                "04d603e7-1ce9-4587-94d1-6a6ad3359f22",
-                "8591dd9d-f80e-4765-8736-e3a059408451"
+                "8591dd9d-f80e-4765-8736-e3a059408451",
+                "04d603e7-1ce9-4587-94d1-6a6ad3359f22"
               ],
               "containedElements": [
                 "8e453973-119a-49f7-964d-516401ff5e85",
@@ -3896,80 +3896,6 @@
             },
             "width": 200,
             "height": 100,
-            "zIndex": 46,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "verify_email_request",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [
-                {
-                  "id": "fa971cc6-d8b6-44e9-a8e1-72ed9f91f82f",
-                  "title": "Flooding the network with traffic",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Denial of service",
-                  "description": "See #15",
-                  "mitigation": "",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 225,
-                  "score": ""
-                }
-              ],
-              "trustBoundaryIds": [
-                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ],
-              "threatFrequency": {
-                "tampering": 0,
-                "informationDisclosure": 0,
-                "denialOfService": 1
-              }
-            },
-            "labels": [
-              "verify_email_request"
-            ],
-            "id": "04d603e7-1ce9-4587-94d1-6a6ad3359f22",
-            "source": {
-              "cell": "5f3e80d7-077b-45d3-a94a-69967e34573a",
-              "port": "5a0ded40-5f67-4af7-837e-79d217fb95e3"
-            },
-            "target": {
-              "cell": "cff769ff-1225-458c-aaba-245323061bc2",
-              "port": "1c5fecf9-fc5c-44a1-a51b-be241047aa8d"
-            },
-            "vertices": [
-              {
-                "x": 250,
-                "y": 540
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
             "zIndex": 47,
             "connector": "smooth",
             "data": {
@@ -4000,12 +3926,12 @@
                 },
                 {
                   "id": "336a8cb3-bd31-4106-8cc8-27c561cd4d8c",
-                  "title": "Citizen verify request is changed in transit",
+                  "title": "Verify Email process response is changed during transit",
                   "status": "Open",
                   "severity": "TBD",
                   "type": "Tampering",
-                  "description": "A Bad Actor could tamper with the verification code in the request to be invalid and prevent the Citizen from verifying their account.",
-                  "mitigation": "- Use HTTPS (or another encrypted protocol) to send data over the network",
+                  "description": "See #16",
+                  "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 226,
@@ -4016,7 +3942,7 @@
                 "c13b7a48-b539-45e9-b058-5d6a0ed613da"
               ],
               "threatFrequency": {
-                "tampering": 1,
+                "tampering": 2,
                 "informationDisclosure": 0,
                 "denialOfService": 1
               }
@@ -4039,12 +3965,99 @@
                 "y": 570
               }
             ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 48,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "verify_email_request",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "fa971cc6-d8b6-44e9-a8e1-72ed9f91f82f",
+                  "title": "Flooding the network with traffic",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "See #15",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 225,
+                  "score": ""
+                },
+                {
+                  "id": "086b0272-6433-4937-8136-a559a2ea0e25",
+                  "title": "Citizen verify request is changed in transit",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "A Bad Actor could tamper with the verification code in the request to be invalid and prevent the Citizen from verifying their account.",
+                  "mitigation": "- Use HTTPS (or another encrypted protocol) to send data over the network",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 227,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [
+                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
+              ],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 0,
+                "denialOfService": 1
+              }
+            },
+            "labels": [
+              "verify_email_request"
+            ],
+            "id": "04d603e7-1ce9-4587-94d1-6a6ad3359f22",
+            "source": {
+              "cell": "5f3e80d7-077b-45d3-a94a-69967e34573a",
+              "port": "5a0ded40-5f67-4af7-837e-79d217fb95e3"
+            },
+            "target": {
+              "cell": "cff769ff-1225-458c-aaba-245323061bc2",
+              "port": "1c5fecf9-fc5c-44a1-a51b-be241047aa8d"
+            },
+            "vertices": [
+              {
+                "x": 250,
+                "y": 540
+              }
+            ]
           }
         ]
       }
     ],
     "diagramTop": 5,
     "reviewer": "",
-    "threatTop": 226
+    "threatTop": 227
   }
 }
