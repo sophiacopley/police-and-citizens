@@ -27,7 +27,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Boundary",
-              "name": "Trust Boundary",
+              "name": "Database trust boundary",
               "description": "Trust boundary around the citizen information data store, separating the database from the application processes.",
               "isTrustBoundary": true,
               "hasOpenThreats": false,
@@ -35,7 +35,7 @@
               "containedElements": []
             },
             "labels": [
-              "Trust Boundary"
+              "Database trust boundary"
             ],
             "id": "7cfa7384-192c-4248-b935-cb966cb1b03b",
             "source": {
@@ -1604,17 +1604,30 @@
                   "status": "Open",
                   "severity": "TBD",
                   "type": "Spoofing",
-                  "description": "A lack of SPF/DKIM/DMARC configured allows Bad Actors to forge a verification email as coming from SecureReports.",
-                  "mitigation": "- Configure SPF, DKIM, DMARK\n- Use the provider's own sending domain",
+                  "description": "The absence of SPF/DKIM/DMARC configuration allows Bad Actors to forge a verification email as coming from SecureReports.",
+                  "mitigation": "- Configure SPF, DKIM, DMARC\n- Use the provider's own sending domain",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 228,
                   "score": ""
+                },
+                {
+                  "id": "d63cc3d7-4d9d-4dd8-b17e-6fd9f2443af2",
+                  "title": "Email vendor becomes comprimised through tampering",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "The email service and is assumed third-party infrastructure. If the vendor is compromised (e.g. its API keys are stolen), an attacker can send mail as SecureReports, or read mail in transit.",
+                  "mitigation": "- Apply the principle of least privilege when storing API keys\n- Rotate keys regularly\n- Audit the third-party software's security",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 229,
+                  "score": ""
                 }
               ],
               "threatFrequency": {
-                "spoofing": 1,
-                "tampering": 0,
+                "spoofing": 2,
+                "tampering": 1,
                 "repudiation": 0,
                 "informationDisclosure": 0,
                 "denialOfService": 0,
@@ -3412,7 +3425,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Boundary",
-              "name": "Trust Boundary",
+              "name": "Email service provider trust boundary",
               "description": "Trust boundary around the email service provider, separating the email infrastructure from the rest of the system.",
               "isTrustBoundary": true,
               "hasOpenThreats": false,
@@ -3426,7 +3439,7 @@
               ]
             },
             "labels": [
-              "Trust Boundary"
+              "Email service provider trust boundary"
             ],
             "id": "9ae6e5ac-e04d-471c-ae1b-463b7476c2c7",
             "source": {
@@ -3460,7 +3473,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Boundary",
-              "name": "Trust Boundary",
+              "name": "SecureReports application trust boundary",
               "description": "Trust boundary around the application processes (register, login, hashing, verification), separating them from the citizen's browser and email infrastructure.",
               "isTrustBoundary": true,
               "hasOpenThreats": false,
@@ -3492,7 +3505,7 @@
               ]
             },
             "labels": [
-              "Trust Boundary"
+              "SecureReports application trust boundary"
             ],
             "id": "c13b7a48-b539-45e9-b058-5d6a0ed613da",
             "source": {
@@ -4074,6 +4087,6 @@
     ],
     "diagramTop": 5,
     "reviewer": "",
-    "threatTop": 228
+    "threatTop": 229
   }
 }
