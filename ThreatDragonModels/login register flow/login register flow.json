@@ -1108,7 +1108,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "get_login_response",
+              "name": "submit_register_request\n",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -1120,20 +1120,33 @@
               "protocol": "",
               "threats": [
                 {
-                  "id": "73ef0d3c-7d1e-4ea6-91c6-fc4af8458c23",
-                  "title": "Login process response is changed in transit",
+                  "id": "5f316f44-6d14-4efd-820c-2c25ab7858d0",
+                  "title": "Citizen personal data is tampered with in transit",
                   "status": "Open",
                   "severity": "TBD",
                   "type": "Tampering",
-                  "description": "See #16",
-                  "mitigation": "",
+                  "description": "Bad actor changes the citizen's email and/or password so they either do not receive the verification email, or can't successfully log in. ",
+                  "mitigation": "- Use HTTPS (or another encrypted protocol) to send data over the network",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 189,
+                  "number": 17,
                   "score": ""
                 },
                 {
-                  "id": "ad97ec25-8f6e-4e3b-a54d-e9d291afacc0",
+                  "id": "97c8462d-7a0c-4452-9ee3-608e58d7d072",
+                  "title": "Citizen information exposed to a bad actor",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "Email address and password is accessed by a bad actor on the network, allowing them to steal the user's credentials. ",
+                  "mitigation": "- Use HTTPS (or another encrypted protocol) to send data over the network\n- Use verification code to ensure stolen credentials cannot be used to log in.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 18,
+                  "score": ""
+                },
+                {
+                  "id": "8b46c674-958f-498c-a65c-f5f3cad139f0",
                   "title": "Flooding the network with traffic",
                   "status": "Open",
                   "severity": "TBD",
@@ -1142,7 +1155,7 @@
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 190,
+                  "number": 19,
                   "score": ""
                 }
               ],
@@ -1150,27 +1163,31 @@
                 "c13b7a48-b539-45e9-b058-5d6a0ed613da"
               ],
               "threatFrequency": {
-                "tampering": 2,
-                "informationDisclosure": 0,
-                "denialOfService": 1
+                "tampering": 1,
+                "informationDisclosure": 2,
+                "denialOfService": 4
               }
             },
             "labels": [
-              "get_login_response"
+              "submit_register_request\n"
             ],
-            "id": "79c078cf-1161-41f1-b3ec-bf387a04e1ce",
+            "id": "fa758357-7f42-42a8-9e52-51061a898cec",
             "source": {
-              "cell": "f94c11f5-8d6c-4c80-a25e-4f052e677c97",
-              "port": "d54f0a46-8146-47c4-a229-f3ef0054abd9"
+              "cell": "5f3e80d7-077b-45d3-a94a-69967e34573a",
+              "port": "4eef07ba-c073-4f8f-a998-c51ab2fa460b"
             },
             "target": {
-              "cell": "5f3e80d7-077b-45d3-a94a-69967e34573a",
-              "port": "3cf15723-49a1-4efc-bb2a-240214ee345a"
+              "cell": "8e453973-119a-49f7-964d-516401ff5e85",
+              "port": "9d9a8ddb-f523-4198-809b-802291cadfe7"
             },
             "vertices": [
               {
-                "x": 270,
-                "y": 400
+                "x": 190,
+                "y": 110
+              },
+              {
+                "x": 400,
+                "y": 60
               }
             ]
           },
@@ -1282,7 +1299,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "submit_register_request\n",
+              "name": "get_login_response",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -1294,33 +1311,20 @@
               "protocol": "",
               "threats": [
                 {
-                  "id": "5f316f44-6d14-4efd-820c-2c25ab7858d0",
-                  "title": "Citizen personal data is tampered with in transit",
+                  "id": "73ef0d3c-7d1e-4ea6-91c6-fc4af8458c23",
+                  "title": "Login process response is changed in transit",
                   "status": "Open",
                   "severity": "TBD",
                   "type": "Tampering",
-                  "description": "Bad actor changes the citizen's email and/or password so they either do not receive the verification email, or can't successfully log in. ",
-                  "mitigation": "- Use HTTPS (or another encrypted protocol) to send data over the network",
+                  "description": "See #16",
+                  "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 17,
+                  "number": 189,
                   "score": ""
                 },
                 {
-                  "id": "97c8462d-7a0c-4452-9ee3-608e58d7d072",
-                  "title": "Citizen information exposed to a bad actor",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Information disclosure",
-                  "description": "Email address and password is accessed by a bad actor on the network, allowing them to steal the user's credentials. ",
-                  "mitigation": "- Use HTTPS (or another encrypted protocol) to send data over the network\n- Use verification code to ensure stolen credentials cannot be used to log in.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 18,
-                  "score": ""
-                },
-                {
-                  "id": "8b46c674-958f-498c-a65c-f5f3cad139f0",
+                  "id": "ad97ec25-8f6e-4e3b-a54d-e9d291afacc0",
                   "title": "Flooding the network with traffic",
                   "status": "Open",
                   "severity": "TBD",
@@ -1329,7 +1333,7 @@
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 19,
+                  "number": 190,
                   "score": ""
                 }
               ],
@@ -1337,31 +1341,27 @@
                 "c13b7a48-b539-45e9-b058-5d6a0ed613da"
               ],
               "threatFrequency": {
-                "tampering": 1,
-                "informationDisclosure": 2,
-                "denialOfService": 4
+                "tampering": 2,
+                "informationDisclosure": 0,
+                "denialOfService": 1
               }
             },
             "labels": [
-              "submit_register_request\n"
+              "get_login_response"
             ],
-            "id": "fa758357-7f42-42a8-9e52-51061a898cec",
+            "id": "79c078cf-1161-41f1-b3ec-bf387a04e1ce",
             "source": {
-              "cell": "5f3e80d7-077b-45d3-a94a-69967e34573a",
-              "port": "4eef07ba-c073-4f8f-a998-c51ab2fa460b"
+              "cell": "f94c11f5-8d6c-4c80-a25e-4f052e677c97",
+              "port": "d54f0a46-8146-47c4-a229-f3ef0054abd9"
             },
             "target": {
-              "cell": "8e453973-119a-49f7-964d-516401ff5e85",
-              "port": "9d9a8ddb-f523-4198-809b-802291cadfe7"
+              "cell": "5f3e80d7-077b-45d3-a94a-69967e34573a",
+              "port": "3cf15723-49a1-4efc-bb2a-240214ee345a"
             },
             "vertices": [
               {
-                "x": 190,
-                "y": 110
-              },
-              {
-                "x": 400,
-                "y": 60
+                "x": 270,
+                "y": 400
               }
             ]
           },
@@ -3418,9 +3418,9 @@
               "crossingFlows": [
                 "9e51c3ac-d04f-4699-a6e3-c052f3e47ffa",
                 "ad55b7a8-0a75-4511-9688-e9b0e7fcf623",
-                "79c078cf-1161-41f1-b3ec-bf387a04e1ce",
-                "d5ee7bf6-202c-4c3c-aea8-7cc1e229ecf5",
                 "fa758357-7f42-42a8-9e52-51061a898cec",
+                "d5ee7bf6-202c-4c3c-aea8-7cc1e229ecf5",
+                "79c078cf-1161-41f1-b3ec-bf387a04e1ce",
                 "dca0fd92-aac7-493e-b4b1-b13e3d758595",
                 "7198a459-41d5-474e-9a9c-1b244fc4e5eb",
                 "d4f1dc29-d52c-4752-aac0-bd033838adff",
@@ -3498,12 +3498,25 @@
                   "title": "Flooding the network with traffic",
                   "status": "Open",
                   "severity": "TBD",
-                  "type": "Tampering",
+                  "type": "Denial of service",
                   "description": "See #15",
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 193,
+                  "score": ""
+                },
+                {
+                  "id": "29757494-36c7-4136-81ba-ed623b8e6d66",
+                  "title": "Verify Email process response is changed during transit",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "See #16\n",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 203,
                   "score": ""
                 }
               ],
@@ -3511,9 +3524,9 @@
                 "c13b7a48-b539-45e9-b058-5d6a0ed613da"
               ],
               "threatFrequency": {
-                "tampering": 1,
+                "tampering": 4,
                 "informationDisclosure": 0,
-                "denialOfService": 0
+                "denialOfService": 1
               }
             },
             "labels": [
@@ -3960,6 +3973,6 @@
     ],
     "diagramTop": 5,
     "reviewer": "",
-    "threatTop": 202
+    "threatTop": 203
   }
 }
