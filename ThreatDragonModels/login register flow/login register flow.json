@@ -1648,8 +1648,8 @@
                 "text": "Hashing"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -1752,13 +1752,80 @@
               "isWebApplication": false,
               "privilegeLevel": "",
               "threats": [
-  { "id": "d1a2b3c4-0001-4a5b-8c6d-e7f8a9b0c1d1", "title": "Library replaced with a fake/malicious library", "status": "Open", "severity": "TBD", "type": "Spoofing", "description": "See #161", "mitigation": "", "modelType": "STRIDE", "new": false, "number": 168, "score": "" },
-  { "id": "d1a2b3c4-0002-4a5b-8c6d-e7f8a9b0c1d2", "title": "Process has been tampered with", "status": "Open", "severity": "TBD", "type": "Tampering", "description": "See #25", "mitigation": "", "modelType": "STRIDE", "new": false, "number": 169, "score": "" },
-  { "id": "d1a2b3c4-0003-4a5b-8c6d-e7f8a9b0c1d3", "title": "Injection attack - tampering", "status": "Open", "severity": "TBD", "type": "Tampering", "description": "See #27", "mitigation": "", "modelType": "STRIDE", "new": false, "number": 170, "score": "" },
-  { "id": "d1a2b3c4-0004-4a5b-8c6d-e7f8a9b0c1d4", "title": "Process gets access to restricted resources", "status": "Open", "severity": "TBD", "type": "Elevation of privilege", "description": "See #26", "mitigation": "", "modelType": "STRIDE", "new": false, "number": 171, "score": "" },
-  { "id": "d1a2b3c4-0005-4a5b-8c6d-e7f8a9b0c1d5", "title": "Weak hashing algorithm allows reversal or collision", "status": "Open", "severity": "TBD", "type": "Information disclosure", "description": "The hashing algorithm used to store passwords may not be a modern password-hashing function, or may have known weaknesses (e.g., collisions, fast computation enabling brute force, no built-in salting), allowing a bad actor with access to a hashed value to recover the original password or forge a matching hash.", "mitigation": "- Use a purpose-built password hashing algorithm (e.g., bcrypt, scrypt, Argon2) rather than a general-purpose hash function (e.g., MD5, SHA-1, unsalted SHA-256).\n- Apply a unique salt per password to prevent rainbow table attacks.\n- Use an appropriate work factor/cost parameter and increase it over time as hardware improves.\n- Avoid algorithms with known collision vulnerabilities.", "modelType": "STRIDE", "new": false, "number": 172, "score": "" }
-],
-"threatFrequency": { "spoofing": 1, "tampering": 2, "repudiation": 0, "informationDisclosure": 1, "denialOfService": 0, "elevationOfPrivilege": 1 }
+                {
+                  "id": "d1a2b3c4-0001-4a5b-8c6d-e7f8a9b0c1d1",
+                  "title": "Library replaced with a fake/malicious library",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": "See #161",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 168,
+                  "score": ""
+                },
+                {
+                  "id": "d1a2b3c4-0002-4a5b-8c6d-e7f8a9b0c1d2",
+                  "title": "Process has been tampered with",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "See #25",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 169,
+                  "score": ""
+                },
+                {
+                  "id": "d1a2b3c4-0003-4a5b-8c6d-e7f8a9b0c1d3",
+                  "title": "Injection attack - tampering",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "See #27",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 170,
+                  "score": ""
+                },
+                {
+                  "id": "d1a2b3c4-0004-4a5b-8c6d-e7f8a9b0c1d4",
+                  "title": "Process gets access to restricted resources",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Elevation of privilege",
+                  "description": "See #26",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 171,
+                  "score": ""
+                },
+                {
+                  "id": "d1a2b3c4-0005-4a5b-8c6d-e7f8a9b0c1d5",
+                  "title": "Weak hashing algorithm allows reversal or collision",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "The hashing algorithm used to store passwords may not be a modern password-hashing function, or may have known weaknesses (e.g., collisions, fast computation enabling brute force, no built-in salting), allowing a bad actor with access to a hashed value to recover the original password or forge a matching hash.",
+                  "mitigation": "- Use a purpose-built password hashing algorithm (e.g., bcrypt, scrypt, Argon2) rather than a general-purpose hash function (e.g., MD5, SHA-1, unsalted SHA-256).\n- Apply a unique salt per password to prevent rainbow table attacks.\n- Use an appropriate work factor/cost parameter and increase it over time as hardware improves.\n- Avoid algorithms with known collision vulnerabilities.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 172,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 1,
+                "tampering": 2,
+                "repudiation": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 1
+              }
             }
           },
           {
@@ -1775,8 +1842,8 @@
                 "text": "Verify Email"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -1879,16 +1946,119 @@
               "isWebApplication": false,
               "privilegeLevel": "",
               "threats": [
-  { "id": "d1a2b3c4-0010-4a5b-8c6d-e7f8a9b0c1e0", "title": "Flooding the verify email process with requests", "status": "Open", "severity": "TBD", "type": "Denial of service", "description": "See #22", "mitigation": "", "modelType": "STRIDE", "new": false, "number": 177, "score": "" },
-  { "id": "d1a2b3c4-0011-4a5b-8c6d-e7f8a9b0c1e1", "title": "Verification process replaced by scammer", "status": "Open", "severity": "TBD", "type": "Spoofing", "description": "See #23", "mitigation": "", "modelType": "STRIDE", "new": false, "number": 178, "score": "" },
-  { "id": "d1a2b3c4-0012-4a5b-8c6d-e7f8a9b0c1e2", "title": "Process has been tampered with", "status": "Open", "severity": "TBD", "type": "Tampering", "description": "See #25", "mitigation": "", "modelType": "STRIDE", "new": false, "number": 179, "score": "" },
-  { "id": "d1a2b3c4-0013-4a5b-8c6d-e7f8a9b0c1e3", "title": "Injection attack - tampering", "status": "Open", "severity": "TBD", "type": "Tampering", "description": "See #27", "mitigation": "", "modelType": "STRIDE", "new": false, "number": 180, "score": "" },
-  { "id": "d1a2b3c4-0014-4a5b-8c6d-e7f8a9b0c1e4", "title": "Process leaks data via unsafe memory", "status": "Open", "severity": "TBD", "type": "Information disclosure", "description": "See #24", "mitigation": "", "modelType": "STRIDE", "new": false, "number": 181, "score": "" },
-  { "id": "d1a2b3c4-0015-4a5b-8c6d-e7f8a9b0c1e5", "title": "Injection attack - disclosure", "status": "Open", "severity": "TBD", "type": "Information disclosure", "description": "See #28", "mitigation": "", "modelType": "STRIDE", "new": false, "number": 182, "score": "" },
-  { "id": "d1a2b3c4-0016-4a5b-8c6d-e7f8a9b0c1e6", "title": "Expose sensitive data in logs", "status": "Open", "severity": "TBD", "type": "Information disclosure", "description": "See #29", "mitigation": "", "modelType": "STRIDE", "new": false, "number": 183, "score": "" },
-  { "id": "d1a2b3c4-0017-4a5b-8c6d-e7f8a9b0c1e7", "title": "Process gets access to restricted resources", "status": "Open", "severity": "TBD", "type": "Elevation of privilege", "description": "See #26", "mitigation": "", "modelType": "STRIDE", "new": false, "number": 184, "score": "" }
-],
-"threatFrequency": { "spoofing": 1, "tampering": 2, "repudiation": 0, "informationDisclosure": 3, "denialOfService": 1, "elevationOfPrivilege": 1 }
+                {
+                  "id": "d1a2b3c4-0010-4a5b-8c6d-e7f8a9b0c1e0",
+                  "title": "Flooding the verify email process with requests",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "See #22",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 177,
+                  "score": ""
+                },
+                {
+                  "id": "d1a2b3c4-0011-4a5b-8c6d-e7f8a9b0c1e1",
+                  "title": "Verification process replaced by scammer",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": "See #23",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 178,
+                  "score": ""
+                },
+                {
+                  "id": "d1a2b3c4-0012-4a5b-8c6d-e7f8a9b0c1e2",
+                  "title": "Process has been tampered with",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "See #25",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 179,
+                  "score": ""
+                },
+                {
+                  "id": "d1a2b3c4-0013-4a5b-8c6d-e7f8a9b0c1e3",
+                  "title": "Injection attack - tampering",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "See #27",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 180,
+                  "score": ""
+                },
+                {
+                  "id": "d1a2b3c4-0014-4a5b-8c6d-e7f8a9b0c1e4",
+                  "title": "Process leaks data via unsafe memory",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "See #24",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 181,
+                  "score": ""
+                },
+                {
+                  "id": "d1a2b3c4-0015-4a5b-8c6d-e7f8a9b0c1e5",
+                  "title": "Injection attack - disclosure",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "See #28",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 182,
+                  "score": ""
+                },
+                {
+                  "id": "d1a2b3c4-0016-4a5b-8c6d-e7f8a9b0c1e6",
+                  "title": "Expose sensitive data in logs",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "See #29",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 183,
+                  "score": ""
+                },
+                {
+                  "id": "d1a2b3c4-0017-4a5b-8c6d-e7f8a9b0c1e7",
+                  "title": "Process gets access to restricted resources",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Elevation of privilege",
+                  "description": "See #26",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 184,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 1,
+                "tampering": 2,
+                "repudiation": 0,
+                "informationDisclosure": 3,
+                "denialOfService": 1,
+                "elevationOfPrivilege": 1
+              }
             }
           },
           {
@@ -2345,8 +2515,8 @@
                 "text": "Validate\nCredentials "
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -2449,12 +2619,67 @@
               "isWebApplication": false,
               "privilegeLevel": "",
               "threats": [
-  { "id": "d1a2b3c4-0006-4a5b-8c6d-e7f8a9b0c1d6", "title": "Process has been tampered with", "status": "Open", "severity": "TBD", "type": "Tampering", "description": "See #25", "mitigation": "", "modelType": "STRIDE", "new": false, "number": 173, "score": "" },
-  { "id": "d1a2b3c4-0007-4a5b-8c6d-e7f8a9b0c1d7", "title": "Injection attack - tampering", "status": "Open", "severity": "TBD", "type": "Tampering", "description": "See #27", "mitigation": "", "modelType": "STRIDE", "new": false, "number": 174, "score": "" },
-  { "id": "d1a2b3c4-0008-4a5b-8c6d-e7f8a9b0c1d8", "title": "Injection attack - disclosure", "status": "Open", "severity": "TBD", "type": "Information disclosure", "description": "See #28", "mitigation": "", "modelType": "STRIDE", "new": false, "number": 175, "score": "" },
-  { "id": "d1a2b3c4-0009-4a5b-8c6d-e7f8a9b0c1d9", "title": "Process gets access to restricted resources", "status": "Open", "severity": "TBD", "type": "Elevation of privilege", "description": "See #26", "mitigation": "", "modelType": "STRIDE", "new": false, "number": 176, "score": "" }
-],
-"threatFrequency": { "spoofing": 0, "tampering": 2, "repudiation": 0, "informationDisclosure": 1, "denialOfService": 0, "elevationOfPrivilege": 1 }
+                {
+                  "id": "d1a2b3c4-0006-4a5b-8c6d-e7f8a9b0c1d6",
+                  "title": "Process has been tampered with",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "See #25",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 173,
+                  "score": ""
+                },
+                {
+                  "id": "d1a2b3c4-0007-4a5b-8c6d-e7f8a9b0c1d7",
+                  "title": "Injection attack - tampering",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "See #27",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 174,
+                  "score": ""
+                },
+                {
+                  "id": "d1a2b3c4-0008-4a5b-8c6d-e7f8a9b0c1d8",
+                  "title": "Injection attack - disclosure",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "See #28",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 175,
+                  "score": ""
+                },
+                {
+                  "id": "d1a2b3c4-0009-4a5b-8c6d-e7f8a9b0c1d9",
+                  "title": "Process gets access to restricted resources",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Elevation of privilege",
+                  "description": "See #26",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 176,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 2,
+                "repudiation": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 1
+              }
             }
           },
           {
