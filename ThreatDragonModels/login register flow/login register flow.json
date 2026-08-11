@@ -825,8 +825,8 @@
             },
             "vertices": [
               {
-                "x": 670,
-                "y": 400
+                "x": 650,
+                "y": 440
               }
             ]
           },
@@ -1032,8 +1032,8 @@
             },
             "vertices": [
               {
-                "x": 250,
-                "y": 320
+                "x": 230,
+                "y": 360
               }
             ]
           },
@@ -1140,8 +1140,8 @@
             },
             "vertices": [
               {
-                "x": 290,
-                "y": 360
+                "x": 270,
+                "y": 400
               }
             ]
           },
@@ -1192,8 +1192,8 @@
             },
             "vertices": [
               {
-                "x": 600,
-                "y": 320
+                "x": 580,
+                "y": 360
               }
             ]
           },
@@ -1888,8 +1888,8 @@
                 "text": "Random\nNumber\nGenerator"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -1986,18 +1986,105 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "f9c5c788-6ce6-41b1-80ff-870cd22d0b71",
+                  "title": "Library replaced with a fake/malicious library ",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": "Legitimate library replaced with a fake library by an actor, so consuming applications unknowingly pull numbers from an attacker controlled source. ",
+                  "mitigation": "- Code signing - require the library to be crypto-graphically signed by a trusted authority, and verify this signature before load. \n- Add fingerprinting to process, e.g., change time, binary / script hash, and verify at load time or periodically at runtime.\n- Use fixed absolute library paths for loading. \n- Use an allow list to declare exactly which library version and path are permitted\n- Monitor unexpected restarts or new processes claiming to be the library.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 161,
+                  "score": ""
+                },
+                {
+                  "id": "03c7bf09-40e2-4c2a-aa20-3105ff1ffecf",
+                  "title": "Entropy/seed leakage",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "Internal state or seed value of the random number generator is exposed, allowing a bad actor to reconstruct past or predict future random numbers. ",
+                  "mitigation": "- Choose a well audited library (and library version) with no reported vulnerabilities. ",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 162,
+                  "score": ""
+                },
+                {
+                  "id": "3afc88af-76e0-41b7-8fc7-979cadfe5ae6",
+                  "title": "Generation algorithm makes random number guessable",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "Random number generator uses an algorithm that is not cryptographically secure, meaning even without the internal state being known, a past and future output can be guessed using brute force. ",
+                  "mitigation": "- Prefer libraries that use algorithms specified in NIST SP 800-90A/B/C or equivalent, which have been formally analyzed for prediction resistance.\n- Ensure that library uses an algorithm such that compromise of current state does not allow reconstruction of past outputs or prediction of future outputs.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 163,
+                  "score": ""
+                },
+                {
+                  "id": "75b09d58-de91-485e-9eda-b9d702f962db",
+                  "title": "Process has been tampered with",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "See #25",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 164,
+                  "score": ""
+                },
+                {
+                  "id": "47970e1a-51fd-4793-83b7-05b1b937954d",
+                  "title": "Injection attack - tampering",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "See #27",
+                  "mitigation": "- Choose a well audited library (and library version) with no reported vulnerabilities. ",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 166,
+                  "score": ""
+                },
+                {
+                  "id": "ccafd593-c249-475a-8142-fbb04538b36f",
+                  "title": "New STRIDE threat",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Repudiation",
+                  "description": "Provide a description for this threat",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": true,
+                  "number": 167,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 2,
+                "tampering": 3,
+                "repudiation": 0,
+                "informationDisclosure": 5,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
             }
           },
           {
             "position": {
-              "x": 530,
-              "y": 360
+              "x": 510,
+              "y": 400
             },
             "size": {
               "width": 90,
@@ -2008,8 +2095,8 @@
                 "text": "Login"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -2106,12 +2193,125 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "b2e383f2-b3d6-424e-b009-26af491b0a95",
+                  "title": "Flooding the process with requests",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "See #22",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 153,
+                  "score": ""
+                },
+                {
+                  "id": "2434dbed-7010-42dc-950c-82800ac1bb9e",
+                  "title": "Process replaced by scammer",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": "See #23",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 154,
+                  "score": ""
+                },
+                {
+                  "id": "ffd0a648-e183-4e92-b064-966a21b27654",
+                  "title": "Process leaks data via unsafe memory",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "See #24",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 155,
+                  "score": ""
+                },
+                {
+                  "id": "a79c7351-523b-44b4-a3bf-fa8b281c1507",
+                  "title": "Process has been tampered with",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "See #25",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 156,
+                  "score": ""
+                },
+                {
+                  "id": "0447176c-224a-4e66-959b-97b6e8a67396",
+                  "title": "Process gets access to restricted resources",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Elevation of privilege",
+                  "description": "See #26",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 157,
+                  "score": ""
+                },
+                {
+                  "id": "ecc21417-3503-4e02-a14d-b17100bf00c5",
+                  "title": "Injection attack - tampering of underlying data",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "See #27",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 158,
+                  "score": ""
+                },
+                {
+                  "id": "ac029d61-cbc3-4bce-ab3b-9a65881e8ded",
+                  "title": "Injection attack - disclosure",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "See #28",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 159,
+                  "score": ""
+                },
+                {
+                  "id": "b8c4c853-9a1f-4dd5-a74d-c3fea3bf12a7",
+                  "title": "Expose sensitive data in logs",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Repudiation",
+                  "description": "See #29",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 160,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 1,
+                "tampering": 2,
+                "repudiation": 1,
+                "informationDisclosure": 2,
+                "denialOfService": 1,
+                "elevationOfPrivilege": 1
+              }
             }
           },
           {
@@ -2283,8 +2483,8 @@
             },
             "vertices": [
               {
-                "x": 180,
-                "y": 410
+                "x": 160,
+                "y": 450
               }
             ]
           },
@@ -2337,8 +2537,8 @@
             },
             "vertices": [
               {
-                "x": 180,
-                "y": 460
+                "x": 160,
+                "y": 500
               }
             ]
           },
@@ -2391,8 +2591,8 @@
             },
             "vertices": [
               {
-                "x": 680,
-                "y": 480
+                "x": 660,
+                "y": 520
               }
             ]
           },
@@ -2546,7 +2746,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "password",
+              "name": "given_password",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -2562,7 +2762,7 @@
               ]
             },
             "labels": [
-              "password"
+              "given_password"
             ],
             "id": "4b96d127-c9bf-441f-aa5b-68eaa17736c8",
             "source": {
@@ -2739,130 +2939,6 @@
                 "y": 370
               }
             ]
-          },
-          {
-            "position": {
-              "x": 1330,
-              "y": 390
-            },
-            "size": {
-              "width": 120,
-              "height": 60
-            },
-            "attrs": {
-              "text": {
-                "text": "Session Store"
-              },
-              "topLine": {
-                "strokeWidth": 1.5,
-                "strokeDasharray": null
-              },
-              "bottomLine": {
-                "strokeWidth": 1.5,
-                "strokeDasharray": null
-              }
-            },
-            "visible": true,
-            "shape": "store",
-            "zIndex": 33,
-            "ports": {
-              "groups": {
-                "top": {
-                  "position": "top",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "right": {
-                  "position": "right",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "bottom": {
-                  "position": "bottom",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "left": {
-                  "position": "left",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                }
-              },
-              "items": [
-                {
-                  "group": "top",
-                  "id": "d43f7119-4906-4c3c-b9a6-94a17bb01b44"
-                },
-                {
-                  "group": "right",
-                  "id": "5d26fcaf-8af6-47d0-a5f1-d1ad1636485a"
-                },
-                {
-                  "group": "bottom",
-                  "id": "10f14fec-0f6a-475b-8f9c-971ea7f0eb59"
-                },
-                {
-                  "group": "left",
-                  "id": "19e29b3d-4f39-41e1-a15c-d55802c52c6b"
-                }
-              ]
-            },
-            "id": "a7b274c9-e1a1-4057-9aef-f56bb492442c",
-            "data": {
-              "type": "tm.Store",
-              "name": "Session Store",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isALog": false,
-              "isEncrypted": false,
-              "isSigned": false,
-              "storesCredentials": false,
-              "storesInventory": false,
-              "threats": []
-            }
           },
           {
             "shape": "flow",
@@ -3382,6 +3458,6 @@
     ],
     "diagramTop": 5,
     "reviewer": "",
-    "threatTop": 152
+    "threatTop": 167
   }
 }
