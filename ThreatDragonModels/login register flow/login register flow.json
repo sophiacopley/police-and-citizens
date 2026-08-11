@@ -3379,7 +3379,8 @@
                 "2bf0dfc7-8c2d-4769-bef5-b8531500d08f",
                 "e6768564-29b5-46eb-a658-1874816cd8fb",
                 "7f8c8596-6076-48ce-8be0-926151fbb53d",
-                "04d603e7-1ce9-4587-94d1-6a6ad3359f22"
+                "04d603e7-1ce9-4587-94d1-6a6ad3359f22",
+                "66708a20-72a0-4248-aa0a-75e8f7c332df"
               ],
               "containedElements": [
                 "8e453973-119a-49f7-964d-516401ff5e85",
@@ -3848,7 +3849,9 @@
                   "score": ""
                 }
               ],
-              "trustBoundaryIds": [],
+              "trustBoundaryIds": [
+                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
+              ],
               "threatFrequency": {
                 "tampering": 2,
                 "informationDisclosure": 0,
@@ -3860,8 +3863,8 @@
             ],
             "id": "66708a20-72a0-4248-aa0a-75e8f7c332df",
             "source": {
-              "x": 550,
-              "y": 10
+              "cell": "8e453973-119a-49f7-964d-516401ff5e85",
+              "port": "09c21e52-0ab0-475a-b034-a0e78945a93e"
             },
             "target": {
               "cell": "5f3e80d7-077b-45d3-a94a-69967e34573a",
@@ -3872,7 +3875,62 @@
                 "x": 140,
                 "y": 10
               }
-            ]
+            ],
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead"
+              ],
+              "name": null
+            }
           }
         ]
       }
