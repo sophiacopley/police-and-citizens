@@ -1463,104 +1463,6 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "register_citizen_info",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [
-                {
-                  "id": "921cc597-9d06-4287-b376-55b77f250472",
-                  "title": "Data or query altered in transit ",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Tampering",
-                  "description": "Bad actor alters query in transit (e.g. adding DROP tables to the query) or alters the data in the query to be incorrect (e.g. updating the query to set is_verified = true) ",
-                  "mitigation": "- Use local private network.\n- Use certificates to authenticate originating machine.\n-  Use prepared statements on the caller side to minimise chances of effects of tampered data.\n- Use TLS/SSL encryption for all database connections.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 188,
-                  "score": ""
-                },
-                {
-                  "id": "db3086eb-1798-47a6-8eb4-5a7e80e39247",
-                  "title": "Data is read in transit",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Information disclosure",
-                  "description": "A bad actor captures the data in transit",
-                  "mitigation": "- Use a secure private network\n- Use TLS/SSL encryption for all database connections.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 189,
-                  "score": ""
-                },
-                {
-                  "id": "70760f0f-a0a6-4334-8f95-1d20a5de06b6",
-                  "title": "Wire is overloaded by request ",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Denial of service",
-                  "description": "Provide a description for this threat",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 190,
-                  "score": ""
-                }
-              ],
-              "trustBoundaryIds": [],
-              "threatFrequency": {
-                "tampering": 1,
-                "informationDisclosure": 2,
-                "denialOfService": 1
-              }
-            },
-            "labels": [
-              "register_citizen_info"
-            ],
-            "id": "50581fa5-01c5-4b7a-bc5e-bddc544a64f6",
-            "source": {
-              "x": 665,
-              "y": 43
-            },
-            "target": {
-              "cell": "15d61bf3-d764-492d-a4aa-82bae18b2ee0",
-              "port": "036be378-e73b-4a88-a7c6-c34699ec3e6c"
-            },
-            "vertices": [
-              {
-                "x": 1060,
-                "y": 100
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
               "name": "get_register_request",
               "description": "",
               "outOfScope": false,
@@ -1612,17 +1514,105 @@
                 "x": 100,
                 "y": -60
               }
-            ],
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead"
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "register_citizen_info",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "921cc597-9d06-4287-b376-55b77f250472",
+                  "title": "Data or query altered in transit ",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "Bad actor alters query in transit (e.g. adding DROP tables to the query) or alters the data in the query to be incorrect (e.g. updating the query to set is_verified = true) ",
+                  "mitigation": "- Use local private network.\n- Use certificates to authenticate originating machine.\n-  Use prepared statements on the caller side to minimise chances of effects of tampered data.\n- Use TLS/SSL encryption for all database connections.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 188,
+                  "score": ""
+                },
+                {
+                  "id": "db3086eb-1798-47a6-8eb4-5a7e80e39247",
+                  "title": "Data is read in transit",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "A bad actor captures the data in transit",
+                  "mitigation": "- Use a secure private network\n- Use TLS/SSL encryption for all database connections.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 189,
+                  "score": ""
+                },
+                {
+                  "id": "70760f0f-a0a6-4334-8f95-1d20a5de06b6",
+                  "title": "Wire is overloaded by request ",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "The wire is overloaded by requests in the private network.",
+                  "mitigation": "- Monitor network activity for suspicious patterns, e.g., corrupted processes\n- Drop suspicious packets and ban originating IPs (local firewalling)",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 190,
+                  "score": ""
+                }
               ],
-              "name": null
-            }
+              "trustBoundaryIds": [],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 2,
+                "denialOfService": 2
+              }
+            },
+            "labels": [
+              "register_citizen_info"
+            ],
+            "id": "50581fa5-01c5-4b7a-bc5e-bddc544a64f6",
+            "source": {
+              "x": 665,
+              "y": 43
+            },
+            "target": {
+              "cell": "15d61bf3-d764-492d-a4aa-82bae18b2ee0",
+              "port": "036be378-e73b-4a88-a7c6-c34699ec3e6c"
+            },
+            "vertices": [
+              {
+                "x": 1060,
+                "y": 100
+              }
+            ]
           },
           {
             "position": {
@@ -3044,62 +3034,6 @@
             },
             "width": 200,
             "height": 100,
-            "zIndex": 26,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "hashed_password",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": []
-            },
-            "labels": [
-              "hashed_password"
-            ],
-            "id": "79ab2f75-f444-4805-86cb-17eb999472c2",
-            "source": {
-              "cell": "15d61bf3-d764-492d-a4aa-82bae18b2ee0",
-              "port": "e513fc55-aa21-4446-b40c-5e7b9f435a5f"
-            },
-            "target": {
-              "cell": "bc76f0d2-8f73-48f9-84fa-5d940a11ce31",
-              "port": "5de3b62b-d820-43af-895d-ee6c3ea9d4f8"
-            },
-            "vertices": [
-              {
-                "x": 1060,
-                "y": 310
-              },
-              {
-                "x": 960,
-                "y": 350
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
             "zIndex": 27,
             "connector": "smooth",
             "data": {
@@ -3810,12 +3744,114 @@
                 "y": 570
               }
             ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 42,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "hashed_password",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "6c95bc33-a58e-400d-89b8-aa74bae4096e",
+                  "title": "Data or query altered in transit",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "See #188",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 191,
+                  "score": ""
+                },
+                {
+                  "id": "decb732b-c067-4b6e-bd31-10225257d2b8",
+                  "title": "Data is read in transit",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "See #189",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 192,
+                  "score": ""
+                },
+                {
+                  "id": "48c5dba0-9f79-47d1-88c2-d5263535a814",
+                  "title": "Wire overloaded by requests",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "See #190",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 193,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 1,
+                "denialOfService": 1
+              }
+            },
+            "labels": [
+              "hashed_password"
+            ],
+            "id": "79ab2f75-f444-4805-86cb-17eb999472c2",
+            "source": {
+              "cell": "15d61bf3-d764-492d-a4aa-82bae18b2ee0",
+              "port": "e513fc55-aa21-4446-b40c-5e7b9f435a5f"
+            },
+            "target": {
+              "cell": "bc76f0d2-8f73-48f9-84fa-5d940a11ce31",
+              "port": "5de3b62b-d820-43af-895d-ee6c3ea9d4f8"
+            },
+            "vertices": [
+              {
+                "x": 1060,
+                "y": 310
+              },
+              {
+                "x": 960,
+                "y": 350
+              }
+            ]
           }
         ]
       }
     ],
     "diagramTop": 5,
     "reviewer": "",
-    "threatTop": 190
+    "threatTop": 193
   }
 }
