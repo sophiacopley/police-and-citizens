@@ -9570,7 +9570,7 @@
                   "status": "Open",
                   "severity": "High",
                   "type": "Tampering",
-                    "description": "This flow hands the officer supplied text and recipient address to D10 where injected header lines would take effect. See the identically titled threat on Request More Info (E13).",
+                  "description": "This flow hands the officer supplied text and recipient address to D10 where injected header lines would take effect. See the identically titled threat on Request More Info (E13).",
                   "mitigation": "See the identically titled threat on Request More Info (E13).",
                   "modelType": "STRIDE",
                   "new": false,
@@ -9668,7 +9668,13 @@
             "target": {
               "cell": "1305ddc4-cdb2-4914-be46-85486e53cbec",
               "port": "9609444c-3b6f-5759-b6e6-f1a50f92aaea"
-            }
+            },
+            "vertices": [
+              {
+                "x": 480,
+                "y": 890
+              }
+            ]
           },
           {
             "shape": "flow",
@@ -9881,7 +9887,13 @@
             "target": {
               "cell": "1305ddc4-cdb2-4914-be46-85486e53cbec",
               "port": "9609444c-3b6f-5759-b6e6-f1a50f92aaea"
-            }
+            },
+            "vertices": [
+              {
+                "x": 530,
+                "y": 790
+              }
+            ]
           },
           {
             "shape": "flow",
