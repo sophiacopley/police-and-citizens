@@ -142,7 +142,7 @@
                   "mitigation": "- Use email verification code after registration.",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 2,
+                  "number": 1,
                   "score": ""
                 },
                 {
@@ -155,7 +155,7 @@
                   "mitigation": "- Enforce multi-factor authentication to ensure that stolen credentials can't allow a user to log in with credentials alone. ",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 3,
+                  "number": 2,
                   "score": ""
                 },
                 {
@@ -168,7 +168,7 @@
                   "mitigation": "- Short session expiry or cookie-token lifetime\n- Session id rotation after privilege changes or re-authentication\n- Require re-authentication for sensitive actions\n- Use session binding to reject or flag requests where the session is used from a different context",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 4,
+                  "number": 3,
                   "score": ""
                 },
                 {
@@ -181,7 +181,7 @@
                   "mitigation": "- Enforce strong password rules such as 10 characters and at least one of capital letter, number, special character, or pass-phrases\n- Limit the number of times a user can attempt to login (so that bad actors have less chances at guessing correctly)",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 227,
+                  "number": 61,
                   "score": ""
                 }
               ],
@@ -315,11 +315,11 @@
                   "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Denial of service",
-                  "description": "See #5",
+                  "description": "See #4",
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 13,
+                  "number": 12,
                   "score": ""
                 },
                 {
@@ -328,11 +328,11 @@
                   "status": "Accepted",
                   "severity": "TBD",
                   "type": "Spoofing",
-                  "description": "See #6",
+                  "description": "See #5",
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 14,
+                  "number": 13,
                   "score": ""
                 },
                 {
@@ -341,11 +341,11 @@
                   "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Information disclosure",
-                  "description": "See #8",
+                  "description": "See #7",
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 15,
+                  "number": 14,
                   "score": ""
                 },
                 {
@@ -354,11 +354,11 @@
                   "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Tampering",
-                  "description": "See #7",
+                  "description": "See #6",
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 16,
+                  "number": 15,
                   "score": ""
                 },
                 {
@@ -367,11 +367,11 @@
                   "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Elevation of privilege",
-                  "description": "See #9",
+                  "description": "See #8",
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 17,
+                  "number": 16,
                   "score": ""
                 },
                 {
@@ -380,11 +380,11 @@
                   "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Tampering",
-                  "description": "See #10",
+                  "description": "See #9",
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 18,
+                  "number": 17,
                   "score": ""
                 },
                 {
@@ -393,11 +393,11 @@
                   "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Information disclosure",
-                  "description": "See #11",
+                  "description": "See #10",
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 19,
+                  "number": 18,
                   "score": ""
                 },
                 {
@@ -406,11 +406,11 @@
                   "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Information disclosure",
-                  "description": "See #12",
+                  "description": "See #11",
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 20,
+                  "number": 19,
                   "score": ""
                 },
                 {
@@ -423,7 +423,7 @@
                   "mitigation": "- Have an idle-timeout and absolute-timeout for all session IDs.\n- Invalidate a session ID once logout occurs.",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 21,
+                  "number": 20,
                   "score": ""
                 },
                 {
@@ -436,7 +436,7 @@
                   "mitigation": "- Use the HttpOnly + Secure flag on cookies to prevent client side javascript code from reading to the cookie. This also prevents writing in most browsers.",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 22,
+                  "number": 21,
                   "score": ""
                 },
                 {
@@ -449,7 +449,7 @@
                   "mitigation": "- Return the same comprehensive error message for all failure cases.\n- Add timing delays so that timing differences are not observable. ",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 23,
+                  "number": 22,
                   "score": ""
                 }
               ],
@@ -598,7 +598,7 @@
                   "mitigation": "- Rate limiting for requests from the same IP on the reverse proxy.\n- Add load balancing to reverse proxy to spread request traffic across servers.",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 5,
+                  "number": 4,
                   "score": ""
                 },
                 {
@@ -611,7 +611,7 @@
                   "mitigation": "- Buy similar domain names with typos.\n\nSpecific to Register MFA process: \n- Bind enrolment to an existing authenticated session.\n- Notify the citizen's pre-existing verified channel on any new enrolment, with one-click revoke that collapses the attacker's window even if the QR is captured.",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 6,
+                  "number": 5,
                   "score": ""
                 },
                 {
@@ -624,7 +624,7 @@
                   "mitigation": "- Monitor and keep a record of process ID to identify process restart.\n- Add fingerprinting to process, e.g., change time, binary / script hash.\n- Monitor process in/out and flag unexpected data patterns, malformed payloads unusual destinations or processes that deviate from usual register behaviour.",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 7,
+                  "number": 6,
                   "score": ""
                 },
                 {
@@ -637,7 +637,7 @@
                   "mitigation": "- Use type-safe and memory-safe programming language e.g. Java, Rust\n- Ensure log entries don't contain sensitive data.\n- Monitor process usages and in/out for suspicious activity.",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 8,
+                  "number": 7,
                   "score": ""
                 },
                 {
@@ -650,7 +650,7 @@
                   "mitigation": "- Apply principle of least privilege for process and used resources.\n- Run process on the OS with as few permissions as required, using a dedicated technical account rather than a normal user account with interactive and logon permissions.\n- Run in container with dropped capabilities.",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 9,
+                  "number": 8,
                   "score": ""
                 },
                 {
@@ -663,7 +663,7 @@
                   "mitigation": "- Decode, normalise, and canonicalise email and password before validation and storage\n- Sanitise input for script-like requests, e.g., javascript, SQL, etc.\n- Enforce strict Content Security Policy to prevent harmful scripts to be transmitted (e.g., js, py, sh files).\n- Add parameterised queries/prepared statements for all DB access.",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 10,
+                  "number": 9,
                   "score": ""
                 },
                 {
@@ -676,7 +676,7 @@
                   "mitigation": "- Decode, normalise, and canonicalise email and password before validation and storage\n- Sanitise input from script-like statements, e.g., javascript, SQL, etc.\n- Enforce strict CSP policy to prevent harmful scripts to be transmitted (e.g., js, py, sh files).",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 11,
+                  "number": 10,
                   "score": ""
                 },
                 {
@@ -689,7 +689,7 @@
                   "mitigation": "- Ensure that all sensitive PII data other than user ID are not logged.\n- Conduct regular log audits.",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 12,
+                  "number": 11,
                   "score": ""
                 },
                 {
@@ -702,7 +702,7 @@
                   "mitigation": "- Display the QR code only briefly and only after re-authentication.\n- Warn the citizen not to share their screen while the QR code is displayed.\n",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 229,
+                  "number": 62,
                   "score": ""
                 }
               ],
@@ -881,11 +881,11 @@
                   "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Denial of service",
-                  "description": "See #15",
+                  "description": "See #14",
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 37,
+                  "number": 39,
                   "score": ""
                 },
                 {
@@ -894,11 +894,11 @@
                   "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Information disclosure",
-                  "description": "See #18",
+                  "description": "See #17",
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 38,
+                  "number": 40,
                   "score": ""
                 },
                 {
@@ -911,7 +911,7 @@
                   "mitigation": "- Use HTTPS (or another encrypted protocol) to send data over the network",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 39,
+                  "number": 41,
                   "score": ""
                 }
               ],
@@ -980,11 +980,11 @@
                   "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Denial of service",
-                  "description": "See #217",
+                  "description": "See #56",
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 54,
+                  "number": 50,
                   "score": ""
                 }
               ],
@@ -1058,7 +1058,7 @@
                   "mitigation": "- Use HTTPS (or another encrypted, integrity-protected protocol) to send data over the network.\n- Validate that the device token belongs to the account initiating the login before dispatching.",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 50,
+                  "number": 47,
                   "score": ""
                 },
                 {
@@ -1067,11 +1067,11 @@
                   "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Denial of service",
-                  "description": "See #217",
+                  "description": "See #56",
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 51,
+                  "number": 48,
                   "score": ""
                 }
               ],
@@ -1135,11 +1135,11 @@
                   "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Tampering",
-                  "description": "See #50",
+                  "description": "See #47",
                   "mitigation": "- Cryptographically sign payload and ensure the Login process verifies this signature to catch tampering in transit.",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 55,
+                  "number": 51,
                   "score": ""
                 }
               ],
@@ -1213,7 +1213,7 @@
                   "mitigation": "- Use TLS encrypted channel to protect the payload from tampering in transit. \n- Keep the push notification request minimal so a party with visibility into the decrypted payload cannot meaningfully change what is displayed or trigger unintended actions.\n- Have the authenticator app fetch the actual request details (device, location, timestamp) in-app over its own authenticated channel rather than trusting content from the request from the OS. ",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 52,
+                  "number": 49,
                   "score": ""
                 }
               ],
@@ -1277,11 +1277,11 @@
                   "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Information disclosure",
-                  "description": "See #220",
+                  "description": "See #58",
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": true,
-                  "number": 58,
+                  "number": 54,
                   "score": ""
                 },
                 {
@@ -1290,11 +1290,11 @@
                   "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Tampering",
-                  "description": "See #221",
+                  "description": "See #59",
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": true,
-                  "number": 59,
+                  "number": 55,
                   "score": ""
                 }
               ],
@@ -1358,11 +1358,11 @@
                   "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Denial of service",
-                  "description": "See #15",
+                  "description": "See #14",
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 218,
+                  "number": 57,
                   "score": ""
                 },
                 {
@@ -1375,7 +1375,7 @@
                   "mitigation": "- Use HTTPS (or another encrypted protocol) to send data over the network",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 223,
+                  "number": 60,
                   "score": ""
                 }
               ],
@@ -1444,11 +1444,11 @@
                   "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Denial of service",
-                  "description": "See #217",
+                  "description": "See #56",
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 56,
+                  "number": 52,
                   "score": ""
                 },
                 {
@@ -1457,11 +1457,11 @@
                   "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Tampering",
-                  "description": "See #221\n\nPush notification could be altered to redirect you to a malicious site on click.",
+                  "description": "See #59\n\nPush notification could be altered to redirect you to a malicious site on click.",
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 57,
+                  "number": 53,
                   "score": ""
                 }
               ],
@@ -1530,11 +1530,11 @@
                   "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Tampering",
-                  "description": "See #217",
+                  "description": "See #56",
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 233,
+                  "number": 66,
                   "score": ""
                 },
                 {
@@ -1543,11 +1543,11 @@
                   "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Information disclosure",
-                  "description": "See #220",
+                  "description": "See #58",
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 234,
+                  "number": 67,
                   "score": ""
                 },
                 {
@@ -1556,11 +1556,11 @@
                   "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Tampering",
-                  "description": "See #221",
+                  "description": "See #59",
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 235,
+                  "number": 68,
                   "score": ""
                 }
               ],
@@ -1628,11 +1628,11 @@
                   "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Denial of service",
-                  "description": "See #15",
+                  "description": "See #14",
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 34,
+                  "number": 33,
                   "score": ""
                 },
                 {
@@ -1641,7 +1641,7 @@
                   "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Information disclosure",
-                  "description": "See #18",
+                  "description": "See #17",
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
@@ -1658,7 +1658,7 @@
                   "mitigation": "- Use HTTPS (or another encrypted protocol) to send data over the network",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 36,
+                  "number": 37,
                   "score": ""
                 }
               ],
@@ -1721,11 +1721,11 @@
                   "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Tampering",
-                  "description": "See #217",
+                  "description": "See #56",
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 236,
+                  "number": 69,
                   "score": ""
                 }
               ],
@@ -1882,7 +1882,7 @@
                   "mitigation": "- Require the citizen to enter a number shown on the login screen into the app (number matching) rather than a simple approve/deny tap.\n- Rate limit the number of push prompts sent for a single account within a time window.\n- Show contextual information in the prompt (approximate location, device, time) to help the citizen recognise unfamiliar requests.\n- Temporarily lock the account or require step-up verification after repeated unactioned/denied prompts.",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 40,
+                  "number": 42,
                   "score": ""
                 },
                 {
@@ -1895,7 +1895,7 @@
                   "mitigation": "- Log every push prompt sent and every approval/denial decision, including timestamp, device identifier, and approximate location.\n- Notify the citizen via email whenever a new device is approved or an approval occurs from an unfamiliar location.",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 41,
+                  "number": 43,
                   "score": ""
                 }
               ],
@@ -2033,7 +2033,7 @@
                   "mitigation": "- Code signing - require the library to be crypto-graphically signed by a trusted authority, and verify this signature before load. \n- Add fingerprinting to process, e.g., change time, binary / script hash, and verify at load time or periodically at runtime.\n- Use fixed absolute library paths for loading. \n- Use an allow list to declare exactly which library version and path are permitted\n- Monitor unexpected restarts or new processes claiming to be the library.",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 24,
+                  "number": 23,
                   "score": ""
                 },
                 {
@@ -2046,7 +2046,7 @@
                   "mitigation": "- Choose a well audited library (and library version) with no reported vulnerabilities. \n- Monitor the 'health' of the entropy source",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 25,
+                  "number": 24,
                   "score": ""
                 },
                 {
@@ -2059,7 +2059,7 @@
                   "mitigation": "- Prefer libraries that use algorithms specified in NIST SP 800-90A/B/C or equivalent, which have been formally analyzed for prediction resistance.\n- Ensure that library uses an algorithm such that compromise of current state does not allow reconstruction of past outputs or prediction of future outputs.",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 26,
+                  "number": 25,
                   "score": ""
                 },
                 {
@@ -2068,11 +2068,11 @@
                   "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Tampering",
-                  "description": "See #25",
+                  "description": "See #24",
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 27,
+                  "number": 26,
                   "score": ""
                 },
                 {
@@ -2081,11 +2081,11 @@
                   "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Tampering",
-                  "description": "See #27",
+                  "description": "See #26",
                   "mitigation": "- Choose a well audited library (and library version) with no reported vulnerabilities. ",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 28,
+                  "number": 27,
                   "score": ""
                 }
               ],
@@ -2227,7 +2227,7 @@
                   "mitigation": "- Use mutually authenticated TLS between the Login process and the Push Notification Service.\n- Pin or verify the provider's certificate/public key.\n- Use signed API credentials issued by the provider and rotate them regularly.",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 42,
+                  "number": 44,
                   "score": ""
                 },
                 {
@@ -2240,7 +2240,7 @@
                   "mitigation": "- Keep the notification payload minimal\n- Review the data-handling agreement/terms of the push provider.",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 43,
+                  "number": 45,
                   "score": ""
                 },
                 {
@@ -2253,7 +2253,7 @@
                   "mitigation": "- Rate limit push requests per account and per source IP.\n- Monitor provider status and delivery success rate, and alert on anomalies.\n- Choose a trusted push notification service.",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 45,
+                  "number": 46,
                   "score": ""
                 }
               ],
@@ -2399,7 +2399,7 @@
                   "mitigation": "- Use strong credentials for database access stored in secured password vaults.\n- Credentials are passed at runtime from environment variables for most DB owners / users with least privilege principle.\n- Disable default DB user.\n- Separate between read and read/write permissions.\n- Monitor for unusual activity, e.g., bulk data accessed, unusual number of simultaneous requests or connections.\n\nNOTE: Copied straight from example",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 29,
+                  "number": 28,
                   "score": ""
                 },
                 {
@@ -2412,7 +2412,7 @@
                   "mitigation": "- Allow full access to datastore to only a restricted set of personnel.\n- Store strong credentials in password vaults.\n- Monitor for and log all direct command line accesses to the datastore.\n- Keep regular backups in a separate location.",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 30,
+                  "number": 29,
                   "score": ""
                 },
                 {
@@ -2425,7 +2425,7 @@
                   "mitigation": "- Monitor suspicious requests and disallow requests from abusing local IPs or ban abusing user.\n- Allow for replication and deployment with limited downtime when the load increases slightly.\n- Use a pool of connection with query timeouts to release resources fast even for unsuccessful queries.\n- Set a maximum number of connections allowed, with a queue.\n- Set a limit to the memory used by each query.\n- Monitor disk and CPU usage. ",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 31,
+                  "number": 30,
                   "score": ""
                 },
                 {
@@ -2438,7 +2438,7 @@
                   "mitigation": "- Encrypt the database at rest.\n- Keep the database isolated to the app host - don't serve access to the database over the network",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 32,
+                  "number": 31,
                   "score": ""
                 },
                 {
@@ -2451,7 +2451,7 @@
                   "mitigation": "- Maintain an audit log of account change events such as registration and verification.\n- Include timestamps in logs\n- Monitor logs for abnormalities",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 33,
+                  "number": 32,
                   "score": ""
                 }
               ],
@@ -2504,7 +2504,7 @@
                   "mitigation": "- Rate limiting for requests from the same IP.",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 217,
+                  "number": 56,
                   "score": ""
                 },
                 {
@@ -2517,7 +2517,7 @@
                   "mitigation": "- Use HTTPS (or another encrypted protocol) to send data over the network\n- Use verification code to ensure stolen credentials cannot be used to log in.",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 220,
+                  "number": 58,
                   "score": ""
                 },
                 {
@@ -2530,7 +2530,7 @@
                   "mitigation": "- Use HTTPS (or another encrypted protocol) to send data over the network",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 221,
+                  "number": 59,
                   "score": ""
                 }
               ],
@@ -2599,7 +2599,7 @@
                   "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Denial of service",
-                  "description": "See #15",
+                  "description": "See #14",
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
@@ -2612,11 +2612,11 @@
                   "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Information disclosure",
-                  "description": "See #18",
+                  "description": "See #17",
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 35,
+                  "number": 36,
                   "score": ""
                 },
                 {
@@ -2629,7 +2629,7 @@
                   "mitigation": "- Use HTTPS (or another encrypted protocol) to send data over the network",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 36,
+                  "number": 38,
                   "score": ""
                 }
               ],
@@ -2698,11 +2698,11 @@
                   "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Denial of service",
-                  "description": "See #217",
+                  "description": "See #56",
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 230,
+                  "number": 63,
                   "score": ""
                 },
                 {
@@ -2711,11 +2711,11 @@
                   "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Tampering",
-                  "description": "See #221",
+                  "description": "See #59",
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 231,
+                  "number": 64,
                   "score": ""
                 },
                 {
@@ -2724,11 +2724,11 @@
                   "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Tampering",
-                  "description": "See #220",
+                  "description": "See #58",
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 232,
+                  "number": 65,
                   "score": ""
                 }
               ],
@@ -2822,6 +2822,6 @@
     ],
     "diagramTop": 1,
     "reviewer": "",
-    "threatTop": 236
+    "threatTop": 69
   }
 }
