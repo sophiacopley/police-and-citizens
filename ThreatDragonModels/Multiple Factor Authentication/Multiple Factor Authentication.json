@@ -125,7 +125,7 @@
             "data": {
               "type": "tm.Actor",
               "name": "Citizen (A1)",
-              "description": "Report cross-reference: maps directly to Actor A1 (Citizen) in Table 1. Depending on state within this flow, this actor holds Trust Levels T0 (unauthenticated, submitting credentials), T1/T2 (registered), or T4 (Logged in citizen, Table 4) after a successful login. Interacts via the citizen's own web browser (Dependency D11).",
+              "description": "",
               "isTrustBoundary": false,
               "outOfScope": false,
               "reasonOutOfScope": "",
@@ -299,7 +299,7 @@
             "data": {
               "type": "tm.Process",
               "name": "Login (E3, T7)",
-              "description": "Report cross-reference: implements Entry Point E3 'Login Page' (Table 5, Trust Levels T0-T4) and Exit Point X8 'Registration and login responses' (Table 6, Trust Levels T0, T1, T4). Runs as Trust Level T7 'Web application process' (Table 4). Relies on Dependency D7 (Password hashing library) to check the submitted password and D5 (Web application framework) for routing/rendering.",
+              "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -578,7 +578,7 @@
             "data": {
               "type": "tm.Process",
               "name": "Register \nfor MFA (T7)",
-              "description": "This process occurs after email verification and first-time log in\n\nReport cross-reference: no corresponding Entry Point is listed in Table 5 for MFA enrolment; it sits behind the Login entry point (E3) and is only reachable by an authenticated citizen (Trust Level T4, per the process description 'occurs after email verification and first-time log in'). Runs as Trust Level T7 'Web application process' (Table 4). Uses Dependency D8 (Random number generator) indirectly via the Random Number Generator process.",
+              "description": "This process occurs after email verification and first-time log in (T4)",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -725,7 +725,7 @@
             "data": {
               "type": "tm.Boundary",
               "name": "Push notification service API (T7)",
-              "description": "Trust levels allowed to cross (inferred from crossing flows/entry points): T7 'Web application process' (Table 4), via the Login process, which is the only SecureReports-side element exchanging push notification requests/receipts across this boundary. The Authenticator app on the far side is external and not assigned a system Trust Level.",
+              "description": "",
               "isTrustBoundary": true,
               "hasOpenThreats": false,
               "crossingFlows": [
@@ -765,7 +765,7 @@
             "data": {
               "type": "tm.Boundary",
               "name": "Phone OS and authenticator app (T4, T7)",
-              "description": "Trust levels allowed to cross (inferred from crossing flows/entry points): T4 'Logged in citizen' (Table 4), since the citizen only reaches MFA registration/challenge flows into this boundary once logged in; and T7 'Web application process' (Table 4), via the Login process and Random Number Generator that send/receive codes and confirmations across this boundary. This boundary itself (the citizen's personal device) is not one of the system Trust Levels in Table 4.",
+              "description": "",
               "isTrustBoundary": true,
               "hasOpenThreats": false,
               "crossingFlows": [
@@ -819,7 +819,7 @@
             "data": {
               "type": "tm.Flow",
               "name": "code",
-              "description": "2-digit code to be used for push notification verification\n\nReport cross-reference: internal flow between the Random Number Generator (Dependency D8) and Login; not itself a listed Entry/Exit Point in Tables 5-6.",
+              "description": "2-digit code to be used for push notification verification",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -865,7 +865,7 @@
             "data": {
               "type": "tm.Flow",
               "name": "code",
-              "description": "User types in the 2-digit code into a input box on the authenticator app, after being prompted by notification\n\nReport cross-reference: no corresponding Entry/Exit Point in Tables 5-6, as this is an action on the citizen's own device (Trust Level T0/T4, Table 4) rather than a request to the SecureReports system.",
+              "description": "User (A1) types in the 2-digit code into a input box on the authenticator app, after being prompted by notification",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -964,7 +964,7 @@
             "data": {
               "type": "tm.Flow",
               "name": "delivery_receipt",
-              "description": "Acknowledgement (or error) that the request for a push notification has been sent to the device\n\nReport cross-reference: no corresponding Entry/Exit Point in Tables 5-6; an internal API exchange between Login (Trust Level T7, Table 4) and the third-party Push Notification Service.",
+              "description": "Acknowledgement (or error) that the request for a push notification has been sent to the device",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -1038,7 +1038,7 @@
             "data": {
               "type": "tm.Flow",
               "name": "push_notification_request",
-              "description": "An API request for a push notification to be sent,  including the device token that the notification should be sent to.\n\nReport cross-reference: no corresponding Entry/Exit Point in Tables 5-6; an internal API exchange between Login (Trust Level T7, Table 4) and the third-party Push Notification Service.",
+              "description": "An API request for a push notification to be sent,  including the device token that the notification should be sent to.",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -1119,7 +1119,7 @@
             "data": {
               "type": "tm.Flow",
               "name": "authentication_confirmation",
-              "description": "Authenticator app sends a payload to the login process to confirm that the user is approved and can be logged in.\n\nReport cross-reference: no corresponding Entry/Exit Point in Tables 5-6; carries the equivalent of Asset AS3 'Session/authentication state' context back to the Login process (Trust Level T7, Table 4).",
+              "description": "Authenticator app sends a payload to the login process to confirm that the user is approved and can be logged in (T4).",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -1193,7 +1193,7 @@
             "data": {
               "type": "tm.Flow",
               "name": "push_notification_request",
-              "description": "Request for a push notification reaches the operating system of the phone via a TLS connection that is always open (not modelled here for simplicity). The OS then hands this request to the authenticator app to notify the person\n\nReport cross-reference: no corresponding Entry/Exit Point in Tables 5-6; occurs entirely outside the SecureReports system, between the third-party Push Notification Service and the Authenticator app.",
+              "description": "Request for a push notification reaches the operating system of the phone via a TLS connection (D2) that is always open (not modelled here for simplicity). The OS then hands this request to the authenticator app to notify the person",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -1261,7 +1261,7 @@
             "data": {
               "type": "tm.Flow",
               "name": "session_cookie + redirect (X8)",
-              "description": "Once authenticated, the user will receive their session cookie and be redirected to their main page (based on their privileges). \n\nReport cross-reference: maps to Exit Point X8 'Registration and login responses' (Table 6, Trust Levels T0, T1, T4). Carries Asset AS3 'Session identifiers' (Table 7, Trust Levels T4, T5, T7).",
+              "description": "Once authenticated (T4), the user will receive their session cookie (AS3) and be redirected to their main page (based on their privileges). ",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -1342,7 +1342,7 @@
             "data": {
               "type": "tm.Flow",
               "name": "submit_login_response (X8)",
-              "description": "Includes the 2-digit code to be displayed on the user's screen\n\nReport cross-reference: maps to Exit Point X8 'Registration and login responses' (Table 6, Trust Levels T0, T1, T4).",
+              "description": "Includes the 2-digit code to be displayed on the user's screen (A1)",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -1428,7 +1428,7 @@
             "data": {
               "type": "tm.Flow",
               "name": "push_notification",
-              "description": "App sends push notification to the user's phone, indicating the user needs to authenticate a sign in\n\nReport cross-reference: no corresponding Entry/Exit Point in Tables 5-6; delivered to the citizen's device outside the modelled SecureReports network boundary.",
+              "description": "App sends push notification to the user's (A1) phone, indicating the user needs to authenticate a sign in",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -1514,7 +1514,7 @@
             "data": {
               "type": "tm.Flow",
               "name": "mfa_register_qr_code",
-              "description": "Citizen scans QR code displayed on their screen using their authenticator app. This adds the website to their authenticator app.\n\nReport cross-reference: no corresponding Entry/Exit Point in Tables 5-6. Occurs after first login, so the citizen is at Trust Level T4 (Table 4) when this flow originates.",
+              "description": "Citizen (A1) scans QR code displayed on their screen using their authenticator app. This adds the website to their authenticator app.",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -1612,7 +1612,7 @@
             "data": {
               "type": "tm.Flow",
               "name": "device_info",
-              "description": "Information such as device_id, associated user_id, device_token for push notification, date enrolled etc. \n\nReport cross-reference: internal read from the Device Data Store; no corresponding Entry/Exit Point in Tables 5-6. Analogous to how Dependency D6 'Database' is only reachable by the application (Constraint-adjacent behaviour, not itself listed as an Entry/Exit Point).",
+              "description": "Information such as device_id, associated user_id, device_token for push notification, date enrolled etc. ",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -1705,7 +1705,7 @@
             "data": {
               "type": "tm.Flow",
               "name": "mfa_enrolment request + session cookie",
-              "description": "From the webpage, a citizen requests a QR code to register for MFA on their authenticator app.\n\nReport cross-reference: no corresponding Entry Point in Table 5 (MFA enrolment is not listed as an Entry Point). Carries Asset AS3 'Session identifiers' (Table 7) as the session cookie, and originates from a citizen at Trust Level T4 (Table 4).",
+              "description": "From the webpage, a citizen (A1) requests a QR code to register for MFA on their authenticator app.",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -1865,7 +1865,7 @@
             "data": {
               "type": "tm.Actor",
               "name": "Authenticator app",
-              "description": "Report cross-reference: not one of the four Actors (A1-A4) defined in Table 1. It represents third-party software on the citizen's own device, outside the SecureReports system and not assigned a system Trust Level in Table 4.",
+              "description": "",
               "isTrustBoundary": false,
               "outOfScope": false,
               "reasonOutOfScope": "",
@@ -2013,7 +2013,7 @@
             "data": {
               "type": "tm.Process",
               "name": "Random\nNumber\nGenerator (D8, T7)",
-              "description": "Report cross-reference: maps directly to Dependency D8 'Random number generator' (Table 2), used to produce the verification codes/tokens. Runs as Trust Level T7 'Web application process' (Table 4).",
+              "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -2207,7 +2207,7 @@
             "data": {
               "type": "tm.Process",
               "name": "Push \nNotification\nService",
-              "description": "Report cross-reference: not explicitly listed among the System Dependencies D1-D11 in Table 2. It is an external third-party API (e.g. APNs/FCM), functionally analogous to D10 'Email dispatcher' but for push notifications rather than email. Not assigned a system Trust Level in Table 4, as it sits outside the SecureReports trust model.",
+              "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -2378,7 +2378,7 @@
             "data": {
               "type": "tm.Store",
               "name": "Device Data Store (T8)",
-              "description": "Stores information about the devices that use the application, such as device_id, associated user_id, device_token for push notification, date enrolled etc. \n\nReport cross-reference: analogous to Dependency D6 'Database' (Table 2), though D6's description covers accounts/reports/share tokens rather than device records specifically, so this is not an exact 1:1 match. Direct access to this store corresponds to Trust Level T8 'Database process' (Table 4), which bypasses every application check.",
+              "description": "Stores information about the devices that use the application, such as device_id, associated user_id, device_token for push notification, date enrolled etc. ",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -2484,7 +2484,7 @@
             "data": {
               "type": "tm.Flow",
               "name": "submit_login_request (E3)",
-              "description": "Sends request to log in to the application by providing their email (if they are a regular citizen) or username (if they are police) and their password. \n\nReport cross-reference: maps to Entry Point E3 'Login Page and submission' (Table 5, Trust Levels T0-T4). Carries Asset AS1 'Citizen credentials' (Table 7, Trust Level T7). Relies on Dependency D11 (Web browser) client-side and D5/D7 (Web application framework / Password hashing library) server-side.",
+              "description": "Sends request to log in to the application by providing their email (if they are a regular citizen (A1)) or username (if they are police (A3)) and their password (AS1). ",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -2583,7 +2583,7 @@
             "data": {
               "type": "tm.Flow",
               "name": "device_info",
-              "description": "Information such as device_id, associated user_id, device_token for push notification, date enrolled etc. \n\nReport cross-reference: internal read from the Device Data Store; no corresponding Entry/Exit Point in Tables 5-6.",
+              "description": "Information such as device_id, associated user_id, device_token for push notification, date enrolled etc. ",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -2682,7 +2682,7 @@
             "data": {
               "type": "tm.Flow",
               "name": "mfa_register_qr_code",
-              "description": "Register process shows the user a QR code for them to scan using their authenticator app. \n\nReport cross-reference: no corresponding Entry/Exit Point in Tables 5-6; MFA enrolment is not modelled as an Entry/Exit Point in the report.",
+              "description": "Register process shows the user (A1) a QR code for them to scan using their authenticator app. ",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -2769,7 +2769,7 @@
             "data": {
               "type": "tm.Boundary",
               "name": "SecureReports Web App (T0-T4, T7)",
-              "description": "Trust levels allowed to cross (inferred from crossing flows/entry points): T0-T4, taken from Entry Point E3 'Login Page' (Table 5), which is the only user-facing entry point crossing this boundary; and T7 'Web application process' (Table 4), the identity of the contained Login, Register for MFA, and Random Number Generator processes. The Device Data Store and third-party Push Notification Service, which also cross this boundary, are not assigned Trust Levels in Table 4 (see their own cross-reference notes).",
+              "description": "",
               "isTrustBoundary": true,
               "hasOpenThreats": false,
               "crossingFlows": [
