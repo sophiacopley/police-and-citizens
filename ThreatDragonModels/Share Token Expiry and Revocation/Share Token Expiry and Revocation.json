@@ -13,12 +13,1593 @@
     "diagrams": [
       {
         "id": 0,
-        "title": "NEW: Reports - Sharing",
+        "title": "NEW: Reports - Sharing (expiry and revocation)",
         "diagramType": "STRIDE",
-        "placeholder": "New STRIDE diagram description",
+        "placeholder": "Updated E8-E9 report-sharing model. Share links now have a server-enforced expiration time and can be revoked by the report owner. E9 checks token validity, expiration and revocation before returning the report.",
         "thumbnail": "./public/content/images/thumbnail.stride.jpg",
         "version": "2.6.2",
-        "cells": []
+        "cells": [
+          {
+            "shape": "trust-boundary-curve",
+            "width": 200,
+            "height": 100,
+            "zIndex": -1,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Boundary",
+              "name": "",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false,
+              "crossingFlows": [],
+              "containedElements": []
+            },
+            "labels": [
+              ""
+            ],
+            "id": "06867070-d006-456a-98de-95a619930933",
+            "source": {
+              "x": 222,
+              "y": 80
+            },
+            "target": {
+              "x": 220,
+              "y": 540
+            },
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead"
+              ],
+              "name": null
+            }
+          },
+          {
+            "position": {
+              "x": -10,
+              "y": 250
+            },
+            "size": {
+              "width": 120,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Citizen / Report Owner\n(T5)"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "zIndex": 1,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "6db1163f-76e8-46c4-b461-7b8a1fcd0ba5"
+                },
+                {
+                  "group": "right",
+                  "id": "8fc8e07e-2749-402f-988d-5666a99dab24"
+                },
+                {
+                  "group": "bottom",
+                  "id": "71068eee-a731-4c2e-b36a-8cde28fecc77"
+                },
+                {
+                  "group": "left",
+                  "id": "b74915b3-1dfa-47d0-a459-410e2230453f"
+                }
+              ]
+            },
+            "id": "11111111-1111-4111-8111-111111111111",
+            "data": {
+              "type": "tm.Actor",
+              "name": "Citizen / Report Owner (T5)",
+              "description": "Authenticated report owner who can create and revoke share links for their own reports.",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "providesAuthentication": true,
+              "threats": []
+            }
+          },
+          {
+            "position": {
+              "x": 0,
+              "y": 440
+            },
+            "size": {
+              "width": 150,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Share Link Recipient\n(T3)"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "zIndex": 1,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "3942dca0-722b-463e-9cc7-d37b3d1c519a"
+                },
+                {
+                  "group": "right",
+                  "id": "55138b6c-2ddf-4f73-8df9-3b825be56565"
+                },
+                {
+                  "group": "bottom",
+                  "id": "c37fbb94-06c7-46a5-99b1-e3a1e2ffa574"
+                },
+                {
+                  "group": "left",
+                  "id": "483b4d32-db06-45ac-bde9-dfbafdd08957"
+                }
+              ]
+            },
+            "id": "77777777-7777-4777-8777-777777777777",
+            "data": {
+              "type": "tm.Actor",
+              "name": "Share Link Recipient (T3)",
+              "description": "Unauthenticated user who possesses a valid share token and is permitted to view the associated report.",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "providesAuthentication": false,
+              "threats": []
+            }
+          },
+          {
+            "position": {
+              "x": 300,
+              "y": 230
+            },
+            "size": {
+              "width": 180,
+              "height": 100
+            },
+            "attrs": {
+              "text": {
+                "text": "Create / Manage Share Link\n(E8)"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 2,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "6e6dae85-05a8-4a00-a896-a70581bbb11d"
+                },
+                {
+                  "group": "right",
+                  "id": "6137ac7b-2c23-4f6f-bfb5-85745377c93c"
+                },
+                {
+                  "group": "bottom",
+                  "id": "b918dfa3-63bd-448d-a92d-66eaffd11c6a"
+                },
+                {
+                  "group": "left",
+                  "id": "b3776f23-58b5-48a6-aeeb-618c449c95e6"
+                }
+              ]
+            },
+            "id": "22222222-2222-4222-8222-222222222222",
+            "data": {
+              "type": "tm.Process",
+              "name": "Create / Manage Share Link (E8)",
+              "description": "E8 Share link creation and revocation. Creates a cryptographically random token for a report owned by the citizen, assigns an expiry time, stores the token association and allows the owner to revoke the token.",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": true,
+              "privilegeLevel": "T5",
+              "threats": [
+                {
+                  "id": "e8000001-0000-4000-8000-000000000001",
+                  "title": "Unauthorised revocation of another user's share link",
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "type": "Elevation of privilege",
+                  "description": "A citizen could attempt to revoke a share token belonging to a report they do not own by manipulating the token or report identifier in the revocation request.",
+                  "mitigation": "Require authentication and perform a server-side ownership check before changing the revocation state of a share token. The authenticated user must own the associated report.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 201,
+                  "score": ""
+                },
+                {
+                  "id": "16e9513c-d7cd-4068-ad04-dfcbae2adcfc",
+                  "title": "Creating a link for someone else's report",
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "type": "Elevation of privilege",
+                  "description": "A citizen submits another citizen's report ID to E8 and obtains a working share link for a report they do not own.",
+                  "mitigation": "Server side ownership check before creating the token.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 134,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 1,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 1,
+                "elevationOfPrivilege": 2
+              }
+            }
+          },
+          {
+            "position": {
+              "x": 940,
+              "y": 60
+            },
+            "size": {
+              "width": 200,
+              "height": 100
+            },
+            "attrs": {
+              "text": {
+                "text": "Share Token Store\n(D6)"
+              },
+              "topLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "zIndex": 2,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "765d5533-f501-4aaa-9767-7a5c3a429f84"
+                },
+                {
+                  "group": "right",
+                  "id": "a5f2bc75-6b69-4aaa-8a0d-60e8527752d5"
+                },
+                {
+                  "group": "bottom",
+                  "id": "53a2d47f-61d5-4ef2-bbd6-e7a56e9398d3"
+                },
+                {
+                  "group": "left",
+                  "id": "beafc1ee-0c27-498b-a69d-f4ccfd5d327f"
+                }
+              ]
+            },
+            "id": "33333333-3333-4333-8333-333333333333",
+            "data": {
+              "type": "tm.Store",
+              "name": "Share Token Store (D6)",
+              "description": "Stores hashed share tokens, associated report IDs, creation time, expiry time and revocation state. Plaintext token is returned only when the link is created and is not stored in usable form.",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isALog": false,
+              "isEncrypted": true,
+              "isSigned": false,
+              "storesCredentials": true,
+              "storesInventory": false,
+              "threats": [
+                {
+                  "id": "d6000002-0000-4000-8000-000000000002",
+                  "title": "Share tokens stored in usable form",
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "If plaintext share tokens are stored, anyone obtaining read access to the token store obtains working share links.",
+                  "mitigation": "Store only a cryptographic hash of each share token. The plaintext token should only be returned to the report owner when the link is created.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 205,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 1,
+                "repudiation": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0
+              }
+            }
+          },
+          {
+            "position": {
+              "x": 640,
+              "y": 290
+            },
+            "size": {
+              "width": 200,
+              "height": 100
+            },
+            "attrs": {
+              "text": {
+                "text": "Validate Token and Show Report\n(E9)"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 2,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "4555769b-face-417a-ab07-29a1527bb65a"
+                },
+                {
+                  "group": "right",
+                  "id": "ab25c042-cfcc-408d-88e2-4b455eecbd64"
+                },
+                {
+                  "group": "bottom",
+                  "id": "eab4cf4b-9156-43b5-805b-f9b513cfb3c2"
+                },
+                {
+                  "group": "left",
+                  "id": "8a366aa3-de96-4575-9e0c-fa24dfcb5de7"
+                }
+              ]
+            },
+            "id": "44444444-4444-4444-8444-444444444444",
+            "data": {
+              "type": "tm.Process",
+              "name": "Validate Token and Show Report (E9)",
+              "description": "E9 Share link page. Receives a secret token and checks that it exists, has not expired and has not been revoked before retrieving and displaying the associated report.",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": true,
+              "privilegeLevel": "T3",
+              "threats": [
+                {
+                  "id": "e9000001-0000-4000-9000-000000000001",
+                  "title": "Expired or revoked token accepted",
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "If E9 does not correctly enforce expiration and revocation server-side, a leaked token could continue providing access after the owner intended the link to stop working.",
+                  "mitigation": "On every request, validate token existence, compare the current time with expires_at, and reject tokens with a non-null revoked_at value before retrieving the report.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 206,
+                  "score": ""
+                },
+                {
+                  "id": "e9000002-0000-4000-9000-000000000002",
+                  "title": "Token enumeration",
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "An attacker could repeatedly submit candidate tokens and use different responses to determine which tokens are valid.",
+                  "mitigation": "Use high-entropy cryptographically random tokens, rate-limit token validation attempts and return generic responses for invalid, expired and revoked tokens.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 207,
+                  "score": ""
+                },
+                {
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "title": "Closed report remains accessible",
+                  "type": "Information disclosure",
+                  "description": "A share link created while the report was open keeps returning content after closure if report state is not re-checked during share-link authorisation.",
+                  "mitigation": "Re-check the report state at read time and refuse the share view for closed reports.",
+                  "modelType": "STRIDE",
+                  "id": "4aba3796-13ab-4ed0-8509-fc002127b0d5",
+                  "new": false,
+                  "number": 138
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 2,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
+            }
+          },
+          {
+            "position": {
+              "x": 1090,
+              "y": 410
+            },
+            "size": {
+              "width": 200,
+              "height": 100
+            },
+            "attrs": {
+              "text": {
+                "text": "Report Database\n(D6)"
+              },
+              "topLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "zIndex": 2,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "c194492b-6f8f-4d1a-92ab-935345a2e7ca"
+                },
+                {
+                  "group": "right",
+                  "id": "b857c5d3-9c34-4561-a03d-11b45918b650"
+                },
+                {
+                  "group": "bottom",
+                  "id": "008290ce-de6c-483d-a7ab-cb79149029ac"
+                },
+                {
+                  "group": "left",
+                  "id": "e11d5bfb-2ef3-483f-bff7-f6c0cb262da5"
+                }
+              ]
+            },
+            "id": "55555555-5555-4555-8555-555555555555",
+            "data": {
+              "type": "tm.Store",
+              "name": "Report Database (D6)",
+              "description": "Stores report information associated with the validated share token.",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isALog": false,
+              "isEncrypted": true,
+              "isSigned": false,
+              "storesCredentials": false,
+              "storesInventory": false,
+              "threats": []
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "revoke share link request",
+              "description": "Authenticated report owner requests that an existing share token be revoked.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "protocol": "HTTPS",
+              "threats": [
+                {
+                  "id": "f8000001-0000-4000-8000-000000000001",
+                  "title": "Revocation request targets another report",
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "type": "Elevation of privilege",
+                  "description": "The client could modify the token or report identifier in the request to attempt to revoke a share link belonging to another citizen.",
+                  "mitigation": "Use the authenticated session to identify the requester and verify ownership of the report associated with the token before revocation.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 210,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              "revoke share link request"
+            ],
+            "id": "88888888-8888-4888-8888-888888888889",
+            "source": {
+              "cell": "11111111-1111-4111-8111-111111111111"
+            },
+            "target": {
+              "cell": "22222222-2222-4222-8222-222222222222"
+            },
+            "vertices": [
+              {
+                "x": 220,
+                "y": 200
+              },
+              {
+                "x": 270,
+                "y": 200
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "revoked_at update",
+              "description": "E8 records the revocation time for the selected share token.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "internal database connection",
+              "threats": [
+                {
+                  "id": "f8000003-0000-4000-8000-000000000003",
+                  "title": "Unauthorised revocation state change",
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "A token could be incorrectly marked revoked or unrevoked by an unauthorised request.",
+                  "mitigation": "Allow only authenticated owners to initiate revocation and do not expose direct client control over the revoked_at value.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 212,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              "revoked_at update"
+            ],
+            "id": "88888888-8888-4888-8888-888888888891",
+            "source": {
+              "cell": "22222222-2222-4222-8222-222222222222"
+            },
+            "target": {
+              "cell": "33333333-3333-4333-8333-333333333333"
+            },
+            "vertices": [
+              {
+                "x": 550,
+                "y": 180
+              },
+              {
+                "x": 580,
+                "y": 160
+              },
+              {
+                "x": 650,
+                "y": 140
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "token hash + expiry + revocation state",
+              "description": "E9 retrieves the token record to determine whether the token exists, has expired or has been revoked.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "internal database connection",
+              "threats": [
+                {
+                  "id": "f8000006-0000-4000-8000-000000000006",
+                  "title": "Incomplete validity check",
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "If E9 checks the token but fails to check expiry or revocation state, a leaked token can continue to access the report after the owner intended access to end.",
+                  "mitigation": "Require all three conditions before access: token exists, current time is before expires_at, and revoked_at is null.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 215,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              "token hash + expiry + revocation state"
+            ],
+            "id": "88888888-8888-4888-8888-888888888894",
+            "source": {
+              "cell": "33333333-3333-4333-8333-333333333333"
+            },
+            "target": {
+              "cell": "44444444-4444-4444-8444-444444444444"
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "create share link request",
+              "description": "Authenticated report owner requests creation of a share link for their report.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "protocol": "HTTPS",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "create share link request"
+            ],
+            "id": "88888888-8888-4888-8888-888888888888",
+            "source": {
+              "cell": "11111111-1111-4111-8111-111111111111"
+            },
+            "target": {
+              "cell": "22222222-2222-4222-8222-222222222222"
+            },
+            "vertices": [
+              {
+                "x": 210,
+                "y": 320
+              },
+              {
+                "x": 290,
+                "y": 320
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "share URL",
+              "description": "The newly generated share URL returned to the report owner.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "protocol": "HTTPS",
+              "threats": [
+                {
+                  "id": "f8000004-0000-4000-8000-000000000004",
+                  "title": "Leaked or forwarded share token",
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "A recipient can forward or disclose the share token, allowing anyone who obtains it to access the report while the token remains valid.",
+                  "mitigation": "Use high-entropy tokens, enforce expiration, and allow the report owner to revoke the token.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 213,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 2,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              "share URL"
+            ],
+            "id": "88888888-8888-4888-8888-888888888892",
+            "source": {
+              "cell": "22222222-2222-4222-8222-222222222222"
+            },
+            "target": {
+              "cell": "11111111-1111-4111-8111-111111111111"
+            },
+            "vertices": []
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "token hash + report ID + expiry",
+              "description": "E8 stores the hashed token together with its associated report and server-generated expiry time.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "internal database connection",
+              "threats": [
+                {
+                  "id": "f8000002-0000-4000-8000-000000000002",
+                  "title": "Token metadata manipulated",
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "Expiry or report association could be modified if the application or database permissions allow unauthorised writes.",
+                  "mitigation": "Use least-privilege database permissions and perform all token metadata changes through authorised server-side operations.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 211,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              "token hash + report ID + expiry"
+            ],
+            "id": "88888888-8888-4888-8888-888888888890",
+            "source": {
+              "cell": "22222222-2222-4222-8222-222222222222"
+            },
+            "target": {
+              "cell": "33333333-3333-4333-8333-333333333333"
+            },
+            "vertices": [
+              {
+                "x": 610,
+                "y": 240
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "validated report lookup",
+              "description": "E9 retrieves only the report associated with a successfully validated share token.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "internal database connection",
+              "threats": [
+                {
+                  "id": "f8000007-0000-4000-8000-000000000007",
+                  "title": "Token-to-report association bypass",
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "type": "Elevation of privilege",
+                  "description": "A flaw could allow the requester to manipulate a report identifier and use a valid token to retrieve a different report.",
+                  "mitigation": "Retrieve the report ID only from the validated token record and never accept a separate client-supplied report ID for the shared-report lookup.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 216,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              "validated report lookup"
+            ],
+            "id": "88888888-8888-4888-8888-888888888895",
+            "source": {
+              "cell": "44444444-4444-4444-8444-444444444444"
+            },
+            "target": {
+              "cell": "55555555-5555-4555-8555-555555555555",
+              "port": "c194492b-6f8f-4d1a-92ab-935345a2e7ca"
+            },
+            "vertices": [
+              {
+                "x": 920,
+                "y": 360
+              },
+              {
+                "x": 1070,
+                "y": 400
+              },
+              {
+                "x": 1110,
+                "y": 400
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "share token",
+              "description": "The secret token supplied by an unauthenticated recipient to access the shared report.",
+              "outOfScope": false,
+              "isTrustBoundary": true,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "protocol": "HTTPS",
+              "threats": [
+                {
+                  "id": "f8000005-0000-4000-8000-000000000005",
+                  "title": "Token guessing or brute force",
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "An attacker could submit guessed tokens in an attempt to obtain unauthorised access to reports.",
+                  "mitigation": "Generate tokens using a cryptographically secure random number generator with sufficient entropy and rate-limit validation attempts.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 214,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              "share token"
+            ],
+            "id": "88888888-8888-4888-8888-888888888893",
+            "source": {
+              "cell": "77777777-7777-4777-8777-777777777777"
+            },
+            "target": {
+              "cell": "44444444-4444-4444-8444-444444444444",
+              "port": "eab4cf4b-9156-43b5-805b-f9b513cfb3c2"
+            },
+            "vertices": [
+              {
+                "x": 370,
+                "y": 470
+              },
+              {
+                "x": 430,
+                "y": 450
+              },
+              {
+                "x": 670,
+                "y": 450
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 11,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "shared report X2",
+              "description": "Report content returned to the share-link recipient only after token validation, expiry check and revocation check.",
+              "outOfScope": false,
+              "isTrustBoundary": true,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "protocol": "HTTPS",
+              "threats": [
+                {
+                  "id": "f8000008-0000-4000-8000-000000000008",
+                  "title": "Report disclosed after token should be invalid",
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "The shared report could be returned even after the token has expired or been revoked if E9 performs validation incorrectly or uses stale token state.",
+                  "mitigation": "Perform validation immediately before retrieving and returning the report. Do not cache authorised report responses beyond the token validity period.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 217,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              "shared report X2"
+            ],
+            "id": "88888888-8888-4888-8888-888888888896",
+            "source": {
+              "x": 710,
+              "y": 380
+            },
+            "target": {
+              "cell": "77777777-7777-4777-8777-777777777777"
+            },
+            "vertices": [
+              {
+                "x": 620,
+                "y": 370
+              },
+              {
+                "x": 600,
+                "y": 410
+              },
+              {
+                "x": 530,
+                "y": 390
+              }
+            ]
+          },
+          {
+            "shape": "trust-boundary-curve",
+            "width": 200,
+            "height": 100,
+            "zIndex": 12,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Boundary",
+              "name": "",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false,
+              "crossingFlows": [],
+              "containedElements": []
+            },
+            "labels": [
+              ""
+            ],
+            "id": "e478a703-cb71-4547-a5ff-4bb9a7e2cf9d",
+            "source": {
+              "x": 840,
+              "y": 80
+            },
+            "target": {
+              "x": 840,
+              "y": 520
+            },
+            "vertices": []
+          }
+        ]
       }
     ],
     "diagramTop": 1,
