@@ -465,8 +465,8 @@
           },
           {
             "position": {
-              "x": 622.5,
-              "y": 530
+              "x": 740,
+              "y": 490
             },
             "size": {
               "width": 80,
@@ -982,7 +982,8 @@
                 }
               ],
               "trustBoundaryIds": [
-                "66654ec5-2062-4cd6-bd66-604e9d45c91b"
+                "66654ec5-2062-4cd6-bd66-604e9d45c91b",
+                "93aa94b5-af0b-40b0-8c1b-0100bcf425cb"
               ],
               "threatFrequency": {
                 "tampering": 0,
@@ -1068,7 +1069,8 @@
                 }
               ],
               "trustBoundaryIds": [
-                "66654ec5-2062-4cd6-bd66-604e9d45c91b"
+                "66654ec5-2062-4cd6-bd66-604e9d45c91b",
+                "93aa94b5-af0b-40b0-8c1b-0100bcf425cb"
               ],
               "threatFrequency": {
                 "tampering": 1,
@@ -1135,7 +1137,8 @@
                 }
               ],
               "trustBoundaryIds": [
-                "c87bcb96-9e30-4254-a2a6-bb2f9400f14a"
+                "c87bcb96-9e30-4254-a2a6-bb2f9400f14a",
+                "93aa94b5-af0b-40b0-8c1b-0100bcf425cb"
               ],
               "threatFrequency": {
                 "tampering": 2,
@@ -1288,7 +1291,9 @@
                   "score": ""
                 }
               ],
-              "trustBoundaryIds": []
+              "trustBoundaryIds": [
+                "93aa94b5-af0b-40b0-8c1b-0100bcf425cb"
+              ]
             },
             "labels": [
               "session_cookie + redirect"
@@ -1367,7 +1372,9 @@
                   "score": ""
                 }
               ],
-              "trustBoundaryIds": [],
+              "trustBoundaryIds": [
+                "93aa94b5-af0b-40b0-8c1b-0100bcf425cb"
+              ],
               "threatFrequency": {
                 "tampering": 5,
                 "informationDisclosure": 4,
@@ -1648,7 +1655,9 @@
                   "score": ""
                 }
               ],
-              "trustBoundaryIds": [],
+              "trustBoundaryIds": [
+                "93aa94b5-af0b-40b0-8c1b-0100bcf425cb"
+              ],
               "threatFrequency": {
                 "tampering": 3,
                 "informationDisclosure": 3,
@@ -1713,7 +1722,9 @@
                   "score": ""
                 }
               ],
-              "trustBoundaryIds": [],
+              "trustBoundaryIds": [
+                "93aa94b5-af0b-40b0-8c1b-0100bcf425cb"
+              ],
               "threatFrequency": {
                 "tampering": 2,
                 "informationDisclosure": 0,
@@ -2516,7 +2527,9 @@
                   "score": ""
                 }
               ],
-              "trustBoundaryIds": [],
+              "trustBoundaryIds": [
+                "93aa94b5-af0b-40b0-8c1b-0100bcf425cb"
+              ],
               "threatFrequency": {
                 "tampering": 3,
                 "informationDisclosure": 4,
@@ -2613,7 +2626,9 @@
                   "score": ""
                 }
               ],
-              "trustBoundaryIds": [],
+              "trustBoundaryIds": [
+                "93aa94b5-af0b-40b0-8c1b-0100bcf425cb"
+              ],
               "threatFrequency": {
                 "tampering": 3,
                 "informationDisclosure": 3,
@@ -2710,7 +2725,9 @@
                   "score": ""
                 }
               ],
-              "trustBoundaryIds": [],
+              "trustBoundaryIds": [
+                "93aa94b5-af0b-40b0-8c1b-0100bcf425cb"
+              ],
               "threatFrequency": {
                 "tampering": 3,
                 "informationDisclosure": 1,
@@ -2748,8 +2765,23 @@
               "description": "",
               "isTrustBoundary": true,
               "hasOpenThreats": false,
-              "crossingFlows": [],
-              "containedElements": []
+              "crossingFlows": [
+                "1683200b-26fb-4178-8b49-ad00def4111f",
+                "8abc0357-16ff-4dbe-b103-971223e7f19e",
+                "b595f2f6-f0fc-4949-8922-d7d9f0358159",
+                "5d64779d-811c-4ebd-ba31-08860c877444",
+                "af7b8259-3af8-45ed-a68c-02c39cfdae88",
+                "4b5d812b-22b8-4dd4-821c-f137beca25a6",
+                "cec249ee-ba2e-4954-a959-8bc30f2559e1",
+                "997c8975-f38e-4a74-b5bf-ee3cdfec808a",
+                "2e5b10f6-5f81-4986-a5bd-e6a694924f91",
+                "77c2e947-e21d-4429-aebb-3e67bc7b2901"
+              ],
+              "containedElements": [
+                "37dd06e5-4fc6-4251-b64c-77010227a7f5",
+                "dc442880-8c87-4505-81c8-1389716d0309",
+                "1e6ed15d-e07c-445c-a635-c73ecedebefb"
+              ]
             },
             "labels": [
               "Trust Boundary"
@@ -2760,9 +2792,15 @@
               "y": -30
             },
             "target": {
-              "x": 800,
-              "y": 660
-            }
+              "x": 1180,
+              "y": 610
+            },
+            "vertices": [
+              {
+                "x": 590,
+                "y": 630
+              }
+            ]
           }
         ]
       }
