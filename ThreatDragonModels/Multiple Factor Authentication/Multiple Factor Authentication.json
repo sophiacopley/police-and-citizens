@@ -2761,7 +2761,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Boundary",
-              "name": "Trust Boundary",
+              "name": "SecureReports Web App",
               "description": "",
               "isTrustBoundary": true,
               "hasOpenThreats": false,
@@ -2784,7 +2784,7 @@
               ]
             },
             "labels": [
-              "Trust Boundary"
+              "SecureReports Web App"
             ],
             "id": "93aa94b5-af0b-40b0-8c1b-0100bcf425cb",
             "source": {
@@ -2802,6 +2802,10 @@
               },
               {
                 "x": 590,
+                "y": 630
+              },
+              {
+                "x": 1090,
                 "y": 630
               }
             ]
