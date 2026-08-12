@@ -2558,6 +2558,7 @@
             },
             "width": 200,
             "height": 100,
+            "zIndex": 19,
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
@@ -2631,7 +2632,6 @@
               "cell": "dc442880-8c87-4505-81c8-1389716d0309",
               "port": "73e37a84-9b6c-447e-a8a5-4d7afb4132a4"
             },
-            "zIndex": 19,
             "vertices": [
               {
                 "x": 1110,
@@ -2731,8 +2731,8 @@
             },
             "vertices": [
               {
-                "x": 300,
-                "y": 420
+                "x": 280,
+                "y": 460
               }
             ]
           }
