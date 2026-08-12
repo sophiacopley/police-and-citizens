@@ -2735,6 +2735,34 @@
                 "y": 460
               }
             ]
+          },
+          {
+            "shape": "trust-boundary-curve",
+            "width": 200,
+            "height": 100,
+            "zIndex": 21,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Boundary",
+              "name": "Trust Boundary",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false,
+              "crossingFlows": [],
+              "containedElements": []
+            },
+            "labels": [
+              "Trust Boundary"
+            ],
+            "id": "93aa94b5-af0b-40b0-8c1b-0100bcf425cb",
+            "source": {
+              "x": 710,
+              "y": 190
+            },
+            "target": {
+              "x": 800,
+              "y": 660
+            }
           }
         ]
       }
