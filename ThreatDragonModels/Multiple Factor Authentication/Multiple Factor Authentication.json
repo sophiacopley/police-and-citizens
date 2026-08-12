@@ -1,5 +1,5 @@
 {
-  "version": "2.5.0",
+  "version": "2.6.2",
   "summary": {
     "title": "Multiple Factor Authentication",
     "owner": "",
@@ -15,7 +15,7 @@
         "diagramType": "STRIDE",
         "placeholder": "New STRIDE diagram description",
         "thumbnail": "./public/content/images/thumbnail.stride.jpg",
-        "version": "2.5.0",
+        "version": "2.6.2",
         "cells": [
           {
             "position": {
@@ -133,19 +133,6 @@
               "providesAuthentication": false,
               "threats": [
                 {
-                  "id": "7ce5a3fd-577b-4511-842e-0fca9ca5433e",
-                  "title": "User's session cookie is stolen",
-                  "status": "Mitigated",
-                  "severity": "TBD",
-                  "type": "Spoofing",
-                  "description": "See #4",
-                  "mitigation": "",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 1,
-                  "score": ""
-                },
-                {
                   "id": "e185d066-1ce6-4791-bb36-2774691b98e5",
                   "title": "Citizen doesn't own email address",
                   "status": "Mitigated",
@@ -183,11 +170,24 @@
                   "new": false,
                   "number": 4,
                   "score": ""
+                },
+                {
+                  "id": "306cd3f1-48d0-4d6d-924e-c82ba6c8164d",
+                  "title": "Weak Password ",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": "Passwords can be guessed if they are too weak, or have been reused on another application where a data breach occurred.",
+                  "mitigation": "- Enforce strong password rules such as 10 characters and at least one of capital letter, number, special character, or pass-phrases\n- Limit the number of times a user can attempt to login (so that bad actors have less chances at guessing correctly)",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 227,
+                  "score": ""
                 }
               ],
               "threatFrequency": {
                 "spoofing": 9,
-                "repudiation": 0
+                "repudiation": 1
               }
             }
           },
@@ -600,8 +600,8 @@
                   "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Spoofing",
-                  "description": "The official registration page has been replaced by another malicious page users are redirected to from scam emails, or text messages, or links posted online.",
-                  "mitigation": "- Buy similar domain names with typos.",
+                  "description": "The official registration page has been replaced by another malicious page users are redirected to from scam emails, or text messages, or links posted online.\n\nSpecific to Register Process: \nThis can mean Bad Actor can get access to the QR code used to enrol in on the authenticator app, allowing them to set the authenticator app up on the user's behalf.",
+                  "mitigation": "- Buy similar domain names with typos.\n\nSpecific to Register process: \n- ",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 6,
@@ -684,15 +684,28 @@
                   "new": false,
                   "number": 12,
                   "score": ""
+                },
+                {
+                  "id": "3a848eb5-d404-48f3-a622-a74acc49e93d",
+                  "title": "MFA enrolment secret exposed via QR code capture",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Elevation of privilege",
+                  "description": "The QR code encodes the shared secret used to generate future authentication codes/approvals. If a Bad Actor captures the QR code (e.g. screen-sharing, malware taking a screenshot), they can enrol their own device against the citizen's account.",
+                  "mitigation": "- Display the QR code only briefly and only after re-authentication.\n- Allow the citizen to view/revoke enrolled authenticator devices and re-generate the secret if compromise is suspected.\n- Warn the citizen not to share their screen while the QR code is displayed.\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 229,
+                  "score": ""
                 }
               ],
               "threatFrequency": {
-                "spoofing": 4,
+                "spoofing": 5,
                 "tampering": 2,
                 "repudiation": 2,
                 "informationDisclosure": 5,
                 "denialOfService": 2,
-                "elevationOfPrivilege": 1
+                "elevationOfPrivilege": 4
               }
             }
           },
@@ -707,7 +720,15 @@
               "name": "Push notification service API",
               "description": "",
               "isTrustBoundary": true,
-              "hasOpenThreats": false
+              "hasOpenThreats": false,
+              "crossingFlows": [
+                "1683200b-26fb-4178-8b49-ad00def4111f",
+                "8abc0357-16ff-4dbe-b103-971223e7f19e",
+                "b8f96b90-c024-4aad-bd65-2ed0ec284506"
+              ],
+              "containedElements": [
+                "1ad5c3ca-1f49-4b56-b82e-1680a7b2ca4f"
+              ]
             },
             "labels": [
               "Push notification service API"
@@ -739,7 +760,17 @@
               "name": "Phone OS and authenticator app",
               "description": "",
               "isTrustBoundary": true,
-              "hasOpenThreats": false
+              "hasOpenThreats": false,
+              "crossingFlows": [
+                "c0109b64-d82b-43cb-ab3d-9d3242c57872",
+                "b595f2f6-f0fc-4949-8922-d7d9f0358159",
+                "b8f96b90-c024-4aad-bd65-2ed0ec284506",
+                "60a54947-b411-4e60-80d4-15813f640eb3",
+                "d311ae7f-0095-4d89-bc68-b5800ef9cadb"
+              ],
+              "containedElements": [
+                "17204464-77d6-43ab-be78-3ca3dfe3c13d"
+              ]
             },
             "labels": [
               "Phone OS and authenticator app"
@@ -757,322 +788,6 @@
               {
                 "x": 520,
                 "y": -20
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "push_notification",
-              "description": "App sends push notification to the user's phone, indicating the user needs to authenticate a sign in",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [
-                {
-                  "id": "ceeeb113-0c28-49e6-af7e-54d4920efb81",
-                  "title": "Push authentication request tampered with in transit",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Tampering",
-                  "description": "See #50",
-                  "mitigation": "",
-                  "modelType": "STRIDE",
-                  "new": true,
-                  "number": 56,
-                  "score": ""
-                },
-                {
-                  "id": "ebc1cc97-2a81-4a3e-bece-d014db12ce04",
-                  "title": "Push notification channel flooded, delaying delivery",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Denial of service",
-                  "description": "See #45",
-                  "mitigation": "",
-                  "modelType": "STRIDE",
-                  "new": true,
-                  "number": 57,
-                  "score": ""
-                }
-              ]
-            },
-            "labels": [
-              "push_notification"
-            ],
-            "id": "60a54947-b411-4e60-80d4-15813f640eb3",
-            "source": {
-              "cell": "17204464-77d6-43ab-be78-3ca3dfe3c13d",
-              "port": "618ea78a-2da9-4da3-88b1-27b9f9b8d92a"
-            },
-            "target": {
-              "cell": "7fa313dc-456d-482d-973b-bc99b6208d9d",
-              "port": "a5ecf257-0add-467c-a41d-3a89bb99c9ca"
-            },
-            "vertices": [
-              {
-                "x": 580,
-                "y": 70
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "mfa_register_qr_code",
-              "description": "Register process shows the user a QR code for them to scan using their authenticator app. ",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [
-                {
-                  "id": "c7872ffd-23e2-4e10-858b-47ee04b883ac",
-                  "title": "QR enrollment code relayed by an attacker (adversary-in-the-middle)",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Tampering",
-                  "description": "See #46",
-                  "mitigation": "",
-                  "modelType": "STRIDE",
-                  "new": true,
-                  "number": 48,
-                  "score": ""
-                },
-                {
-                  "id": "e36d1119-e9f2-4ed3-94c9-e12ac0bf7eda",
-                  "title": "MFA enrollment secret exposed via QR code capture",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Information disclosure",
-                  "description": "See #47",
-                  "mitigation": "",
-                  "modelType": "STRIDE",
-                  "new": true,
-                  "number": 49,
-                  "score": ""
-                }
-              ]
-            },
-            "labels": [
-              "mfa_register_qr_code"
-            ],
-            "id": "77c2e947-e21d-4429-aebb-3e67bc7b2901",
-            "source": {
-              "cell": "dc442880-8c87-4505-81c8-1389716d0309",
-              "port": "73e37a84-9b6c-447e-a8a5-4d7afb4132a4"
-            },
-            "target": {
-              "cell": "7fa313dc-456d-482d-973b-bc99b6208d9d",
-              "port": "a5ecf257-0add-467c-a41d-3a89bb99c9ca"
-            }
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "submit_register_response",
-              "description": "Includes the 2-digit code to be displayed on the user's screen",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [
-                {
-                  "id": "4a630c2a-1a85-4ce8-b027-27bf5acd9e32",
-                  "title": "Flooding the network with traffic",
-                  "status": "Mitigated",
-                  "severity": "TBD",
-                  "type": "Denial of service",
-                  "description": "See #15",
-                  "mitigation": "",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 218,
-                  "score": ""
-                },
-                {
-                  "id": "745f1525-71d0-439d-8996-1f0988d7d026",
-                  "title": "MFA code altered in transit",
-                  "status": "Mitigated",
-                  "severity": "TBD",
-                  "type": "Tampering",
-                  "description": "If a Bad Actor observed and altered the response from the login process to a different code that is not correct, preventing the user from being able to authenticate their log in. ",
-                  "mitigation": "- Use HTTPS (or another encrypted protocol) to send data over the network",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 223,
-                  "score": ""
-                }
-              ],
-              "trustBoundaryIds": [
-                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ],
-              "threatFrequency": {
-                "tampering": 5,
-                "informationDisclosure": 4,
-                "denialOfService": 2
-              }
-            },
-            "labels": [
-              "submit_register_response"
-            ],
-            "id": "af7b8259-3af8-45ed-a68c-02c39cfdae88",
-            "source": {
-              "cell": "37dd06e5-4fc6-4251-b64c-77010227a7f5",
-              "port": "90c7c89d-d507-4a2b-8403-dd4e6d3bef16"
-            },
-            "target": {
-              "cell": "7fa313dc-456d-482d-973b-bc99b6208d9d",
-              "port": "618ea78a-2da9-4da3-88b1-27b9f9b8d92a"
-            },
-            "vertices": [
-              {
-                "x": 670,
-                "y": 340
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "session_cookie + redirect",
-              "description": "Once authenticated, the user will receive their session cookie and be redirected to their main page (based on their privileges). ",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [
-                {
-                  "id": "19e69eb2-19c8-4d86-b528-e209600d5445",
-                  "title": "Citizen information disclosed to a Bad Actor",
-                  "status": "Mitigated",
-                  "severity": "TBD",
-                  "type": "Information disclosure",
-                  "description": "See #220",
-                  "mitigation": "",
-                  "modelType": "STRIDE",
-                  "new": true,
-                  "number": 58,
-                  "score": ""
-                },
-                {
-                  "id": "5dc9ca85-bd5f-49d1-a4f0-92e50f67e157",
-                  "title": "Citizen login data tampered with in transit",
-                  "status": "Mitigated",
-                  "severity": "TBD",
-                  "type": "Tampering",
-                  "description": "See #221",
-                  "mitigation": "",
-                  "modelType": "STRIDE",
-                  "new": true,
-                  "number": 59,
-                  "score": ""
-                }
-              ]
-            },
-            "labels": [
-              "session_cookie + redirect"
-            ],
-            "id": "5d64779d-811c-4ebd-ba31-08860c877444",
-            "source": {
-              "cell": "37dd06e5-4fc6-4251-b64c-77010227a7f5",
-              "port": "2ae347ba-6b62-4494-aab5-dba4e799497e"
-            },
-            "target": {
-              "cell": "7fa313dc-456d-482d-973b-bc99b6208d9d",
-              "port": "618ea78a-2da9-4da3-88b1-27b9f9b8d92a"
-            },
-            "vertices": [
-              {
-                "x": 630,
-                "y": 440
               }
             ]
           },
@@ -1106,7 +821,8 @@
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": []
+              "threats": [],
+              "trustBoundaryIds": []
             },
             "labels": [
               "code"
@@ -1192,6 +908,7 @@
                   "score": ""
                 }
               ],
+              "trustBoundaryIds": [],
               "threatFrequency": {
                 "tampering": 3,
                 "informationDisclosure": 3,
@@ -1282,6 +999,9 @@
                   "score": ""
                 }
               ],
+              "trustBoundaryIds": [
+                "c87bcb96-9e30-4254-a2a6-bb2f9400f14a"
+              ],
               "threatFrequency": {
                 "tampering": 3,
                 "informationDisclosure": 3,
@@ -1304,102 +1024,6 @@
               {
                 "x": 690,
                 "y": 110
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "submit_register_request",
-              "description": "Sends request to log in to the application by providing their email (if they are a regular citizen) or username (if they are police) and their password. ",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [
-                {
-                  "id": "f4f97584-82d5-4a80-a1e4-8bc93cbd80cb",
-                  "title": "Flooding the network with traffic",
-                  "status": "Mitigated",
-                  "severity": "TBD",
-                  "type": "Denial of service",
-                  "description": "A bad actor floods the request channel with high-volume traffic, exhausting network/connection capacity and blocking legitimate requests from reaching the server.",
-                  "mitigation": "- Rate limiting for requests from the same IP.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 217,
-                  "score": ""
-                },
-                {
-                  "id": "19e69eb2-19c8-4d86-b528-e209600d5445",
-                  "title": "Citizen information disclosed to a Bad Actor",
-                  "status": "Mitigated",
-                  "severity": "TBD",
-                  "type": "Information disclosure",
-                  "description": "Email address and password is accessed by a bad actor on the network, allowing them to steal the user's credentials. ",
-                  "mitigation": "- Use HTTPS (or another encrypted protocol) to send data over the network\n- Use verification code to ensure stolen credentials cannot be used to log in.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 220,
-                  "score": ""
-                },
-                {
-                  "id": "5dc9ca85-bd5f-49d1-a4f0-92e50f67e157",
-                  "title": "Citizen login data tampered with in transit",
-                  "status": "Mitigated",
-                  "severity": "TBD",
-                  "type": "Tampering",
-                  "description": "A Bad Actor could tamper with the login credentials that the citizen supplied and log them into an account that is not theirs. Subsequent actions such as report making will then be performed on the attackers account.",
-                  "mitigation": "- Use HTTPS (or another encrypted protocol) to send data over the network",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 221,
-                  "score": ""
-                }
-              ],
-              "threatFrequency": {
-                "tampering": 3,
-                "informationDisclosure": 4,
-                "denialOfService": 3
-              }
-            },
-            "labels": [
-              "submit_register_request"
-            ],
-            "id": "997c8975-f38e-4a74-b5bf-ee3cdfec808a",
-            "source": {
-              "cell": "7fa313dc-456d-482d-973b-bc99b6208d9d",
-              "port": "a4b3a45d-a9bb-4782-8c22-a3ed0e967671"
-            },
-            "target": {
-              "cell": "37dd06e5-4fc6-4251-b64c-77010227a7f5",
-              "port": "2ae347ba-6b62-4494-aab5-dba4e799497e"
-            },
-            "vertices": [
-              {
-                "x": 740,
-                "y": 281
               }
             ]
           },
@@ -1447,6 +1071,9 @@
                   "number": 54,
                   "score": ""
                 }
+              ],
+              "trustBoundaryIds": [
+                "66654ec5-2062-4cd6-bd66-604e9d45c91b"
               ],
               "threatFrequency": {
                 "tampering": 0,
@@ -1531,6 +1158,9 @@
                   "score": ""
                 }
               ],
+              "trustBoundaryIds": [
+                "66654ec5-2062-4cd6-bd66-604e9d45c91b"
+              ],
               "threatFrequency": {
                 "tampering": 1,
                 "informationDisclosure": 0,
@@ -1595,6 +1225,9 @@
                   "score": ""
                 }
               ],
+              "trustBoundaryIds": [
+                "c87bcb96-9e30-4254-a2a6-bb2f9400f14a"
+              ],
               "threatFrequency": {
                 "tampering": 2,
                 "informationDisclosure": 0,
@@ -1617,84 +1250,6 @@
               {
                 "x": 640,
                 "y": -30
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "mfa_register_qr_code",
-              "description": "Citizen scans QR code displayed on their screen using their authenticator app. This adds the website to their authenticator app.",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [
-                {
-                  "id": "c7872ffd-23e2-4e10-858b-47ee04b883ac",
-                  "title": "QR enrollment code relayed by an attacker (adversary-in-the-middle)",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Tampering",
-                  "description": "A Bad Actor lures the citizen to a lookalike registration page, captures the real MFA enrollment QR code shown to the citizen, and relays it in real time to complete their own enrollment/login, bypassing MFA entirely.",
-                  "mitigation": "- Bind the enrollment QR code to the specific session/device that requested it, and expire it quickly.\n- Display a confirmation code or account identifier alongside the QR code that the citizen must match against what the authenticator app shows.\n- Educate citizens to only scan QR codes on the official domain (also see #6, #23).",
-                  "modelType": "STRIDE",
-                  "new": true,
-                  "number": 46,
-                  "score": ""
-                },
-                {
-                  "id": "e36d1119-e9f2-4ed3-94c9-e12ac0bf7eda",
-                  "title": "MFA enrollment secret exposed via QR code capture",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Information disclosure",
-                  "description": "The QR code encodes the shared secret used to generate future authentication codes/approvals. If a Bad Actor photographs or screen-captures the QR code (e.g. shoulder-surfing, screen-sharing, malware taking a screenshot), they can enroll their own device against the citizen's account.",
-                  "mitigation": "- Display the QR code only briefly and only after re-authentication.\n- Allow the citizen to view/revoke enrolled authenticator devices and re-generate the secret if compromise is suspected.\n- Warn the citizen not to share their screen while the QR code is displayed.",
-                  "modelType": "STRIDE",
-                  "new": true,
-                  "number": 47,
-                  "score": ""
-                }
-              ]
-            },
-            "labels": [
-              "mfa_register_qr_code"
-            ],
-            "id": "d311ae7f-0095-4d89-bc68-b5800ef9cadb",
-            "source": {
-              "cell": "7fa313dc-456d-482d-973b-bc99b6208d9d"
-            },
-            "target": {
-              "cell": "17204464-77d6-43ab-be78-3ca3dfe3c13d",
-              "port": "618ea78a-2da9-4da3-88b1-27b9f9b8d92a"
-            },
-            "vertices": [
-              {
-                "x": 450,
-                "y": 70
               }
             ]
           },
@@ -1743,6 +1298,10 @@
                   "score": ""
                 }
               ],
+              "trustBoundaryIds": [
+                "66654ec5-2062-4cd6-bd66-604e9d45c91b",
+                "c87bcb96-9e30-4254-a2a6-bb2f9400f14a"
+              ],
               "threatFrequency": {
                 "tampering": 1,
                 "informationDisclosure": 0,
@@ -1761,6 +1320,353 @@
               "cell": "17204464-77d6-43ab-be78-3ca3dfe3c13d",
               "port": "a4b3a45d-a9bb-4782-8c22-a3ed0e967671"
             }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "session_cookie + redirect",
+              "description": "Once authenticated, the user will receive their session cookie and be redirected to their main page (based on their privileges). ",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "19e69eb2-19c8-4d86-b528-e209600d5445",
+                  "title": "Citizen information disclosed to a Bad Actor",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "See #220",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": true,
+                  "number": 58,
+                  "score": ""
+                },
+                {
+                  "id": "5dc9ca85-bd5f-49d1-a4f0-92e50f67e157",
+                  "title": "Citizen login data tampered with in transit",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "See #221",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": true,
+                  "number": 59,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "session_cookie + redirect"
+            ],
+            "id": "5d64779d-811c-4ebd-ba31-08860c877444",
+            "source": {
+              "cell": "37dd06e5-4fc6-4251-b64c-77010227a7f5",
+              "port": "2ae347ba-6b62-4494-aab5-dba4e799497e"
+            },
+            "target": {
+              "cell": "7fa313dc-456d-482d-973b-bc99b6208d9d",
+              "port": "618ea78a-2da9-4da3-88b1-27b9f9b8d92a"
+            },
+            "vertices": [
+              {
+                "x": 630,
+                "y": 440
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "submit_register_response",
+              "description": "Includes the 2-digit code to be displayed on the user's screen",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "4a630c2a-1a85-4ce8-b027-27bf5acd9e32",
+                  "title": "Flooding the network with traffic",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "See #15",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 218,
+                  "score": ""
+                },
+                {
+                  "id": "745f1525-71d0-439d-8996-1f0988d7d026",
+                  "title": "MFA code altered in transit",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "If a Bad Actor observed and altered the response from the login process to a different code that is not correct, preventing the user from being able to authenticate their log in. ",
+                  "mitigation": "- Use HTTPS (or another encrypted protocol) to send data over the network",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 223,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [],
+              "threatFrequency": {
+                "tampering": 5,
+                "informationDisclosure": 4,
+                "denialOfService": 2
+              }
+            },
+            "labels": [
+              "submit_register_response"
+            ],
+            "id": "af7b8259-3af8-45ed-a68c-02c39cfdae88",
+            "source": {
+              "cell": "37dd06e5-4fc6-4251-b64c-77010227a7f5",
+              "port": "90c7c89d-d507-4a2b-8403-dd4e6d3bef16"
+            },
+            "target": {
+              "cell": "7fa313dc-456d-482d-973b-bc99b6208d9d",
+              "port": "618ea78a-2da9-4da3-88b1-27b9f9b8d92a"
+            },
+            "vertices": [
+              {
+                "x": 670,
+                "y": 340
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "push_notification",
+              "description": "App sends push notification to the user's phone, indicating the user needs to authenticate a sign in",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "ceeeb113-0c28-49e6-af7e-54d4920efb81",
+                  "title": "Flooding the network with traffic",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "See #217",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 56,
+                  "score": ""
+                },
+                {
+                  "id": "ebc1cc97-2a81-4a3e-bece-d014db12ce04",
+                  "title": "Push notification tampered with in transit",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "See #221\n\nPush notification could be altered to redirect you to a malicious site on click.",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 57,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [
+                "c87bcb96-9e30-4254-a2a6-bb2f9400f14a"
+              ],
+              "threatFrequency": {
+                "tampering": 4,
+                "informationDisclosure": 0,
+                "denialOfService": 1
+              }
+            },
+            "labels": [
+              "push_notification"
+            ],
+            "id": "60a54947-b411-4e60-80d4-15813f640eb3",
+            "source": {
+              "cell": "17204464-77d6-43ab-be78-3ca3dfe3c13d",
+              "port": "618ea78a-2da9-4da3-88b1-27b9f9b8d92a"
+            },
+            "target": {
+              "cell": "7fa313dc-456d-482d-973b-bc99b6208d9d",
+              "port": "a5ecf257-0add-467c-a41d-3a89bb99c9ca"
+            },
+            "vertices": [
+              {
+                "x": 580,
+                "y": 70
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "mfa_register_qr_code",
+              "description": "Citizen scans QR code displayed on their screen using their authenticator app. This adds the website to their authenticator app.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "71d389fc-3fa9-427a-92bd-5e0cc5899a6c",
+                  "title": "Flooding the network with traffic",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "See #217",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 233,
+                  "score": ""
+                },
+                {
+                  "id": "db60392d-44ae-4e46-a42b-0267b771b9ed",
+                  "title": "QR code disclosed to a bad actor",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "See #220",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 234,
+                  "score": ""
+                },
+                {
+                  "id": "df2ae9c9-935e-4947-b10c-6644a4def41b",
+                  "title": "QR code tampered with in transit",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "See #221",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 235,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [
+                "c87bcb96-9e30-4254-a2a6-bb2f9400f14a"
+              ],
+              "threatFrequency": {
+                "tampering": 3,
+                "informationDisclosure": 2,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              "mfa_register_qr_code"
+            ],
+            "id": "d311ae7f-0095-4d89-bc68-b5800ef9cadb",
+            "source": {
+              "cell": "7fa313dc-456d-482d-973b-bc99b6208d9d"
+            },
+            "target": {
+              "cell": "17204464-77d6-43ab-be78-3ca3dfe3c13d",
+              "port": "618ea78a-2da9-4da3-88b1-27b9f9b8d92a"
+            },
+            "vertices": [
+              {
+                "x": 450,
+                "y": 70
+              }
+            ]
           },
           {
             "position": {
@@ -2467,12 +2373,215 @@
                 "denialOfService": 2
               }
             }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 15,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "submit_register_request",
+              "description": "Sends request to log in to the application by providing their email (if they are a regular citizen) or username (if they are police) and their password. ",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "f4f97584-82d5-4a80-a1e4-8bc93cbd80cb",
+                  "title": "Flooding the network with traffic",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "A bad actor floods the request channel with high-volume traffic, exhausting network/connection capacity and blocking legitimate requests from reaching the server.",
+                  "mitigation": "- Rate limiting for requests from the same IP.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 217,
+                  "score": ""
+                },
+                {
+                  "id": "19e69eb2-19c8-4d86-b528-e209600d5445",
+                  "title": "Citizen information disclosed to a Bad Actor",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "Email address and password is accessed by a bad actor on the network, allowing them to steal the user's credentials. ",
+                  "mitigation": "- Use HTTPS (or another encrypted protocol) to send data over the network\n- Use verification code to ensure stolen credentials cannot be used to log in.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 220,
+                  "score": ""
+                },
+                {
+                  "id": "5dc9ca85-bd5f-49d1-a4f0-92e50f67e157",
+                  "title": "Citizen login data tampered with in transit",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "A Bad Actor could tamper with the login credentials that the citizen supplied and log them into an account that is not theirs. Subsequent actions such as report making will then be performed on the attackers account.",
+                  "mitigation": "- Use HTTPS (or another encrypted protocol) to send data over the network",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 221,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [],
+              "threatFrequency": {
+                "tampering": 3,
+                "informationDisclosure": 4,
+                "denialOfService": 3
+              }
+            },
+            "labels": [
+              "submit_register_request"
+            ],
+            "id": "997c8975-f38e-4a74-b5bf-ee3cdfec808a",
+            "source": {
+              "cell": "7fa313dc-456d-482d-973b-bc99b6208d9d",
+              "port": "a4b3a45d-a9bb-4782-8c22-a3ed0e967671"
+            },
+            "target": {
+              "cell": "37dd06e5-4fc6-4251-b64c-77010227a7f5",
+              "port": "2ae347ba-6b62-4494-aab5-dba4e799497e"
+            },
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead"
+              ],
+              "name": null
+            },
+            "vertices": [
+              {
+                "x": 740,
+                "y": 281
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 16,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "mfa_register_qr_code",
+              "description": "Register process shows the user a QR code for them to scan using their authenticator app. ",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "537a8aa7-1e5c-49a5-b0b4-0bd929c54cbb",
+                  "title": "Flooding the network with traffic",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "See #217",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 230,
+                  "score": ""
+                },
+                {
+                  "id": "d3fdaa14-edd8-4bf3-843e-83b112d0ba36",
+                  "title": "MFA secret QR code tampered with in transit",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "See #221",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 231,
+                  "score": ""
+                },
+                {
+                  "id": "a535f57e-f915-4095-883f-e32f37b769dd",
+                  "title": "QR code disclosed to a bad actior",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "See #220",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 232,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [],
+              "threatFrequency": {
+                "tampering": 3,
+                "informationDisclosure": 1,
+                "denialOfService": 2
+              }
+            },
+            "labels": [
+              "mfa_register_qr_code"
+            ],
+            "id": "77c2e947-e21d-4429-aebb-3e67bc7b2901",
+            "source": {
+              "cell": "dc442880-8c87-4505-81c8-1389716d0309",
+              "port": "73e37a84-9b6c-447e-a8a5-4d7afb4132a4"
+            },
+            "target": {
+              "cell": "7fa313dc-456d-482d-973b-bc99b6208d9d",
+              "port": "a5ecf257-0add-467c-a41d-3a89bb99c9ca"
+            }
           }
         ]
       }
     ],
     "diagramTop": 1,
     "reviewer": "",
-    "threatTop": 224
+    "threatTop": 235
   }
 }
