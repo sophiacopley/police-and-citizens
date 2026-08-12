@@ -31,8 +31,8 @@
                 "text": "Citizen"
               },
               "body": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
                 "strokeDasharray": null
               }
             },
@@ -129,7 +129,7 @@
               "isTrustBoundary": false,
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": true,
+              "hasOpenThreats": false,
               "providesAuthentication": false,
               "threats": [
                 {
@@ -182,19 +182,6 @@
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 227,
-                  "score": ""
-                },
-                {
-                  "id": "3301a1d4-e9e3-45dd-be51-f7521ec7f366",
-                  "title": "New STRIDE threat",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Repudiation",
-                  "description": "Provide a description for this threat",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
-                  "modelType": "STRIDE",
-                  "new": true,
-                  "number": 228,
                   "score": ""
                 }
               ],
@@ -906,169 +893,6 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "submit_register_response",
-              "description": "Includes the 2-digit code to be displayed on the user's screen",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [
-                {
-                  "id": "4a630c2a-1a85-4ce8-b027-27bf5acd9e32",
-                  "title": "Flooding the network with traffic",
-                  "status": "Mitigated",
-                  "severity": "TBD",
-                  "type": "Denial of service",
-                  "description": "See #15",
-                  "mitigation": "",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 218,
-                  "score": ""
-                },
-                {
-                  "id": "745f1525-71d0-439d-8996-1f0988d7d026",
-                  "title": "MFA code altered in transit",
-                  "status": "Mitigated",
-                  "severity": "TBD",
-                  "type": "Tampering",
-                  "description": "If a Bad Actor observed and altered the response from the login process to a different code that is not correct, preventing the user from being able to authenticate their log in. ",
-                  "mitigation": "- Use HTTPS (or another encrypted protocol) to send data over the network",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 223,
-                  "score": ""
-                }
-              ],
-              "trustBoundaryIds": [],
-              "threatFrequency": {
-                "tampering": 5,
-                "informationDisclosure": 4,
-                "denialOfService": 2
-              }
-            },
-            "labels": [
-              "submit_register_response"
-            ],
-            "id": "af7b8259-3af8-45ed-a68c-02c39cfdae88",
-            "source": {
-              "cell": "37dd06e5-4fc6-4251-b64c-77010227a7f5",
-              "port": "90c7c89d-d507-4a2b-8403-dd4e6d3bef16"
-            },
-            "target": {
-              "cell": "7fa313dc-456d-482d-973b-bc99b6208d9d",
-              "port": "618ea78a-2da9-4da3-88b1-27b9f9b8d92a"
-            },
-            "vertices": [
-              {
-                "x": 670,
-                "y": 340
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "session_cookie + redirect",
-              "description": "Once authenticated, the user will receive their session cookie and be redirected to their main page (based on their privileges). ",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [
-                {
-                  "id": "19e69eb2-19c8-4d86-b528-e209600d5445",
-                  "title": "Citizen information disclosed to a Bad Actor",
-                  "status": "Mitigated",
-                  "severity": "TBD",
-                  "type": "Information disclosure",
-                  "description": "See #220",
-                  "mitigation": "",
-                  "modelType": "STRIDE",
-                  "new": true,
-                  "number": 58,
-                  "score": ""
-                },
-                {
-                  "id": "5dc9ca85-bd5f-49d1-a4f0-92e50f67e157",
-                  "title": "Citizen login data tampered with in transit",
-                  "status": "Mitigated",
-                  "severity": "TBD",
-                  "type": "Tampering",
-                  "description": "See #221",
-                  "mitigation": "",
-                  "modelType": "STRIDE",
-                  "new": true,
-                  "number": 59,
-                  "score": ""
-                }
-              ],
-              "trustBoundaryIds": []
-            },
-            "labels": [
-              "session_cookie + redirect"
-            ],
-            "id": "5d64779d-811c-4ebd-ba31-08860c877444",
-            "source": {
-              "cell": "37dd06e5-4fc6-4251-b64c-77010227a7f5",
-              "port": "2ae347ba-6b62-4494-aab5-dba4e799497e"
-            },
-            "target": {
-              "cell": "7fa313dc-456d-482d-973b-bc99b6208d9d",
-              "port": "618ea78a-2da9-4da3-88b1-27b9f9b8d92a"
-            },
-            "vertices": [
-              {
-                "x": 630,
-                "y": 440
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
               "name": "code",
               "description": "2-digit code to be used for push notification verification",
               "outOfScope": false,
@@ -1282,103 +1106,6 @@
               {
                 "x": 690,
                 "y": 110
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "submit_register_request",
-              "description": "Sends request to log in to the application by providing their email (if they are a regular citizen) or username (if they are police) and their password. ",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [
-                {
-                  "id": "f4f97584-82d5-4a80-a1e4-8bc93cbd80cb",
-                  "title": "Flooding the network with traffic",
-                  "status": "Mitigated",
-                  "severity": "TBD",
-                  "type": "Denial of service",
-                  "description": "A bad actor floods the request channel with high-volume traffic, exhausting network/connection capacity and blocking legitimate requests from reaching the server.",
-                  "mitigation": "- Rate limiting for requests from the same IP.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 217,
-                  "score": ""
-                },
-                {
-                  "id": "19e69eb2-19c8-4d86-b528-e209600d5445",
-                  "title": "Citizen information disclosed to a Bad Actor",
-                  "status": "Mitigated",
-                  "severity": "TBD",
-                  "type": "Information disclosure",
-                  "description": "Email address and password is accessed by a bad actor on the network, allowing them to steal the user's credentials. ",
-                  "mitigation": "- Use HTTPS (or another encrypted protocol) to send data over the network\n- Use verification code to ensure stolen credentials cannot be used to log in.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 220,
-                  "score": ""
-                },
-                {
-                  "id": "5dc9ca85-bd5f-49d1-a4f0-92e50f67e157",
-                  "title": "Citizen login data tampered with in transit",
-                  "status": "Mitigated",
-                  "severity": "TBD",
-                  "type": "Tampering",
-                  "description": "A Bad Actor could tamper with the login credentials that the citizen supplied and log them into an account that is not theirs. Subsequent actions such as report making will then be performed on the attackers account.",
-                  "mitigation": "- Use HTTPS (or another encrypted protocol) to send data over the network",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 221,
-                  "score": ""
-                }
-              ],
-              "trustBoundaryIds": [],
-              "threatFrequency": {
-                "tampering": 3,
-                "informationDisclosure": 4,
-                "denialOfService": 3
-              }
-            },
-            "labels": [
-              "submit_register_request"
-            ],
-            "id": "997c8975-f38e-4a74-b5bf-ee3cdfec808a",
-            "source": {
-              "cell": "7fa313dc-456d-482d-973b-bc99b6208d9d",
-              "port": "a4b3a45d-a9bb-4782-8c22-a3ed0e967671"
-            },
-            "target": {
-              "cell": "37dd06e5-4fc6-4251-b64c-77010227a7f5",
-              "port": "2ae347ba-6b62-4494-aab5-dba4e799497e"
-            },
-            "vertices": [
-              {
-                "x": 740,
-                "y": 281
               }
             ]
           },
@@ -1777,33 +1504,38 @@
               "protocol": "",
               "threats": [
                 {
-                  "id": "c7872ffd-23e2-4e10-858b-47ee04b883ac",
-                  "title": "QR enrollment code relayed by an attacker (adversary-in-the-middle)",
+                  "id": "537a8aa7-1e5c-49a5-b0b4-0bd929c54cbb",
+                  "title": "",
                   "status": "Open",
                   "severity": "TBD",
-                  "type": "Tampering",
-                  "description": "See #46",
+                  "type": "Denial of service",
+                  "description": "See #217",
                   "mitigation": "",
                   "modelType": "STRIDE",
-                  "new": true,
-                  "number": 48,
+                  "new": false,
+                  "number": 230,
                   "score": ""
                 },
                 {
-                  "id": "e36d1119-e9f2-4ed3-94c9-e12ac0bf7eda",
-                  "title": "MFA enrollment secret exposed via QR code capture",
+                  "id": "d3fdaa14-edd8-4bf3-843e-83b112d0ba36",
+                  "title": "",
                   "status": "Open",
                   "severity": "TBD",
                   "type": "Information disclosure",
-                  "description": "See #47",
+                  "description": "See #220",
                   "mitigation": "",
                   "modelType": "STRIDE",
-                  "new": true,
-                  "number": 49,
+                  "new": false,
+                  "number": 231,
                   "score": ""
                 }
               ],
-              "trustBoundaryIds": []
+              "trustBoundaryIds": [],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 1
+              }
             },
             "labels": [
               "mfa_register_qr_code"
@@ -1816,17 +1548,170 @@
             "target": {
               "cell": "7fa313dc-456d-482d-973b-bc99b6208d9d",
               "port": "a5ecf257-0add-467c-a41d-3a89bb99c9ca"
-            },
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead"
-              ],
-              "name": null
             }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "session_cookie + redirect",
+              "description": "Once authenticated, the user will receive their session cookie and be redirected to their main page (based on their privileges). ",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "19e69eb2-19c8-4d86-b528-e209600d5445",
+                  "title": "Citizen information disclosed to a Bad Actor",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "See #220",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": true,
+                  "number": 58,
+                  "score": ""
+                },
+                {
+                  "id": "5dc9ca85-bd5f-49d1-a4f0-92e50f67e157",
+                  "title": "Citizen login data tampered with in transit",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "See #221",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": true,
+                  "number": 59,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "session_cookie + redirect"
+            ],
+            "id": "5d64779d-811c-4ebd-ba31-08860c877444",
+            "source": {
+              "cell": "37dd06e5-4fc6-4251-b64c-77010227a7f5",
+              "port": "2ae347ba-6b62-4494-aab5-dba4e799497e"
+            },
+            "target": {
+              "cell": "7fa313dc-456d-482d-973b-bc99b6208d9d",
+              "port": "618ea78a-2da9-4da3-88b1-27b9f9b8d92a"
+            },
+            "vertices": [
+              {
+                "x": 630,
+                "y": 440
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "submit_register_response",
+              "description": "Includes the 2-digit code to be displayed on the user's screen",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "4a630c2a-1a85-4ce8-b027-27bf5acd9e32",
+                  "title": "Flooding the network with traffic",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "See #15",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 218,
+                  "score": ""
+                },
+                {
+                  "id": "745f1525-71d0-439d-8996-1f0988d7d026",
+                  "title": "MFA code altered in transit",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "If a Bad Actor observed and altered the response from the login process to a different code that is not correct, preventing the user from being able to authenticate their log in. ",
+                  "mitigation": "- Use HTTPS (or another encrypted protocol) to send data over the network",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 223,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [],
+              "threatFrequency": {
+                "tampering": 5,
+                "informationDisclosure": 4,
+                "denialOfService": 2
+              }
+            },
+            "labels": [
+              "submit_register_response"
+            ],
+            "id": "af7b8259-3af8-45ed-a68c-02c39cfdae88",
+            "source": {
+              "cell": "37dd06e5-4fc6-4251-b64c-77010227a7f5",
+              "port": "90c7c89d-d507-4a2b-8403-dd4e6d3bef16"
+            },
+            "target": {
+              "cell": "7fa313dc-456d-482d-973b-bc99b6208d9d",
+              "port": "618ea78a-2da9-4da3-88b1-27b9f9b8d92a"
+            },
+            "vertices": [
+              {
+                "x": 670,
+                "y": 340
+              }
+            ]
           },
           {
             "position": {
@@ -2533,12 +2418,109 @@
                 "denialOfService": 2
               }
             }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 15,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "submit_register_request",
+              "description": "Sends request to log in to the application by providing their email (if they are a regular citizen) or username (if they are police) and their password. ",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "f4f97584-82d5-4a80-a1e4-8bc93cbd80cb",
+                  "title": "Flooding the network with traffic",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "A bad actor floods the request channel with high-volume traffic, exhausting network/connection capacity and blocking legitimate requests from reaching the server.",
+                  "mitigation": "- Rate limiting for requests from the same IP.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 217,
+                  "score": ""
+                },
+                {
+                  "id": "19e69eb2-19c8-4d86-b528-e209600d5445",
+                  "title": "Citizen information disclosed to a Bad Actor",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "Email address and password is accessed by a bad actor on the network, allowing them to steal the user's credentials. ",
+                  "mitigation": "- Use HTTPS (or another encrypted protocol) to send data over the network\n- Use verification code to ensure stolen credentials cannot be used to log in.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 220,
+                  "score": ""
+                },
+                {
+                  "id": "5dc9ca85-bd5f-49d1-a4f0-92e50f67e157",
+                  "title": "Citizen login data tampered with in transit",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "A Bad Actor could tamper with the login credentials that the citizen supplied and log them into an account that is not theirs. Subsequent actions such as report making will then be performed on the attackers account.",
+                  "mitigation": "- Use HTTPS (or another encrypted protocol) to send data over the network",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 221,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [],
+              "threatFrequency": {
+                "tampering": 3,
+                "informationDisclosure": 4,
+                "denialOfService": 3
+              }
+            },
+            "labels": [
+              "submit_register_request"
+            ],
+            "id": "997c8975-f38e-4a74-b5bf-ee3cdfec808a",
+            "source": {
+              "cell": "7fa313dc-456d-482d-973b-bc99b6208d9d",
+              "port": "a4b3a45d-a9bb-4782-8c22-a3ed0e967671"
+            },
+            "target": {
+              "cell": "37dd06e5-4fc6-4251-b64c-77010227a7f5",
+              "port": "2ae347ba-6b62-4494-aab5-dba4e799497e"
+            },
+            "vertices": [
+              {
+                "x": 740,
+                "y": 281
+              }
+            ]
           }
         ]
       }
     ],
     "diagramTop": 1,
     "reviewer": "",
-    "threatTop": 229
+    "threatTop": 231
   }
 }
