@@ -329,7 +329,7 @@
                   "severity": "TBD",
                   "type": "Spoofing",
                   "description": "See #6",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 14,
@@ -454,13 +454,20 @@
                 }
               ],
               "threatFrequency": {
-                "spoofing": 6,
+                "spoofing": 7,
                 "tampering": 6,
                 "repudiation": 1,
                 "informationDisclosure": 10,
                 "denialOfService": 3,
                 "elevationOfPrivilege": 3
               }
+            },
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove"
+              ],
+              "name": null
             }
           },
           {
