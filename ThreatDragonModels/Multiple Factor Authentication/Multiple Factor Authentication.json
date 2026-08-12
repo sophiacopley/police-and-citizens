@@ -28,7 +28,7 @@
             },
             "attrs": {
               "text": {
-                "text": "Citizen\n(A1)"
+                "text": "Citizen"
               },
               "body": {
                 "stroke": "#333333",
@@ -124,7 +124,7 @@
             "id": "7fa313dc-456d-482d-973b-bc99b6208d9d",
             "data": {
               "type": "tm.Actor",
-              "name": "Citizen\n(A1)",
+              "name": "Citizen",
               "description": "",
               "isTrustBoundary": false,
               "outOfScope": false,
@@ -202,7 +202,7 @@
             },
             "attrs": {
               "text": {
-                "text": "Login\n(E3)"
+                "text": "Login"
               },
               "body": {
                 "stroke": "#333333",
@@ -298,7 +298,7 @@
             "id": "37dd06e5-4fc6-4251-b64c-77010227a7f5",
             "data": {
               "type": "tm.Process",
-              "name": "Login\n(E3)",
+              "name": "Login",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -465,20 +465,20 @@
           },
           {
             "position": {
-              "x": 180,
-              "y": 160
+              "x": 179.99999999999994,
+              "y": 190.00000000000006
             },
             "size": {
-              "width": 60,
-              "height": 60
+              "width": 80,
+              "height": 90
             },
             "attrs": {
               "text": {
-                "text": "Register\n(E1)"
+                "text": "Register \nfor MFA"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -570,12 +570,12 @@
             "id": "dc442880-8c87-4505-81c8-1389716d0309",
             "data": {
               "type": "tm.Process",
-              "name": "Register\n(E1)",
-              "description": "",
+              "name": "Register \nfor MFA",
+              "description": "This process occurs after first log in and provides the QR code ",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
@@ -688,11 +688,11 @@
                 {
                   "id": "3a848eb5-d404-48f3-a622-a74acc49e93d",
                   "title": "MFA enrolment secret exposed via QR code capture",
-                  "status": "Mitigated",
+                  "status": "Open",
                   "severity": "TBD",
                   "type": "Elevation of privilege",
                   "description": "The QR code encodes the shared secret used to generate future authentication codes/approvals. If a Bad Actor captures the QR code (e.g. screen-sharing, malware taking a screenshot), they can enrol their own device against the citizen's account.",
-                  "mitigation": "- Display the QR code only briefly and only after re-authentication.\n- Allow the citizen to view/revoke enrolled authenticator devices and re-generate the secret if compromise is suspected.\n- Warn the citizen not to share their screen while the QR code is displayed.\n",
+                  "mitigation": "- Display the QR code only briefly and only after re-authentication.\n- Warn the citizen not to share their screen while the QR code is displayed.\n",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 229,
@@ -705,7 +705,7 @@
                 "repudiation": 2,
                 "informationDisclosure": 5,
                 "denialOfService": 2,
-                "elevationOfPrivilege": 4
+                "elevationOfPrivilege": 6
               }
             }
           },
@@ -1420,7 +1420,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "submit_register_response",
+              "name": "submit_login_response",
               "description": "Includes the 2-digit code to be displayed on the user's screen",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -1466,7 +1466,7 @@
               }
             },
             "labels": [
-              "submit_register_response"
+              "submit_login_response"
             ],
             "id": "af7b8259-3af8-45ed-a68c-02c39cfdae88",
             "source": {
@@ -1827,7 +1827,7 @@
             },
             "attrs": {
               "text": {
-                "text": "Random\nNumber\nGenerator\n(D8)"
+                "text": "Random\nNumber\nGenerator"
               },
               "body": {
                 "stroke": "#333333",
@@ -1923,7 +1923,7 @@
             "id": "1e6ed15d-e07c-445c-a635-c73ecedebefb",
             "data": {
               "type": "tm.Process",
-              "name": "Random\nNumber\nGenerator\n(D8)",
+              "name": "Random\nNumber\nGenerator",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -2394,7 +2394,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "submit_register_request",
+              "name": "submit_login_request",
               "description": "Sends request to log in to the application by providing their email (if they are a regular citizen) or username (if they are police) and their password. ",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -2453,7 +2453,7 @@
               }
             },
             "labels": [
-              "submit_register_request"
+              "submit_login_request"
             ],
             "id": "997c8975-f38e-4a74-b5bf-ee3cdfec808a",
             "source": {
@@ -2560,7 +2560,13 @@
             "target": {
               "cell": "7fa313dc-456d-482d-973b-bc99b6208d9d",
               "port": "a5ecf257-0add-467c-a41d-3a89bb99c9ca"
-            }
+            },
+            "vertices": [
+              {
+                "x": 380,
+                "y": 270
+              }
+            ]
           }
         ]
       }
