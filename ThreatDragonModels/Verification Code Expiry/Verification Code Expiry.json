@@ -629,7 +629,7 @@
                   "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Information disclosure",
-                  "description": "An attacker could submit candidate email addresses to the request-new-link endpoint and use differences in the response to learn which addresses already have an account. Differences in wording, HTTP status, or response time all leak the same information.",
+                  "description": "An attacker could submit candidate email addresses to the request-new-link endpoint and use differences in the response to learn which addresses already have an account.",
                   "mitigation": "- Return an identical response body and status code whether or not an account exists for the submitted address",
                   "modelType": "STRIDE",
                   "new": false,
@@ -729,13 +729,20 @@
                 }
               ],
               "threatFrequency": {
-                "spoofing": 4,
+                "spoofing": 5,
                 "tampering": 2,
                 "repudiation": 0,
-                "informationDisclosure": 7,
-                "denialOfService": 5,
+                "informationDisclosure": 8,
+                "denialOfService": 6,
                 "elevationOfPrivilege": 1
               }
+            },
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove"
+              ],
+              "name": null
             }
           },
           {
@@ -752,8 +759,8 @@
                 "text": "Verify Email"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -850,7 +857,7 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": true,
@@ -872,7 +879,7 @@
                 {
                   "id": "e6356e4c-ad16-4b55-9075-b13630feb465",
                   "title": "Verification process replaced by scammer",
-                  "status": "Accepted",
+                  "status": "Open",
                   "severity": "TBD",
                   "type": "Spoofing",
                   "description": "The official registration page has been replaced by another malicious page users are redirected to from scam emails, or text messages, or links posted online.",
@@ -963,7 +970,7 @@
                 {
                   "id": "b67af4fc-32dd-477c-96c4-8475c44555da",
                   "title": "NEW - Expiry field is stored but never evaluated at redemption",
-                  "status": "NotApplicable",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Spoofing",
                   "description": "The verification_code_expiry field exists on the citizen record but the verification process does not evaluate it when the code is redeemed.",
@@ -975,7 +982,7 @@
                 }
               ],
               "threatFrequency": {
-                "spoofing": 4,
+                "spoofing": 6,
                 "tampering": 2,
                 "repudiation": 0,
                 "informationDisclosure": 3,
