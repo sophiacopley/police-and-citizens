@@ -27,7 +27,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Boundary",
-              "name": "Database trust boundary",
+              "name": "Database trust boundary\nT7 -> T8",
               "description": "Trust boundary around the citizen information data store, separating the database from the application processes.",
               "isTrustBoundary": true,
               "hasOpenThreats": false,
@@ -35,7 +35,7 @@
               "containedElements": []
             },
             "labels": [
-              "Database trust boundary"
+              "Database trust boundary\nT7 -> T8"
             ],
             "id": "7cfa7384-192c-4248-b935-cb966cb1b03b",
             "source": {
@@ -3167,7 +3167,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Boundary",
-              "name": "SecureReports application trust boundary",
+              "name": "SecureReports application trust boundary\nT0 -> T7",
               "description": "Trust boundary around the application processes (register, login, hashing, verification), separating them from the citizen's browser and email infrastructure.",
               "isTrustBoundary": true,
               "hasOpenThreats": false,
@@ -3196,7 +3196,7 @@
               ]
             },
             "labels": [
-              "SecureReports application trust boundary"
+              "SecureReports application trust boundary\nT0 -> T7"
             ],
             "id": "c13b7a48-b539-45e9-b058-5d6a0ed613da",
             "source": {
@@ -4120,7 +4120,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Boundary",
-              "name": "Internet boundary (T0/T3 -> T7 web application process; firewall D4 and reverse proxy D3 assumed on this line)",
+              "name": "Internet boundary T4/T5 -> T7 ",
               "description": "",
               "isTrustBoundary": true,
               "hasOpenThreats": false,
@@ -4128,7 +4128,7 @@
               "containedElements": []
             },
             "labels": [
-              "Internet boundary (T0/T3 -> T7 web application process; firewall D4 and reverse proxy D3 assumed on this line)"
+              "Internet boundary T4/T5 -> T7 "
             ],
             "id": "99185683-ad72-5e1c-be6f-823f63e06c89",
             "source": {
@@ -4141,8 +4141,16 @@
             },
             "vertices": [
               {
+                "x": 440,
+                "y": 80
+              },
+              {
                 "x": 422,
                 "y": 370
+              },
+              {
+                "x": 422,
+                "y": 390
               }
             ]
           },
@@ -4154,7 +4162,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Boundary",
-              "name": "Data boundary (T7 web application process -> T8 database / storage)",
+              "name": "Data boundary\nT7 -> T8",
               "description": "",
               "isTrustBoundary": true,
               "hasOpenThreats": false,
@@ -4162,7 +4170,7 @@
               "containedElements": []
             },
             "labels": [
-              "Data boundary (T7 web application process -> T8 database / storage)"
+              "Data boundary\nT7 -> T8"
             ],
             "id": "3d574ade-f1a5-50ef-aeb3-e6b75203c52c",
             "source": {
@@ -6364,82 +6372,6 @@
         "version": "2.6.2",
         "cells": [
           {
-            "shape": "trust-boundary-curve",
-            "width": 200,
-            "height": 100,
-            "zIndex": -1,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Boundary",
-              "name": "",
-              "description": "",
-              "isTrustBoundary": true,
-              "hasOpenThreats": false,
-              "crossingFlows": [],
-              "containedElements": []
-            },
-            "labels": [
-              ""
-            ],
-            "id": "734f924e-1261-5453-a685-339edc8571a9",
-            "source": {
-              "x": 422,
-              "y": -40
-            },
-            "target": {
-              "x": 422,
-              "y": 720
-            },
-            "vertices": [
-              {
-                "x": 404,
-                "y": 340
-              },
-              {
-                "x": 404,
-                "y": 370
-              }
-            ]
-          },
-          {
-            "shape": "trust-boundary-curve",
-            "width": 200,
-            "height": 100,
-            "zIndex": -1,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Boundary",
-              "name": "",
-              "description": "",
-              "isTrustBoundary": true,
-              "hasOpenThreats": false,
-              "crossingFlows": [],
-              "containedElements": []
-            },
-            "labels": [
-              ""
-            ],
-            "id": "c0792242-c98f-518a-96f0-1f6958b44597",
-            "source": {
-              "x": 1045,
-              "y": -40
-            },
-            "target": {
-              "x": 1045,
-              "y": 720
-            },
-            "vertices": [
-              {
-                "x": 1027,
-                "y": 340
-              },
-              {
-                "x": 1027,
-                "y": 550
-              }
-            ]
-          },
-          {
             "position": {
               "x": 40,
               "y": 200
@@ -8381,6 +8313,62 @@
                 "y": 495
               }
             ]
+          },
+          {
+            "shape": "trust-boundary-curve",
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Boundary",
+              "name": "Internet trust boundary\nT3/T5 -> T7",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false,
+              "crossingFlows": [],
+              "containedElements": []
+            },
+            "labels": [
+              "Internet trust boundary\nT3/T5 -> T7"
+            ],
+            "id": "67bcb0da-368e-4273-ab27-83725181c889",
+            "source": {
+              "x": 384,
+              "y": 60
+            },
+            "target": {
+              "x": 460,
+              "y": 690
+            }
+          },
+          {
+            "shape": "trust-boundary-curve",
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Boundary",
+              "name": "Databse Trust Boundary\nT7 -> T8",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false,
+              "crossingFlows": [],
+              "containedElements": []
+            },
+            "labels": [
+              "Databse Trust Boundary\nT7 -> T8"
+            ],
+            "id": "f07524e0-16bf-46fc-855b-ac5f2cc286a2",
+            "source": {
+              "x": 940,
+              "y": 110
+            },
+            "target": {
+              "x": 960,
+              "y": 630
+            }
           }
         ]
       },
