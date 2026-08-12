@@ -28,7 +28,7 @@
             },
             "attrs": {
               "text": {
-                "text": "Citizen"
+                "text": "Citizen\n(A1)"
               },
               "body": {
                 "stroke": "#333333",
@@ -124,7 +124,7 @@
             "id": "7fa313dc-456d-482d-973b-bc99b6208d9d",
             "data": {
               "type": "tm.Actor",
-              "name": "Citizen",
+              "name": "Citizen\n(A1)",
               "description": "",
               "isTrustBoundary": false,
               "outOfScope": false,
@@ -202,7 +202,7 @@
             },
             "attrs": {
               "text": {
-                "text": "Login"
+                "text": "Login\n(E3)"
               },
               "body": {
                 "stroke": "#333333",
@@ -298,7 +298,7 @@
             "id": "37dd06e5-4fc6-4251-b64c-77010227a7f5",
             "data": {
               "type": "tm.Process",
-              "name": "Login",
+              "name": "Login\n(E3)",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -474,7 +474,7 @@
             },
             "attrs": {
               "text": {
-                "text": "Register"
+                "text": "Register\n(E1)"
               },
               "body": {
                 "stroke": "#333333",
@@ -570,7 +570,7 @@
             "id": "dc442880-8c87-4505-81c8-1389716d0309",
             "data": {
               "type": "tm.Process",
-              "name": "Register",
+              "name": "Register\n(E1)",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -1827,7 +1827,7 @@
             },
             "attrs": {
               "text": {
-                "text": "Random\nNumber\nGenerator"
+                "text": "Random\nNumber\nGenerator\n(D8)"
               },
               "body": {
                 "stroke": "#333333",
@@ -1923,7 +1923,7 @@
             "id": "1e6ed15d-e07c-445c-a635-c73ecedebefb",
             "data": {
               "type": "tm.Process",
-              "name": "Random\nNumber\nGenerator",
+              "name": "Random\nNumber\nGenerator\n(D8)",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -2463,21 +2463,6 @@
             "target": {
               "cell": "37dd06e5-4fc6-4251-b64c-77010227a7f5",
               "port": "2ae347ba-6b62-4494-aab5-dba4e799497e"
-            },
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead"
-              ],
-              "name": null
             },
             "vertices": [
               {
