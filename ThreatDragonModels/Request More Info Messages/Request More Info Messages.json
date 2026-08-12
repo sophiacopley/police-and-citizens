@@ -1,0 +1,2042 @@
+{
+  "version": "2.6.2",
+  "summary": {
+    "title": "Request More Info Messages (Proposed Change)",
+    "owner": "William Tingey",
+    "description": "",
+    "id": 0
+  },
+  "detail": {
+    "contributors": [],
+    "diagrams": [
+      {
+        "id": 0,
+        "title": "Request More Info via Stored Report Message",
+        "diagramType": "STRIDE",
+        "placeholder": "New STRIDE diagram description",
+        "thumbnail": "./public/content/images/thumbnail.stride.jpg",
+        "version": "2.6.2",
+        "cells": [
+          {
+            "shape": "trust-boundary-curve",
+            "width": 200,
+            "height": 100,
+            "zIndex": -1,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Boundary",
+              "name": "Internet trust boundary\nT5/T6 -> T7",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false,
+              "crossingFlows": [],
+              "containedElements": []
+            },
+            "labels": [
+              "Internet trust boundary\nT5/T6 -> T7"
+            ],
+            "id": "dd6d045f-fdda-4804-b74f-d70fe581108c",
+            "source": {
+              "x": 400,
+              "y": 150
+            },
+            "target": {
+              "x": 400,
+              "y": 1010
+            },
+            "vertices": [
+              {
+                "x": 400,
+                "y": 600
+              }
+            ]
+          },
+          {
+            "shape": "trust-boundary-curve",
+            "width": 200,
+            "height": 100,
+            "zIndex": -1,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Boundary",
+              "name": "Database trust boundary\nT7 -> T8",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false,
+              "crossingFlows": [],
+              "containedElements": []
+            },
+            "labels": [
+              "Database trust boundary\nT7 -> T8"
+            ],
+            "id": "a55008c0-b24d-41ad-8431-c47ecaa582ce",
+            "source": {
+              "x": 960,
+              "y": 120
+            },
+            "target": {
+              "x": 970,
+              "y": 1030
+            },
+            "vertices": [
+              {
+                "x": 960,
+                "y": 460
+              }
+            ]
+          },
+          {
+            "position": {
+              "x": 40,
+              "y": 300
+            },
+            "size": {
+              "width": 180,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "Police Officer\n(A3, T6)"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "zIndex": 1,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "e148c192-b53c-5a0c-9936-9846ffd5b53b"
+                },
+                {
+                  "group": "right",
+                  "id": "e2efa87a-9800-5086-a96b-80c7e939f9a5"
+                },
+                {
+                  "group": "bottom",
+                  "id": "aea6cfbd-60c4-548f-8a74-e355d4c90df1"
+                },
+                {
+                  "group": "left",
+                  "id": "e20fa9c4-48c6-5c98-8e09-dbf909e6b46b"
+                }
+              ]
+            },
+            "id": "ca745ecb-768a-5880-bc7d-16e1423b33f3",
+            "data": {
+              "type": "tm.Actor",
+              "name": "Police Officer\n(A3, T6)",
+              "description": "A3 Police officer. T6 logged-in police officer: searches and views all reports, emails owners requesting more information and closes reports. Assumed unable to create or edit reports.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "providesAuthentication": true,
+              "threats": [
+                {
+                  "id": "936badcd-2c66-5b15-ae26-eaa78cc0dce3",
+                  "title": "Officer account compromised",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "An attacker holding officer credentials, or an intercepted officer session, reads every report in the system and can close any of them.",
+                  "mitigation": "Serve officer routes over HTTPS with HSTS, apply a short idle timeout and alert on unusual sign in locations.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 158,
+                  "score": ""
+                },
+                {
+                  "id": "16328f92-a5c6-5594-893d-4bb404013071",
+                  "title": "Privileged officer action not recorded",
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "type": "Repudiation",
+                  "description": "There is no record of which officer performed a privileged action like closures or requesting further information",
+                  "mitigation": "Write an audit record of officer ID, action, related text, timestamp, and protect the logs (X9) from the T6 role.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 159,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 3,
+                "tampering": 0,
+                "repudiation": 2,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
+            }
+          },
+          {
+            "position": {
+              "x": 40,
+              "y": 780
+            },
+            "size": {
+              "width": 180,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "Citizen / Report Owner\n(A1, T4/T5)"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "zIndex": 1,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "4c146076-ec17-49a4-8014-f4299302a1be"
+                },
+                {
+                  "group": "right",
+                  "id": "20d6648e-3878-4ff9-ad05-cdc55b60629e"
+                },
+                {
+                  "group": "bottom",
+                  "id": "037b43bf-e076-4fd7-b969-3d71757a9f66"
+                },
+                {
+                  "group": "left",
+                  "id": "b783ae93-177b-434c-9b98-342863d1a4ce"
+                }
+              ]
+            },
+            "id": "6bc88018-6a68-48a9-91d0-786f3f2e5d02",
+            "data": {
+              "type": "tm.Actor",
+              "name": "Citizen / Report Owner\n(A1, T4/T5)",
+              "description": "A1 Citizen. T4 logged in citizen, T5 owner of the reports they created. Registers, submits reports with images, views and edits their own open reports and generates share links.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "providesAuthentication": true,
+              "threats": [
+                {
+                  "id": "a0d444cb-5c97-5226-9a39-4c2b4a7649a4",
+                  "title": "Report owner's mailbox controlled by an attacker",
+                  "status": "Mitigated",
+                  "severity": "Medium",
+                  "type": "Spoofing",
+                  "description": "An attacker who controls the report owner's mailbox receives the information request (X6) and the closure notification (X7)",
+                  "mitigation": "Re-verify the address whenever it is changed, and keep incident detail out of  email by linking back to the authenticated page.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 160,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 1,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
+            }
+          },
+          {
+            "position": {
+              "x": 560,
+              "y": 300
+            },
+            "size": {
+              "width": 180,
+              "height": 100
+            },
+            "attrs": {
+              "text": {
+                "text": "Request More Info\n(E13)"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 1,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "a56554c4-e9d2-5afb-869c-86f2ff0b0dbb"
+                },
+                {
+                  "group": "right",
+                  "id": "36f2de09-b14c-5553-96b9-9778ee2e476a"
+                },
+                {
+                  "group": "bottom",
+                  "id": "2d33ed09-41e4-556c-9f6b-cb6c943e3656"
+                },
+                {
+                  "group": "left",
+                  "id": "cbbb85a1-a810-50c0-a2e7-971812aff921"
+                }
+              ]
+            },
+            "id": "98f70482-1a0f-5ebd-a212-77d147ed8bd2",
+            "data": {
+              "type": "tm.Process",
+              "name": "Request More Info\n(E13)",
+              "description": "CHANGED. E13 Request more info. The officer writes the information request in the application and it is written to the Report Message Store as a ReportMessage (report, officer, body, created_at) rather than being sent. The outbound email is reduced to a fixed template containing no officer supplied content.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": true,
+              "privilegeLevel": "T7 web application process",
+              "threats": [
+                {
+                  "id": "c4a17ab1-e22c-5687-956b-5bfd3f841ce6",
+                  "title": "Email header injection",
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "Injecting extra headers, letting the message be redirected or additional recipients added.",
+                  "mitigation": "Include input validataion and construct headers through the mail library rather than by string building.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 166,
+                  "score": ""
+                },
+                {
+                  "id": "26590bda-207f-5d36-8312-9552e2ce28df",
+                  "title": "Information request sent to the wrong owner",
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "The recipient address is taken from the request instead of the stored report, so report detail reaches an attacker chosen mailbox.",
+                  "mitigation": "Resolve the recipient from the report's stored owner in D6, never from client supplied input.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 167,
+                  "score": ""
+                },
+                {
+                  "id": "d8b515fe-ecca-5316-9868-b37edef57f85",
+                  "title": "Report content disclosed in cleartext email",
+                  "status": "Mitigated",
+                  "severity": "Medium",
+                  "type": "Information disclosure",
+                  "description": "Mail delivery to the citizen's external provider is outside the system's control so any incident detail ends up in an external mailbox in cleartext.",
+                  "mitigation": "Keep incident detail out of the message body, send a short notice identifying the report by reference with a link back to the authenticated page",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 168,
+                  "score": ""
+                },
+                {
+                  "id": "55d29335-97c5-40e9-9671-4e40426842fe",
+                  "title": "NEW - Officer supplied body stored without sanitisation",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "The body is free text written by an officer and is later rendered on the report page. Script in the body would run in the report owner's browser.",
+                  "mitigation": "- Escape the message body on output\n- Validate the body before presenting to user",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 306,
+                  "score": ""
+                },
+                {
+                  "id": "4be5c701-d75c-4b24-8460-8580c296108b",
+                  "title": "NEW - Message written without recording the officer",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Repudiation",
+                  "description": "If the officer field is not set from the authenticated session, then the police officer who wrote the message can not be identified",
+                  "mitigation": "- Set officer and created_at server side from the session, never from the request.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 307,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 3,
+                "repudiation": 3,
+                "informationDisclosure": 2,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
+            },
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove"
+              ],
+              "name": null
+            }
+          },
+          {
+            "position": {
+              "x": 560,
+              "y": 590
+            },
+            "size": {
+              "width": 190,
+              "height": 100
+            },
+            "attrs": {
+              "text": {
+                "text": "Email Dispatcher\n(D10)"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 1,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "8a5a176c-6268-5292-80bf-ca4b5312c651"
+                },
+                {
+                  "group": "right",
+                  "id": "bf4f1a1b-01ae-571b-8c1f-c9d57e47cb02"
+                },
+                {
+                  "group": "bottom",
+                  "id": "9fa8fad0-5e8c-5b6b-bbe4-c3849446c8be"
+                },
+                {
+                  "group": "left",
+                  "id": "45ace5ce-0bb5-581e-8438-2a64886f1e9d"
+                }
+              ]
+            },
+            "id": "4ddc87c7-a551-56d4-a211-4ec6dd0ff429",
+            "data": {
+              "type": "tm.Process",
+              "name": "Email Dispatcher\n(D10)",
+              "description": "CHANGED. D10 Email dispatcher. For information requests it now sends only a fixed template stating that there is an update on one of the citizen's reports and that the citizen should log in to view it. No officer supplied content and no links are included.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "T7 web application process",
+              "threats": [
+                {
+                  "id": "24c7a953-04ea-509f-9d5a-69a0b132273e",
+                  "title": "Mail credentials disclosed",
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "Mail service credentials stored in the application configuration are read by an attacker, who can then send mail as the service.",
+                  "mitigation": "- Keep configuration outside the web root, readable only by the T7 account, and rotate credentials.\n- Use secure secrets vault and apply the principle of least privilege. \n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 172,
+                  "score": ""
+                },
+                {
+                  "id": "796c2863-0b56-5f68-bd34-21df9b33486a",
+                  "title": "Dispatcher abused to send arbitrary mail",
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "An attacker who can reach the dispatcher sends convincing mail that appears to come from the service, enabling phishing against citizens.",
+                  "mitigation": "- Authenticate which accounts have access to the mail service, ",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 173,
+                  "score": ""
+                },
+                {
+                  "id": "1da9749b-33c8-52a0-a2cb-f05a3f2ae54c",
+                  "title": "Email queue flooded",
+                  "status": "Mitigated",
+                  "severity": "Medium",
+                  "type": "Denial of service",
+                  "description": "Repeated information requests or closures generate enough mail to exhaust the sending quota, delaying verification email (X5) and blocking registration.",
+                  "mitigation": "- Rate limit outbound mail per officer and per report.\n- Monitor queue size for abnormalities",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 174,
+                  "score": ""
+                },
+                {
+                  "id": "4abd4d68-1f7e-4287-a989-61c7b6e11816",
+                  "title": "NEW - Notification confirms an address belongs to a report owner",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "The notification tells anyone reading the mailbox that this address has an open report with the police.",
+                  "mitigation": "- Do not name the report, the incident or the officer in the template.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 309,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 1,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 4,
+                "denialOfService": 1,
+                "elevationOfPrivilege": 0
+              }
+            }
+          },
+          {
+            "position": {
+              "x": 560,
+              "y": 840
+            },
+            "size": {
+              "width": 160,
+              "height": 100
+            },
+            "attrs": {
+              "text": {
+                "text": "View / Edit Report\n(E7)"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 1,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "73477cf4-1d3a-5d7a-bf29-0575bcd4b3b8"
+                },
+                {
+                  "group": "right",
+                  "id": "5ca2dd38-4d35-5a7c-9ebe-0735aa309b21"
+                },
+                {
+                  "group": "bottom",
+                  "id": "b0637d69-00ee-52ef-84d4-74ff9a70c139"
+                },
+                {
+                  "group": "left",
+                  "id": "1995aef4-d9e8-5ed7-a8c7-40d8d4631f82"
+                }
+              ]
+            },
+            "id": "808d5d80-cc3b-4740-9ae4-7fcf5b15c98d",
+            "data": {
+              "type": "tm.Process",
+              "name": "View / Edit Report\n(E7)",
+              "description": "CHANGED. E7 View and edit report page. The report owner (T5) now also reads officer messages here and responds by editing the report as they do currently. Sets read_at on a message when it is displayed.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": true,
+              "privilegeLevel": "T7 web application process",
+              "threats": [
+                {
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "title": "Insecure direct object reference",
+                  "type": "Elevation of privilege",
+                  "description": "A user could change the report ID to access or edit another citizen's report if the system does not check who owns it.",
+                  "mitigation": "- Derive the owner from the authenticated session and perform a server-side ownership check on the identifier for every report request.",
+                  "modelType": "STRIDE",
+                  "id": "ae5acc75-b030-44bb-a98b-889325d55075",
+                  "new": false,
+                  "number": 100
+                },
+                {
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "title": "Editing closed reports",
+                  "type": "Tampering",
+                  "description": "A crafted request could bypass a hidden edit button if the server does not enforce report state, so a closed report can still be modified.",
+                  "mitigation": "- Always read the closed status with the record and reject updates server-side when the report is closed.",
+                  "modelType": "STRIDE",
+                  "id": "46a526d7-218e-4a30-872f-ab7cc2fa734a",
+                  "new": false,
+                  "number": 101
+                },
+                {
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "title": "Mass assignment of closed status",
+                  "type": "Elevation of privilege",
+                  "description": "A citizen may attempt to manipulate protected fields such as closed status.",
+                  "mitigation": "- Allow-list editable fields and never accept closed status from the citizen.",
+                  "modelType": "STRIDE",
+                  "id": "e5ff59a3-854c-4c8f-87eb-6b22b2ca0333",
+                  "new": false,
+                  "number": 102
+                },
+                {
+                  "id": "4306ff0c-aeea-5f74-b82b-08b652afad77",
+                  "title": "Stored cross-site scripting in report description - Tampering",
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "A user could enter malicious script in a report description that runs when the report is viewed, and tampers with page content and behaviour. ",
+                  "mitigation": "- Safely encode the report description when displaying it so it is treated as text rather than code.\n- Use a strict CSP to prevent interaction with other domains\n- Use HttpOnly cookies so that a XSS attack cannot tamper with session ids and other important data.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 103,
+                  "score": ""
+                },
+                {
+                  "id": "3c02c7c9-d101-4fed-b26a-95ecd8bbe3ed",
+                  "title": "Stored cross-site scripting in report description - Information Disclosure",
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "A user could enter malicious script in a report description that runs when the report is viewed, and tampers with page content and behaviour. ",
+                  "mitigation": "- Safely encode the report description when displaying it so it is treated as text rather than code.\n- Use a strict CSP to prevent interaction with other domains\n- Use HttpOnly cookies so that a XSS attack cannot tamper with session ids and other important data.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 104,
+                  "score": ""
+                },
+                {
+                  "id": "d809528d-318b-476c-bc60-5542639b79f4",
+                  "title": "NEW - Messages shown to a citizen who does not own the report",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Elevation of privilege",
+                  "description": "If the message can be found by report ID alone, any logged-in citizen (T4) who guesses a report ID reads the officer messages for it.",
+                  "mitigation": "- Ensure the report and the report messages are only available to authenticated owner.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 310,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 2,
+                "repudiation": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 5
+              }
+            },
+            "children": []
+          },
+          {
+            "position": {
+              "x": 1320,
+              "y": 775
+            },
+            "size": {
+              "width": 190,
+              "height": 90
+            },
+            "attrs": {
+              "text": {
+                "text": "Report Store\n(D6)"
+              },
+              "topLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "zIndex": 1,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "bcbc185e-25cd-4916-bbde-916da4debd84"
+                },
+                {
+                  "group": "right",
+                  "id": "2df75551-fdf2-47fb-892b-e470d4324124"
+                },
+                {
+                  "group": "bottom",
+                  "id": "146c669f-3d69-4b4c-8878-fb68c6baa5d5"
+                },
+                {
+                  "group": "left",
+                  "id": "ae58fe45-65f4-4d6b-9137-3efa7301def0"
+                }
+              ]
+            },
+            "id": "a86c07ff-3107-465c-a8d4-e0453cd41692",
+            "data": {
+              "type": "tm.Store",
+              "name": "Report Store\n(D6)",
+              "description": "D6 Database. Asset: report content - date, time, location, description, created time, closed status and owner / created_by. Reachable only from the application (T7 -> T8). In this proposal it is also the source of the owner address used for the notification, so the address is never taken from the officer's request.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isALog": false,
+              "isEncrypted": false,
+              "isSigned": false,
+              "storesCredentials": false,
+              "storesInventory": false,
+              "threats": [
+                {
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "title": "Unauthorised report disclosure",
+                  "type": "Information disclosure",
+                  "description": "Direct database access could expose sensitive report information.",
+                  "mitigation": "Restrict database access, use least privilege and protect data at rest.",
+                  "modelType": "STRIDE",
+                  "id": "5d8a60d5-1de1-4ea1-932d-a87caece2414",
+                  "new": false,
+                  "number": 175
+                },
+                {
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "title": "Direct report tampering",
+                  "type": "Tampering",
+                  "description": "Database access could bypass application authorisation and modify reports.",
+                  "mitigation": "Restrict direct database access and audit administrative changes.",
+                  "modelType": "STRIDE",
+                  "id": "f23208b9-6a03-49ed-ae22-49f0b97ac37d",
+                  "new": false,
+                  "number": 176
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 2,
+                "repudiation": 0,
+                "informationDisclosure": 2,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
+            },
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove"
+              ],
+              "name": null
+            }
+          },
+          {
+            "position": {
+              "x": 1280,
+              "y": 460
+            },
+            "size": {
+              "width": 190,
+              "height": 90
+            },
+            "attrs": {
+              "text": {
+                "text": "Report Message\nStore"
+              },
+              "topLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "zIndex": 1,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "7031718e-fdae-4283-89c6-8158b41f051d"
+                },
+                {
+                  "group": "right",
+                  "id": "df99183a-adde-45c0-9983-8baeaf8b5dfa"
+                },
+                {
+                  "group": "bottom",
+                  "id": "c2c4b83c-811a-46b6-a924-6bd63f0dab3c"
+                },
+                {
+                  "group": "left",
+                  "id": "fb7d5857-02fd-4c0c-a328-b51b54b5adfb"
+                }
+              ]
+            },
+            "id": "e6772179-7e0d-4498-bee2-26c79e9e466b",
+            "data": {
+              "type": "tm.Store",
+              "name": "Report Message\nStore",
+              "description": "NEW. Append only store holding ReportMessage records: report, officer, body, created_at and read_at. Because the message must be stored for the citizen to read it in the application, a record of which officer wrote what, and when, exists as a consequence of the change rather than as a separate mechanism alongside it.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isALog": true,
+              "isEncrypted": false,
+              "isSigned": false,
+              "storesCredentials": false,
+              "storesInventory": false,
+              "threats": [
+                {
+                  "id": "a5e4ee97-1b32-428d-99ad-15c2949487f9",
+                  "title": "NEW - Officers delete report messages",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Repudiation",
+                  "description": "An officer removes the record of an information request they sent, so there is no longer any evidence.",
+                  "mitigation": "- Make the store append only\n- Do not grant officer roles delete permission on the message table",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 301,
+                  "score": ""
+                },
+                {
+                  "id": "fed986bc-a53e-46c7-93ba-436bb923d7ae",
+                  "title": "NEW - Bulk harvesting of police messages",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "An unprivileged process or user reads the message store directly and obtains the body of every information request sent about every report",
+                  "mitigation": "- Least privilege database credentials held only by the application\n- Monitor for bulk reads of the message table",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 302,
+                  "score": ""
+                },
+                {
+                  "id": "de36af88-0a1d-4bbf-80bd-7d5ce632f685",
+                  "title": "NEW - Message store tampered with directly",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "Direct database access is used to alter or insert a message, bypassing every application check on who may write one",
+                  "mitigation": "- Restrict write access to the application identity (T7) only.\n- Keep the store append only so edits are not possible.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 303,
+                  "score": ""
+                },
+                {
+                  "id": "d6835185-ca9f-483a-b156-8603f3d930ba",
+                  "title": "NEW - Message store unreachable",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "If the store is unavailable the officer cannot record a request and the citizen cannot read one, so the information request feature stops working entirely.",
+                  "mitigation": "- Monitor availability and alert on failure.\n- Do not send a notification email if the message was not stored.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 304,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 2,
+                "repudiation": 2,
+                "informationDisclosure": 2,
+                "denialOfService": 2,
+                "elevationOfPrivilege": 0
+              }
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "officer session + report ID + information request text",
+              "description": "The officer's session, the report ID and the free text body of the information request. Unchanged by this proposal: the officer still writes the text, it is simply stored instead of emailed.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "protocol": "HTTPS",
+              "threats": [
+                {
+                  "id": "7f6cae6b-76fa-51e7-a658-bfe744f67bd7",
+                  "title": "Information request text observed in transit",
+                  "status": "Mitigated",
+                  "severity": "Medium",
+                  "type": "Information disclosure",
+                  "description": "The text may quote incident detail from the report.",
+                  "mitigation": "Use HTTPS protocol only with HSTS .",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 179,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
+            },
+            "labels": [
+              "officer session + report ID + information request text"
+            ],
+            "id": "faa14f14-ef26-4027-9f69-56362beb45d9",
+            "source": {
+              "cell": "ca745ecb-768a-5880-bc7d-16e1423b33f3",
+              "port": "e2efa87a-9800-5086-a96b-80c7e939f9a5"
+            },
+            "target": {
+              "cell": "98f70482-1a0f-5ebd-a212-77d147ed8bd2",
+              "port": "cbbb85a1-a810-50c0-a2e7-971812aff921"
+            },
+            "vertices": [
+              {
+                "x": 380,
+                "y": 290
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "notification trigger + owner address",
+              "description": "CHANGED. Only the recipient address and a template identifier are handed to the dispatcher. No officer supplied content crosses this flow any more.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "a456b19e-6b9c-4a2e-8715-5c2c31f904be",
+                  "title": "NEW - Officer content reaches the dispatcher",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "If any officer supplied field is still passed through to the dispatcher, phishing can still occur.",
+                  "mitigation": "- Pass only the address and a fixed template ID.\n- Reject any free text on the dispatch path.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 317,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 1,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
+            },
+            "labels": [
+              "notification trigger + owner address"
+            ],
+            "id": "238e1cd9-be65-4665-bbd9-92ec3613d982",
+            "source": {
+              "cell": "98f70482-1a0f-5ebd-a212-77d147ed8bd2",
+              "port": "2d33ed09-41e4-556c-9f6b-cb6c943e3656"
+            },
+            "target": {
+              "cell": "4ddc87c7-a551-56d4-a211-4ec6dd0ff429",
+              "port": "8a5a176c-6268-5292-80bf-ca4b5312c651"
+            },
+            "vertices": []
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "fixed-template notification email (X6)",
+              "description": "CHANGED. X6. A fixed template saying only that there is an update on one of the citizen's reports and that they should log in to view it. Carries no officer supplied content and no links.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": true,
+              "protocol": "SMTP",
+              "threats": [
+                {
+                  "id": "ec7e1bd9-debd-56a8-916c-467bf5a0b114",
+                  "title": "Report content disclosed in cleartext email",
+                  "status": "Mitigated",
+                  "severity": "Medium",
+                  "type": "Information disclosure",
+                  "description": "The information request email leaves the system on this flow. See the identically titled threat on Request More Info (E13).",
+                  "mitigation": "See the identically titled threat on Request More Info (E13).",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 184,
+                  "score": ""
+                },
+                {
+                  "id": "17e9db0a-ca12-4a50-a304-87db0e10b1e3",
+                  "title": "NEW - Fixed template cloned by an attacker",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": "Because the notification is identical every time, an attacker can clone it and add a malicious link, and the citizen has no way to tell the copy from the real one.",
+                  "mitigation": "- Include no links in the template at all, so that any mail containing a link is visibly not from SecureReports.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 312,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [],
+              "threatFrequency": {
+                "spoofing": 1,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
+            },
+            "labels": [
+              "fixed-template notification email (X6)"
+            ],
+            "id": "bf61bed5-662c-459e-b5b2-74f88e9b0381",
+            "source": {
+              "cell": "4ddc87c7-a551-56d4-a211-4ec6dd0ff429",
+              "port": "45ace5ce-0bb5-581e-8438-2a64886f1e9d"
+            },
+            "target": {
+              "cell": "6bc88018-6a68-48a9-91d0-786f3f2e5d02",
+              "port": "4c146076-ec17-49a4-8014-f4299302a1be"
+            },
+            "vertices": []
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "session + report ID (view / edit)",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "protocol": "HTTPS",
+              "threats": [
+                {
+                  "id": "5118f91c-09e9-525d-95d6-a554b5fadff2",
+                  "title": "Insecure direct object reference",
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "This flow carries the client-supplied report ID that can be altered. See the identically titled threat on View / Edit Report (E7) for the full description.",
+                  "mitigation": "See the identically titled threat on View / Edit Report (E7).",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 119,
+                  "score": ""
+                },
+                {
+                  "id": "30e22b17-f9bb-5264-92f3-d3154427ac93",
+                  "title": "Edited report content observed in transit",
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "Both the retrieved report and the edited version cross the internet boundary in this exchange.",
+                  "mitigation": "HTTPS only with HSTS (see model assumptions).",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 120,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 1,
+                "repudiation": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
+            },
+            "labels": [
+              "session + report ID (view / edit)"
+            ],
+            "id": "1a56ae01-e2a4-465f-b761-012db105406e",
+            "source": {
+              "cell": "6bc88018-6a68-48a9-91d0-786f3f2e5d02",
+              "port": "20d6648e-3878-4ff9-ad05-cdc55b60629e"
+            },
+            "target": {
+              "cell": "808d5d80-cc3b-4740-9ae4-7fcf5b15c98d",
+              "port": "1995aef4-d9e8-5ed7-a8c7-40d8d4631f82"
+            },
+            "vertices": [
+              {
+                "x": 370,
+                "y": 820
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "report details + officer messages (X1)",
+              "description": "CHANGED. X1. The report page returned to the owner, now also carrying the officer messages held for that report.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "protocol": "HTTPS",
+              "threats": [
+                {
+                  "id": "3e9a7954-2105-42ba-b7ae-24fa71f93b0c",
+                  "title": "NEW - Message body rendered without escaping",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "The officer written body is rendered in the owner's browser. Unescaped output would run as script in the owner's session.",
+                  "mitigation": "- Escape the body on output.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 325,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
+            },
+            "labels": [
+              "report details + officer messages (X1)"
+            ],
+            "id": "b5ee80ac-e0fa-4f1e-8489-53e42f4786e8",
+            "source": {
+              "cell": "808d5d80-cc3b-4740-9ae4-7fcf5b15c98d",
+              "port": "1995aef4-d9e8-5ed7-a8c7-40d8d4631f82"
+            },
+            "target": {
+              "cell": "6bc88018-6a68-48a9-91d0-786f3f2e5d02",
+              "port": "037b43bf-e076-4fd7-b969-3d71757a9f66"
+            },
+            "vertices": [
+              {
+                "x": 310,
+                "y": 930
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "message lookup",
+              "description": "NEW. Reads the messages held for the report the owner is viewing.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "2c1e7c03-6412-432c-9963-172cc319b03d",
+                  "title": "NEW - Data or query altered in transit",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "The message lookup is altered between the application and the database.",
+                  "mitigation": "- Encrypted database connection.\n- Database reachable only from the application host.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 318,
+                  "score": ""
+                },
+                {
+                  "id": "bb86584d-1b06-4544-a850-a03c41bcb6ee",
+                  "title": "NEW - Data is read in transit",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "The message lookup is read on the internal network.",
+                  "mitigation": "- Encrypted database connection.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 319,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 1,
+                "repudiation": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 1,
+                "elevationOfPrivilege": 0
+              }
+            },
+            "labels": [
+              "message lookup"
+            ],
+            "id": "e002add0-0a1f-4494-a0f4-73093f418c43",
+            "source": {
+              "cell": "808d5d80-cc3b-4740-9ae4-7fcf5b15c98d",
+              "port": "5ca2dd38-4d35-5a7c-9ebe-0735aa309b21"
+            },
+            "target": {
+              "cell": "e6772179-7e0d-4498-bee2-26c79e9e466b",
+              "port": "c2c4b83c-811a-46b6-a924-6bd63f0dab3c"
+            },
+            "vertices": [
+              {
+                "x": 1050,
+                "y": 840
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "store report message (report, officer, body, created_at)",
+              "description": "NEW. The ReportMessage record written to the append only message store. This write, not a separate audit mechanism, is what creates the record of who asked for what.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "fadf8d18-abd6-4c46-94a8-410d3709a492",
+                  "title": "NEW - Data or query altered in transit",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "The message record is altered between the application and the database.",
+                  "mitigation": "- Encrypted database connection.\n- Database reachable only from the application host.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 313,
+                  "score": ""
+                },
+                {
+                  "id": "96eac1a3-ae3f-4ce9-a17a-c49a437fb00e",
+                  "title": "NEW - Data is read in transit",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "The message record is read on the internal network.",
+                  "mitigation": "- Encrypted database connection.\n- Segregated internal network (C5).",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 314,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 1,
+                "repudiation": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 1,
+                "elevationOfPrivilege": 0
+              }
+            },
+            "labels": [
+              "store report message (report, officer, body, created_at)"
+            ],
+            "id": "1c505773-0fd5-4524-b745-479324ecff9a",
+            "source": {
+              "cell": "98f70482-1a0f-5ebd-a212-77d147ed8bd2",
+              "port": "36f2de09-b14c-5553-96b9-9778ee2e476a"
+            },
+            "target": {
+              "cell": "e6772179-7e0d-4498-bee2-26c79e9e466b",
+              "port": "fb7d5857-02fd-4c0c-a328-b51b54b5adfb"
+            },
+            "vertices": []
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "report record + owner + closed status",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "SQL/TCP (internal)",
+              "threats": [
+                {
+                  "id": "ad7d397c-03eb-5047-a6ee-4e535b52eaa9",
+                  "title": "Editing closed reports",
+                  "status": "Mitigated",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "description": "This flow is where the closed status must be carried into the edit decision. See the identically titled threat on View / Edit Report (E7) for the full description.",
+                  "mitigation": "See the identically titled threat on View / Edit Report (E7).",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 122,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 1,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
+            },
+            "labels": [
+              "report record + owner + closed status"
+            ],
+            "id": "6808bdf1-a4e4-4b8c-8cba-04f5cebcf905",
+            "source": {
+              "cell": "a86c07ff-3107-465c-a8d4-e0453cd41692",
+              "port": "146c669f-3d69-4b4c-8878-fb68c6baa5d5"
+            },
+            "target": {
+              "cell": "808d5d80-cc3b-4740-9ae4-7fcf5b15c98d",
+              "port": "5ca2dd38-4d35-5a7c-9ebe-0735aa309b21"
+            },
+            "vertices": [
+              {
+                "x": 1170,
+                "y": 1000
+              },
+              {
+                "x": 830,
+                "y": 1000
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "stored messages (officer, body, created_at)",
+              "description": "NEW. The stored messages returned for display on the report page.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "54c774e9-e515-491f-8d51-452ff77e7328",
+                  "title": "NEW - Data or query altered in transit",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "The stored messages is altered between the application and the database.",
+                  "mitigation": "- Encrypted database connection.\n- Database reachable only from the application host.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 321,
+                  "score": ""
+                },
+                {
+                  "id": "bba58f9b-49e0-4f39-b7c3-470ff7f255fc",
+                  "title": "NEW - Data is read in transit",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "The stored messages is read on the internal network.",
+                  "mitigation": "- Encrypted database connection.\n- Segregated internal network (C5).",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 322,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 1,
+                "repudiation": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 1,
+                "elevationOfPrivilege": 0
+              }
+            },
+            "labels": [
+              "stored messages (officer, body, created_at)"
+            ],
+            "id": "e26e299b-cd48-41b7-bc48-6aa72013c53c",
+            "source": {
+              "cell": "e6772179-7e0d-4498-bee2-26c79e9e466b",
+              "port": "fb7d5857-02fd-4c0c-a328-b51b54b5adfb"
+            },
+            "target": {
+              "cell": "808d5d80-cc3b-4740-9ae4-7fcf5b15c98d",
+              "port": "5ca2dd38-4d35-5a7c-9ebe-0735aa309b21"
+            },
+            "vertices": [
+              {
+                "x": 1040,
+                "y": 640
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "diagramTop": 1,
+    "reviewer": "",
+    "threatTop": 325
+  }
+}
