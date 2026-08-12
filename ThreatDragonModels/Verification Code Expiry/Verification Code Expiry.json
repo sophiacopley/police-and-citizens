@@ -1,0 +1,2264 @@
+{
+  "version": "2.6.2",
+  "summary": {
+    "title": "Verification Code Expiry (Proposed Change)",
+    "owner": "Sophia Copley",
+    "description": "",
+    "id": 0
+  },
+  "detail": {
+    "contributors": [],
+    "diagrams": [
+      {
+        "id": 0,
+        "title": "Verification Code Expiry and Request New Link",
+        "diagramType": "STRIDE",
+        "placeholder": "New STRIDE diagram description",
+        "thumbnail": "./public/content/images/thumbnail.stride.jpg",
+        "version": "2.6.2",
+        "cells": [
+          {
+            "position": {
+              "x": -60,
+              "y": 330
+            },
+            "size": {
+              "width": 112.5,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Citizen"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "zIndex": 10,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "a70664eb-2c18-4c0d-9d12-83ea4a7afbc8"
+                },
+                {
+                  "group": "right",
+                  "id": "98420ac2-b01a-415f-b8d3-87fae5370f88"
+                },
+                {
+                  "group": "bottom",
+                  "id": "d3f7d917-d442-42ab-badf-c5a0d7dd7ffc"
+                },
+                {
+                  "group": "left",
+                  "id": "15cfd873-3b3d-4b5e-8bce-a383fc497ba0"
+                }
+              ]
+            },
+            "id": "fc09c35f-b936-4c5a-a25d-b42c2c558643",
+            "data": {
+              "type": "tm.Actor",
+              "name": "Citizen",
+              "description": "A citizen who has registered an account and must verify their email address before they can log in. In this proposal the citizen may also request a replacement verification link once the original has expired.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "providesAuthentication": false,
+              "threats": [
+                {
+                  "id": "1d1585f9-9359-4ce2-ae45-2d9607324036",
+                  "title": "Weak password",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": "Passwords can be guessed if they are too weak, or have been reused on another application where a data breach occurred.",
+                  "mitigation": "- Enforce strong password rules such as 10 characters and at least one of capital letter, number, special character, or pass-phrases\n- Limit the number of times a user can attempt to login (so that bad actors have less chances at guessing correctly)",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 1,
+                  "score": ""
+                },
+                {
+                  "id": "3d5e364e-86e4-44ff-9daa-081ed455944f",
+                  "title": "Citizen doesn't own email address",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": "The user registers with an email they don't own.",
+                  "mitigation": "- Use email verification code after registration.\n- (PROPOSED CHANGE) verification_code_expiry bounds the window in which a verification link for an address the registrant does not own remains usable to 10 minutes, so a mailbox compromised after that window no longer activates the account.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 2,
+                  "score": ""
+                },
+                {
+                  "id": "b1a67add-fa61-4c6e-b616-6e1afdd346ea",
+                  "title": "Bad actor logs in using stolen credentials",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": "Bad actors finds a user's email and password (through measures like phishing emails etc) and attempts to use it to log in.",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 3,
+                  "score": ""
+                },
+                {
+                  "id": "7f2a733a-e644-497b-877c-4b65db91e5c6",
+                  "title": "User's session cookie is stolen",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": "A bad actor obtains a session cookie belonging to a legitimate authenticated user, allowing them to impersonate a citizen by without knowing their password.",
+                  "mitigation": "- Short session expiry or cookie-token lifetime\n- Session id rotation after privilege changes or re-authentication\n- Require re-authentication for sensitive actions\n- Use session binding to reject or flag requests where the session is used from a different context",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 211,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 4,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
+            }
+          },
+          {
+            "shape": "trust-boundary-curve",
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Boundary",
+              "name": "Database trust boundary",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false,
+              "crossingFlows": [],
+              "containedElements": []
+            },
+            "labels": [
+              "Database trust boundary"
+            ],
+            "id": "d37e411f-c82f-4cea-8806-de8a9cf6a1e6",
+            "source": {
+              "x": 687,
+              "y": -10
+            },
+            "target": {
+              "x": 650,
+              "y": 740
+            },
+            "vertices": [
+              {
+                "x": 620,
+                "y": 320
+              },
+              {
+                "x": 620,
+                "y": 510
+              }
+            ]
+          },
+          {
+            "shape": "trust-boundary-curve",
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Boundary",
+              "name": "Email service provider trust boundary\n",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false,
+              "crossingFlows": [
+                "0e178a8a-3ab2-4800-bd8a-ac13537fe7f9",
+                "03df5cf3-e874-4eae-b243-6acb062d6d6f"
+              ],
+              "containedElements": [
+                "82e0781e-b721-4db4-a006-d42883e75665"
+              ]
+            },
+            "labels": [
+              "Email service provider trust boundary\n"
+            ],
+            "id": "0814193e-7bf3-427e-aba0-2cb5ea8286ba",
+            "source": {
+              "x": -236,
+              "y": 90
+            },
+            "target": {
+              "x": 70,
+              "y": -140
+            },
+            "vertices": [
+              {
+                "x": 90,
+                "y": 140
+              }
+            ]
+          },
+          {
+            "position": {
+              "x": -58.75,
+              "y": 0
+            },
+            "size": {
+              "width": 110,
+              "height": 90
+            },
+            "attrs": {
+              "text": {
+                "text": "Email\nService\nProvider"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 11,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "71eb6a47-b8f4-433f-8e5e-6c63c8a091a7"
+                },
+                {
+                  "group": "right",
+                  "id": "00d7326c-9e15-4a6f-aafa-26824154becd"
+                },
+                {
+                  "group": "bottom",
+                  "id": "8e1ee4d0-7921-4ede-9bf0-b1c81888754e"
+                },
+                {
+                  "group": "left",
+                  "id": "8580f402-df10-4c7c-a96d-5382c7940cd0"
+                }
+              ]
+            },
+            "id": "82e0781e-b721-4db4-a006-d42883e75665",
+            "data": {
+              "type": "tm.Process",
+              "name": "Email\nService\nProvider",
+              "description": "Third-party email service that delivers the verification link to the citizen's mailbox. Outside the SecureReports trust boundary. The mail transport chain (MTA, mailbox) is collapsed into this element as it is unchanged by this proposal.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "01af246f-a89f-4dde-b9bb-ae08754b020a",
+                  "title": "Verification email spoofed as coming from SecureReports",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": "The absence of SPF/DKIM/DMARC configuration allows Bad Actors to forge a verification email as coming from SecureReports.",
+                  "mitigation": "- Configure SPF, DKIM, DMARC on the domain used to send verification emails\n- Monitor DMARC reports for unauthorised sending attempts",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 228,
+                  "score": ""
+                },
+                {
+                  "id": "01d70d9d-7869-4415-9579-a36a3534d6dd",
+                  "title": "Email vendor becomes comprimised through tampering",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "The email service and is assumed third-party infrastructure. If the vendor is compromised (e.g. its API keys are stolen), an attacker can send mail as SecureReports, or read mail in transit.",
+                  "mitigation": "- Apply the principle of least privilege when storing API keys\n- Rotate keys regularly\n- Audit the third-party software's security\n- Store keys in a secret vault",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 229,
+                  "score": ""
+                },
+                {
+                  "id": "e89a121f-96f3-4535-8225-602b9a95dd39",
+                  "title": "Phishing SecureReports verify email clone",
+                  "status": "Accepted",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": "A Bad Actor impersonates the legitimate SecureReports verification email with a link that directs citizens to a illegitimate site that harvests their email, password, and/or other personal data.",
+                  "mitigation": "- Purchase all look-alike domains.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 233,
+                  "score": ""
+                },
+                {
+                  "id": "3bd5132a-842a-462d-8a1c-f1ffc4566bba",
+                  "title": "Verification token is retained in provider logs",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "If the email provider logs message content/metadata, it can become exposed later if the email provider is compromised.",
+                  "mitigation": "- Configure the provider's log retention period to a minimum\n- Conduct regular security audits of the third-party email provider\n- Invalidate the link once used by the citizen\n- (PROPOSED CHANGE) A token retained in provider logs is only usable for 10 minutes after issue, so the value of a later log compromise is bounded.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 236,
+                  "score": ""
+                },
+                {
+                  "id": "7d633f02-7339-45c9-a0e9-d5ba14d563d5",
+                  "title": "MTA becomes comprimised",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": "The MTA is assumed third-party infrastructure. If the vendor is compromised (e.g. its API keys are stolen), an attacker can send mail as SecureReports.",
+                  "mitigation": "- Apply the principle of least privilege when storing API keys\n- Rotate keys regularly\n- Audit the third-party software's security",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 235,
+                  "score": ""
+                },
+                {
+                  "id": "e0bedc30-ba07-41f5-a592-419811fc757d",
+                  "title": "Verification link read from a shared mailbox",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "The verification email may be read by anyone with access to the citizen's mailbox. A Bad Actor may click on the link to also verify the citizen's account and gain information though the verification flow.",
+                  "mitigation": "- Invalidate verification links once used by the citizen\n- (PROPOSED CHANGE) A link read from a shared mailbox is only usable within the 10 minute expiry window; after that the reader is refused and must request a new link, which is delivered to the same mailbox rather than to them.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 237,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 3,
+                "tampering": 1,
+                "repudiation": 0,
+                "informationDisclosure": 2,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
+            }
+          },
+          {
+            "position": {
+              "x": 420,
+              "y": 60
+            },
+            "size": {
+              "width": 130,
+              "height": 100
+            },
+            "attrs": {
+              "text": {
+                "text": "Request New\nVerification Link"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 12,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "e5ee9765-aa11-442a-a9ee-7618fe781bcb"
+                },
+                {
+                  "group": "right",
+                  "id": "a22984aa-a423-41d7-a06d-8d8786a2241d"
+                },
+                {
+                  "group": "bottom",
+                  "id": "7fb16d66-ad64-4996-b202-320b8b820793"
+                },
+                {
+                  "group": "left",
+                  "id": "1947607f-07a5-42c2-8068-70d1f04851a1"
+                }
+              ]
+            },
+            "id": "c07c011f-ff6d-468a-a268-391646ed3829",
+            "data": {
+              "type": "tm.Process",
+              "name": "Request New\nVerification Link",
+              "description": "NEW. Reached from the 'Didn't get your verification code?' button shown unconditionally on the login page. Takes an email address, invalidates any verification code already held for that account, stores a new code with verification_code_expiry set to 10 minutes from now, and sends a new verification link. The response is identical whether or not an account exists.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": true,
+              "privilegeLevel": "anonymous",
+              "threats": [
+                {
+                  "id": "f45f318e-78e0-4749-8296-60b4f0910eb6",
+                  "title": "NEW - Resend endpoint abused to exhaust email quota",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "An attacker may repeatedly request new verification codes, exhausting the email sending quota and delaying delivery of verification emails for other users. Because the request form is unauthenticated and visible on the login page, no account is needed to reach it.",
+                  "mitigation": "- Rate limit the number of new verification codes that may be requested per email address, and per source IP address\n- Cap the total number of verification emails sent to a single address per timeframe",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 268,
+                  "score": ""
+                },
+                {
+                  "id": "5eab552c-5ea4-4ede-bf18-f1fe4d513ecc",
+                  "title": "NEW - Previously issued verification codes remain valid after reissue",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": "If issuing a new verification code does not invalidate the codes already issued for that account, every code ever sent stays usable.",
+                  "mitigation": "- Delete all previously issued verification codes for the account whenever a new code is issued.\n- Enforce at the data layer that each account holds at most one valid verification code at a time.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 269,
+                  "score": ""
+                },
+                {
+                  "id": "8866e4e6-403f-4d9e-8b6e-8ef4494998ff",
+                  "title": "NEW - Resend endpoint used to enumerate registered email addresses",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "An attacker could submit candidate email addresses to the request-new-link endpoint and use differences in the response to learn which addresses already have an account. Differences in wording, HTTP status, or response time all leak the same information.",
+                  "mitigation": "- Return an identical response body and status code whether or not an account exists for the submitted address",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 270,
+                  "score": ""
+                },
+                {
+                  "id": "cf619a41-1dc7-4dfc-b899-0d686d82eaf6",
+                  "title": "NEW - Process replaced by scammer",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": "See #178 (same threat on a different element in this diagram).",
+                  "mitigation": "- As for #178.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 255,
+                  "score": ""
+                },
+                {
+                  "id": "cd2d80cd-4817-4397-95c4-6f80d0eaf7d7",
+                  "title": "NEW - Process has been tampered with",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "See #164 (same threat on a different element in this diagram).",
+                  "mitigation": "- As for #164.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 256,
+                  "score": ""
+                },
+                {
+                  "id": "0bd09bfe-e0c8-4c7b-b358-04c8c66af373",
+                  "title": "NEW - Injection attack - tampering",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "See #166 (same threat on a different element in this diagram).",
+                  "mitigation": "- As for #166.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 257,
+                  "score": ""
+                },
+                {
+                  "id": "575d9285-434c-4f32-9c50-7b4a6c73cabd",
+                  "title": "NEW - Process leaks data via unsafe memory",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "See #181 (same threat on a different element in this diagram).",
+                  "mitigation": "- As for #181.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 258,
+                  "score": ""
+                },
+                {
+                  "id": "b8a7cb5a-c154-4a29-a162-9a3eb1127083",
+                  "title": "NEW - Injection attack - disclosure",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "See #182 (same threat on a different element in this diagram).",
+                  "mitigation": "- As for #182.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 259,
+                  "score": ""
+                },
+                {
+                  "id": "3dc159a2-81ec-4ff0-858d-30d3c67de191",
+                  "title": "NEW - Expose sensitive data in logs",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "See #183 (same threat on a different element in this diagram).",
+                  "mitigation": "- As for #183.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 260,
+                  "score": ""
+                },
+                {
+                  "id": "9533ea9c-6843-4c95-afbf-3f6dadd42a33",
+                  "title": "NEW - Process gets access to restricted resources",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Elevation of privilege",
+                  "description": "See #184 (same threat on a different element in this diagram).",
+                  "mitigation": "- As for #184.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 261,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 4,
+                "tampering": 2,
+                "repudiation": 0,
+                "informationDisclosure": 7,
+                "denialOfService": 5,
+                "elevationOfPrivilege": 1
+              }
+            }
+          },
+          {
+            "position": {
+              "x": 420,
+              "y": 480
+            },
+            "size": {
+              "width": 130,
+              "height": 100
+            },
+            "attrs": {
+              "text": {
+                "text": "Verify Email"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 13,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "00c41fb6-bbe0-4ddb-b913-aef5fe65346d"
+                },
+                {
+                  "group": "right",
+                  "id": "4d71c0e0-8d22-4739-9a32-921f10094476"
+                },
+                {
+                  "group": "bottom",
+                  "id": "e15bbe02-9319-4d7d-a4a5-de136c726a7d"
+                },
+                {
+                  "group": "left",
+                  "id": "fb8abe9a-b31e-4652-b0c2-7c0f89608a03"
+                }
+              ]
+            },
+            "id": "db2fd5f6-db41-4ed7-8e36-dfd90edab0ed",
+            "data": {
+              "type": "tm.Process",
+              "name": "Verify Email",
+              "description": "CHANGED. Redeems the verification code from the link. In this proposal it must check verification_code_expiry as well as the code itself: if the current server time is past the expiry, verification is refused and the citizen is shown a message telling them to request a new link.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": true,
+              "privilegeLevel": "anonymous",
+              "threats": [
+                {
+                  "id": "b7b94339-b124-4f88-806c-c11a1dc2aa53",
+                  "title": "Flooding the verify email process with requests",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "A bad actor could send many requests to the server because it is a process that does not require authentication.",
+                  "mitigation": "- Rate limiting for requests from the same IP on the reverse proxy.\n- Add load balancing to reverse proxy to spread request traffic across servers.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 177,
+                  "score": ""
+                },
+                {
+                  "id": "e6356e4c-ad16-4b55-9075-b13630feb465",
+                  "title": "Verification process replaced by scammer",
+                  "status": "Accepted",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": "The official registration page has been replaced by another malicious page users are redirected to from scam emails, or text messages, or links posted online.",
+                  "mitigation": "- Buy similar domain names with typos.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 178,
+                  "score": ""
+                },
+                {
+                  "id": "4d8c1454-0a7e-4280-897c-2d12eb59706b",
+                  "title": "Process has been tampered with",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "See #164 (same threat on a different element in this diagram).",
+                  "mitigation": "- As for #164.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 179,
+                  "score": ""
+                },
+                {
+                  "id": "e23c2bf9-7a5f-4ead-82a3-2e2d0e7f9ed2",
+                  "title": "Injection attack - tampering",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "See #166 (same threat on a different element in this diagram).",
+                  "mitigation": "- As for #166.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 180,
+                  "score": ""
+                },
+                {
+                  "id": "8f1c51e6-8c2e-4754-95cd-7023bdf9819e",
+                  "title": "Process leaks data via unsafe memory",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "Process logs sensitive data, or stores data in unsafe (e.g., shared) memory",
+                  "mitigation": "- Use type-safe and memory-safe programming language e.g. Java, Rust\n- Ensure log entries don't contain sensitive data.\n- Monitor process usages and in/out for suspicious activity.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 181,
+                  "score": ""
+                },
+                {
+                  "id": "0ffb72cb-0c5f-4191-8e5d-ba5f6674cc10",
+                  "title": "Injection attack - disclosure",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "Malicious data is passed to the process to gain access to or exfiltrate data stored in database.",
+                  "mitigation": "- Decode, normalise, and canonicalise email and password before validation and storage\n- Sanitise input from script-like statements, e.g., javascript, SQL, etc.\n- Enforce strict CSP policy to prevent harmful scripts to be transmitted (e.g., js, py, sh files).",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 182,
+                  "score": ""
+                },
+                {
+                  "id": "1dbb68ed-1b85-4aee-804e-6405918a1160",
+                  "title": "Expose sensitive data in logs",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "Logs may leak sensitive data such as email, password, IP, and session IDs, when tracing user actions.",
+                  "mitigation": "- Ensure that all sensitive PII data other than user ID are not logged.\n- Conduct regular log audits.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 183,
+                  "score": ""
+                },
+                {
+                  "id": "f9a9426e-8f60-42f7-abfb-aa8b847a0a78",
+                  "title": "Process gets access to restricted resources",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Elevation of privilege",
+                  "description": "Process runs at a higher priority level (e.g., permissions, resources), or accesses to assets outside its permission level.",
+                  "mitigation": "- Apply principle of least privilege for process and used resources.\n- Run process on the OS with as few permissions as required, using a dedicated technical account rather than a normal user account with interactive and logon permissions.\n- Run in container with dropped capabilities.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 184,
+                  "score": ""
+                },
+                {
+                  "id": "b67af4fc-32dd-477c-96c4-8475c44555da",
+                  "title": "NEW - Expiry field is stored but never evaluated at redemption",
+                  "status": "NotApplicable",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": "The verification_code_expiry field exists on the citizen record but the verification process does not evaluate it when the code is redeemed.",
+                  "mitigation": "- Evaluate verification_code_expiry in the same server-side check as the verification code, and reject the request if the code has expired.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 271,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 4,
+                "tampering": 2,
+                "repudiation": 0,
+                "informationDisclosure": 3,
+                "denialOfService": 1,
+                "elevationOfPrivilege": 1
+              }
+            }
+          },
+          {
+            "position": {
+              "x": 670,
+              "y": -110
+            },
+            "size": {
+              "width": 110,
+              "height": 100
+            },
+            "attrs": {
+              "text": {
+                "text": "Random\nNumber\nGenerator"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 14,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "25607b21-392f-4035-a6d0-14579899b3db"
+                },
+                {
+                  "group": "right",
+                  "id": "648b4248-9494-468b-9aea-4fdea67551d2"
+                },
+                {
+                  "group": "bottom",
+                  "id": "5fe11987-639d-40ba-a391-ff5689fe0b8f"
+                },
+                {
+                  "group": "left",
+                  "id": "6f2e1390-e3f4-4ec3-950d-c6ff2f9bd1a2"
+                }
+              ]
+            },
+            "id": "8d4b20f9-d7a4-4220-a035-292655a7f9b9",
+            "data": {
+              "type": "tm.Process",
+              "name": "Random\nNumber\nGenerator",
+              "description": "Generates the verification code. Unchanged by this proposal, but included because the request-new-link flow needs a fresh code from it. Code entropy remains a primary defence against guessing; expiry only bounds the guessing window.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "204c10e2-6ed8-45a1-9d30-6da75bfb850b",
+                  "title": "Library replaced with a fake/malicious library ",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": "Legitimate library replaced with a fake library by an actor, so consuming applications unknowingly pull numbers from an attacker controlled source.",
+                  "mitigation": "- Code signing - require the library to be crypto-graphically signed by a trusted authority, and verify this signature before load. \n- Add fingerprinting to process, e.g., change time, binary / script hash, and verify at load time or periodically at runtime.\n- Use fixed absolute library paths for loading. \n- Use an allow list to declare exactly which library version and path are permitted\n- Monitor unexpected restarts or new processes claiming to be the library.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 161,
+                  "score": ""
+                },
+                {
+                  "id": "bbb82ccb-fc19-4d18-9208-b558b30b2b91",
+                  "title": "Entropy/seed leakage",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "Internal state or seed value of the random number generator is exposed, allowing a bad actor to reconstruct past or predict future random numbers.",
+                  "mitigation": "- Choose a well audited library (and library version) with no reported vulnerabilities. \n- Monitor the 'health' of the entropy source",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 162,
+                  "score": ""
+                },
+                {
+                  "id": "316d652f-e844-4ff5-83dc-0878dfb8cb4f",
+                  "title": "Generation algorithm makes random number guessable",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "Random number generator uses an algorithm that is not cryptographically secure, meaning even without the internal state being known, a past and future output can be guessed using brute force.",
+                  "mitigation": "- Prefer libraries that use algorithms specified in NIST SP 800-90A/B/C or equivalent, which have been formally analyzed for prediction resistance.\n- Ensure that library uses an algorithm such that compromise of current state does not allow reconstruction of past outputs or prediction of future outputs.\n- (PROPOSED CHANGE) Expiry bounds the time available to brute force a guessable code to 10 minutes. It complements, and does not replace, code entropy and rate limiting, which remain the primary defences against guessing.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 163,
+                  "score": ""
+                },
+                {
+                  "id": "183ff564-e992-49b4-8ab1-3b9b20a99bd9",
+                  "title": "Process has been tampered with",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "The process has been altered by an external malicious actor. This can be done by modifying source code and binaries (static tampering), injecting a different process (DLL injection), or memory corruption that can disrupt execution flow (e.g. corrupting heap metadata like function pointers).",
+                  "mitigation": "- Monitor and keep a record of process ID to identify process restart.\n- Add fingerprinting to process, e.g., change time, binary / script hash.\n- Monitor process in/out and flag unexpected data patterns, malformed payloads unusual destinations or processes that deviate from usual register behaviour.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 164,
+                  "score": ""
+                },
+                {
+                  "id": "f86210ae-d50a-49ce-bf46-f6dc8b24f9cb",
+                  "title": "Injection attack - tampering",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "Malicious data is passed to the process to cause harm to the underlying data, e.g., override data or inject malicious data.",
+                  "mitigation": "- Choose a well audited library (and library version) with no reported vulnerabilities.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 166,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 1,
+                "tampering": 2,
+                "repudiation": 0,
+                "informationDisclosure": 2,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
+            }
+          },
+          {
+            "position": {
+              "x": 970,
+              "y": 330
+            },
+            "size": {
+              "width": 150,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "Citizen Information\nData Store"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              },
+              "topLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "zIndex": 15,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "281e5944-4b42-47bb-8b1f-53216262f994"
+                },
+                {
+                  "group": "right",
+                  "id": "a3253796-44f3-40df-a11f-e34791c37538"
+                },
+                {
+                  "group": "bottom",
+                  "id": "cecd9da3-76d7-4893-86de-388090040f01"
+                },
+                {
+                  "group": "left",
+                  "id": "4de895f4-340f-47ec-b296-c7aaca7323fa"
+                }
+              ]
+            },
+            "id": "d45da034-5344-4325-8f8f-c0be621ec225",
+            "data": {
+              "type": "tm.Store",
+              "name": "Citizen Information\nData Store",
+              "description": "CHANGED. Holds the citizen record. Gains a verification_code_expiry field (a time, set to 10 minutes after the verification code is issued) alongside the existing email address, hashed password, verification code and is_verified status.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isALog": false,
+              "isEncrypted": false,
+              "isSigned": false,
+              "storesCredentials": true,
+              "storesInventory": false,
+              "threats": [
+                {
+                  "id": "0073db79-49b1-49d2-ab07-3a80852de7e4",
+                  "title": "Exfiltrate data",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "An unregistered or unprivileged process or user tries to get access to the datastore.",
+                  "mitigation": "- Use strong credentials for database access stored in secured password vaults.\n- Credentials are passed at runtime from environment variables for most DB owners / users with least privilege principle.\n- Disable default DB user.\n- Separate between read and read/write permissions.\n- Monitor for unusual activity, e.g., bulk data accessed, unusual number of simultaneous requests or connections.\n\nNOTE: Copied straight from example",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 185,
+                  "score": ""
+                },
+                {
+                  "id": "7bfa0a18-59b2-4786-a7a8-ac35e4de2cc8",
+                  "title": "DB is accessed and tampered with",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "A bad actor or process tamper the datastore directly.",
+                  "mitigation": "- Allow full access to datastore to only a restricted set of personnel.\n- Store strong credentials in password vaults.\n- Monitor for and log all direct command line accesses to the datastore.\n- Keep regular backups in a separate location.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 186,
+                  "score": ""
+                },
+                {
+                  "id": "a28982a1-26f5-4376-8ea1-eb1574a8f940",
+                  "title": "DB is unreachable",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "A bad actor floods the datastore with requests and overloads the database connection pool, preventing access to the database.",
+                  "mitigation": "- Monitor suspicious requests and disallow requests from abusing local IPs or ban abusing user.\n- Allow for replication and deployment with limited downtime when the load increases slightly.\n- Use a pool of connection with query timeouts to release resources fast even for unsuccessful queries.\n- Set a maximum number of connections allowed, with a queue.\n- Set a limit to the memory used by each query.\n- Monitor disk and CPU usage.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 187,
+                  "score": ""
+                },
+                {
+                  "id": "b2bf24da-f666-4c9d-bb12-497013ed2471",
+                  "title": "Citizen PII stored unencrypted",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "If the database disk is unencrypted and obtained by a Bad Actor, the data can be read directly.",
+                  "mitigation": "- Encrypt the database at rest.\n- Keep the database isolated to the app host - don't serve access to the database over the network",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 247,
+                  "score": ""
+                },
+                {
+                  "id": "8c98ea9c-8014-4219-9c20-cf7b7b29937e",
+                  "title": "No audit trail of account data changes",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Repudiation",
+                  "description": "Without an audit log, a citizen could deny changes they have made to their account credentials. There is also no way of tracking when and whether a Bad Actor has submitted changes to a citizens account.",
+                  "mitigation": "- Maintain an audit log of account change events such as registration and verification.\n- Include timestamps in logs\n- Monitor logs for abnormalities\n- (PROPOSED CHANGE) Issue, reissue and expiry of verification codes are new events that must appear in the same audit log.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 248,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 1,
+                "repudiation": 1,
+                "informationDisclosure": 2,
+                "denialOfService": 1,
+                "elevationOfPrivilege": 0
+              }
+            }
+          },
+          {
+            "shape": "trust-boundary-curve",
+            "width": 200,
+            "height": 100,
+            "zIndex": 30,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Boundary",
+              "name": "SecureReports application trust boundary",
+              "description": "Separates the SecureReports application processes and database from the citizen's browser and the third-party email provider.",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false,
+              "crossingFlows": [],
+              "containedElements": []
+            },
+            "labels": [
+              "SecureReports application trust boundary"
+            ],
+            "id": "7a98aa6f-8f2f-4cdb-8892-cba3c2578c3c",
+            "source": {
+              "x": 340,
+              "y": -110
+            },
+            "target": {
+              "x": 340,
+              "y": 680
+            },
+            "vertices": [
+              {
+                "x": 310,
+                "y": 300
+              },
+              {
+                "x": 310,
+                "y": 490
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 40,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "request_new_link_request",
+              "description": "Email address submitted from the 'Didn't get your verification code?' form. Unauthenticated.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "protocol": "HTTPS",
+              "threats": [
+                {
+                  "id": "82591afc-ceca-42e4-9f74-823a1f2f6632",
+                  "title": "NEW - Flooding the network with traffic",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "See #224 (same threat on a different element in this diagram).",
+                  "mitigation": "- As for #224.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 262,
+                  "score": ""
+                },
+                {
+                  "id": "2f568ac6-151b-4bf9-bb4a-4ea6d3797020",
+                  "title": "NEW - Request new link request is changed in transit",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "Request URL query parameters or body is tampered with by a bad actor.",
+                  "mitigation": "- Use HTTPS so data is encrypted in transit",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 263,
+                  "score": ""
+                },
+                {
+                  "id": "aa8b39dd-eda8-4bf8-9cbd-0704d1f7a2f3",
+                  "title": "NEW - Submitted email address exposed to a bad actor",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "Email address and password is accessed by a bad actor on the network, allowing them to steal the user's credentials.",
+                  "mitigation": "- Use HTTPS to send data over the network\n- Use verification code to ensure stolen credentials cannot be used to log in.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 264,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "request_new_link_request"
+            ],
+            "id": "131ab907-3919-4a27-b212-968fc0f1ebd8",
+            "source": {
+              "cell": "fc09c35f-b936-4c5a-a25d-b42c2c558643",
+              "port": "a70664eb-2c18-4c0d-9d12-83ea4a7afbc8"
+            },
+            "target": {
+              "cell": "c07c011f-ff6d-468a-a268-391646ed3829",
+              "port": "1947607f-07a5-42c2-8068-70d1f04851a1"
+            },
+            "vertices": [
+              {
+                "x": 300,
+                "y": 140
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 41,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "new_verification_code",
+              "description": "Freshly generated verification code for the replacement link.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "new_verification_code"
+            ],
+            "id": "967db9d5-555f-4dea-98e0-9cd18ed82559",
+            "source": {
+              "cell": "8d4b20f9-d7a4-4220-a035-292655a7f9b9",
+              "port": "6f2e1390-e3f4-4ec3-950d-c6ff2f9bd1a2"
+            },
+            "target": {
+              "cell": "c07c011f-ff6d-468a-a268-391646ed3829",
+              "port": "a22984aa-a423-41d7-a06d-8d8786a2241d"
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 42,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "invalidate_old_code_+_store_new_code_and_expiry",
+              "description": "Deletes any verification code already held for the account and writes the new code together with verification_code_expiry set to 10 minutes from now.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "8fd6f3d8-e294-4316-b58e-6b05fcea1e1b",
+                  "title": "Data or query altered in transit ",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "Bad actor alters query in transit (e.g. adding DROP tables to the query) or alters the data in the query to be incorrect (e.g. updating the query to set is_verified = true)",
+                  "mitigation": "- Use local private network.\n- Use certificates to authenticate originating machine.\n-  Use prepared statements on the caller side to minimise chances of effects of tampered data.\n- Use TLS/SSL encryption for all database connections.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 188,
+                  "score": ""
+                },
+                {
+                  "id": "37a4edee-1fde-4d86-bb97-076ac42fc3a4",
+                  "title": "Data is read in transit",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "A bad actor captures the data in transit",
+                  "mitigation": "- Use a secure private network\n- Use TLS/SSL encryption for all database connections.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 189,
+                  "score": ""
+                },
+                {
+                  "id": "94744cb2-6229-4fa2-8f11-ad53492a4f9a",
+                  "title": "Wire is overloaded by request ",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "The wire is overloaded by requests in the private network.",
+                  "mitigation": "- Monitor network activity for suspicious patterns, e.g., corrupted processes\n- Drop suspicious packets and ban originating IPs (local firewalling)",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 190,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "invalidate_old_code_+_store_new_code_and_expiry"
+            ],
+            "id": "f61d20a9-4fa4-4f03-97f5-faa58bd1d3a0",
+            "source": {
+              "cell": "c07c011f-ff6d-468a-a268-391646ed3829",
+              "port": "7fb16d66-ad64-4996-b202-320b8b820793"
+            },
+            "target": {
+              "cell": "d45da034-5344-4325-8f8f-c0be621ec225",
+              "port": "281e5944-4b42-47bb-8b1f-53216262f994"
+            },
+            "vertices": [
+              {
+                "x": 620,
+                "y": 230
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 43,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "new_verification_link",
+              "description": "Replacement verification link handed to the email provider for delivery. Leaves the SecureReports trust boundary.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "68cc9c91-0853-4332-889b-11a919c19939",
+                  "title": "Verification link altered in transit",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "A Bad Actor may observe and modify the verification link in transit, swapping the token to prevent a user from verifying their account, or altering the url so the citizen will be brought to a phishing page.",
+                  "mitigation": "- Use HTTPS (or another encrypted protocol) so data is encrypted in transit",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 249,
+                  "score": ""
+                },
+                {
+                  "id": "0568a4a4-13ae-4427-b95f-06b37dc588ba",
+                  "title": "Request-new-link flood exhausts the email API",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "Mass automated registrations can cause the Server's API limit to be reached or overload the email service provider",
+                  "mitigation": "- Rate limit the registration request before the call to the ESP is performed.\n- Monitor API usage limits\n- Log traffic and audit logs regularly to detect anomalies.\n- (PROPOSED CHANGE) The request-new-link form is a second, unauthenticated path to the email API and must be rate limited in the same way as registration.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 251,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [
+                "0814193e-7bf3-427e-aba0-2cb5ea8286ba"
+              ]
+            },
+            "labels": [
+              "new_verification_link"
+            ],
+            "id": "0e178a8a-3ab2-4800-bd8a-ac13537fe7f9",
+            "source": {
+              "cell": "c07c011f-ff6d-468a-a268-391646ed3829",
+              "port": "e5ee9765-aa11-442a-a9ee-7618fe781bcb"
+            },
+            "target": {
+              "cell": "82e0781e-b721-4db4-a006-d42883e75665",
+              "port": "71eb6a47-b8f4-433f-8e5e-6c63c8a091a7"
+            },
+            "vertices": [
+              {
+                "x": 330,
+                "y": -40
+              },
+              {
+                "x": 190,
+                "y": -120
+              },
+              {
+                "x": 80,
+                "y": -100
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 44,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "uniform_resend_response",
+              "description": "Response shown to the submitter. Identical whether or not an account exists for the submitted address, so the form does not reveal which addresses are registered.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "protocol": "HTTPS",
+              "threats": [
+                {
+                  "id": "f11c5af0-0e81-4a91-a263-0ce06593a4ec",
+                  "title": "Error messages reveal information about system state",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "An error message could contain information such as \n- server software & version\n- file system paths\n- stack traces\n- sensitive information such as email and password",
+                  "mitigation": "- Don't have revealing error messages\n- Use HTTPS (or another encrypted protocol) to send data over the network.\n- (PROPOSED CHANGE) The request-new-link form must return an identical response whether or not an account exists, so this response in particular must reveal nothing about system state.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 20,
+                  "score": ""
+                },
+                {
+                  "id": "1c9e100f-a030-4480-8945-8caa52e62517",
+                  "title": "Request new link response is changed in transit",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "Response html/javascript is tampered with by a bad actor e.g., injecting a malicious script, altering the form's action URL to point to an attacker-controlled endpoint, or adding a hidden field.",
+                  "mitigation": "- Use HTTPS (or another encrypted protocol) so data is encrypted in transit",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 21,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "uniform_resend_response"
+            ],
+            "id": "d4d5730e-74e3-4252-9a07-60163600f4e8",
+            "source": {
+              "cell": "c07c011f-ff6d-468a-a268-391646ed3829",
+              "port": "7fb16d66-ad64-4996-b202-320b8b820793"
+            },
+            "target": {
+              "cell": "fc09c35f-b936-4c5a-a25d-b42c2c558643",
+              "port": "98420ac2-b01a-415f-b8d3-87fae5370f88"
+            },
+            "vertices": [
+              {
+                "x": 330,
+                "y": 240
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 45,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "verification_email",
+              "description": "Email containing the new verification link, delivered to the citizen's mailbox.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "5dcad073-dea8-4234-ae52-64faf097bc73",
+                  "title": "Verification link intercepted in transit via SMTP",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "If the email is not encrypted end to end, a Bad Actor could observe an unencrypted verification email.",
+                  "mitigation": "- Use end-to-end encryption\n- Invalidate the link once used by the citizen\n- (PROPOSED CHANGE) An intercepted link is only usable within the 10 minute expiry window.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 230,
+                  "score": ""
+                },
+                {
+                  "id": "93ce3a8c-fee4-4814-a35a-f9f3a01c2f46",
+                  "title": "Verification link visible on screen",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "If the email displays the verification link on screen, it could be seen by a Bad Actor who then uses it to verify and exploit more information about the citizen's account through the verification flow.",
+                  "mitigation": "- Obscure the verification link in the email as a hyperlinked button or styled link text rather than displaying the raw URL.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 253,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [
+                "0814193e-7bf3-427e-aba0-2cb5ea8286ba"
+              ]
+            },
+            "labels": [
+              "verification_email"
+            ],
+            "id": "03df5cf3-e874-4eae-b243-6acb062d6d6f",
+            "source": {
+              "cell": "82e0781e-b721-4db4-a006-d42883e75665",
+              "port": "8e1ee4d0-7921-4ede-9bf0-b1c81888754e"
+            },
+            "target": {
+              "cell": "fc09c35f-b936-4c5a-a25d-b42c2c558643",
+              "port": "a70664eb-2c18-4c0d-9d12-83ea4a7afbc8"
+            },
+            "vertices": [
+              {
+                "x": -3.75,
+                "y": 260
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 46,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "verify_email_request",
+              "description": "Verification code presented by following the link.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "protocol": "HTTPS",
+              "threats": [
+                {
+                  "id": "56627a9f-7921-4017-b591-87639a55cabe",
+                  "title": "Flooding the network with traffic",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "See #224 (same threat on a different element in this diagram).",
+                  "mitigation": "- As for #224.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 225,
+                  "score": ""
+                },
+                {
+                  "id": "968320b4-9177-4d97-a746-4d35e0d9639b",
+                  "title": "Citizen verify request is changed in transit",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "A Bad Actor could tamper with the verification code in the request to be invalid and prevent the Citizen from verifying their account.",
+                  "mitigation": "- Use HTTPS (or another encrypted protocol) to send data over the network",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 227,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "verify_email_request"
+            ],
+            "id": "8d3b3a72-6158-4521-80f9-afed0f584bc2",
+            "source": {
+              "cell": "fc09c35f-b936-4c5a-a25d-b42c2c558643",
+              "port": "d3f7d917-d442-42ab-badf-c5a0d7dd7ffc"
+            },
+            "target": {
+              "cell": "db2fd5f6-db41-4ed7-8e36-dfd90edab0ed",
+              "port": "fb8abe9a-b31e-4652-b0c2-7c0f89608a03"
+            },
+            "vertices": [
+              {
+                "x": 240,
+                "y": 530
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 47,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "code_and_expiry_lookup",
+              "description": "Reads the stored verification code and its verification_code_expiry for the account.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "0c1dd734-3e28-4858-8ea4-e5687090856c",
+                  "title": "Data or query altered in transit ",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "See #188 (same threat on a different element in this diagram).",
+                  "mitigation": "- As for #188.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 205,
+                  "score": ""
+                },
+                {
+                  "id": "2a36ce8d-47fe-411b-b1f6-9e600f83e734",
+                  "title": "Data is read in transit ",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "See #189 (same threat on a different element in this diagram).",
+                  "mitigation": "- As for #189.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 206,
+                  "score": ""
+                },
+                {
+                  "id": "dbd797ed-f955-4dbc-b28d-d48278ed95ef",
+                  "title": "Wire is overloaded by request ",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "See #190 (same threat on a different element in this diagram).",
+                  "mitigation": "- As for #190.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 207,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "code_and_expiry_lookup"
+            ],
+            "id": "9c6688f0-4070-4e5b-a855-268d0e7c5d66",
+            "source": {
+              "cell": "db2fd5f6-db41-4ed7-8e36-dfd90edab0ed",
+              "port": "4d71c0e0-8d22-4739-9a32-921f10094476"
+            },
+            "target": {
+              "cell": "d45da034-5344-4325-8f8f-c0be621ec225",
+              "port": "cecd9da3-76d7-4893-86de-388090040f01"
+            },
+            "vertices": [
+              {
+                "x": 700,
+                "y": 530
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 48,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "stored_code_and_expiry",
+              "description": "Stored verification code and verification_code_expiry returned for server-side evaluation.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "d13cf559-3e3f-4ec6-b3a2-d5cfef77f359",
+                  "title": "NEW - Data or query altered in transit",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "See #188 (same threat on a different element in this diagram).\n\nThe stored verification_code_expiry could be altered in transit so an expired code is evaluated as still valid.",
+                  "mitigation": "- As for #188.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 265,
+                  "score": ""
+                },
+                {
+                  "id": "93ca42aa-c32b-4ca3-8c7c-07e9388b70ae",
+                  "title": "NEW - Data is read in transit",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "See #189 (same threat on a different element in this diagram).",
+                  "mitigation": "- As for #189.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 266,
+                  "score": ""
+                },
+                {
+                  "id": "97fab2a8-67df-4ffb-b499-af05abe891f0",
+                  "title": "NEW - Wire is overloaded by request",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "See #190 (same threat on a different element in this diagram).",
+                  "mitigation": "- As for #190.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 267,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "stored_code_and_expiry"
+            ],
+            "id": "3c9e7456-2d87-4d77-ae7f-602331a34fa0",
+            "source": {
+              "cell": "d45da034-5344-4325-8f8f-c0be621ec225",
+              "port": "cecd9da3-76d7-4893-86de-388090040f01"
+            },
+            "target": {
+              "cell": "db2fd5f6-db41-4ed7-8e36-dfd90edab0ed",
+              "port": "4d71c0e0-8d22-4739-9a32-921f10094476"
+            },
+            "vertices": [
+              {
+                "x": 660,
+                "y": 590
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 49,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "verify_response_or_expired_notice",
+              "description": "On success, redirect to the login page. If the code has expired, verification is refused and the citizen is told to request a new link.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "protocol": "HTTPS",
+              "threats": [
+                {
+                  "id": "24bc8ea9-c4fd-4b1e-82e2-a43cf3bb49bd",
+                  "title": "Flooding the network with traffic",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "A bad actor floods the request channel with high-volume traffic, exhausting network/connection capacity and blocking legitimate requests from reaching the server.",
+                  "mitigation": "- Rate limiting for requests from the same IP.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 224,
+                  "score": ""
+                },
+                {
+                  "id": "b41d53dd-ac94-4aac-8e6e-875f335318ad",
+                  "title": "Verify Email process response is changed during transit",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "See #21 (same threat on a different element in this diagram).",
+                  "mitigation": "- As for #21.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 226,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "verify_response_or_expired_notice"
+            ],
+            "id": "dbf1f6a9-ac93-4197-a021-9aabb80d7192",
+            "source": {
+              "cell": "db2fd5f6-db41-4ed7-8e36-dfd90edab0ed",
+              "port": "fb8abe9a-b31e-4652-b0c2-7c0f89608a03"
+            },
+            "target": {
+              "cell": "fc09c35f-b936-4c5a-a25d-b42c2c558643",
+              "port": "d3f7d917-d442-42ab-badf-c5a0d7dd7ffc"
+            },
+            "vertices": [
+              {
+                "x": 200,
+                "y": 610
+              },
+              {
+                "x": 100,
+                "y": 530
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "diagramTop": 1,
+    "reviewer": "",
+    "threatTop": 271
+  }
+}
