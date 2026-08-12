@@ -9,11 +9,11 @@
   "detail": {
     "contributors": [],
     "diagrams": [
-      {
+            {
         "id": 0,
         "title": "Multiple Factor Authentication",
         "diagramType": "STRIDE",
-        "placeholder": "MFA",
+        "placeholder": "New STRIDE diagram description",
         "thumbnail": "./public/content/images/thumbnail.stride.jpg",
         "version": "2.6.2",
         "cells": [
@@ -125,7 +125,7 @@
             "data": {
               "type": "tm.Actor",
               "name": "Citizen (A1)",
-              "description": "",
+              "description": "A Citizen is a user of the system who submits reports to be read and responded to by police officers\n",
               "isTrustBoundary": false,
               "outOfScope": false,
               "reasonOutOfScope": "",
@@ -194,11 +194,11 @@
           {
             "position": {
               "x": 870,
-              "y": 210
+              "y": 180
             },
             "size": {
-              "width": 60,
-              "height": 60
+              "width": 90,
+              "height": 90
             },
             "attrs": {
               "text": {
@@ -299,7 +299,7 @@
             "data": {
               "type": "tm.Process",
               "name": "Login (E3, T7)",
-              "description": "",
+              "description": "The action to log a citizen into the SecureReports app",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -461,13 +461,6 @@
                 "denialOfService": 3,
                 "elevationOfPrivilege": 3
               }
-            },
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove"
-              ],
-              "name": null
             }
           },
           {
@@ -1907,8 +1900,8 @@
           },
           {
             "position": {
-              "x": 950,
-              "y": 280.00000000000006
+              "x": 930,
+              "y": 340
             },
             "size": {
               "width": 90,
@@ -2013,7 +2006,7 @@
             "data": {
               "type": "tm.Process",
               "name": "Random\nNumber\nGenerator (D8, T7)",
-              "description": "",
+              "description": "The dependency process that generates randoms to be used for generating session ids, verification code, and seeds.",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
