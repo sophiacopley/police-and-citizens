@@ -1,5 +1,5 @@
 {
-  "version": "2.5.0",
+  "version": "2.6.2",
   "summary": {
     "title": "Multiple Factor Authentication",
     "owner": "",
@@ -15,7 +15,7 @@
         "diagramType": "STRIDE",
         "placeholder": "New STRIDE diagram description",
         "thumbnail": "./public/content/images/thumbnail.stride.jpg",
-        "version": "2.5.0",
+        "version": "2.6.2",
         "cells": [
           {
             "position": {
@@ -31,8 +31,8 @@
                 "text": "Citizen"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -129,22 +129,9 @@
               "isTrustBoundary": false,
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "providesAuthentication": false,
               "threats": [
-                {
-                  "id": "7ce5a3fd-577b-4511-842e-0fca9ca5433e",
-                  "title": "User's session cookie is stolen",
-                  "status": "Mitigated",
-                  "severity": "TBD",
-                  "type": "Spoofing",
-                  "description": "See #4",
-                  "mitigation": "",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 1,
-                  "score": ""
-                },
                 {
                   "id": "e185d066-1ce6-4791-bb36-2774691b98e5",
                   "title": "Citizen doesn't own email address",
@@ -183,12 +170,32 @@
                   "new": false,
                   "number": 4,
                   "score": ""
+                },
+                {
+                  "id": "29cd79f2-1c72-4fff-886a-a07bdc5bf000",
+                  "title": "MFA enrollement code relayed by attacker",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": "A Bad Actor replaces the registration page with a malicious registration page, passes their credentials to a real registration page and receives the QR code to complete enrollment into MFA on behalf of the user.",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 225,
+                  "score": ""
                 }
               ],
               "threatFrequency": {
                 "spoofing": 9,
                 "repudiation": 0
               }
+            },
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove"
+              ],
+              "name": null
             }
           },
           {
@@ -707,7 +714,15 @@
               "name": "Push notification service API",
               "description": "",
               "isTrustBoundary": true,
-              "hasOpenThreats": false
+              "hasOpenThreats": false,
+              "crossingFlows": [
+                "1683200b-26fb-4178-8b49-ad00def4111f",
+                "8abc0357-16ff-4dbe-b103-971223e7f19e",
+                "b8f96b90-c024-4aad-bd65-2ed0ec284506"
+              ],
+              "containedElements": [
+                "1ad5c3ca-1f49-4b56-b82e-1680a7b2ca4f"
+              ]
             },
             "labels": [
               "Push notification service API"
@@ -739,7 +754,17 @@
               "name": "Phone OS and authenticator app",
               "description": "",
               "isTrustBoundary": true,
-              "hasOpenThreats": false
+              "hasOpenThreats": false,
+              "crossingFlows": [
+                "60a54947-b411-4e60-80d4-15813f640eb3",
+                "c0109b64-d82b-43cb-ab3d-9d3242c57872",
+                "b595f2f6-f0fc-4949-8922-d7d9f0358159",
+                "b8f96b90-c024-4aad-bd65-2ed0ec284506",
+                "d311ae7f-0095-4d89-bc68-b5800ef9cadb"
+              ],
+              "containedElements": [
+                "17204464-77d6-43ab-be78-3ca3dfe3c13d"
+              ]
             },
             "labels": [
               "Phone OS and authenticator app"
@@ -818,6 +843,9 @@
                   "number": 57,
                   "score": ""
                 }
+              ],
+              "trustBoundaryIds": [
+                "c87bcb96-9e30-4254-a2a6-bb2f9400f14a"
               ]
             },
             "labels": [
@@ -897,7 +925,8 @@
                   "number": 49,
                   "score": ""
                 }
-              ]
+              ],
+              "trustBoundaryIds": []
             },
             "labels": [
               "mfa_register_qr_code"
@@ -970,9 +999,7 @@
                   "score": ""
                 }
               ],
-              "trustBoundaryIds": [
-                "c13b7a48-b539-45e9-b058-5d6a0ed613da"
-              ],
+              "trustBoundaryIds": [],
               "threatFrequency": {
                 "tampering": 5,
                 "informationDisclosure": 4,
@@ -1055,7 +1082,8 @@
                   "number": 59,
                   "score": ""
                 }
-              ]
+              ],
+              "trustBoundaryIds": []
             },
             "labels": [
               "session_cookie + redirect"
@@ -1106,7 +1134,8 @@
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": []
+              "threats": [],
+              "trustBoundaryIds": []
             },
             "labels": [
               "code"
@@ -1192,6 +1221,7 @@
                   "score": ""
                 }
               ],
+              "trustBoundaryIds": [],
               "threatFrequency": {
                 "tampering": 3,
                 "informationDisclosure": 3,
@@ -1281,6 +1311,9 @@
                   "number": 39,
                   "score": ""
                 }
+              ],
+              "trustBoundaryIds": [
+                "c87bcb96-9e30-4254-a2a6-bb2f9400f14a"
               ],
               "threatFrequency": {
                 "tampering": 3,
@@ -1378,6 +1411,7 @@
                   "score": ""
                 }
               ],
+              "trustBoundaryIds": [],
               "threatFrequency": {
                 "tampering": 3,
                 "informationDisclosure": 4,
@@ -1447,6 +1481,9 @@
                   "number": 54,
                   "score": ""
                 }
+              ],
+              "trustBoundaryIds": [
+                "66654ec5-2062-4cd6-bd66-604e9d45c91b"
               ],
               "threatFrequency": {
                 "tampering": 0,
@@ -1531,6 +1568,9 @@
                   "score": ""
                 }
               ],
+              "trustBoundaryIds": [
+                "66654ec5-2062-4cd6-bd66-604e9d45c91b"
+              ],
               "threatFrequency": {
                 "tampering": 1,
                 "informationDisclosure": 0,
@@ -1595,6 +1635,9 @@
                   "score": ""
                 }
               ],
+              "trustBoundaryIds": [
+                "c87bcb96-9e30-4254-a2a6-bb2f9400f14a"
+              ],
               "threatFrequency": {
                 "tampering": 2,
                 "informationDisclosure": 0,
@@ -1617,84 +1660,6 @@
               {
                 "x": 640,
                 "y": -30
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "mfa_register_qr_code",
-              "description": "Citizen scans QR code displayed on their screen using their authenticator app. This adds the website to their authenticator app.",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [
-                {
-                  "id": "c7872ffd-23e2-4e10-858b-47ee04b883ac",
-                  "title": "QR enrollment code relayed by an attacker (adversary-in-the-middle)",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Tampering",
-                  "description": "A Bad Actor lures the citizen to a lookalike registration page, captures the real MFA enrollment QR code shown to the citizen, and relays it in real time to complete their own enrollment/login, bypassing MFA entirely.",
-                  "mitigation": "- Bind the enrollment QR code to the specific session/device that requested it, and expire it quickly.\n- Display a confirmation code or account identifier alongside the QR code that the citizen must match against what the authenticator app shows.\n- Educate citizens to only scan QR codes on the official domain (also see #6, #23).",
-                  "modelType": "STRIDE",
-                  "new": true,
-                  "number": 46,
-                  "score": ""
-                },
-                {
-                  "id": "e36d1119-e9f2-4ed3-94c9-e12ac0bf7eda",
-                  "title": "MFA enrollment secret exposed via QR code capture",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Information disclosure",
-                  "description": "The QR code encodes the shared secret used to generate future authentication codes/approvals. If a Bad Actor photographs or screen-captures the QR code (e.g. shoulder-surfing, screen-sharing, malware taking a screenshot), they can enroll their own device against the citizen's account.",
-                  "mitigation": "- Display the QR code only briefly and only after re-authentication.\n- Allow the citizen to view/revoke enrolled authenticator devices and re-generate the secret if compromise is suspected.\n- Warn the citizen not to share their screen while the QR code is displayed.",
-                  "modelType": "STRIDE",
-                  "new": true,
-                  "number": 47,
-                  "score": ""
-                }
-              ]
-            },
-            "labels": [
-              "mfa_register_qr_code"
-            ],
-            "id": "d311ae7f-0095-4d89-bc68-b5800ef9cadb",
-            "source": {
-              "cell": "7fa313dc-456d-482d-973b-bc99b6208d9d"
-            },
-            "target": {
-              "cell": "17204464-77d6-43ab-be78-3ca3dfe3c13d",
-              "port": "618ea78a-2da9-4da3-88b1-27b9f9b8d92a"
-            },
-            "vertices": [
-              {
-                "x": 450,
-                "y": 70
               }
             ]
           },
@@ -1743,6 +1708,10 @@
                   "score": ""
                 }
               ],
+              "trustBoundaryIds": [
+                "66654ec5-2062-4cd6-bd66-604e9d45c91b",
+                "c87bcb96-9e30-4254-a2a6-bb2f9400f14a"
+              ],
               "threatFrequency": {
                 "tampering": 1,
                 "informationDisclosure": 0,
@@ -1761,6 +1730,74 @@
               "cell": "17204464-77d6-43ab-be78-3ca3dfe3c13d",
               "port": "a4b3a45d-a9bb-4782-8c22-a3ed0e967671"
             }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "mfa_register_qr_code",
+              "description": "Citizen scans QR code displayed on their screen using their authenticator app. This adds the website to their authenticator app.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "e36d1119-e9f2-4ed3-94c9-e12ac0bf7eda",
+                  "title": "MFA enrollment secret exposed via QR code capture",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "The QR code encodes the shared secret used to generate future authentication codes/approvals. If a Bad Actor photographs or screen-captures the QR code (e.g. shoulder-surfing, screen-sharing, malware taking a screenshot), they can enroll their own device against the citizen's account.",
+                  "mitigation": "- Display the QR code only briefly and only after re-authentication.\n- Allow the citizen to view/revoke enrolled authenticator devices and re-generate the secret if compromise is suspected.\n- Warn the citizen not to share their screen while the QR code is displayed.",
+                  "modelType": "STRIDE",
+                  "new": true,
+                  "number": 47,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [
+                "c87bcb96-9e30-4254-a2a6-bb2f9400f14a"
+              ]
+            },
+            "labels": [
+              "mfa_register_qr_code"
+            ],
+            "id": "d311ae7f-0095-4d89-bc68-b5800ef9cadb",
+            "source": {
+              "cell": "7fa313dc-456d-482d-973b-bc99b6208d9d"
+            },
+            "target": {
+              "cell": "17204464-77d6-43ab-be78-3ca3dfe3c13d",
+              "port": "618ea78a-2da9-4da3-88b1-27b9f9b8d92a"
+            },
+            "vertices": [
+              {
+                "x": 450,
+                "y": 70
+              }
+            ]
           },
           {
             "position": {
@@ -2473,6 +2510,6 @@
     ],
     "diagramTop": 1,
     "reviewer": "",
-    "threatTop": 224
+    "threatTop": 226
   }
 }
