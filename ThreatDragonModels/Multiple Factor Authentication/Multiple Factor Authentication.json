@@ -762,10 +762,10 @@
               "isTrustBoundary": true,
               "hasOpenThreats": false,
               "crossingFlows": [
-                "60a54947-b411-4e60-80d4-15813f640eb3",
                 "c0109b64-d82b-43cb-ab3d-9d3242c57872",
                 "b595f2f6-f0fc-4949-8922-d7d9f0358159",
                 "b8f96b90-c024-4aad-bd65-2ed0ec284506",
+                "60a54947-b411-4e60-80d4-15813f640eb3",
                 "d311ae7f-0095-4d89-bc68-b5800ef9cadb"
               ],
               "containedElements": [
@@ -788,88 +788,6 @@
               {
                 "x": 520,
                 "y": -20
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "push_notification",
-              "description": "App sends push notification to the user's phone, indicating the user needs to authenticate a sign in",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [
-                {
-                  "id": "ceeeb113-0c28-49e6-af7e-54d4920efb81",
-                  "title": "Push authentication request tampered with in transit",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Tampering",
-                  "description": "See #50",
-                  "mitigation": "",
-                  "modelType": "STRIDE",
-                  "new": true,
-                  "number": 56,
-                  "score": ""
-                },
-                {
-                  "id": "ebc1cc97-2a81-4a3e-bece-d014db12ce04",
-                  "title": "Push notification channel flooded, delaying delivery",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Denial of service",
-                  "description": "See #45",
-                  "mitigation": "",
-                  "modelType": "STRIDE",
-                  "new": true,
-                  "number": 57,
-                  "score": ""
-                }
-              ],
-              "trustBoundaryIds": [
-                "c87bcb96-9e30-4254-a2a6-bb2f9400f14a"
-              ]
-            },
-            "labels": [
-              "push_notification"
-            ],
-            "id": "60a54947-b411-4e60-80d4-15813f640eb3",
-            "source": {
-              "cell": "17204464-77d6-43ab-be78-3ca3dfe3c13d",
-              "port": "618ea78a-2da9-4da3-88b1-27b9f9b8d92a"
-            },
-            "target": {
-              "cell": "7fa313dc-456d-482d-973b-bc99b6208d9d",
-              "port": "a5ecf257-0add-467c-a41d-3a89bb99c9ca"
-            },
-            "vertices": [
-              {
-                "x": 580,
-                "y": 70
               }
             ]
           },
@@ -1407,74 +1325,6 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "mfa_register_qr_code",
-              "description": "Citizen scans QR code displayed on their screen using their authenticator app. This adds the website to their authenticator app.",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [
-                {
-                  "id": "e36d1119-e9f2-4ed3-94c9-e12ac0bf7eda",
-                  "title": "MFA enrollment secret exposed via QR code capture",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Information disclosure",
-                  "description": "The QR code encodes the shared secret used to generate future authentication codes/approvals. If a Bad Actor photographs or screen-captures the QR code (e.g. shoulder-surfing, screen-sharing, malware taking a screenshot), they can enroll their own device against the citizen's account.",
-                  "mitigation": "- Display the QR code only briefly and only after re-authentication.\n- Allow the citizen to view/revoke enrolled authenticator devices and re-generate the secret if compromise is suspected.\n- Warn the citizen not to share their screen while the QR code is displayed.",
-                  "modelType": "STRIDE",
-                  "new": true,
-                  "number": 47,
-                  "score": ""
-                }
-              ],
-              "trustBoundaryIds": [
-                "c87bcb96-9e30-4254-a2a6-bb2f9400f14a"
-              ]
-            },
-            "labels": [
-              "mfa_register_qr_code"
-            ],
-            "id": "d311ae7f-0095-4d89-bc68-b5800ef9cadb",
-            "source": {
-              "cell": "7fa313dc-456d-482d-973b-bc99b6208d9d"
-            },
-            "target": {
-              "cell": "17204464-77d6-43ab-be78-3ca3dfe3c13d",
-              "port": "618ea78a-2da9-4da3-88b1-27b9f9b8d92a"
-            },
-            "vertices": [
-              {
-                "x": 450,
-                "y": 70
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
                 "stroke": "#333333",
                 "targetMarker": {
                   "name": "block"
@@ -1631,6 +1481,190 @@
               {
                 "x": 670,
                 "y": 340
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "push_notification",
+              "description": "App sends push notification to the user's phone, indicating the user needs to authenticate a sign in",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "ceeeb113-0c28-49e6-af7e-54d4920efb81",
+                  "title": "Flooding the network with traffic",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "See #217",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 56,
+                  "score": ""
+                },
+                {
+                  "id": "ebc1cc97-2a81-4a3e-bece-d014db12ce04",
+                  "title": "Push notification tampered with in transit",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "See #221\n\nPush notification could be altered to redirect you to a malicious site on click.",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 57,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [
+                "c87bcb96-9e30-4254-a2a6-bb2f9400f14a"
+              ],
+              "threatFrequency": {
+                "tampering": 4,
+                "informationDisclosure": 0,
+                "denialOfService": 1
+              }
+            },
+            "labels": [
+              "push_notification"
+            ],
+            "id": "60a54947-b411-4e60-80d4-15813f640eb3",
+            "source": {
+              "cell": "17204464-77d6-43ab-be78-3ca3dfe3c13d",
+              "port": "618ea78a-2da9-4da3-88b1-27b9f9b8d92a"
+            },
+            "target": {
+              "cell": "7fa313dc-456d-482d-973b-bc99b6208d9d",
+              "port": "a5ecf257-0add-467c-a41d-3a89bb99c9ca"
+            },
+            "vertices": [
+              {
+                "x": 580,
+                "y": 70
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "mfa_register_qr_code",
+              "description": "Citizen scans QR code displayed on their screen using their authenticator app. This adds the website to their authenticator app.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "71d389fc-3fa9-427a-92bd-5e0cc5899a6c",
+                  "title": "Flooding the network with traffic",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "See #217",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 233,
+                  "score": ""
+                },
+                {
+                  "id": "db60392d-44ae-4e46-a42b-0267b771b9ed",
+                  "title": "QR code disclosed to a bad actor",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "See #220",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 234,
+                  "score": ""
+                },
+                {
+                  "id": "df2ae9c9-935e-4947-b10c-6644a4def41b",
+                  "title": "QR code tampered with in transit",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "See #221",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 235,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [
+                "c87bcb96-9e30-4254-a2a6-bb2f9400f14a"
+              ],
+              "threatFrequency": {
+                "tampering": 3,
+                "informationDisclosure": 2,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              "mfa_register_qr_code"
+            ],
+            "id": "d311ae7f-0095-4d89-bc68-b5800ef9cadb",
+            "source": {
+              "cell": "7fa313dc-456d-482d-973b-bc99b6208d9d"
+            },
+            "target": {
+              "cell": "17204464-77d6-43ab-be78-3ca3dfe3c13d",
+              "port": "618ea78a-2da9-4da3-88b1-27b9f9b8d92a"
+            },
+            "vertices": [
+              {
+                "x": 450,
+                "y": 70
               }
             ]
           },
@@ -2430,12 +2464,6 @@
               "cell": "37dd06e5-4fc6-4251-b64c-77010227a7f5",
               "port": "2ae347ba-6b62-4494-aab5-dba4e799497e"
             },
-            "vertices": [
-              {
-                "x": 740,
-                "y": 281
-              }
-            ],
             "tools": {
               "items": [
                 "boundary",
@@ -2450,14 +2478,19 @@
                 "target-arrowhead"
               ],
               "name": null
-            }
+            },
+            "vertices": [
+              {
+                "x": 740,
+                "y": 281
+              }
+            ]
           },
           {
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
+                "stroke": "#333333",
                 "targetMarker": {
                   "name": "block"
                 },
@@ -2478,7 +2511,7 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": true,
+              "hasOpenThreats": false,
               "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
@@ -2486,8 +2519,8 @@
               "threats": [
                 {
                   "id": "537a8aa7-1e5c-49a5-b0b4-0bd929c54cbb",
-                  "title": "",
-                  "status": "Open",
+                  "title": "Flooding the network with traffic",
+                  "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Denial of service",
                   "description": "See #217",
@@ -2499,23 +2532,36 @@
                 },
                 {
                   "id": "d3fdaa14-edd8-4bf3-843e-83b112d0ba36",
-                  "title": "",
-                  "status": "Open",
+                  "title": "MFA secret QR code tampered with in transit",
+                  "status": "Mitigated",
                   "severity": "TBD",
-                  "type": "Information disclosure",
-                  "description": "See #220",
+                  "type": "Tampering",
+                  "description": "See #221",
                   "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 231,
                   "score": ""
+                },
+                {
+                  "id": "a535f57e-f915-4095-883f-e32f37b769dd",
+                  "title": "QR code disclosed to a bad actior",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "See #220",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 232,
+                  "score": ""
                 }
               ],
               "trustBoundaryIds": [],
               "threatFrequency": {
-                "tampering": 0,
+                "tampering": 3,
                 "informationDisclosure": 1,
-                "denialOfService": 1
+                "denialOfService": 2
               }
             },
             "labels": [
@@ -2529,241 +2575,6 @@
             "target": {
               "cell": "7fa313dc-456d-482d-973b-bc99b6208d9d",
               "port": "a5ecf257-0add-467c-a41d-3a89bb99c9ca"
-            },
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead"
-              ],
-              "name": null
             }
           }
         ]
@@ -2771,6 +2582,6 @@
     ],
     "diagramTop": 1,
     "reviewer": "",
-    "threatTop": 231
+    "threatTop": 235
   }
 }
